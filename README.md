@@ -16,7 +16,7 @@ https://docs.docker.com/engine/
 
 ## Installing Docker on a VM (Azure)
 
-Update vm
+Update vm vmdocker01
 
 ```bash
 # update vm
@@ -102,6 +102,8 @@ https://docs.docker.com/engine/install/ubuntu/
 
 
 ## Mount fileshare on VM
+
+Storage account staccvmdocker01
 
 https://follow-e-lo.com/2023/11/09/ubuntu-az-cli-and-mount-fileshare/
 
