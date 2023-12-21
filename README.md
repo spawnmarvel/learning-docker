@@ -8,6 +8,10 @@ Testing and learning Docker with Azure
 * Azure VM with Docker
 * Azure Container with Docker
 
+## Visuals
+
+https://follow-e-lo.com/2023/12/20/docker/
+
 ## Docker docs
 
 Docker Engine is an open source containerization technology for building and containerizing your applications
