@@ -18,6 +18,9 @@ https://docs.docker.com/engine/
 
 https://docs.docker.com/engine/install/ubuntu/
 
+## Install Portainer CE with Docker on Linux
+
+https://docs.portainer.io/start/install-ce/server/docker/linux
 
 
 ## Overview of get started
