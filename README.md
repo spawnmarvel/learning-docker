@@ -100,21 +100,13 @@ docker --version
 
 https://docs.docker.com/engine/install/ubuntu/
 
-## Install Portainer CE with Docker on Linux
 
-https://docs.portainer.io/start/install-ce/server/docker/linux
+## Mount fileshare on VM
+
+https://follow-e-lo.com/2023/11/09/ubuntu-az-cli-and-mount-fileshare/
 
 
 ## Overview of get started
-
-* What is a container?
-* How do I run a container?
-* Run Docker Hub images
-* Run multi-container applications
-* Persist container data
-* Access a local folder from a container
-* Containerize your application
-* Publish your image
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 
@@ -137,6 +129,8 @@ https://github.com/spawnmarvel/learning-docker/tree/main/rmq
 Zabbix:
 
 Wordpress:
+
+Portainer:
 
 ## Using docker on Azure Container
 
