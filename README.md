@@ -30,9 +30,6 @@ https://docs.docker.com/get-docker/
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 
 
-https://docs.docker.com/guides/get-started/
-
-
 ## Docker basic commands
 
 ```bash
