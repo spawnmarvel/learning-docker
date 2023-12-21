@@ -32,6 +32,8 @@ Create script
 # create script
 touch add_repository_to_apt.sh
 
+nano add_repository_to_apt.sh
+
 #!/bin/bash
 # Add Docker's official GPG key:
 sudo apt update
