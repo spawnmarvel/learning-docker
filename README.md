@@ -14,6 +14,8 @@ https://follow-e-lo.com/2023/12/20/docker/
 
 ## What ARE Containers? (and Docker ...)
 
+Time 11.51
+
 https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
 
 ## Docker docs
