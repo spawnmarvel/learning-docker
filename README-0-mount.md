@@ -94,9 +94,9 @@ ls
 
 # Restart vm and all gone, so back to the initial step 1 code.
 
-
-
 ```
+
+https://learn.microsoft.com/en-us/answers/questions/1410701/linux-image-6-2-0-1016-azure-cifs-is-not-supported
 
 ## Use the portal to attach a data disk to a Linux VM
 
