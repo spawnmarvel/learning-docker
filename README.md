@@ -113,13 +113,13 @@ https://docs.docker.com/engine/install/ubuntu/
 
 ## Mount fileshare on VM
 
-Storage account staccvmdocker01
-
-Fileshare dockershare01
-
-Better use a disk, not fileshare....args
+* Storage account staccvmdocker01
+* Fileshare dockershare01
+* Better use a disk, not fileshare....args, create standard ssd 4gb
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
+
+* cd /datadrive/
 
 
 
