@@ -17,6 +17,11 @@ Testing and learning Docker with Azure
 ## Installing Docker on a VM
 
 
+## Configure Applications
+
+
+
+
 
 
 ## Using docker on Azure Container
