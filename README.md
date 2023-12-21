@@ -19,6 +19,13 @@ Testing and learning Docker with Azure
 
 ## Configure Applications
 
+RabbitMQ:
+
+https://github.com/spawnmarvel/learning-docker/tree/main/rmq
+
+Zabbix:
+
+Wordpress:
 
 
 
