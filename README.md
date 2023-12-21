@@ -119,6 +119,8 @@ Fileshare dockershare01
 
 Better use a disk, not fileshare....args
 
+https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
+
 
 
 ## Overview of get started
