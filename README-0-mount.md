@@ -98,7 +98,11 @@ ls
 
 ```
 
-## Mount disk
+## Use the portal to attach a data disk to a Linux VM
 
 ```bash
 ```
+
+https://learn.microsoft.com/en-us/azure/virtual-machines/linux/attach-disk-portal?tabs=ubuntu
+
+https://github.com/spawnmarvel/azure-automation/blob/main/azure-extra-linux-vm/READMEQuickstartsLinuxMS.md
