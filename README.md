@@ -40,7 +40,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 ## Docker basic commands
 
 ```bash
-# 
+# login
+ssh user@IP
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
