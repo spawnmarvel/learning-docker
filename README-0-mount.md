@@ -100,7 +100,7 @@ https://learn.microsoft.com/en-us/answers/questions/1410701/linux-image-6-2-0-10
 
 ## Use the portal to attach a data disk to a Linux VM
 
-Create standard sdd, e16 in the same rg
+Create standard sdd, e8 in the same rg
 
 ```bash
 
