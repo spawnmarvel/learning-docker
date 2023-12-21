@@ -8,12 +8,6 @@ Testing and learning Docker with Azure
 * Azure VM with Docker
 * Azure Container with Docker
 
-## Applications
-
-* RabbitMQ
-* Zabbix
-* Wordpress
-
 ## Docker docs
 
 https://docs.docker.com/
@@ -32,6 +26,8 @@ https://docs.docker.com/get-docker/
 * Access a local folder from a container
 * Containerize your application
 * Publish your image
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 
 
 https://docs.docker.com/guides/get-started/
