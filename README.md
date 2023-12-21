@@ -14,7 +14,18 @@ Testing and learning Docker with Azure
 * Zabbix
 * Wordpress
 
+## Docker docs
+
+https://docs.docker.com/
+
+
 ## Installing Docker on a VM
+
+## Docker basic commands
+
+```bash
+
+```
 
 
 ## Configure Applications
