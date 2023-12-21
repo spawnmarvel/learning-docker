@@ -10,11 +10,15 @@ Testing and learning Docker with Azure
 
 ## Docker docs
 
-https://docs.docker.com/
+Docker Engine is an open source containerization technology for building and containerizing your applications
+
+https://docs.docker.com/engine/
 
 ## Installing Docker on a VM
 
-https://docs.docker.com/get-docker/
+https://docs.docker.com/engine/install/ubuntu/
+
+
 
 ## Overview of get started
 
