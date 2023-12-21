@@ -14,7 +14,7 @@ Docker Engine is an open source containerization technology for building and con
 
 https://docs.docker.com/engine/
 
-## Installing Docker on a VM
+## Installing Docker on a VM (Azure)
 
 https://docs.docker.com/engine/install/ubuntu/
 
