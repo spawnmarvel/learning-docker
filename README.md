@@ -115,6 +115,32 @@ https://docs.docker.com/engine/install/ubuntu/
 
 Storage account staccvmdocker01
 
+Fileshare dockershare01
+
+```bash
+
+# https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-linux?tabs=Ubuntu%2Csmb311
+
+# https://follow-e-lo.com/2023/11/09/ubuntu-az-cli-and-mount-fileshare/
+
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+az upgrade
+az version
+# azure-cli 2.55.0
+
+az login --tenant
+# To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code
+
+sudo apt install cifs-utils
+
+sudo apt install -y linux-modules-extra-azure
+
+touch mount_st.sh
+
+
+```
+
 https://follow-e-lo.com/2023/11/09/ubuntu-az-cli-and-mount-fileshare/
 
 
