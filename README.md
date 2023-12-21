@@ -18,30 +18,24 @@ Testing and learning Docker with Azure
 
 https://docs.docker.com/
 
+## Installing Docker on a VM
+
+https://docs.docker.com/get-docker/
+
 ## Overview of get started
 
-What is a container?
-
-How do I run a container?
-
-Run Docker Hub images
-
-Run multi-container applications
-
-Persist container data
-
-Access a local folder from a container
-
-Containerize your application
-
-Publish your image
+* What is a container?
+* How do I run a container?
+* Run Docker Hub images
+* Run multi-container applications
+* Persist container data
+* Access a local folder from a container
+* Containerize your application
+* Publish your image
 
 
 https://docs.docker.com/guides/get-started/
 
-
-
-## Installing Docker on a VM
 
 ## Docker basic commands
 
