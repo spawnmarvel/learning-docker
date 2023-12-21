@@ -1,20 +1,24 @@
-# Overview of get started
 
-## What is a container?
+# Getting started guide CLI
 
-## How do I run a container?
+## Part 1 Overview
 
-## Run Docker Hub images
+## Part 2 Containerize an application
 
-## Run multi-container applications
+## Part 3 Update the application
 
-## Persist container data
+## Part 4
 
-## Access a local folder from a container
+## Part 5
 
-## Containerize your application
+## Part 6
 
-## Publish your image
+## Part 7
 
+## Part 8
+
+## Part 9
+
+## Part 10
 
 https://docs.docker.com/guides/get-started/
