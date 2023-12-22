@@ -47,6 +47,47 @@ Dockerfile  __pycache__  app.py  app_logger.py  logging_config.ini  logs_app.txt
 
 ```
 
+## Add Greacfull shutdown for Docker
+
+So we update the main with a sleep loop.
+
+Now lets add greacfull shutdown with SIGTERM.
+
+```bash
+python3 app.py
+
+```
+Logs and we send a ctrl+c in the middle
+
+```log
+
+2023-12-22 20:50:36,309 - 140403686789120 - 1714 - app.py - 11 -             <module>() root - INFO - Version 0.1
+2023-12-22 20:50:36,309 - 140403686789120 - 1714 - app.py - 33 -             <module>() root - INFO - In main
+2023-12-22 20:50:36,309 - 140403686789120 - 1714 - app.py - 39 -             <module>() root - INFO - Main Pid: 1714
+2023-12-22 20:50:38,311 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+2023-12-22 20:50:40,314 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+2023-12-22 20:50:42,316 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+2023-12-22 20:50:44,319 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+2023-12-22 20:50:46,321 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+2023-12-22 20:50:48,323 - 140403686789120 - 1714 - worker.py - 16 -              do_work() root - INFO - Sleeping....
+^C
+2023-12-22 20:50:49,810 - 140403686789120 - 1714 - app.py - 42 -             <module>() root - INFO - Stop command recieved
+2023-12-22 20:50:50,812 - 140403686789120 - 1714 - app.py - 44 -             <module>() root - INFO - Cleaning up
+2023-12-22 20:50:50,812 - 140403686789120 - 1714 - app.py - 45 -             <module>() root - INFO - Stopped, bye, bye
+
+
+```
+
+```bash
+ls
+Dockerfile  __pycache__  app.py  app_logger.py  logging_config.ini  logs_app.txt  worker.py
+```
+
+## Now make the docker container
+
+
+
+
 
 
 
