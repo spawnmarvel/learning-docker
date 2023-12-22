@@ -280,22 +280,6 @@ https://github.com/spawnmarvel/learning-docker/blob/main/mariadb/README.md
 
 Python-simple:
 
-```bash
-
-# assuming in folder
-~/python-simple$ ls
-Dockerfile  app.py
-
-docker image build -t hello-py .
-
-# out
-cd
-
-docker run hello-py
-Hello  Python
-
-```
-
 https://github.com/spawnmarvel/learning-docker/blob/main/python-simple/README.md
 
 Python-advanced:
@@ -303,7 +287,6 @@ Python-advanced:
 Portainer:
 
 RabbitMQ:
-
 
 Zabbix:
 
