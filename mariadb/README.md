@@ -63,19 +63,34 @@ docker kill mariadbtest
 
 docker rm mariadbtest
 
+# and then we can create a new with the same name
+docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d docker.io/library/mariadb:11.0
+
+# Automatic Restart
+# no, on-failure, unless-stopped, always
+# It is possible to change the restart policy of existing, possibly running containers:
+docker update --restart always mariadbtest
+
 
 ```
 
 
-## Next
+## Troubleshooting a Container
 
 ```bash
+docker logs mariadbtest
+
 ```
 
 
-## Next
+## Accessing the Container
 
 ```bash
+docker exec -it mariadbtest bash
+
+# Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor, for example
+
+
 ```
 
 

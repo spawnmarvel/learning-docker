@@ -221,10 +221,28 @@ docker logs mariadbtest
 # Accessing the Container
 docker exec -it mariadbtest bash
 
+# Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor.
+
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 
+## Docker Volums
+
+Volumes are a mechanism for storing data outside containers. All volumes are managed by Docker and stored in a dedicated directory on your host, usually /var/lib/docker/volumes for Linux systems.
+
+```bash
+
+# Root
+sudo su -
+
+cd /var/lib/docker
+# buildkit  containers  engine-id  image  network  overlay2  plugins  runtimes  swarm  tmp  volumes
+
+# switch
+su username
+
+```
 ## Configure Applications
 
 MariaDB:
