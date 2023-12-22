@@ -293,14 +293,13 @@ Zabbix:
 Wordpress:
 
 
+## Quickstart: Deploy a container instance in Azure using the Azure CLI
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
 
 ## Run Docker containers with Azure Container Instances
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
-
-## Quickstart: Deploy a container instance in Azure using the Azure CLI
-
-https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
 
 ## Azure Container Instances documentation
 
