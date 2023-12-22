@@ -181,9 +181,42 @@ docker info
 #  Stopped: 3
 #  Images: 1
 
+# search images from repos
+docker search mariadb
+
+# pull
+docker pull mariadb:11.0
+
 # list installed images
 docker images
 
+# docker make container
+docke run -help
+
+docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d docker.io/library/mariadb:11.0
+# --name, mariadbtest
+# -e, MYSQL_ROOT_PASSWORD=mypass -p 3306:3306, Set environment variables
+
+# start, restart and stop
+docker start mariadbtest
+docker restart mariadbtest
+
+# With docker stop, the container will be gracefully terminated: a SIGTERM signal will be sent
+docker stop mariadbtest
+docker stop --time=30 mariadbtest
+
+# Or it is possible to immediately kill the process, with no timeout.
+docker kill mariadbtest
+
+# destroy container
+docker rm mariadbtest
+
+# Note that the command above does not destroy the data volume that Docker has created for /var/lib/mysql. If you want to destroy the volume as well, use:
+
+docker rm -v mariadbtest
+
+# Troubleshooting a Container
+docker logs mariadbtest
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
