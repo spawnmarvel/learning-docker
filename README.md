@@ -3,6 +3,9 @@ Testing and learning Docker with Azure
 
 ## Learning docker
 
+
+What do we get extra here:
+
 * Python for programming
 * Bash and linux
 * Azure VM with Docker
@@ -308,5 +311,20 @@ Wordpress:
 
 
 
-## Using docker on Azure Container
+## Run Docker containers with Azure Container Instances
+
+https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
+
+## Quickstart: Deploy a container instance in Azure using the Azure CLI
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
+
+## Azure Container Instances documentation
+
+https://learn.microsoft.com/en-us/azure/container-instances/
+
+
+
+
+
 
