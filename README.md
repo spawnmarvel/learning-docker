@@ -291,16 +291,15 @@ Python-boilerplate:
 
 https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/README.md
 
-
-Python Deploying a Flask Application via the Apache Server
-
-Apache:
-
-Portainer:
+Python-bolierplate with Portainer docker-compose up
 
 RabbitMQ:
 
+Apache:
+
 Zabbix:
+
+Python Deploying a Flask Application via the Apache Server
 
 Wordpress:
 
