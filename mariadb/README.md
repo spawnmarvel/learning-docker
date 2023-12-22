@@ -90,11 +90,12 @@ docker exec -it mariadbtest bash
 
 # Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor, for example
 
+exit
 
 ```
 
 
-## Next
+## Connecting to MariaDB from Outside the Container
 
 ```bash
 ```

@@ -223,6 +223,7 @@ docker exec -it mariadbtest bash
 
 # Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor.
 
+exit
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
