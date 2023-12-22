@@ -124,9 +124,61 @@ mysql -h 172.17.0.2 -u root -p
 ## Persistent data?
 
 ```sql
-// Create a db, table and and insert a row.
+/* Create a db, table and and insert a row. */
 create database db1;
-// Stop, start container
+
+use db1;
+
+create table tb1(t_id INT NOT NULL AUTO_INCREMENT, t_name VARCHAR(20), PRIMARY KEY(t_id));
+
+insert into tb1 (t_name) values ("John");
+
+select * from tb1;
+
+exit;
+/* Bye */
+
+```
+
+```bash
+
+# Stop, start container 
+docker stop maridbtest
+
+docker ps
+
+docker start mariadbtest
+
+mysql -h 172.17.0.2 -u root -p
+
+
+```
+
+```sql
+/* Show db, table and row. */
+show databases;
+
+/*
+| db1                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys 
+*/
+use db1;
+
+select * from tb1;
+/*
++------+--------+
+| t_id | t_name |
++------+--------+
+|    1 | John   |
++------+--------+
+1 row in set (0.00 sec) 
+*/
+
+exit;
+/* Bye */
 
 ```
 
