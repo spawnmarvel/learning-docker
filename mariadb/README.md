@@ -17,17 +17,41 @@ REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 mariadb       11.0      2103f67114de   6 days ago     404MB
 hello-world   latest    d2c94e258dcb   7 months ago   13.3kB
 
+```
+
+## Creating container 
+
+```bash
+# run it
+docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d docker.io/library/mariadb:11.0
+
+# view all
+docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                                       NAMES
+1fbf23217254   mariadb:11.0   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp   mariadbtest
+
+# stop it
+docker stop mariadbtest
+
+# Optionally, after the image name, we can specify some options for mysqld. For example: But you cannot use the same name, and later it.
+
+docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d mariadb:11.0 --log-bin --binlog-format=MIXED
 
 ```
 
-## Next
+## Running and Stopping the Container
 
 ```bash
-```
+# Docker allows us to restart a container with a single command:
+docker restart mariadbtest
 
-## Next
+# The container can also be stopped like this:
+docker stop mariadbtest
 
-```bash
+# The container will not be destroyed by this command. The data will still live inside the container, even if MariaDB is not running. To restart the container and see our data, we can issue:
+docker start mariadbtest
+
+
 ```
 
 
