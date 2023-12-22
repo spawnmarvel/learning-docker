@@ -265,15 +265,21 @@ MariaDB:
 
 https://github.com/spawnmarvel/learning-docker/blob/main/mariadb/README.md
 
+
+Python-simple:
+
+Python-advanced:
+
+Portainer:
+
 RabbitMQ:
 
-https://github.com/spawnmarvel/learning-docker/tree/main/rmq
 
 Zabbix:
 
 Wordpress:
 
-Portainer:
+
 
 ## Using docker on Azure Container
 
