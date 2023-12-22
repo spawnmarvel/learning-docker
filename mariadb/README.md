@@ -10,6 +10,14 @@ docker search mariadb
 
 docker pull mariadb:11.0
 
+# List all
+docker images
+
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+mariadb       11.0      2103f67114de   6 days ago     404MB
+hello-world   latest    d2c94e258dcb   7 months ago   13.3kB
+
+
 ```
 
 ## Next

@@ -167,6 +167,24 @@ docker
 # help
 docker COMMAND --help
 
+# show containers running
+docker ps
+
+# show docker all info
+docker info
+
+# [version, path etc]
+# Server:
+# Containers: 3
+#  Running: 0
+#  Paused: 0
+#  Stopped: 3
+#  Images: 1
+
+# list installed images
+docker images
+
+
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 
