@@ -129,10 +129,38 @@ https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 # login
 ssh user@IP
 
+# From above we ised sudo in front of docker, result without
+docker run hello-world
+# docker: permission denied while trying to connect to the Docker daemon socket
+
+# Check if docker groups is present
+getent group
+
+getent group | grep docker
+# docker:x:999:
+
+# check if a user is in a group
+id username
+
+# Add the connected user "$USER" to the docker group. Change the user name to match your preferred user if you do not want to use your current user:
+
+sudo gpasswd -a $USER docker
+# Adding user username to group docker
+
+# Activate, either do a newgrp docker or log out/in to activate the changes to groups.
+newgrp docker
+
+# Now run
+docker run hello-world
+# Hello from Docker!
+# This message shows that your installation appears to be working correctly.
+
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 
 ## Configure Applications
+
+MariaDB:
 
 RabbitMQ:
 
