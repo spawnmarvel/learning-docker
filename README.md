@@ -280,16 +280,16 @@ https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-re
 
 MariaDB:
 
-https://github.com/spawnmarvel/learning-docker/blob/main/mariadb/README.md
+https://github.com/spawnmarvel/learning-docker/blob/main/3-mariadb/README.md
 
 
 Python-simple:
 
-https://github.com/spawnmarvel/learning-docker/blob/main/python-simple/README.md
+https://github.com/spawnmarvel/learning-docker/blob/main/4-python-simple/README.md
 
 Python-boilerplate:
 
-https://github.com/spawnmarvel/learning-docker/blob/main/python-boilerplate/README.md
+https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/README.md
 
 
 Python Deploying a Flask Application via the Apache Server
