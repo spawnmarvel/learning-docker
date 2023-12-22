@@ -225,6 +225,21 @@ docker exec -it mariadbtest bash
 
 exit
 
+# Connecting to MariaDB from Outside the Container
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadbtest
+
+# You can now connect to the MariaDB server using a TCP connection to that IP address.
+sudo apt install mysql-client-core-8.0
+
+# connect
+mysql -h 172.17.0.2 -u root -p
+# Enter password:
+# Welcome to the MySQL monitor.  Commands end with ; or \g.
+# Your MySQL connection id is 3
+# Server version: 11.0.4-MariaDB-1:11.0.4+maria~ubu2204 mariadb.org binary distribution
+
+
+
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 

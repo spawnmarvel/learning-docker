@@ -97,18 +97,36 @@ exit
 
 ## Connecting to MariaDB from Outside the Container
 
+If we try to connect to the MariaDB server on localhost, the client will bypass networking and attempt to connect to the server using a socket file in the local filesystem. However, this doesn't work when MariaDB is running inside a container because the server's filesystem is isolated from the host.
+
+Therefore connections to the MariaDB server must be made using TCP, even when the client is running on the same machine as the server container.
+
 ```bash
+# Find the IP address that has been assigned to the container:
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadbtest
+172.17.0.2
+
+# You can now connect to the MariaDB server using a TCP connection to that IP address.
+sudo apt install mysql-client-core-8.0
+
+# connect
+mysql -h 172.17.0.2 -u root -p
+# Enter password:
+# Welcome to the MySQL monitor.  Commands end with ; or \g.
+# Your MySQL connection id is 3
+# Server version: 11.0.4-MariaDB-1:11.0.4+maria~ubu2204 mariadb.org binary distribution
+
+
 ```
 
 
-## Next
+## Persistent data?
 
 ```bash
-```
+# Create a db, table and and insert a row.
 
+# Stop, start container
 
-## Next
-
-```bash
 ```
 
