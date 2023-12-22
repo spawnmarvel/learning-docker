@@ -123,7 +123,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 
 
-## Docker basic commands
+## Docker user setup
 
 ```bash
 # login
@@ -157,6 +157,17 @@ docker run hello-world
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
+
+## Docker basic commands
+
+```bash
+# get all
+docker
+
+# help
+docker COMMAND --help
+
+```
 
 ## Configure Applications
 
