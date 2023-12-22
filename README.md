@@ -293,6 +293,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/RE
 
 Python-bolierplate with Portainer docker-compose up
 
+https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer/README.md
+
 RabbitMQ:
 
 Apache:
