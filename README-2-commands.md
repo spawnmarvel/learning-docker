@@ -1,6 +1,6 @@
 # Docker basic commands
 
-```bash
+```log
 # run docker and you get to list cmds and help
 docker
 
