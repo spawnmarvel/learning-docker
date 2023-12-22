@@ -276,7 +276,7 @@ su username
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-reference
 
-## Configure Applications
+## Configure Containers
 
 MariaDB:
 
@@ -291,13 +291,16 @@ Python-boilerplate:
 
 https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/README.md
 
-Python-bolierplate with Portainer docker-compose up
-
-https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer/README.md
 
 RabbitMQ:
 
 Apache:
+
+## Configure Multi Containers
+
+Python-bolierplate with Portainer docker-compose up
+
+https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer/README.md
 
 Zabbix:
 
