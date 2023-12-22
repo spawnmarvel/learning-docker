@@ -291,6 +291,11 @@ Python-boilerplate:
 
 https://github.com/spawnmarvel/learning-docker/blob/main/python-boilerplate/README.md
 
+
+Python Deploying a Flask Application via the Apache Server
+
+Apache:
+
 Portainer:
 
 RabbitMQ:
