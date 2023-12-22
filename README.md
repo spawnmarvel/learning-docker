@@ -287,7 +287,9 @@ Python-simple:
 
 https://github.com/spawnmarvel/learning-docker/blob/main/python-simple/README.md
 
-Python-advanced:
+Python-boilerplate:
+
+https://github.com/spawnmarvel/learning-docker/blob/main/python-boilerplate/README.md
 
 Portainer:
 
