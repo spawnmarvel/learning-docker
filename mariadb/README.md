@@ -123,10 +123,10 @@ mysql -h 172.17.0.2 -u root -p
 
 ## Persistent data?
 
-```bash
-# Create a db, table and and insert a row.
-
-# Stop, start container
+```sql
+// Create a db, table and and insert a row.
+create database db1;
+// Stop, start container
 
 ```
 
