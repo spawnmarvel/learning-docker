@@ -215,6 +215,15 @@ docker rm mariadbtest
 
 docker rm -v mariadbtest
 
+# or with id, get id
+docker images
+
+# try remove
+docker rmi 6040d71a596b
+
+# --force
+docker rmi 6040d71a596b --force
+
 # Troubleshooting a Container
 docker logs mariadbtest
 
