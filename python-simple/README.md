@@ -18,7 +18,7 @@ sudo nano app.py
 app.py
 
 ```py
-print("Hellow Python")
+print("Hello Python")
 ```
 
 Docker file

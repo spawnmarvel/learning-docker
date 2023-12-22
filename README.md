@@ -268,6 +268,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/mariadb/README.md
 
 Python-simple:
 
+https://github.com/spawnmarvel/learning-docker/blob/main/python-simple/README.md
+
 Python-advanced:
 
 Portainer:
