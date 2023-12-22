@@ -194,10 +194,7 @@ docker images
 docke run -help
 
 docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d docker.io/library/mariadb:11.0
-# --name, mariadbtest
-# -e, MYSQL_ROOT_PASSWORD=mypass -p 3306:3306, Set environment variables
 
-# start, restart and stop
 docker start mariadbtest
 docker restart mariadbtest
 
@@ -208,6 +205,9 @@ docker stop --time=30 mariadbtest
 # Or it is possible to immediately kill the process, with no timeout.
 docker kill mariadbtest
 
+# Automatic Restart, It is possible to change the restart policy of existing, possibly running containers:
+docker update --restart always mariadb
+
 # destroy container
 docker rm mariadbtest
 
@@ -217,6 +217,10 @@ docker rm -v mariadbtest
 
 # Troubleshooting a Container
 docker logs mariadbtest
+
+# Accessing the Container
+docker exec -it mariadbtest bash
+
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
