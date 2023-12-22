@@ -12,7 +12,7 @@ Testing and learning Docker with Azure
 
 https://follow-e-lo.com/2023/12/20/docker/
 
-## What ARE Containers? (and Docker ...)
+## 1 What ARE Containers? (and Docker ...)
 
 Time 11.51
 
@@ -111,16 +111,11 @@ docker --version
 https://docs.docker.com/engine/install/ubuntu/
 
 
-## Mount fileshare on VM
-
-* Storage account staccvmdocker01
-* Fileshare dockershare01
-* Better use a disk, not fileshare....args, create standard ssd 4gb
-
-https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
+## Mount disk on VM
 
 * cd /datadrive/
 
+https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 
 
 ## Overview of get started
