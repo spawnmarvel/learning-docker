@@ -311,6 +311,7 @@ Python Deploying a Flask Application via the Apache Server
 
 Wordpress:
 
+# Azure
 
 ## Quickstart: Deploy a container instance in Azure using the Azure CLI
 
