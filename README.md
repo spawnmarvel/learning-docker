@@ -301,6 +301,8 @@ Apache:
 ### Install compose
 
 
+Try-docker-compose
+
 Python-bolierplate with Portainer
 
 https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer/README.md
