@@ -7,8 +7,8 @@ Testing and learning Docker with Azure
 What do we get extra here:
 
 * Python for programming
-* Bash and linux
-* Azure VM with Docker
+* Bash and linuxm ssh, .sh
+* Azure VM with Docker, mount data drive, NSG
 * Azure Container with Docker
 
 ## Visuals
