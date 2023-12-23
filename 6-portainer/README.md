@@ -23,8 +23,23 @@ Open inbound NSG 9443
 
 https://localhost:9443 Replace localhost with the relevant IP address or FQDN if needed, and adjust the port if you changed it earlier.
 
-Login
 
 ![Portainer](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer.jpg)
+
+## Initial setup
+
+Your first user will be an administrator.
+
+
+Once the admin user has been created, the Environment Wizard will automatically launch. The wizard will help get you started with Portainer.
+
+The installation process automatically detects your local environment and sets it up for you. If you want to add additional environments to manage with this Portainer instance, click Add Environments. Otherwise, click Get Started to start using Portainer!
+
+Right now we have none.
+
+![Portainer_env](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer.jpg)
+
+
+https://docs.portainer.io/start/install-ce/server/setup
 
 
