@@ -279,10 +279,6 @@ Volume CRUD
 
 docker volume create portainer_data
 
-# view
-docker volume ls
-# local     portainer_data
-
 # inspect
 docker volume inspect portainer_data
 
@@ -297,6 +293,19 @@ docker volume inspect portainer_data
         "Scope": "local"
     }
 ]
+
+# view
+docker volume ls
+# local     portainer_data
+
+# Remove unused local volumes
+# Remove all unused local volumes. Unused local volumes are those which are not referenced by any containers. 
+# By default, it only removes anonymous volumes.
+docker volume prune
+
+# Remove one or more volumes. You cannot remove a volume that is in use by a container.
+docker volume rm portainer_data
+
 ```
 
 https://docs.docker.com/engine/reference/commandline/volume_create/
