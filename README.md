@@ -296,10 +296,20 @@ RabbitMQ:
 
 Apache:
 
+## Install Docker Compose Ubuntu
+
+It seems that it is already apart of the docker install from apt (install docker)
+
+```bash
+sudo apt update
+sudo apt install docker-compose-plugin
+# docker-compose-plugin is already the newest version (2.21.0-1~ubuntu.22.04~jammy).
+
+docker compose version
+Docker Compose version v2.21.0
+```
+
 ## Configure Multi Containers docker-compose up
-
-### Install compose
-
 
 Try-docker-compose
 

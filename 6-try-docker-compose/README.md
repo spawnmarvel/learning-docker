@@ -4,6 +4,18 @@ https://docs.docker.com/compose/gettingstarted/
 
 ## Install it
 
+```bash
+sudo apt update -y
+sudo apt install docker-compose-plugin
+# docker-compose-plugin is already the newest version (2.21.0-1~ubuntu.22.04~jammy).
+
+docker compose version
+Docker Compose version v2.21.0
+
+```
+
+https://docs.docker.com/compose/install/linux/#install-using-the-repository
+
 ## Prerequisites
 
 ## Step 1: Define the application dependencies
