@@ -17,6 +17,7 @@ Docker Compose version v2.21.0
 https://docs.docker.com/compose/install/linux/#install-using-the-repository
 
 ## Prerequisites
+TODO
 
 ## Step 1: Define the application dependencies
 
