@@ -25,6 +25,6 @@ https://localhost:9443 Replace localhost with the relevant IP address or FQDN if
 
 Login
 
-![Portainer] (https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer.jpg)
+![Portainer](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer.jpg)
 
 
