@@ -12,6 +12,8 @@ What do we get extra here:
 * Azure Container with Docker
 
 
+Azure resources
+
 ![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
 
 ## Visuals
