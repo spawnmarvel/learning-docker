@@ -292,6 +292,8 @@ Python-boilerplate:
 https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/README.md
 
 
+Portainer:
+
 RabbitMQ:
 
 Apache:
@@ -313,7 +315,7 @@ Docker Compose version v2.21.0
 
 Try-docker-compose
 
-https://github.com/spawnmarvel/learning-docker/tree/main/6-try-docker-compose
+https://github.com/spawnmarvel/learning-docker/tree/main/7-try-docker-compose
 
 Python-bolierplate with Portainer
 
