@@ -11,6 +11,9 @@ What do we get extra here:
 * Azure VM with Docker, mount data drive, NSG
 * Azure Container with Docker
 
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
+
 ## Visuals
 
 https://follow-e-lo.com/2023/12/20/docker/
