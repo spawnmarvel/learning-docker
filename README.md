@@ -271,6 +271,35 @@ cd /var/lib/docker
 su username
 
 ```
+Volume CRUD
+
+```bash
+
+# create
+
+docker volume create portainer_data
+
+# view
+docker volume ls
+# local     portainer_data
+
+# inspect
+docker volume inspect portainer_data
+
+[
+    {
+        "CreatedAt": "2023-12-23T09:55:19Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/portainer_data/_data",
+        "Name": "portainer_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
+
+https://docs.docker.com/engine/reference/commandline/volume_create/
 
 ## Docker file
 
