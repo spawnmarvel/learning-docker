@@ -335,6 +335,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/RE
 
 Portainer:
 
+https://github.com/spawnmarvel/learning-docker/blob/main/6-portainer/README.md
+
 RabbitMQ:
 
 Apache:
