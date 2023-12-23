@@ -37,7 +37,7 @@ The installation process automatically detects your local environment and sets i
 
 Right now we have none.
 
-![Portainer_env](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer.jpg)
+![Portainer_env](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer_env.jpg)
 
 
 https://docs.portainer.io/start/install-ce/server/setup
