@@ -361,13 +361,14 @@ Docker Compose version v2.21.0
 
 ## Configure Multi Containers docker-compose up
 
+Python-bolierplate with Portainer-ce
+
+https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer-ce/README.md
+
 Try-docker-compose
 
 https://github.com/spawnmarvel/learning-docker/tree/main/7-try-docker-compose
 
-Python-bolierplate with Portainer
-
-https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer/README.md
 
 Zabbix:
 
