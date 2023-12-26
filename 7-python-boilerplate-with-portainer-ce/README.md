@@ -116,6 +116,10 @@ https://hub.docker.com/r/portainer/portainer-ce
 
 ```bash
 sudo nano compose.yml
+# the content from the compose.yml file
+
+docker compose up
+# succcess
 
 ```
 
