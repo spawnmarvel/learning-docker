@@ -29,6 +29,26 @@ Portainer Community Edition (CE) is a lightweight platform that effortlessly del
 ```bash
 portainer/portainer-ce:latest
 
+# copy python-boilerplate project to folder appdir
+mkdir appdir
+
+cp python-bolierplate
+
+python-bolierplate$ cp Dockerfile app.py app_logger.py logging_config.ini worker.py ../appdir/
+
+```
+Edit code
+
+```py
+
+# add a while loop to app.py
+ while work:
+             wo.do_work()
+# edit worker.py
+    def do_work(self):
+        time.sleep(2)
+        logger.info("Sleeping....")
+        
 
 ```
 
