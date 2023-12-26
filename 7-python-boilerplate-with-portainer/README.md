@@ -22,6 +22,19 @@ Lets take the app_logs and app_expetions also.
 
 # Build and test it
 
+Note.
+
+Portainer Community Edition (CE) is a lightweight platform that effortlessly delivers containerized applications.
+
+```bash
+portainer/portainer-ce:latest
+
+
+```
+
+
+https://hub.docker.com/r/portainer/portainer-ce
+
 # Docker compose
 
 
