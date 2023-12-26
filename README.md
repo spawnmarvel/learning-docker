@@ -359,7 +359,7 @@ docker compose version
 Docker Compose version v2.21.0
 ```
 
-## Configure Multi Containers docker-compose up
+## Configure Containers Multi with docker-compose up
 
 Python-bolierplate with Portainer-ce
 
