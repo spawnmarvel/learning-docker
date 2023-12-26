@@ -4,6 +4,8 @@ import signal
 import os
 import sys
 
+from flask import Flask
+
 from app_logger import Logger
 from worker import Worker
 

@@ -1,0 +1,22 @@
+services:
+    python-boilerplate:
+        build: .
+        volumes:
+            - .:/code
+        networks:
+            - app_network
+    portainer:
+        image: portainer/portainer-ce
+        command: -H unix:///var/run/docker.sock
+        restart: always
+        ports:
+            - 9443:9443
+            - 8000:8000
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer_data:/data
+
+networks:
+    app_network:
+volumes:
+    portainer_data:

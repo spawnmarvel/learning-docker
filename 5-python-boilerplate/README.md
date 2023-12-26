@@ -85,6 +85,28 @@ Dockerfile  __pycache__  app.py  app_logger.py  logging_config.ini  logs_app.txt
 
 ## Now make the docker container
 
+```bash
+
+# build 
+cd python-boilerplate
+
+docker image build -t python-boil .
+
+# Run it
+docker run python-boil
+
+# and it startes to log
+
+# stop it ctrl+ c
+
+# view it
+docker images
+
+# remove it it
+docker rmi 5c8089f9ef31 --force
+
+```
+
 
 
 
