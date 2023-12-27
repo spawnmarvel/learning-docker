@@ -359,6 +359,61 @@ docker compose version
 Docker Compose version v2.21.0
 ```
 
+## Docker compose commands
+
+```bash
+mkdir composetest
+
+cd composetest
+
+sudo nano Dockerfile
+
+sudo nano compose.yml
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    volumnes:
+      - .:/code
+    environment:
+      FLASK_DEBUG: "true"
+  redis:
+    image: "redis:alpine"
+
+docker compose up
+
+# Switch to another terminal
+docker images
+
+docker image ls
+
+docker inspect ac6b768ed3b1
+
+docker logs containername
+
+# If you want to run your services in the background, you can pass the -d flag (for "detached" mode) to docker compose up and use docker compose ps to see what is currently running:
+
+docker compose up -d
+
+docker compose ps
+
+# The docker compose run command allows you to run one-off commands for your services. For example, to see what environment variables are available to the web service:
+docker compose run web env
+
+# If you started Compose with docker compose up -d, stop your services once you've finished with them:
+docker compose stop
+
+# You can bring everything down, removing the containers entirely, with the down command.
+docker compose down
+
+# Pass --volumes to also remove the data volume used by the Redis container:
+docker compose down --volumes
+
+
+```
+
 ## Docker Compose file version 3 reference
 
 https://docs.docker.com/compose/compose-file/compose-file-v3/
