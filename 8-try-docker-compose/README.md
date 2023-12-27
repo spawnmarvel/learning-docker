@@ -160,4 +160,54 @@ docker compose up
 
 ```
 
+Result visit application:
+
+```log
+Hello World! I have been seen 20 times.
+
+composetest-web-1    | 80.xx.xx.xx - - [27/Dec/2023 13:04:33] "GET / HTTP/1.1" 200 -
+composetest-web-1    | 80.xxx.xx.xx - - [27/Dec/2023 13:04:35] "GET / HTTP/1.1" 200 -
+
+
+```
+
+## Inspect mount
+
+```bash
+
+# second terminal
+docker inspect composetest-web-1
+
+ "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/imsdal/composetest",
+                "Destination": "/code",
+
+docker logs composetest-web-1
+```
+## Step 7: Update the application
+
+As the application code is now mounted into the container using a volume, you can make changes to its code and see the changes instantly, without having to rebuild the image.
+
+Change the greeting in app.py and save it. For example, change the Hello World! message to Hello from Docker!:
+
+
+```bash
+# second terminal
+sudo nano app.py
+
+# visit app
+Hello from Docker I have been seen 38 times.
+
+```
+
+## Step 8: Experiment with some other commands
+
+If you want to run your services in the background, you can pass the -d flag (for "detached" mode) to docker compose up and use docker compose ps to see what is currently running:
+
+```bash
+docker compose up -d
+
+```
 https://docs.docker.com/compose/gettingstarted/
