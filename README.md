@@ -366,6 +366,7 @@ mkdir composetest
 
 cd composetest
 
+# for python code for example
 sudo nano Dockerfile
 
 sudo nano compose.yml
