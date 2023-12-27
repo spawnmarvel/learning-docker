@@ -48,11 +48,24 @@ services:
 
 docker compose up -d
 docker ps
+
+# The docker compose run command allows you to run one-off commands for your services. For example, to see what environment variables are available to the web service:
+docker compose run web env
+
 docker compose down
 docker logs containername
 docker inspect containername
 docker images
 docker rmi containerid --force
+
+# If you started Compose with docker compose up -d, stop your services once you've finished with them:
+docker compose stop
+
+# You can bring everything down, removing the containers entirely, with the down command.
+docker compose down
+
+# Pass --volumes to also remove the data volume used by the Redis container:
+docker compose down --volumes
 
 ```
 ## build
