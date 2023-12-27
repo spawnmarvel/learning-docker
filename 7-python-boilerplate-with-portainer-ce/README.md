@@ -183,6 +183,32 @@ docker inspect appdir-python-boilerplate-1
 
 
 cd /var/lib/docker/containers/43fa6b08b8ecda00ceff3cba17f067f4e95968fc5c709114fb496ccba9b2f580
+
+```
+
+Edit in compose.yml
+
+```bash
+
+ volumes:
+            - .:/code
+            - log:/user/src/appdir
+
+# [...]
+volumes:
+    portainer_data:
+    log:
+
+
+docker compose up
+
+Network appdir_app_network             Created   
+Network appdir_default                 Created 
+Volume "appdir_log"                    Created
+Container appdir-portainer-1           Created
+Container appdir-python-boilerplate-1 Created
+
+
 ```
 
 

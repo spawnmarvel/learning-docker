@@ -3,6 +3,7 @@ services:
         build: .
         volumes:
             - .:/code
+            - log:/user/src/appdir
         networks:
             - app_network
     portainer:
@@ -20,3 +21,4 @@ networks:
     app_network:
 volumes:
     portainer_data:
+    log:
