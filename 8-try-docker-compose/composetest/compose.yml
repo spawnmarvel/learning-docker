@@ -3,7 +3,7 @@ services:
     build: .
     ports:
       - "8000:5000"
-    volumnes:
+    volumes:
       - .:/code
     environment:
       FLASK_DEBUG: "true"
