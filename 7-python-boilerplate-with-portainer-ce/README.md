@@ -123,6 +123,12 @@ docker compose up
 
 ```
 
+Note: Not logging to file, hm....
+
+```py
+
+```
+
 
 
 
