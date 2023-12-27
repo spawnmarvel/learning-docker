@@ -16,6 +16,7 @@ https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 ```bash
 
+# name
 Dockerfile
 
 # syntax=docker/dockerfile:1
@@ -30,6 +31,7 @@ EXPOSE 5000
 COPY . .
 CMD ["flask", "run"]
 
+# name
 compose
 
 services:
