@@ -133,9 +133,56 @@ docker compose up -d
 Container appdir-portainer-1, Running                                                                                  
 Container appdir-python-boilerplate-1  Started
 
-```
-```py
+docker ps
+docker logs 03dd725e142b
 
+```
+Added method for reading config in worker.py and added config.json
+
+Test it
+
+```bash
+docker images
+
+docker rmi id --force
+
+docker compose up
+
+docker logs appdir-python-boilerplate-1
+
+# working
+# do_work() root - INFO - Sleeping....
+# read_conf() root - INFO - [{'name': 'testconfig', 'id': 1}]
+# when done
+
+
+```
+
+Where (and why) is logs_app.txt file
+
+```bash
+docker compose up -d
+
+docker ps
+
+docker inspect appdir-python-boilerplate-1
+
+"LogPath": "/var/lib/docker/containers/43fa6b08b8ecda00ceff3cba17f067f4e95968fc5c709114fb496ccba9b2f580/43fa6b08b8ecda00ceff3cba17f067f4e95968fc5c709114fb496ccba9b2f580-json.log",
+
+"HostConfig": {
+            "Binds": [
+                "/home/imsdal/appdir:/code:rw"
+
+
+"Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/imsdal/appdir",
+                "Destination": "/code",
+                "Mode": "rw",
+
+
+cd /var/lib/docker/containers/43fa6b08b8ecda00ceff3cba17f067f4e95968fc5c709114fb496ccba9b2f580
 ```
 
 
