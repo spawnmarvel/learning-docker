@@ -164,7 +164,6 @@ docker run hello-world
 # This message shows that your installation appears to be working correctly.
 
 ```
-https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 
 ## Docker basic commands
 
@@ -181,14 +180,6 @@ docker ps
 # show docker all info
 docker info
 
-# [version, path etc]
-# Server:
-# Containers: 3
-#  Running: 0
-#  Paused: 0
-#  Stopped: 3
-#  Images: 1
-
 # search images from repos
 docker search mariadb
 
@@ -200,8 +191,6 @@ docker images
 
 # docker make container
 docke run -help
-
-docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306 -d docker.io/library/mariadb:11.0
 
 docker start mariadbtest
 docker restart mariadbtest
@@ -366,7 +355,7 @@ mkdir composetest
 
 cd composetest
 
-# for python code for example
+# for python code for
 sudo nano Dockerfile
 
 sudo nano compose.yml
