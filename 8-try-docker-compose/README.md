@@ -93,5 +93,19 @@ The redis service uses a public Redis image pulled from the Docker Hub registry.
 ```bash
 docker compose up
 ```
+Add NSG for port 8000
+
+Enter http://publicip:8000/ in a browser to see the application running.
+
+Result:
+
+```log
+Hello World! I have been seen 17 times.
+
+composetest-web-1    | 80.xx.xx.xx - - [27/Dec/2023 12:50:33] "GET / HTTP/1.1" 200 -
+composetest-web-1    | 80.xxx.xx.xx - - [27/Dec/2023 12:50:33] "GET / HTTP/1.1" 200 -
+
+
+```
 
 https://docs.docker.com/compose/gettingstarted/
