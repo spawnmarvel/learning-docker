@@ -108,4 +108,52 @@ composetest-web-1    | 80.xxx.xx.xx - - [27/Dec/2023 12:50:33] "GET / HTTP/1.1" 
 
 ```
 
+Switch to another terminal
+
+```bash
+# create new ssh
+
+docker images
+# or
+docker image ls
+# Switch to another terminal window, and type docker image ls to list local images.
+# Listing images at this point should return redis and web.
+REPOSITORY        TAG       IMAGE ID       CREATED          SIZE
+composetest-web   latest    ac6b768ed3b1   14 minutes ago   214MB
+redis             alpine    d2d4688fcebe   2 weeks ago      41MB
+
+# inspect
+docker inspect ac6b768ed3b1
+
+# Stop the application, either by running docker compose down from within your project directory in the second terminal, 
+# or by hitting CTRL+C in the original terminal where you started the app.
+
+# second terminal
+docker compose down
+
+```
+
+## Step 5: Edit the Compose file to add a bind mount
+
+Edit the compose.yaml file in your project directory to add a bind mount for the web service:
+
+```yml
+# [...]
+ build: .
+    ports:
+      - "8000:5000"
+    volumnes:
+      - .:/code
+#      [...]
+```
+The new volumes key mounts the project directory (current directory) on the host to /code inside the container, allowing you to modify the code on the fly, without having to rebuild the image.
+
+## Step 6: Re-build and run the app with Compose
+
+```bash
+docker compose up
+
+
+```
+
 https://docs.docker.com/compose/gettingstarted/
