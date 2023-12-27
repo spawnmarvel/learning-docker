@@ -20,11 +20,13 @@ Azure resources
 
 https://follow-e-lo.com/2023/12/20/docker/
 
-## 1 What ARE Containers? (and Docker ...)
-
-Time 11.51
+## What ARE Containers? (and Docker ...)
 
 https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
+
+## Docker tutorialspoint
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-tutorialspoint.md
 
 ## Docker docs
 
