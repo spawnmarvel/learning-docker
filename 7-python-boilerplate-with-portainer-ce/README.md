@@ -125,6 +125,15 @@ docker compose up
 
 Note: Not logging to file, hm....
 
+```bash
+cd /appdir
+
+docker compose up -d
+
+Container appdir-portainer-1, Running                                                                                  
+Container appdir-python-boilerplate-1  Started
+
+```
 ```py
 
 ```
