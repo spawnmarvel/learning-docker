@@ -359,6 +359,10 @@ docker compose version
 Docker Compose version v2.21.0
 ```
 
+## Docker Compose file version 3 reference
+
+https://docs.docker.com/compose/compose-file/compose-file-v3/
+
 ## Configure Containers Multi with docker-compose up
 
 Python-bolierplate with Portainer-ce
