@@ -12,7 +12,6 @@ What is a container
 
 * Isolated from all other processes.
 * That isolation leverages kernel namespaces and cgroups, features that have been in Linux for a long time.
-* 
 
 What is an image
 
