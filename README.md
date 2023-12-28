@@ -183,61 +183,6 @@ docker
 # help
 docker COMMAND --help
 
-# show containers running
-docker ps
-
-# show docker all info
-docker info
-
-# search images from repos
-docker search
-
-# pull
-docker pull
-
-# list installed images
-docker images
-
-# docker make container
-docke run -help
-
-# docker start, stop, restart
-docker start, stop restart containername
-
-# With docker stop, the container will be gracefully terminated: a SIGTERM signal will be sent
-docker stop containername
-docker stop --time=30 containername
-
-# Or it is possible to immediately kill the process, with no timeout.
-docker kill containername
-
-# Automatic Restart, It is possible to change the restart policy of existing, possibly running containers:
-docker update --restart always containername
-
-# destroy container
-docker rm containername
-
-# Note that the command above does not destroy the data volume that Docker has created for /var/lib/mysql. If you want to destroy the volume as well, use:
-docker rm -v containername
-
-# force remove image --force
-docker rmi 6040d71a596b / containername --force
-
-# Troubleshooting a Container
-docker logs containername
-
-# Accessing the Container
-docker exec -it containername bash
-
-# Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor.
-exit
-
-# inspect
-docker inspect containername
-
-# Connecting to MariaDB from Outside the Container
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' containername
-
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
 
