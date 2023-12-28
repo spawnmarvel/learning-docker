@@ -310,27 +310,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-re
 
 ## Configure Containers
 
+Folder 3,4,5 and 6
 MariaDB:
-
-https://github.com/spawnmarvel/learning-docker/blob/main/3-mariadb/README.md
-
-
-Python-simple:
-
-https://github.com/spawnmarvel/learning-docker/blob/main/4-python-simple/README.md
-
-Python-boilerplate:
-
-https://github.com/spawnmarvel/learning-docker/blob/main/5-python-boilerplate/README.md
-
-
-Portainer:
-
-https://github.com/spawnmarvel/learning-docker/blob/main/6-portainer/README.md
-
-RabbitMQ:
-
-Apache:
 
 ## Install Docker Compose Ubuntu
 
