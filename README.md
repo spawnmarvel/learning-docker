@@ -134,7 +134,7 @@ https://docs.docker.com/engine/install/ubuntu/
 
 * cd /datadrive/
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-mount.md
 
 
 ## Docker user setup (Done)
@@ -300,10 +300,6 @@ https://docs.docker.com/engine/reference/commandline/volume_create/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-reference
 
-## Configure Containers (Done)
-
-Folder 3,4,5 and 6
-
 ## Install Docker Compose Ubuntu (Done)
 
 It seems that it is already apart of the docker install from apt (install docker)
@@ -377,9 +373,6 @@ docker compose down --volumes
 
 https://docs.docker.com/compose/compose-file/compose-file-v3/
 
-## Configure Containers Multi with docker-compose up (Done)
-
-7, 8.1
 
 # Azure
 
