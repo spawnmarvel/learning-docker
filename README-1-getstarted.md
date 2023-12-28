@@ -28,7 +28,7 @@ Prerequisites
 
 Can use sftp for transfer
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/filezilla.jpg)
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/filezilla2.jpg)
 
 Get the app
 
@@ -44,10 +44,6 @@ docker --version / version
 docker compose version
 # Docker Compose version v2.21.0
 
-mkdir getting-started-app
-
-cd getting-started-app/
-
 git clone https://github.com/docker/getting-started-app.git
 
 ```
@@ -56,8 +52,10 @@ Build the app's images
 * We need Dockerfile
 
 ```bash
-pwd
-# /home/imsdal/getting-started-app
+cd getting-started-app
+
+touch Dockerfile
+
 
 ```
 
