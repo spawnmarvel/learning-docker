@@ -3,6 +3,11 @@
 
 ## Part 1 Overview
 
+* Build and run an image as a container.
+* Share images using Docker Hub
+* Deploy Docker applications using multiple containers with a database
+* Run applications using Docker Compose
+
 ## Part 2 Containerize an application
 
 ## Part 3 Update the application
