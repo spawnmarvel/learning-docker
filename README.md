@@ -26,11 +26,14 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 ## 1.1 What ARE Containers? (and Docker ...) TODO
 
-https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
+https://github.com/spawnmarvel/learning-docker/blob/main/1.1-what-are-containers-john-s/Examples.sh
 
 All examples bash
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
+
+Notes:
+* 
 
 
 ## 1.2 Tutorialspoint TODO
