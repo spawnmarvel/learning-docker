@@ -76,6 +76,9 @@ docker build -t getting-started .
 * Finally, the -t flag tags your image.
 * The . at the end of the docker build command, look current directory
 
+Start an app container
+
+
 ## Part 3 Update the application
 
 ## Part 4 Share the application
