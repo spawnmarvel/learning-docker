@@ -184,69 +184,15 @@ docker
 docker COMMAND --help
 
 ```
-https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
-
 ## Docker Volums
 
 Volumes are a mechanism for storing data outside containers. All volumes are managed by Docker and stored in a dedicated directory on your host, usually /var/lib/docker/volumes for Linux systems.
 
-```bash
-
-# Root
-sudo su -
-
-cd /var/lib/docker
-# buildkit  containers  engine-id  image  network  overlay2  plugins  runtimes  swarm  tmp  volumes
-
-# switch
-su username
-
-```
-Volume CRUD
-
-```bash
-
-# create
-
-docker volume create portainer_data
-
-# Use it
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-
-# inspect
-docker volume inspect portainer_data
-
-[
-    {
-        "CreatedAt": "2023-12-23T09:55:19Z",
-        "Driver": "local",
-        "Labels": null,
-        "Mountpoint": "/var/lib/docker/volumes/portainer_data/_data",
-        "Name": "portainer_data",
-        "Options": null,
-        "Scope": "local"
-    }
-]
-
-# view
-docker volume ls
-# local     portainer_data
-
-# Remove unused local volumes
-# Remove all unused local volumes. Unused local volumes are those which are not referenced by any containers. 
-# By default, it only removes anonymous volumes.
-docker volume prune
-
-# Remove one or more volumes. You cannot remove a volume that is in use by a container.
-docker volume rm portainer_data
-
-```
-
-https://docs.docker.com/engine/reference/commandline/volume_create/
-
 ## Docker file
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-reference
+Dockerfile
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-dockerfile-reference
 
 ## Install Docker Compose Ubuntu (Done)
 
@@ -268,22 +214,10 @@ mkdir composetest
 
 cd composetest
 
-# for python code for
+# for python code for example
 sudo nano Dockerfile
 
 sudo nano compose.yml
-
-services:
-  web:
-    build: .
-    ports:
-      - "8000:5000"
-    volumnes:
-      - .:/code
-    environment:
-      FLASK_DEBUG: "true"
-  redis:
-    image: "redis:alpine"
 
 docker compose up
 
