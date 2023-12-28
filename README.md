@@ -170,7 +170,7 @@ docker run hello-world
 ## Docker basic commands
 
 ```bash
-# get all
+# get all commands
 docker
 
 # help
@@ -194,6 +194,7 @@ docker images
 # docker make container
 docke run -help
 
+# docker start, stop, restart
 docker start mariadbtest
 docker restart mariadbtest
 
@@ -211,16 +212,10 @@ docker update --restart always mariadb
 docker rm mariadbtest
 
 # Note that the command above does not destroy the data volume that Docker has created for /var/lib/mysql. If you want to destroy the volume as well, use:
-
 docker rm -v mariadbtest
 
-# or with id, get id
-docker images
 
-# try remove
-docker rmi 6040d71a596b
-
-# --force
+# force remove image --force
 docker rmi 6040d71a596b --force
 
 # Troubleshooting a Container
@@ -230,8 +225,10 @@ docker logs mariadbtest
 docker exec -it mariadbtest bash
 
 # Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install our favorite file editor.
-
 exit
+
+# inspect
+docker inspect mariadbtest 
 
 # Connecting to MariaDB from Outside the Container
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadbtest
@@ -245,8 +242,6 @@ mysql -h 172.17.0.2 -u root -p
 # Welcome to the MySQL monitor.  Commands end with ; or \g.
 # Your MySQL connection id is 3
 # Server version: 11.0.4-MariaDB-1:11.0.4+maria~ubu2204 mariadb.org binary distribution
-
-
 
 ```
 https://github.com/spawnmarvel/learning-docker/blob/main/README-2-commands.md
