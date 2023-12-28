@@ -65,7 +65,16 @@ RUN yarn install --production
 CMD ["node", "src/index.js"]
 EXPOSE 3000
 
+# build the image
+docker build -t getting-started .
+
 ```
+* The docker build command uses the Dockerfile to build a new image
+* After Docker downloaded the image (node:18-alpine)
+*  the instructions from the Dockerfile copied in your application and used yarn to install your application's dependencies. 
+* The CMD directive specifies the default command to run when starting a container from this image.
+* Finally, the -t flag tags your image.
+* The . at the end of the docker build command, look current directory
 
 ## Part 3 Update the application
 
