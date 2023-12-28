@@ -89,21 +89,20 @@ Start an app container
 docker run -dp 127.0.0.1:3000:3000 getting-started
 
 # hm, had to change to private ip in cloud (it has a public ip, but the 127.0.0.1 was no resolving)
-docker rm beautiful_banzai --force
+docker rm containername --force
 
 docker run -dp 192.168.3.4:3000:3000 getting-started
 
 # http://public-ip:3000/
 
-# add an item in the todo list
+# add an item in the todo list: dinner, sleep
 
 # Run the following docker ps command in a terminal to list your containers.
 docker ps
 
+dcoker stop containername
+
 ```
-
-* The -d flag (short for --detach) runs the container in the background.
-
 
 ## Part 3 Update the application
 
