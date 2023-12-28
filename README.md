@@ -20,11 +20,11 @@ Azure resources
 
 https://follow-e-lo.com/2023/12/20/docker/
 
-## 1 Getting started guide CLI
+## 1 Getting started guide CLI TODO
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
 
-## 1.1 What ARE Containers? (and Docker ...)
+## 1.1 What ARE Containers? (and Docker ...) TODO
 
 https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
 
@@ -33,7 +33,7 @@ All examples bash
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
 
 
-## 1.2 Tutorialspoint
+## 1.2 Tutorialspoint TODO
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-tutorialspoint.md
 
