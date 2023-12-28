@@ -100,9 +100,11 @@ docker run -dp 192.168.3.4:3000:3000 getting-started
 # Run the following docker ps command in a terminal to list your containers.
 docker ps
 
-dcoker stop containername
+docker stop containername
 
 ```
+## Extra 1 get to know docker run
+
 
 ## Part 3 Update the application
 
