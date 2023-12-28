@@ -20,7 +20,11 @@ Azure resources
 
 https://follow-e-lo.com/2023/12/20/docker/
 
-## What ARE Containers? (and Docker ...)
+## 1 Getting started guide CLI
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
+
+## 1.1 What ARE Containers? (and Docker ...)
 
 https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
 
@@ -28,12 +32,8 @@ All examples bash
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
 
-## Getting started guide CLI
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
-
-
-## Docker tutorialspoint
+## 1.2 Tutorialspoint
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-tutorialspoint.md
 
@@ -43,7 +43,7 @@ Docker Engine is an open source containerization technology for building and con
 
 https://docs.docker.com/engine/
 
-## Installing Docker on a VM (Azure)
+## Installing Docker on a VM (Azure) (Done)
 
 Update vm vmdocker01
 
@@ -130,19 +130,14 @@ docker --version
 https://docs.docker.com/engine/install/ubuntu/
 
 
-## Mount disk on VM
+## Mount disk on VM (Done)
 
 * cd /datadrive/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 
 
-## Overview of get started
-
-https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
-
-
-## Docker user setup
+## Docker user setup (Done)
 
 ```bash
 # login
@@ -176,7 +171,7 @@ docker run hello-world
 
 ```
 
-## Docker basic commands
+## Docker basic commands (Done)
 
 ```bash
 # get all commands
@@ -305,12 +300,11 @@ https://docs.docker.com/engine/reference/commandline/volume_create/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-3-docker-file-reference
 
-## Configure Containers
+## Configure Containers (Done)
 
 Folder 3,4,5 and 6
-MariaDB:
 
-## Install Docker Compose Ubuntu
+## Install Docker Compose Ubuntu (Done)
 
 It seems that it is already apart of the docker install from apt (install docker)
 
@@ -383,22 +377,9 @@ docker compose down --volumes
 
 https://docs.docker.com/compose/compose-file/compose-file-v3/
 
-## Configure Containers Multi with docker-compose up
+## Configure Containers Multi with docker-compose up (Done)
 
-Python-bolierplate with Portainer-ce
-
-https://github.com/spawnmarvel/learning-docker/blob/main/6-python-boilerplate-with-portainer-ce/README.md
-
-Try-docker-compose
-
-https://github.com/spawnmarvel/learning-docker/tree/main/7-try-docker-compose
-
-
-Zabbix:
-
-Python Deploying a Flask Application via the Apache Server
-
-Wordpress:
+7, 8.1
 
 # Azure
 
