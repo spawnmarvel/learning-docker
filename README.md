@@ -28,6 +28,10 @@ All examples bash
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
 
+## Getting started guide CLI
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
+
 
 ## Docker tutorialspoint
 
