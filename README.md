@@ -24,6 +24,11 @@ https://follow-e-lo.com/2023/12/20/docker/
 
 https://github.com/spawnmarvel/learning-docker/tree/main/1-what-are-containers
 
+All examples bash
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
+
+
 ## Docker tutorialspoint
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-tutorialspoint.md
