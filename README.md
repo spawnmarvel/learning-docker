@@ -22,7 +22,7 @@ https://follow-e-lo.com/2023/12/20/docker/
 
 ## 1 Getting started guide CLI TODO
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-1-getstarted.md
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README.md
 
 ## 1.1 What ARE Containers? (and Docker ...) TODO
 
@@ -35,7 +35,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-j
 
 ## 1.2 Tutorialspoint TODO
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-1-tutorialspoint.md
+https://github.com/spawnmarvel/learning-docker/blob/main/1.2-tutorialspoint/README.md
 
 ## Docker docs
 
