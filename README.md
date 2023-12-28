@@ -137,7 +137,7 @@ https://docs.docker.com/engine/install/ubuntu/
 
 * cd /datadrive/
 
-https://github.com/spawnmarvel/learning-docker/blob/main/README-1-mount.md
+https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 
 
 ## Docker user setup (Done)
@@ -219,6 +219,10 @@ sudo nano Dockerfile
 
 sudo nano compose.yml
 
+# If you want to run your services in the background, you can pass the -d flag (for "detached" mode) to docker compose up and use docker compose ps to see what is currently running:
+
+docker compose up -d
+
 docker compose up
 
 # Switch to another terminal
@@ -226,13 +230,9 @@ docker images
 
 docker image ls
 
-docker inspect ac6b768ed3b1
+docker inspect containername
 
 docker logs containername
-
-# If you want to run your services in the background, you can pass the -d flag (for "detached" mode) to docker compose up and use docker compose ps to see what is currently running:
-
-docker compose up -d
 
 docker compose ps
 
