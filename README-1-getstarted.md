@@ -15,7 +15,7 @@ What is a container
 
 What is an image
 
-* This isolated filesystem, dependencies, scripts etc = image
+* This isolated filesystem, dependencies, scripts etc.
 
 ## Part 2 Containerize an application
 
@@ -25,6 +25,10 @@ Prerequisites
 * You have installed the latest version of Docker Desktop = Engine
 * You have installed a Git client
 * You have an IDE or a text editor to edit files. Docker recommends using Visual Studio Code
+
+Can use sftp for transfer
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/filezilla.jpg)
 
 Get the app
 
@@ -49,6 +53,13 @@ git clone https://github.com/docker/getting-started-app.git
 ```
 Build the app's images
 
+* We need Dockerfile
+
+```bash
+pwd
+# /home/imsdal/getting-started-app
+
+```
 
 ## Part 3 Update the application
 
