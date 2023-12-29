@@ -236,6 +236,8 @@ https://docs.docker.com/get-started/05_persisting_data/
 
 ## Extra 2 get to know docker volume
 
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md
+
 ## Part 6 Use bind mounts
  
 ## Part 7 Multi-container apps
