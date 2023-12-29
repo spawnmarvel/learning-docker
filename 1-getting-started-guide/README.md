@@ -165,6 +165,21 @@ https://docs.docker.com/get-started/03_updating_app/
 
 Now that you've built an image, you can share it. To share Docker images, you have to use a Docker registry. The default registry is Docker Hub and is where all of the images you've used have come from.
 
+1. Sign up or Sign in to Docker Hub.
+2. Select the Create Repository button.
+3. For the repository name, use getting-started. Make sure the Visibility is Public.
+4. Select Create.
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/dockerrepos.jpg)
+
+https://hub.docker.com/
+
+```bash
+# push
+
+```
+
+
 https://docs.docker.com/get-started/04_sharing_app/
 
 ## Part 5 Persist the DB
