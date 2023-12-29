@@ -258,6 +258,21 @@ If you mount that same directory across container restarts, you'd see the same f
 
 There are two main types of volumes. You'll eventually use both, but you'll start with volume mounts.
 
+
+By default, the todo app stores its data in a SQLite database at /etc/todos/todo.db in the container's filesystem.
+
+```bash
+# get container id
+docker ps -a
+
+# start it
+docker start dcbc57bca889
+
+# verify it visit http://public.ip:3000
+```
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/appp-no-volum.jpg)
+
 https://docs.docker.com/get-started/05_persisting_data/
 
 ## Extra 2 get to know docker volume
