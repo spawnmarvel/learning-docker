@@ -165,4 +165,6 @@ docker logs mariadb1
 
 
 ```
+Now you can code towards Docker mariadb with Python
+
 https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/
