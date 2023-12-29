@@ -17,6 +17,8 @@ What is an image
 
 * This isolated filesystem, dependencies, scripts etc.
 
+https://docs.docker.com/get-started/
+
 ## Part 2 Containerize an application
 
 
@@ -103,13 +105,61 @@ docker ps
 docker stop containername
 
 ```
+https://docs.docker.com/get-started/02_our_app/
+
 ## Extra 1 get to know docker run
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-1-docker-run.md
 
 ## Part 3 Update the application
 
+In part 2, you containerized a todo application. In this part, you'll update the application and image. You'll also learn how to stop and remove a container.
+
+```bash
+cd getting-started
+# updated app.js with: You have no todo...
+
+docker build -t getting started .
+
+docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+
+# result after visit http://publicip:3000
+# You have no todo items yet! Add one above!
+
+# the old container was not running, so success.
+# Lets do the update and build if the old container is running
+# You have no todo items yet(2)! Add one above!
+
+docker build -t getting started .
+
+docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+# docker: Error response from daemon: Conflict. The container name "/getst" is already in use by container "afd0
+
+# remove the old container
+docker ps
+
+docker rm afd086d8eb3e --force
+
+cd getting-started
+
+docker build -t getting started .
+
+docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+
+# result after visit http://publicip:3000
+# You have no todo items yet(2)! Add one above!
+
+
+```
+
+https://docs.docker.com/get-started/03_updating_app/
+
+
 ## Part 4 Share the application
+
+Now that you've built an image, you can share it. To share Docker images, you have to use a Docker registry. The default registry is Docker Hub and is where all of the images you've used have come from.
+
+https://docs.docker.com/get-started/04_sharing_app/
 
 ## Part 5 Persist the DB
 
