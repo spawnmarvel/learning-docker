@@ -4,7 +4,7 @@ The docker run command runs a command in a new container, pulling the image if n
 
 https://docs.docker.com/engine/reference/commandline/run/
 
-## Examples
+## Examle Ubuntu
 
 ```bash
 
@@ -35,4 +35,22 @@ docker start testubuntu
 
 # Capture container ID (--cidfile)
 
+```
+
+## Example MariaDB
+
+```bash
+
+docker search mariadb
+```
+https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/
+
+## Example RabbitMQ
+
+```bash
+```
+
+## Example Apache
+
+```bash
 ```
