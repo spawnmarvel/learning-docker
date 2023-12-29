@@ -40,6 +40,10 @@ docker start testubuntu
 # Capture container ID (--cidfile)
 
 ```
+
+logs
+
+```logs
 docker ps -a
 
 CONTAINER ID   IMAGE     COMMAND       CREATED        STATUS                      PORTS     NAMES
@@ -51,6 +55,9 @@ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 
 ubuntu       latest    174c8c134b2a   2 weeks ago   77.8MB
+
+```
+
 ## Example MariaDB
 
 ```bash
