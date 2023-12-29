@@ -232,3 +232,5 @@ docker restart rabbitmq2
 
 # 3 msg to queue852, success
 ```
+
+![App no volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persisten.jpg)
