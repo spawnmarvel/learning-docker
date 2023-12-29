@@ -170,7 +170,7 @@ Now that you've built an image, you can share it. To share Docker images, you ha
 3. For the repository name, use getting-started. Make sure the Visibility is Public.
 4. Select Create.
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/dockerrepos.jpg)
+![Docker hub](https://github.com/spawnmarvel/learning-docker/blob/main/images/dockerrepos.jpg)
 
 https://hub.docker.com/
 
@@ -199,7 +199,7 @@ docker push  usernamedocker/getting-started
 
 ```
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/pushed.jpg)
+![Build pushed](https://github.com/spawnmarvel/learning-docker/blob/main/images/pushed.jpg)
 
 
 Pull it and start it
@@ -271,7 +271,7 @@ docker start dcbc57bca889
 # verify it visit http://public.ip:3000
 ```
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/app-no-volum.jpg)
+![App no volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/app_no_volum.jpg)
 
 https://docs.docker.com/get-started/05_persisting_data/
 
