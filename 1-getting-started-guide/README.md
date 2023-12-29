@@ -273,6 +273,29 @@ docker start dcbc57bca889
 
 ![App no volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/app_no_volum.jpg)
 
+
+If you're not familiar with SQLite, no worries! 
+
+It's simply a relational database that stores all the data in a single file.
+
+While this isn't the best for large-scale applications, it works for small demos. 
+
+You'll learn how to switch this to a different database engine later.
+
+With the database being a single file, if you can persist that file on the host and make it available to the next container, it should be able to pick up where the last one left off. 
+
+By creating a volume and attaching (often called "mounting") it to the directory where you stored the data, you can persist the data.
+
+```bash
+# Create a volume by using the docker volume create command.
+docker volume create todo-db
+
+# view it
+docker volume ls
+
+
+```
+
 https://docs.docker.com/get-started/05_persisting_data/
 
 ## Extra 2 get to know docker volume
