@@ -176,9 +176,30 @@ https://hub.docker.com/
 
 ```bash
 # push
+docker push docker/getting-started
+# Using default tag: latest
+# The push refers to repository [docker.io/docker/getting-started]
+# An image does not exist locally with the tag: docker/getting-started
+
+# Why did it fail? The push command was looking for an image named docker/getting-started, but didn't find one. 
+# If you run docker image ls, you won't see one either.
+
+# To fix this, you need to tag your existing image you've built to give it another name.
+
+docker login -u username
+# success
+
+pwd
+/home/username
+
+docker tag getting-started espenkle/getting-started
+
+# push it
+docker push  espenkle/getting-started
 
 ```
 
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/pushed.jpg)
 
 https://docs.docker.com/get-started/04_sharing_app/
 
