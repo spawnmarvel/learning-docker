@@ -326,7 +326,7 @@ docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc
 
 ```
 
-![App volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/app_no_volum.jpg)
+![App volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/app_volum.jpg)
 
 Where is Docker storing my data when I use a volume?
 
