@@ -246,7 +246,9 @@ docker run -it ubuntu ls /
 
 Container volumes
 
-With the previous experiment, you saw that each container starts from the image definition each time it starts. While containers can create, update, and delete files, those changes are lost when you remove the container and Docker isolates all changes to that container. 
+With the previous experiment, you saw that each container starts from the image definition each time it starts.
+
+While containers can create, update, and delete files, those changes are lost when you remove the container and Docker isolates all changes to that container. 
 
 With volumes, you can change all of this.
 
@@ -256,7 +258,7 @@ If you mount a directory in the container, changes in that directory are also se
 
 If you mount that same directory across container restarts, you'd see the same files.
 
-There are two main types of volumes. You'll eventually use both, but you'll start with volume mounts.
+<bold>There are two main types of volumes. You'll eventually use both, but you'll start with volume mounts. </bold>
 
 
 By default, the todo app stores its data in a SQLite database at /etc/todos/todo.db in the container's filesystem.
