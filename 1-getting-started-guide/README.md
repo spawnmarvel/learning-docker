@@ -70,6 +70,12 @@ EXPOSE 3000
 # build the image
 docker build -t getting-started .
 
+docker images
+
+# REPOSITORY        TAG       IMAGE ID       CREATED          SIZE
+# getting-started   latest    00767b2de32f   10 minutes ago   223MB
+
+
 ```
 * The docker build command uses the Dockerfile to build a new image
 * After Docker downloaded the image (node:18-alpine)
