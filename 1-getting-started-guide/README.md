@@ -229,8 +229,34 @@ To see this in action, you're going to start two containers and create a file in
 What you'll see is that the files created in one container aren't available in another.
 
 ```bash
+# Start an ubuntu container that will create a file named /data.txt with a random number between 1 and 10000.
+docker run -d ubuntu bash -c "shuf -i 1-10000 -n 1 -o /data.txt && tail -f /dev/null"
+
+docker ps
+# Validate that you can see the output by accessing the terminal in the container. 
+docker exec a93d357f8557 cat /data.txt
+# 1068
+
+# Now, start another ubuntu container (the same image) and you'll see you don't have the same file.
+docker run -it ubuntu ls /
+
+# In this case the command lists the files in the root directory of the container. Look, there's no data.txt file there! That's because it was written to the scratch space for only the first container.
 
 ```
+
+Container volumes
+
+With the previous experiment, you saw that each container starts from the image definition each time it starts. While containers can create, update, and delete files, those changes are lost when you remove the container and Docker isolates all changes to that container. 
+
+With volumes, you can change all of this.
+
+Volumes provide the ability to connect specific filesystem paths of the container back to the host machine. 
+
+If you mount a directory in the container, changes in that directory are also seen on the host machine. 
+
+If you mount that same directory across container restarts, you'd see the same files.
+
+There are two main types of volumes. You'll eventually use both, but you'll start with volume mounts.
 
 https://docs.docker.com/get-started/05_persisting_data/
 
