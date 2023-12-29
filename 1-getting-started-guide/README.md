@@ -221,6 +221,21 @@ https://docs.docker.com/get-started/04_sharing_app/
 
 ## Part 5 Persist the DB
 
+In case you didn't notice, your todo list is empty every single time you launch the container. Why is this? In this part, you'll dive into how the container is working.
+
+See this in practice
+To see this in action, you're going to start two containers and create a file in each. 
+
+What you'll see is that the files created in one container aren't available in another.
+
+```bash
+
+```
+
+https://docs.docker.com/get-started/05_persisting_data/
+
+## Extra 2 get to know docker volume
+
 ## Part 6 Use bind mounts
  
 ## Part 7 Multi-container apps
