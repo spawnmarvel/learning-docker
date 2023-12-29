@@ -39,6 +39,21 @@ If you need to specify volume driver options, you must use --mount.
 
 * -v or --volume: Consists of three fields, separated by colon characters (:). The fields must be in the correct order, and the meaning of each field isn't immediately obvious.
 
+1. the first field is the name of the volume, (For anonymous volumes, the first field is omitted)
+2. The second field is the path where the file or directory are mounted in the container.
+3. The third field is optional, and is a comma-separated list of options, such as ro. These options are discussed below.
+* type = bind/volume/tmpfs
+* source = of the mount (source, src)
+* destination = file/dir in container (destination, dst, target)
+* readonly
+* volume-opt = takes a key-value pair consisting of the option name and its value.
+
+```bash
+docker volume create todo-db
+
+docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+
+```
 
 ## The todo-app
 
@@ -84,3 +99,62 @@ pwd
 
 ## Example RabbitMQ
 
+https://hub.docker.com/_/rabbitmq
+
+One of the important things to note about RabbitMQ is that it stores data based on what it calls the "Node Name", which defaults to the hostname. 
+
+What this means for usage in Docker is that we should specify -h/--hostname explicitly for each daemon so that we don't get a random hostname and can keep track of our data:
+
+```bash
+
+docker run -d --hostname rmq1 --name rabbitmq1 rabbitmq:3
+
+docker ps
+# e804151fa8e8   rabbitmq:3        "docker-entrypoint.s…"   45 seconds ago   Up 43 seconds   4369/tcp, 5671-5672/tcp, 15691-15692/tcp, 25672/tcp   rabbitmq16b37e306c288
+
+docker logs e804151fa8e8
+
+# CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                                 NAMES
+# e804151fa8e8   rabbitmq:3        "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    4369/tcp, 5671-5672/tcp, 15691-15692/tcp, 25672/tcp   rabbitmq1
+
+
+docker inspect rabbitmq1
+
+ "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "6f45a2401d04faec4c5dbb792f8834897eb7a55b44226cec20c3a8a8f8448dfb",
+                "Source": "/var/lib/docker/volumes/6f45a2401d04faec4c5dbb792f8834897eb7a55b44226cec20c3a8a8f8448dfb/_data",
+                "Destination": "/var/lib/rabbitmq",
+
+
+docker logs rabbitmq1
+
+
+```
+
+logs
+```logs
+Starting broker...2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>
+2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  node           : rabbit@rmq1
+2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  home dir       : /var/lib/rabbitmq
+2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf
+2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>                 : /etc/rabbitmq/conf.d/20-management_agent.disable_metrics_collector.conf
+
+```
+**Enter it and enable management plugin**
+
+```bash
+docker exec -it rabbitmq1 bash
+
+# pwd
+/etc/rabbitmq/conf.d
+
+ls
+10-defaults.conf  20-management_agent.disable_metrics_collector.conf
+
+cat 10-defaults.conf
+
+rabbitmq-plugins list
+
+```

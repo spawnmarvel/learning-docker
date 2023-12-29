@@ -101,7 +101,7 @@ mysql -h 172.17.0.2 -u root -p
 
 
 ```
-Persistent data: SQL, db, table and a row.
+**Persistent data: SQL, db, table and a row.**
 
 ```sql
 /* Create a db, table and and insert a row. */
@@ -119,7 +119,7 @@ exit;
 /* Bye */
 ```
 
-Stop and start
+**Stop and start**
 
 ```bash
 docker stop mariadb1
@@ -140,7 +140,7 @@ docker inspect mariadb1
 #                "Driver": "local",
 
 ```
-Restart vm
+**Restart vm**
 
 ```bash
 docker start mariadb1
