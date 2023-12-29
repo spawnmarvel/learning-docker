@@ -201,6 +201,22 @@ docker push  espenkle/getting-started
 
 ![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/pushed.jpg)
 
+
+Pull it and start it
+
+```bash
+docker login -u username
+
+docker pull username/getting-started
+# Using default tag: latest
+# latest: Pulling from espenkle/getting-started
+# Digest: sha256:f82bde5fe25275ad4c05d21008240bd739418788a9423d3335299c4d706a2226
+# Status: Image is up to date for espenkle/getting-started:latest
+# docker.io/espenkle/getting-started:latest
+
+
+```
+
 https://docs.docker.com/get-started/04_sharing_app/
 
 ## Part 5 Persist the DB
