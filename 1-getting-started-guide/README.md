@@ -348,6 +348,12 @@ docker volume inspect todo-db
 # The Mountpoint is the actual location of the data on the disk. 
 # Note that on most machines, you will need to have root access to access this directory from the host.
 
+sudo su -
+
+cd
+
+pwd
+# /var/lib/docker/volumes/todo-db/_data
 
 ```
 
@@ -358,6 +364,8 @@ https://docs.docker.com/get-started/05_persisting_data/
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md
 
 ## Part 6 Use bind mounts
+
+https://docs.docker.com/get-started/06_bind_mounts/
  
 ## Part 7 Multi-container apps
 
