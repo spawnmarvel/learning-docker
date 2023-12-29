@@ -276,8 +276,6 @@ docker start dcbc57bca889
 ![App no volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/app_no_volum.jpg)
 
 
-If you're not familiar with SQLite, no worries! 
-
 It's simply a relational database that stores all the data in a single file.
 
 While this isn't the best for large-scale applications, it works for small demos. 
