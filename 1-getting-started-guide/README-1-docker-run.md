@@ -36,12 +36,20 @@ docker start testubuntu
 # Capture container ID (--cidfile)
 
 ```
+docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED        STATUS                      PORTS     NAMES
+2b2cce6e6241   ubuntu    "/bin/bash"   13 hours ago   Exited (137) 13 hours ago             testubuntu
 
+docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       latest    174c8c134b2a   2 weeks ago   77.8MB
 ## Example MariaDB
 
 ```bash
 
 docker search mariadb
+
+dcoker pull
 ```
 https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/
 
