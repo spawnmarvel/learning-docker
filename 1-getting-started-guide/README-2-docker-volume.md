@@ -151,10 +151,57 @@ docker exec -it rabbitmq1 bash
 /etc/rabbitmq/conf.d
 
 ls
-10-defaults.conf  20-management_agent.disable_metrics_collector.conf
+# 10-defaults.conf  20-management_agent.disable_metrics_collector.conf
 
 cat 10-defaults.conf
 
+cd /var/lib/rabbitmq/mnesia
+ls
+# rabbit@rmq1  rabbit@rmq1-feature_flags  rabbit@rmq1-plugins-expand  rabbit@rmq1.pid
+
+
 rabbitmq-plugins list
+
+rabbitmq-plugins enable rabbitmq_management
+
+# visit http://public-ip:15672
+# open nsg
+# naaa....
+
+docker restart rabbitmq1
+
+docker logs rabbtitmq1
+
+# 2023-12-29 18:19:37.763108+00:00 [info] <0.516.0> Management plugin: HTTP (non-TLS) listener started on port 15672
+# 2023-12-29 18:19:37.763354+00:00 [info] <0.544.0> Statistics database started.
+# we have not exposed port either, just nsg
+
+# remove it
+docker rm -f e804151fa8e8
+
+# ports and with management
+docker run -d --hostname rmq1 --name rabbitmq1 -p 15672:15672 rabbitmq:3-management
+
+# visit http://public-ip:15672 using guest
+success
+```
+**Make a queue and restart vm**
+
+```bash
+# add queue01
+
+docker stop rabbitmq1
+
+docker start rabbitmq1
+
+# visit http://public-ip:15672
+# and queue01 is there
+
+```
+**Create volume**
+
+```bash
+
+docker volume create rabbitmq_data
 
 ```
