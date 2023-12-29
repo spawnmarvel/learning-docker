@@ -170,7 +170,7 @@ Now that you've built an image, you can share it. To share Docker images, you ha
 3. For the repository name, use getting-started. Make sure the Visibility is Public.
 4. Select Create.
 
-![Docker hub](https://github.com/spawnmarvel/learning-docker/blob/main/images/dockerrepos.jpg)
+![Docker hub create repos](https://github.com/spawnmarvel/learning-docker/blob/main/images/dockerrepos.jpg)
 
 https://hub.docker.com/
 
