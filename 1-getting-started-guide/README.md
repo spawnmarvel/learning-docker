@@ -192,10 +192,10 @@ docker login -u username
 pwd
 /home/username
 
-docker tag getting-started espenkle/getting-started
+docker tag getting-started usernamedocker/getting-started
 
 # push it
-docker push  espenkle/getting-started
+docker push  usernamedocker/getting-started
 
 ```
 
@@ -205,14 +205,14 @@ docker push  espenkle/getting-started
 Pull it and start it
 
 ```bash
-docker login -u username
+docker login -u usernamedocker
 
 docker pull username/getting-started
 # Using default tag: latest
-# latest: Pulling from espenkle/getting-started
+# latest: Pulling from usernamedocker/getting-started
 # Digest: sha256:f82bde5fe25275ad4c05d21008240bd739418788a9423d3335299c4d706a2226
-# Status: Image is up to date for espenkle/getting-started:latest
-# docker.io/espenkle/getting-started:latest
+# Status: Image is up to date for usernamedocker/getting-started:latest
+# docker.io/usernamedocker/getting-started:latest
 
 
 ```
