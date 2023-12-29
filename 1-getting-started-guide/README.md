@@ -271,7 +271,7 @@ docker start dcbc57bca889
 # verify it visit http://public.ip:3000
 ```
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/appp-no-volum.jpg)
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/app-no-volum.jpg)
 
 https://docs.docker.com/get-started/05_persisting_data/
 
