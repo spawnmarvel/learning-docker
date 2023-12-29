@@ -293,6 +293,55 @@ docker volume create todo-db
 # view it
 docker volume ls
 
+# stop and remove the app
+docker rm -f dcbc57bca889
+
+# Start the todo app container, but add the --mount option to specify a volume mount. 
+# Give the volume a name, and mount it to /etc/todos in the container, which captures all files created at the path
+# By default, the todo app stores its data in a SQLite database at /etc/todos/todo.db in the container's filesystem.
+docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+
+
+```
+
+Verify that the data persists
+
+```bash
+# verify it visit http://public.ip:3000
+
+# Once the container starts up, open the app and add a few items to your todo list: dinner, training
+
+# get id
+docker ps
+# remove it
+docker rm -f 
+
+# Start a new container using the previous steps.
+docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+
+# verify it visit http://public.ip:3000
+# Open the app. You should see your items still in your list: dinner, training
+
+# You've now learned how to persist data.
+
+```
+
+Where is Docker storing my data when I use a volume?
+
+```bash
+docker volume inspect todo-db
+
+[
+    {
+        "CreatedAt": "2023-12-29T17:06:14Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/todo-db/_data",
+        "Name": "todo-db",
+        "Options": null,
+        "Scope": "local"
+    }
+]
 
 ```
 
