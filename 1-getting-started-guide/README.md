@@ -345,6 +345,10 @@ docker volume inspect todo-db
     }
 ]
 
+# The Mountpoint is the actual location of the data on the disk. 
+# Note that on most machines, you will need to have root access to access this directory from the host.
+
+
 ```
 
 https://docs.docker.com/get-started/05_persisting_data/
