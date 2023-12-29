@@ -4,6 +4,10 @@ The docker run command runs a command in a new container, pulling the image if n
 
 https://docs.docker.com/engine/reference/commandline/run/
 
+## Visuals
+
+https://follow-e-lo.com/2023/12/29/docker-run/
+
 ## Examle Ubuntu
 
 ```bash
@@ -53,7 +57,7 @@ ubuntu       latest    174c8c134b2a   2 weeks ago   77.8MB
 
 docker search mariadb
 
-dcoker pull
+docker pull mariadb:11
 ```
 https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/
 
