@@ -107,12 +107,12 @@ What this means for usage in Docker is that we should specify -h/--hostname expl
 
 ```bash
 
-docker run -d --hostname rmq1 --name rabbitmq1 rabbitmq:3
+docker run -d --hostname rmq1 --name rabbitmq1 -p 15672:15672 rabbitmq:3.12-management
 
 docker ps
-# e804151fa8e8   rabbitmq:3        "docker-entrypoint.s…"   45 seconds ago   Up 43 seconds   4369/tcp, 5671-5672/tcp, 15691-15692/tcp, 25672/tcp   rabbitmq16b37e306c288
+# 5c0573e2ec4b   rabbitmq:3.12-management   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes    4369/tcp, 5671-5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, :::15672->15672/tcp   rabbitmq1
 
-docker logs e804151fa8e8
+docker logs rabbitmq1
 
 # CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                                 NAMES
 # e804151fa8e8   rabbitmq:3        "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    4369/tcp, 5671-5672/tcp, 15691-15692/tcp, 25672/tcp   rabbitmq1
@@ -123,85 +123,112 @@ docker inspect rabbitmq1
  "Mounts": [
             {
                 "Type": "volume",
-                "Name": "6f45a2401d04faec4c5dbb792f8834897eb7a55b44226cec20c3a8a8f8448dfb",
-                "Source": "/var/lib/docker/volumes/6f45a2401d04faec4c5dbb792f8834897eb7a55b44226cec20c3a8a8f8448dfb/_data",
+                "Name": "aabbf59933f0e27eaf7fa44b3e588989beb32b3be3c9f97afaa85e4e1ba2f91f",
+                "Source": "/var/lib/docker/volumes/aabbf59933f0e27eaf7fa44b3e588989beb32b3be3c9f97afaa85e4e1ba2f91f/_data",
                 "Destination": "/var/lib/rabbitmq",
 
+ "Image": "rabbitmq:3.12-management",
+            "Volumes": {
+                "/var/lib/rabbitmq": {}
 
-docker logs rabbitmq1
+# Note the database dir there, especially that it has my "Node Name" appended to the end for the file storage. 
+# This image makes all of /var/lib/rabbitmq a volume by default.
 
-
+# to enter /var/lib/docker
+sudo su -
 ```
 
-logs
-```logs
-Starting broker...2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>
-2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  node           : rabbit@rmq1
-2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  home dir       : /var/lib/rabbitmq
-2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf
-2023-12-29 17:55:47.863340+00:00 [info] <0.230.0>                 : /etc/rabbitmq/conf.d/20-management_agent.disable_metrics_collector.conf
 
-```
-**Enter it and enable management plugin**
+Visit http://public-ip:15672
+Open nsg, succcess
+
+
+**Make a queue45 and stop/start container**
 
 ```bash
-docker exec -it rabbitmq1 bash
-
-# pwd
-/etc/rabbitmq/conf.d
-
-ls
-# 10-defaults.conf  20-management_agent.disable_metrics_collector.conf
-
-cat 10-defaults.conf
-
-cd /var/lib/rabbitmq/mnesia
-ls
-# rabbit@rmq1  rabbit@rmq1-feature_flags  rabbit@rmq1-plugins-expand  rabbit@rmq1.pid
-
-
-rabbitmq-plugins list
-
-rabbitmq-plugins enable rabbitmq_management
-
-# visit http://public-ip:15672
-# open nsg
-# naaa....
-
-docker restart rabbitmq1
-
-docker logs rabbtitmq1
-
-# 2023-12-29 18:19:37.763108+00:00 [info] <0.516.0> Management plugin: HTTP (non-TLS) listener started on port 15672
-# 2023-12-29 18:19:37.763354+00:00 [info] <0.544.0> Statistics database started.
-# we have not exposed port either, just nsg
-
-# remove it
-docker rm -f e804151fa8e8
-
-# ports and with management
-docker run -d --hostname rmq1 --name rabbitmq1 -p 15672:15672 rabbitmq:3-management
-
-# visit http://public-ip:15672 using guest
-success
-```
-**Make a queue and restart vm**
-
-```bash
-# add queue01
+# add queue45
 
 docker stop rabbitmq1
 
 docker start rabbitmq1
 
 # visit http://public-ip:15672
-# and queue01 is there
+# and queue45 is there
+
+# 2023-12-29 23:40:22.195295+00:00 [info] <0.426.0> Recovering 1 queues of type rabbit_classic_queue took 19ms
 
 ```
+**Add msg to the queue45 and stop/start container**
+
+```bash
+# 1 msg to queue45
+# Remember to use Delivery-mode 2 - Persisten, args
+
+docker stop rabbitmq1
+
+docker start rabbitmq1
+
+# visit http://public-ip:15672
+# and queue45 is there with 1 msg
+
+```
+
 **Create volume**
 
 ```bash
+# remove all before you start
+# docker ps
+# docker ps -
+# docker rm -f rabbitmq1
+# docker images
+# docker rmi -f rabbitmq1
+# docker volume ps
+# docker volume prune
+# docker volume rm rabbitmq_data
+# or rename all below to xxx2
 
 docker volume create rabbitmq_data
 
+docker volume ls
+
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+
+docker inspect rabbitmq2
+
+ "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "rabbitmq_data",
+                "Source": "/var/lib/docker/volumes/rabbitmq_data/_data",
+                "Destination": "/var/lib/rabbitmq",
+
+  "Image": "rabbitmq:3.12-management",
+            "Volumes": {
+                "/var/lib/rabbitmq": {}              
+
+
+cd
+# /var/lib/docker/volumes/rabbitmq_data/_data
+ls
+# mnesia
+cd
+# rabbit@rmq2  rabbit@rmq2-feature_flags  rabbit@rmq2-plugins-expand  rabbit@rmq2.pid
+
+```
+**Make a queue852 and stop/start container**
+
+```bash
+docker restart rabbitmq2
+
+```
+
+**Add some messages to queue852**
+
+```bash
+# add 3 msg to queue852
+# Remember to use Delivery-mode 2 - Persisten, args
+
+docker restart rabbitmq2
+
+# 3 msg to queue852, success
 ```
