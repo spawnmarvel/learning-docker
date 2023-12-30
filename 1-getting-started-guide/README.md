@@ -365,6 +365,9 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 ## Part 6 Use bind mounts
 
+In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
+
+
 https://docs.docker.com/get-started/06_bind_mounts/
  
 ## Part 7 Multi-container apps
