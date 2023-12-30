@@ -359,7 +359,7 @@ pwd
 
 https://docs.docker.com/get-started/05_persisting_data/
 
-## Extra 2 get to know docker volume
+## Extra 2 get to know docker volume (and move /var/lib/docker)
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md
 
