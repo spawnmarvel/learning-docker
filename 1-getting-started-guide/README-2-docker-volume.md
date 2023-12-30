@@ -235,4 +235,4 @@ docker restart rabbitmq2
 # 3 msg to queue852, success
 ```
 
-![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persisten.jpg)
+![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persistent.jpg)
