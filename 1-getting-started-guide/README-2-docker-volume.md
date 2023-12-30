@@ -240,9 +240,104 @@ docker restart rabbitmq2
 
 ## Docker volume data move
 
+The standard data location used for docker is /var/lib/docker. Because this directory contains all containers/images/volumes, it can be large.
 
 ![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/datadisk.jpg)
 
 ```bash
+df -h
+# /dev/sda1       4.0G   61M  4.0G   2% /datadrive
+
+sudo service docker stop
+
+# Create/Edit /etc/docker/daemon.json file:
+
+{
+   "data-root": "/path/to/new/docker/location"
+}
+
+# our path
+{
+   "data-root": "/datadrive"
+}
+
+sudo rsync -aP /var/lib/docker/ /datedrive
+
+df -h
+# /dev/sda1       4.0G  1.8G  2.2G  45% /datadrive
+
+sudo rm -rf /var/lib/docker/
+
+sudo service start docker
+
+docker run hello-world
+
 
 ```
+
+![Hello docker ](https://github.com/spawnmarvel/learning-docker/blob/main/images/hello-docker.jpg)
+
+## Verify old containers
+
+```bash
+# check volume
+docker volume ls
+
+# [..]
+# local     rabbitmq_data
+# local     todo-db
+
+# verify images
+docker images
+
+# getting-started            latest            00767b2de32f   24 hours ago   223MB
+# rabbitmq                   3.12-management   2d45ce625f60   7 months ago   246MB
+# hello-world                latest            d2c94e258dcb   8 months ago   13.3kB
+# mariadb                    11                c74611c2858a   2 weeks ago    404MB
+
+# verify containers
+docker ps -a
+
+# jepp all is there
+
+
+# start rabbitmq2 and verify messages
+docker start rabbitmq2
+
+Error response from daemon: error evaluating symlinks from mount source "/var/lib/docker/volumes/rabbitmq_data/_data": lstat /var/lib/docker: no such file or directory
+Error: failed to start containers: rabbitmq2
+
+# it is the same for todo-app, but mariadb is running
+
+# remove the container
+docker rm -f rabbitmq1
+docker rm -f rabbitmq2
+
+# remove the volume
+docker volume ls
+docker volume remove -f rabbitmq_data
+
+
+# create the volume
+docker volume create rabbitmq_data
+
+# create the container
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+
+docker inspect rabbitmq2
+
+
+ "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "rabbitmq_data",
+                "Source": "/datadrive/volumes/rabbitmq_data/_data",
+                "Destination": "/var/lib/rabbitmq",
+
+# visit http://publicip:15672
+# add a queue and a message
+
+# restart rabbitmq2
+docker restart rabbitmq2
+```
+![Volume restart rmq ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_restart.jpg)
