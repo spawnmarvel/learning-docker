@@ -365,7 +365,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 ## Part 6 Use bind mounts
 
-Note: moved /var/lib/docker to E, so make the volume again for the todo-app
+Note: moved /var/lib/docker to E, so make the volume again for the todo-app.
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
 
