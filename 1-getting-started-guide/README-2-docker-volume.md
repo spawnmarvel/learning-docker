@@ -173,7 +173,9 @@ docker start rabbitmq1
 
 ```
 
-**Create volume**
+![Delivery mode 2 ](https://github.com/spawnmarvel/learning-docker/blob/main/images/deliverymode.jpg)
+
+## Create volume
 
 ```bash
 # remove all before you start
@@ -233,4 +235,4 @@ docker restart rabbitmq2
 # 3 msg to queue852, success
 ```
 
-![App no volume ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persisten.jpg)
+![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persisten.jpg)
