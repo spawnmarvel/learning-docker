@@ -183,6 +183,8 @@ docker
 # help
 docker COMMAND --help
 
+docker system info?
+
 ```
 ## Docker Volums
 
