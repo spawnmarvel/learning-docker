@@ -236,3 +236,13 @@ docker restart rabbitmq2
 ```
 
 ![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_persistent.jpg)
+
+
+## Docker volume data move
+
+
+![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/datadisk.jpg)
+
+```bash
+
+```
