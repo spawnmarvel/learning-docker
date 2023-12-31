@@ -33,6 +33,15 @@ All examples bash
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
 
 Notes:
+
+Linux control groups, cgroup, how much cpu, memeory, blokio.
+
+Eveything on linux lives in cgroup.
+
+Docker process within container running in own cgroup.
+
+31.37
+
 * 
 
 
