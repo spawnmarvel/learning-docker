@@ -37,7 +37,9 @@ docker ps -a
 # start it, stop or restart
 docker start testubuntu
 
-# Capture container ID (--cidfile)
+
+# Run new container with a name, detached/interactive, limit resources, use Ubuntu image and the container should run the bash process
+docker run --name ubuntu -dit --memory=256m --cpus="2" ubuntu bash
 
 ```
 
