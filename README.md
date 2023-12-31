@@ -183,8 +183,27 @@ docker
 # help
 docker COMMAND --help
 
-docker system info?
+docker system info
 
+# https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+
+# Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
+docker system prune
+
+# To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
+docker system prune -a
+
+# remove images
+docker images -a
+docker rmi -f id_name
+
+# remove containers
+docker ps -a
+dokcer rm -f id_name
+
+# remove volumes
+docker volume ls
+docker volume rm -f volume_name
 ```
 ## Docker Volums
 

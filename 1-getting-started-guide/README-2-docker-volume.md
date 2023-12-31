@@ -340,4 +340,4 @@ docker inspect rabbitmq2
 # restart rabbitmq2
 docker restart rabbitmq2
 ```
-![Volume restart rmq ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_restart.jpg)
+![Volume restart ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_restart.jpg)
