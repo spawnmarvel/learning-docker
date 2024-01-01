@@ -217,6 +217,16 @@ docker volume rm -f volume_name
 # create the volume for rmq
 docker volume create rabbitmq_data
 
+# the volume is on a mounted datadrive, view README-2-docker-volume.md, so we can separate os from data and even increase the disk.
+sudo su -
+cd /datadrive
+# buildkit  containers  engine-id  image  network  overlay2  plugins  runtimes  swarm  tmp  volumes
+exit
+
+df -h
+# Filesystem      Size  Used Avail Use% Mounted on
+# /dev/sda1       4.0G  702M  3.4G  18% /datadrive
+
 # create the container for rmq
 docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
 

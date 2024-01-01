@@ -242,7 +242,7 @@ docker restart rabbitmq2
 
 The standard data location used for docker is /var/lib/docker. Because this directory contains all containers/images/volumes, it can be large.
 
-![Volume persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/datadisk.jpg)
+![Volume persistent ](https://github.com/spawnmarvel/learning-docker/blob/main/images/datadisk.jpg)
 
 ```bash
 df -h
