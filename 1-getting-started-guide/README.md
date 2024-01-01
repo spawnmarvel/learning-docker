@@ -94,12 +94,12 @@ Start an app container
 # The -p flag takes a string value in the format of HOST:CONTAINER, where HOST is the address on the host, 
 # and CONTAINER is the port on the container. 
 # The command publishes the container's port 3000 to 127.0.0.1:3000 (localhost:3000) on the host.
-docker run -dp 127.0.0.1:3000:3000 getting-started
+docker run -dp 0.0.0.0:3000:3000 getting-started
 
 # hm, had to change to private ip in cloud (it has a public ip, but the 127.0.0.1 was no resolving)
 docker rm containername --force
 
-docker run -dp 192.168.3.4:3000:3000 getting-started
+docker run -dp 0.0.0.0:3000:3000 getting-started
 
 # http://public-ip:3000/
 
@@ -127,7 +127,7 @@ cd getting-started
 
 docker build -t getting started .
 
-docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+docker run --name getst -dp 0.0.0.0:3000:3000 getting-started
 
 # result after visit http://publicip:3000
 # You have no todo items yet! Add one above!
@@ -138,7 +138,7 @@ docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
 
 docker build -t getting started .
 
-docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+docker run --name getst -dp 0.0.0.0:3000:3000 getting-started
 # docker: Error response from daemon: Conflict. The container name "/getst" is already in use by container "afd0
 
 # remove the old container
@@ -150,7 +150,7 @@ cd getting-started
 
 docker build -t getting started .
 
-docker run --name getst -dp 192.168.3.4:3000:3000 getting-started
+docker run --name getst -dp 0.0.0.0:3000:3000 getting-started
 
 # result after visit http://publicip:3000
 # You have no todo items yet(2)! Add one above!
@@ -195,7 +195,7 @@ pwd
 docker tag getting-started usernamedocker/getting-started
 
 # push it
-docker push  usernamedocker/getting-started
+docker push usernamedocker/getting-started
 
 ```
 
@@ -214,6 +214,10 @@ docker pull username/getting-started
 # Status: Image is up to date for usernamedocker/getting-started:latest
 # docker.io/usernamedocker/getting-started:latest
 
+docker run -dp 0.0.0.0:3000:3000 YOUR-USER-NAME/getting-started
+
+# result after visit http://publicip:3000
+# You have no todo items yet! Add one above!
 
 ```
 
@@ -299,7 +303,7 @@ docker rm -f dcbc57bca889
 # Start the todo app container, but add the --mount option to specify a volume mount. 
 # Give the volume a name, and mount it to /etc/todos in the container, which captures all files created at the path
 # By default, the todo app stores its data in a SQLite database at /etc/todos/todo.db in the container's filesystem.
-docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
 
 
 ```
@@ -317,7 +321,7 @@ docker ps
 docker rm -f 
 
 # Start a new container using the previous steps.
-docker run -dp 192.168.3.4:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
 
 # verify it visit http://public.ip:3000
 # Open the app. You should see your items still in your list: dinner, training
@@ -366,6 +370,14 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 ## Part 6 Use bind mounts
 
 Note: moved /var/lib/docker to E, so make the volume again for the todo-app.
+
+```bash
+docker login -u username
+
+docker pull username/getting-started
+
+docker volume create todo-db
+```
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
 
