@@ -344,6 +344,7 @@ docker restart rabbitmq2
 
 ## In production must add --restart always
 
+
 ```bash
 docker images
 # REPOSITORY                 TAG               
@@ -368,3 +369,7 @@ docker start rabbitmq2
 
 
 ```
+always	Always restart the container if it stops. If it's manually stopped, it's restarted only when Docker daemon restarts or the container itself is manually restarted.
+
+
+https://docs.docker.com/config/containers/start-containers-automatically/
