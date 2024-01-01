@@ -450,6 +450,45 @@ docker run -it --mount type=bind,src="$(pwd)",target=/src ubuntu bash
 # The --mount option tells Docker to create a bind mount, 
 # where src is the current working directory on your host machine (getting-started-app), 
 # and target is where that directory should appear inside the container (/src)
+
+# After running the command, Docker starts an interactive bash session in the root directory of the container's filesystem.
+cd src
+
+# This is the directory that you mounted when starting the container. Listing the contents of this directory displays the same files as in the getting-started-app directory on your host machine.
+
+ls
+# Dockerfile  README.md  package.json  spec  src  yarn.lock
+
+# Create a new file named myfile.txt
+touch myfile.txt
+
+# Open the getting-started-app directory on the host and observe that the myfile.txt file is in the directory.
+cd getting-started-app/
+
+ls 
+# Dockerfile  README.md  myfile.txt  package.json  spec  src  yarn.lock
+
+# From the host, delete the myfile.txt file.
+# and it is gone from the container
+
+# exit
+ctrl + d
+
+```
+That's all for a brief introduction to bind mounts. 
+
+This procedure demonstrated how files are shared between the host and the container, and how changes are immediately reflected on both sides. 
+
+Now you can use bind mounts to develop software.
+
+Development containers
+
+Using bind mounts is common for local development setups. 
+
+The advantage is that the development machine doesn’t need to have all of the build tools and environments installed. 
+
+With a single docker run command, Docker pulls dependencies and tools.
+```bash
 ```
 
 https://docs.docker.com/get-started/06_bind_mounts/
