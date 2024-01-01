@@ -430,6 +430,13 @@ docker restart, stop, start rabbitmq2
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
 
+A bind mount is another type of mount, which lets you share a directory from the host's filesystem into the container. 
+
+When working on an application, you can use a bind mount to mount source code into the container. 
+
+The container sees the changes you make to the code immediately, as soon as you save a file. 
+
+This means that you can run processes in the container that watch for filesystem changes and respond to them.
 
 
 https://docs.docker.com/get-started/06_bind_mounts/
