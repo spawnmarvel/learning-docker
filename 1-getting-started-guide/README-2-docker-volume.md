@@ -341,3 +341,30 @@ docker inspect rabbitmq2
 docker restart rabbitmq2
 ```
 ![Volume restart ](https://github.com/spawnmarvel/learning-docker/blob/main/images/volume_restart.jpg)
+
+## In production must add --restart always
+
+```bash
+docker images
+# REPOSITORY                 TAG               
+# getting-started            latest            
+# username/getting-started   latest            
+# rabbitmq                   3.12-management
+
+docker ps -a
+# CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS                    PORTS    NAMES
+# 2053c0ee85ea   rabbitmq:3.12-management   "docker-entrypoint.s…"   26 hours ago     Exited (0) 26 hours ago            rabbitmq2
+
+docker volume
+# DRIVER    VOLUME NAME
+# local     rabbitmq_data
+# local     todo-db
+
+# start it
+docker start rabbitmq2
+
+# visit http:/7public-ip:15672
+# queue01 classic 	D 	idle    1
+
+
+```
