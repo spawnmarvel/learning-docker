@@ -371,6 +371,8 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 Note: moved /var/lib/docker to E, so make the volume again for the todo-app.
 
+Build it, node.js app
+
 ```bash
 # docker rm, rmi, remove container, image, volume before start
 
@@ -381,6 +383,7 @@ cd getting-started-app
 ls
 # Dockerfile  README.md  package.json  spec  src  yarn.lock
 
+# build image
 docker build -t getting-started
 
 docker images
@@ -389,7 +392,7 @@ docker images
 
 cd ..
 
-# we can now run the image and make a container
+# we can now run the image and make a container, or many
 docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
 
 # visit http://publicip:3000 and add two itmes
@@ -398,9 +401,31 @@ docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/tod
 # view it
 docker ps
 
-# you can not stop and start the container with a volume
+# you can now stop and start the container with a volume
 # or set it to always run
 docker restart, stop, start getting-started
+```
+
+Pull it, rabbitmq
+
+```bash
+
+# create the volume
+docker volume create rabbitmq_data
+
+# create the container
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+
+# view it
+docker ps
+
+docker images
+# REPOSITORY                 TAG                       
+# rabbitmq                   3.12-management
+
+# you can now stop and start the container with a volume
+# or set it to always run
+docker restart, stop, start rabbitmq2
 ```
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.

@@ -213,6 +213,23 @@ dokcer rm -f id_name
 # remove volumes
 docker volume ls
 docker volume rm -f volume_name
+
+# create the volume for rmq
+docker volume create rabbitmq_data
+
+# create the container for rmq
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+
+# view it
+docker ps
+
+docker images
+# REPOSITORY                 TAG                       
+# rabbitmq                   3.12-management
+
+# you can now stop and start the container with a volume
+# or set it to always run
+docker restart, stop, start rabbitmq2
 ```
 ## Docker Volums
 
