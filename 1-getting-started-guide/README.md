@@ -214,7 +214,7 @@ docker pull username/getting-started
 # Status: Image is up to date for usernamedocker/getting-started:latest
 # docker.io/usernamedocker/getting-started:latest
 
-docker run -dp 0.0.0.0:3000:3000 YOUR-USER-NAME/getting-started
+docker run -dp 0.0.0.0:3000:3000 username/getting-started
 
 # result after visit http://publicip:3000
 # You have no todo items yet! Add one above!
