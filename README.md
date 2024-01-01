@@ -241,7 +241,7 @@ docker images
 # or set it to always run
 docker restart, stop, start rabbitmq2
 ```
-## Docker Volums
+## Docker Volums (preferred by Docker containers)
 
 Volumes are a mechanism for storing data outside containers. All volumes are managed by Docker and stored in a dedicated directory on your host, usually /var/lib/docker/volumes for Linux systems.
 
