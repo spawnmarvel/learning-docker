@@ -439,6 +439,19 @@ The container sees the changes you make to the code immediately, as soon as you 
 This means that you can run processes in the container that watch for filesystem changes and respond to them.
 
 
+Trying out bind mounts
+
+```bash
+cd getting-started-app
+
+# Run the following command to start bash in an ubuntu container with a bind mount.
+docker run -it --mount type=bind,src="$(pwd)",target=/src ubuntu bash
+
+# The --mount option tells Docker to create a bind mount, 
+# where src is the current working directory on your host machine (getting-started-app), 
+# and target is where that directory should appear inside the container (/src)
+```
+
 https://docs.docker.com/get-started/06_bind_mounts/
  
 ## Part 7 Multi-container apps

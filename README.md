@@ -240,6 +240,21 @@ docker images
 # you can now stop and start the container with a volume
 # or set it to always run
 docker restart, stop, start rabbitmq2
+
+# view logs
+docker logs rabbitmq
+
+# 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  node           : rabbit@rmq2
+# 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  home dir       : /var/lib/rabbitmq
+# 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  config file(s) : /etc/rabbitmq/conf.d/10-defaults.conf
+# 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  log(s)         : <stdout>
+# 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  data dir       : /var/lib/rabbitmq/mnesia/rabbit@rmq2
+
+# enter container, exit 13
+docker exec -it rabbitmq2 bash
+
+
+
 ```
 ## Docker Volums (preferred by Docker containers)
 
