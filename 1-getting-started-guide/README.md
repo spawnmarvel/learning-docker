@@ -372,11 +372,18 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 Note: moved /var/lib/docker to E, so make the volume again for the todo-app.
 
 ```bash
-docker login -u username
+# docker rm, rmi, remove container, image, volume before start
+cd getting-started
 
-docker pull username/getting-started
+docker build -t getting-started
 
-docker volume create todo-db
+cd ..
+
+docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+
+# visit http://publicip:3000 and add two itmes
+# then restart container and verify items
+
 ```
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
