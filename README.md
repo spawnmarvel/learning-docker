@@ -245,6 +245,16 @@ docker restart, stop, start rabbitmq2
 
 Volumes are a mechanism for storing data outside containers. All volumes are managed by Docker and stored in a dedicated directory on your host, usually /var/lib/docker/volumes for Linux systems.
 
+```bash
+# create the volume
+docker volume create rabbitmq_data
+
+# create the container
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+
+```
+https://follow-e-lo.com/2023/12/30/docker-volume-data-move/
+
 ## Docker file
 
 Dockerfile
