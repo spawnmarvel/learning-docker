@@ -488,7 +488,10 @@ Using bind mounts is common for local development setups.
 The advantage is that the development machine doesn’t need to have all of the build tools and environments installed. 
 
 With a single docker run command, Docker pulls dependencies and tools.
+
 ```bash
+# Run your app in a development container
+
 ```
 
 https://docs.docker.com/get-started/06_bind_mounts/
