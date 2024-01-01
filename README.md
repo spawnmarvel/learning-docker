@@ -214,7 +214,7 @@ dokcer rm -f id_name
 docker volume ls
 docker volume rm -f volume_name
 
-# create the volume for rmq
+# create the volume for presistent rmq,  and pull rmq, start rmq
 docker volume create rabbitmq_data
 
 # the volume is on a mounted datadrive, view README-2-docker-volume.md, so we can separate os from data and even increase the disk.
