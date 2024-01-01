@@ -243,6 +243,7 @@ docker restart, stop, start rabbitmq2
 
 # view logs
 docker logs rabbitmq
+docker logs -f rabbitmq
 
 # 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  node           : rabbit@rmq2
 # 2024-01-01 15:47:03.330225+00:00 [info] <0.230.0>  home dir       : /var/lib/rabbitmq

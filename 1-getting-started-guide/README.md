@@ -489,11 +489,53 @@ The advantage is that the development machine doesn’t need to have all of the 
 
 With a single docker run command, Docker pulls dependencies and tools.
 
+The following steps describe how to run a development container with a bind mount that does the following:
+
+* Mount your source code into the container
+* Install all dependencies
+* Start nodemon to watch for filesystem changes
+
 ```bash
 # Run your app in a development container
 
+cd getting-started
+
+docker run -dp 0.0.0.0:3000:3000 \
+    -w /app --mount type=bind,src="$(pwd)",target=/app \
+    node:18-alpine \
+    sh -c "yarn install && yarn run dev"
+
+docker ps
+# CONTAINER ID   IMAGE       
+# 4ab56afc944d   node:18-alpine
+
 ```
 
+* -dp 00.0.0.1:3000:3000 - same as before. Run in detached (background) mode and create a port mapping
+* -w /app - sets the "working directory" or the current directory that the command will run from
+* --mount type=bind,src="$(pwd)",target=/app - bind mount the current directory from the host into the /app directory in the container
+* node:18-alpine - the image to use. Note that this is the base image for your app from the Dockerfile
+* sh -c "yarn install && yarn run dev" - the command. You're starting a shell using sh (alpine doesn't have bash) and running yarn install to install packages and then running yarn run dev to start the development server. If you look in the package.json, you'll see that the dev script starts nodemon.
+
+```bash
+
+# You can watch the logs using docker logs <container-id>. You'll know you're ready to go when you see this:
+# Using sqlite database at /etc/todos/todo.db
+# Listening on port 3000
+
+# Update your app on your host machine and see the changes reflected in the container.
+
+# In the src/static/js/app.js file, on line 109, change the "Add Item" button to simply say "Add":
+
+# Refresh the page in your web browser, and you should see the change reflected almost immediately because of the bind mount.
+
+# Feel free to make any other changes you'd like to make. Each time you make a change and save a file, the change is reflected in the container because of the bind mount. 
+
+# When Nodemon detects a change, it restarts the app inside the container automatically. When you're done, stop the container and build your new image using:
+
+docker build -t getting-started .
+
+```
 https://docs.docker.com/get-started/06_bind_mounts/
  
 ## Part 7 Multi-container apps
