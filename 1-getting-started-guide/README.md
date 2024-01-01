@@ -373,17 +373,34 @@ Note: moved /var/lib/docker to E, so make the volume again for the todo-app.
 
 ```bash
 # docker rm, rmi, remove container, image, volume before start
-cd getting-started
+
+docker volume create todo-db
+
+cd getting-started-app
+
+ls
+# Dockerfile  README.md  package.json  spec  src  yarn.lock
 
 docker build -t getting-started
 
+docker images
+# REPOSITORY                 TAG               IMAGE ID       CREATED          SIZE
+# getting-started            latest            cfc8068d5338   21 minutes ago   223MB
+
 cd ..
 
+# we can now run the image and make a container
 docker run -dp 0.0.0.0:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
 
 # visit http://publicip:3000 and add two itmes
 # then restart container and verify items
 
+# view it
+docker ps
+
+# you can not stop and start the container with a volume
+# or set it to always run
+docker restart, stop, start getting-started
 ```
 
 In part 5, you used a volume mount to persist the data in your database. A volume mount is a great choice when you need somewhere persistent to store your application data.
