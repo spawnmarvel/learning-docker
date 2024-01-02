@@ -542,6 +542,9 @@ https://docs.docker.com/get-started/06_bind_mounts/
 
 Up to this point, you've been working with single container apps. But, now you will add MySQL to the application stack.
 
+Todo App - - > MySQL (Two containers)
+
+
 https://docs.docker.com/get-started/07_multi_container/
 
 ## Part 8 Use Docker Compose
