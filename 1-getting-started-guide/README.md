@@ -544,6 +544,13 @@ Up to this point, you've been working with single container apps. But, now you w
 
 Todo App - - > MySQL (Two containers)
 
+Container networking
+
+**Remember that containers, by default, run in isolation and don't know anything about other processes or containers on the same machine.**
+
+**So, how do you allow one container to talk to another? The answer is networking. If you place the two containers on the same network, they can talk to each other.**
+
+
 
 https://docs.docker.com/get-started/07_multi_container/
 
