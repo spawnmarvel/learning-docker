@@ -550,7 +550,110 @@ Container networking
 
 **So, how do you allow one container to talk to another? The answer is networking. If you place the two containers on the same network, they can talk to each other.**
 
+Two ways
 
+* Assign the network when starting the container.
+* Connect an already running container to a network.
+
+
+```bash
+
+# Create the network.
+docker network create todo-app
+
+# view it
+docker network ls
+# NETWORK ID     NAME       DRIVER    SCOPE
+# 39dd833844aa   todo-app   bridge    local
+
+# Start a MySQL container and attach it to the network.
+# -v volume
+# -e environment vars
+docker run -d \
+    --network todo-app --network-alias mysql \
+    -v todo-mysql-data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=secret \
+    -e MYSQL_DATABASE=todos \
+    mysql:8.0
+
+# In the previous command, you can see the --network-alias flag. In a later section, you'll learn more about this flag
+
+# view it
+docker ps
+# CONTAINER ID   IMAGE       COMMAND                  CREATED         STATUS         PORTS                 NAMES
+# 09d7dc5082ee   mysql:8.0   "docker-entrypoint.s…"   9 seconds ago   Up 7 seconds   3306/tcp, 33060/tcp   kind_pike
+
+# get ip
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 09d7dc5082ee
+ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 09d7dc5082ee)
+
+# connect to mysql if you have the mysql-client installed
+mysql -h $ip -u root -p
+
+# or
+docker exec -it 09d7dc5082ee mysql -u root -p
+
+```
+
+Connect to MySQL
+
+Now that you know MySQL is up and running, you can use it. But, how do you use it? If you run another container on the same network, how do you find the container? 
+
+Remember that each container has its own IP address.
+
+```bash
+# some mysql images for test
+# Start a new container using the nicolaka/netshoot image. Make sure to connect it to the same network.
+docker run -it --network todo-app nicolaka/netshoot
+
+# and we are inside the container on the fly
+
+# Inside the container, you're going to use the dig command, which is a useful DNS tool. You're going to look up the IP address for the hostname mysql
+dig mysql
+
+# In the "ANSWER SECTION", you will see an A record for mysql that resolves to 172.23.0.2 (your IP address will most likely have a different value). 
+# While mysql isn't normally a valid hostname, Docker was able to resolve it to the IP address of the container that had that network alias. 
+
+# Remember, you used the --network-alias earlier.
+# ;; ANSWER SECTION:
+# mysql.			600	IN	A	172.23.0.2
+
+# What this means is that your app only simply needs to connect to a host named mysql and it'll talk to the database.
+
+```
+
+Run your app with MySQL
+
+The todo app supports the setting of a few environment variables to specify MySQL connection settings. They are:
+
+* MYSQL_HOST - the hostname for the running MySQL server
+* MYSQL_USER - the username to use for the connection
+* MYSQL_PASSWORD - the password to use for the connection
+* MYSQL_DB - the database to use once connected
+
+
+NOTE!
+**While using env vars to set connection settings is generally accepted for development, it's highly discouraged when running applications in production.**
+
+**Diogo Monica, a former lead of security at Docker, wrote a fantastic blog post explaining why.**
+
+https://blog.diogomonica.com//2017/03/27/why-you-shouldnt-use-env-variables-for-secret-data/
+
+
+A more secure mechanism is to use the secret support provided by your container orchestration framework. 
+
+In most cases, these secrets are mounted as files in the running container. 
+
+You'll see many apps (including the MySQL image and the todo app) also support env vars with a _FILE suffix to point to a file containing the variable.
+
+As an example, setting the MYSQL_PASSWORD_FILE var will cause the app to use the contents of the referenced file as the connection password. 
+
+Docker doesn't do anything to support these env vars. Your app will need to know to look for the variable and get the file contents.
+
+```bash
+# You can now start your dev-ready container.
+
+```
 
 https://docs.docker.com/get-started/07_multi_container/
 
