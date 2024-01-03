@@ -9,7 +9,7 @@ https://docs.docker.com/network/
 
 docker network
 
-docker netwokr connect
+docker network connect
 
 docker network create
 
