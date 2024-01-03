@@ -750,7 +750,9 @@ With Compose, you can create a YAML file to define the services and with a singl
 
 https://docs.docker.com/get-started/08_using_compose/
 
-## Extra 4 get to know docker networking
+## Extra 4 get to know docker compose
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-4-docker-compose.md
 
 ## Part 9 Image-building Best practices
 
