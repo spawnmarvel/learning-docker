@@ -738,7 +738,7 @@ mysql> select * from todo_items;
 
 https://docs.docker.com/get-started/07_multi_container/
 
-## Extra 2 get to know docker networking
+## Extra 3 get to know docker networking
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-3-docker-network.md
 
@@ -749,6 +749,8 @@ Docker Compose is a tool that helps you define and share multi-container applica
 With Compose, you can create a YAML file to define the services and with a single command, you can spin everything up or tear it all down.
 
 https://docs.docker.com/get-started/08_using_compose/
+
+## Extra 4 get to know docker networking
 
 ## Part 9 Image-building Best practices
 
