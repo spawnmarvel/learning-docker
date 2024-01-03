@@ -734,7 +734,7 @@ Verify data after adding some items
 mysql> select * from todo_items;
 
 ```
-![Multi container ](https://github.com/spawnmarvel/learning-docker/blob/main/images/multi_containerjpg)
+![Multi container ](https://github.com/spawnmarvel/learning-docker/blob/main/images/multi_container.jpg)
 
 https://docs.docker.com/get-started/07_multi_container/
 
