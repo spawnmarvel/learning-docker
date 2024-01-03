@@ -651,9 +651,90 @@ As an example, setting the MYSQL_PASSWORD_FILE var will cause the app to use the
 Docker doesn't do anything to support these env vars. Your app will need to know to look for the variable and get the file contents.
 
 ```bash
+
+# Make sure that you are in the getting-started-app directory when you run this command
+cd getting-started
+
 # You can now start your dev-ready container.
+docker run -dp 127.0.0.1:3000:3000 \
+  -w /app -v "$(pwd):/app" \
+  --network todo-app \
+  -e MYSQL_HOST=mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=secret \
+  -e MYSQL_DB=todos \
+  node:18-alpine \
+  sh -c "yarn install && yarn run dev"
+
+# view it
+docker ps
+# CONTAINER ID   IMAGE            COMMAND                  CREATED         STATUS         PORTS                      NAMES
+# e535cb0d78dc   node:18-alpine   "docker-entrypoint.s…"   7 seconds ago   Up 6 seconds   127.0.0.1:3000->3000/tcp   stupefied_gagarin
+
+# rm it, can not visit 172.0.0.1
+docker rm -f e535cb0d78dc
+
+
+# sisnce it was day to, we have to run the mysql again....it depends on that.....well well, we are learning
+# after inspecting logs
+docker logs 7fe5210a5a21
+# [nodemon] starting `node src/index.js`
+# Waiting for mysql:3306.......
+# Timeout
+# Error: connect ETIMEDOUT
+
+# make mysql container run
+docker run -d \
+    --network todo-app --network-alias mysql \
+    -v todo-mysql-data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=secret \
+    -e MYSQL_DATABASE=todos \
+    mysql:8.0
+
+# You can now start your dev-ready container.
+docker run -dp 3000:3000 \
+  -w /app -v "$(pwd):/app" \
+  --network todo-app \
+  -e MYSQL_HOST=mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=secret \
+  -e MYSQL_DB=todos \
+  node:18-alpine \
+  sh -c "yarn install && yarn run dev"
+
+
+# view both
+docker ps
+
+# If you look at the logs for the container (docker logs -f <container-id>), 
+# you should see a message similar to the following, which indicates it's using the mysql database.
+docker logs 202c110e81a2
+# Waiting for mysql:3306.
+# Connected!
+# Connected to mysql db at host mysql
+# Listening on port 3000
+
+# To confirm you have the database up and running, connect to the database and verify that it connects.
+docker ps
+
+# get the mysql id
+docker exec -it 98bac07d1504 mysql -u root -p
+
+# or
+ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 98bac07d1504)
+mysql -h $ip -u root -p
+
+# Connect to the mysql database and prove that the items are being written to the database. Remember, the password is secret.
+docker exec -it 98bac07d1504 mysql -p todos
+```
+
+Verify data after adding some items
+
+```sql
+mysql> select * from todo_items;
 
 ```
+![Multi container ](https://github.com/spawnmarvel/learning-docker/blob/main/images/multi_containerjpg)
 
 https://docs.docker.com/get-started/07_multi_container/
 
