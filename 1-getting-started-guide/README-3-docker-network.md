@@ -17,7 +17,7 @@ docker network disconnect
 
 docker network inspect
 
-docker netwokr prune
+docker network prune
 
 docker network rm
 
