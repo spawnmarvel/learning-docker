@@ -736,6 +736,8 @@ mysql> select * from todo_items;
 ```
 ![Multi container ](https://github.com/spawnmarvel/learning-docker/blob/main/images/multi_container.jpg)
 
+In the next section, you'll learn about Docker Compose. With Docker Compose, you can share your application stacks in a much easier way and let others spin them up with a single, simple command.
+
 https://docs.docker.com/get-started/07_multi_container/
 
 ## Extra 3 get to know docker networking
@@ -747,6 +749,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 Docker Compose is a tool that helps you define and share multi-container applications. 
 
 With Compose, you can create a YAML file to define the services and with a single command, you can spin everything up or tear it all down.
+
 
 https://docs.docker.com/get-started/08_using_compose/
 
