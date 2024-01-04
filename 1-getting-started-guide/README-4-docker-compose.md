@@ -196,7 +196,22 @@ docker restart containerid
 
 # and queue01 is there with one message
 
-# if we run docker compose down, and up again, then we get a new container name and mnesia is fresh again
+# if we run 
+docker compose down
+docker compose up -d 
+# and up again, then we get a new container name
+# we also get a new node in the volume
+
+sudo su -
+cd datadrive/volumes/rml_vol_rabbitmq_data/_data/mnesia
+ls
+
+rabbit@44416c44ecfd                 rabbit@56d19185c66d
+rabbit@44416c44ecfd-feature_flags   rabbit@56d19185c66d-feature_flags
+rabbit@44416c44ecfd-plugins-expand  rabbit@56d19185c66d-plugins-expand
+rabbit@44416c44ecfd.pid
+
+
 ```
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
