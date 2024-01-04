@@ -223,7 +223,6 @@ It creates the shovel and tries to connect, success, but get timeout due to port
 
 Both queues were added manually.
 
-
 ![RabbitMQ 2 advanced config ](https://github.com/spawnmarvel/learning-docker/blob/main/images/rabbitmq_advanced2.jpg)
 
 
