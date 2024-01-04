@@ -109,6 +109,9 @@ Run it
 cd rmq
 
 docker compose up -d
+# ✔ Network rmq_net_messaging       Created                                                                                                 
+# ✔ Volume "rmq_vol_rabbitmq_data"  Created                                                                                                  
+# ✔ Container rmq-rmq-app-1         Started 
 
 docker compose logs -f
 
@@ -122,11 +125,6 @@ visit http://public-ip:15672
 Shovel is listed
 
 But not showing in management, had to update Dockerfile with:
-
-```bash
-
-
-```
 
 ```bash
 
@@ -186,6 +184,20 @@ rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_w
 
 ```
 
+Persistent data
+
+```bash
+# we created a volume in docker compose up -d above
+
+# the container is running
+
+# make a queue and add a message and restart the container
+docker restart containerid
+
+# and queue01 is there with one message
+
+# if we run docker compose down, and up again, then we get a new container name and mnesia is fresh again
+```
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
 ## Compose file version 3 reference
