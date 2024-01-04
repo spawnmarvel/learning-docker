@@ -115,6 +115,15 @@ docker compose down¨
 
 ```
 
+visit http://public-ip:15672
+
+Shovel is listed
+
+But not showing in management
+
+
+https://follow-e-lo.com/2024/01/04/docker-compose/
+
 ## Compose file version 3 reference
 
 What does the fields mean?
