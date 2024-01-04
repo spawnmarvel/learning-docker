@@ -34,7 +34,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-j
 
 Notes:
 
-**Controlloing resources**
+**Controlling resources**
 
 * Linux control groups, cgroups (default to linux), how much cpu, memeory, blockio.
 * Everything on linux lives in cgroup.
