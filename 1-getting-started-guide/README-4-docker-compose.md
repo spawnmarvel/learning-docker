@@ -215,6 +215,19 @@ rabbit@44416c44ecfd.pid
 ```
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
+## RabittMQ 2
+
+Tested with advanced.config and shovel, it works.
+
+It creates the shovel and tries to connect, success, but get timeout due to ports.
+
+Both queues were added manually.
+
+
+![RabbitMQ 2 advanced config ](https://github.com/spawnmarvel/learning-docker/blob/main/images/rabbitmq_advanced2.jpg)
+
+
+
 ## Compose file version 3 reference
 
 What does the fields mean?
