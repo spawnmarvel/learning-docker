@@ -62,7 +62,7 @@ https://hub.docker.com/_/rabbitmq
 FROM rabbitmq:3.12-management
 COPY rabbitmq.conf /etc/rabbitmq
 RUN cat /etc/rabbitmq/rabbitmq.conf
-RUN rabbitmq-plugins enable --offline rabbimq_shovel
+RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
 
 ```
 Compose file
@@ -119,7 +119,30 @@ visit http://public-ip:15672
 
 Shovel is listed
 
-But not showing in management
+But not showing in management, had to update Dockerfile with:
+
+```bash
+
+
+```
+
+```bash
+
+# run compose again, since we already had installed a container with no rabbitmq_shovel_management in Dockerfile
+cd rmq
+
+docker compose down
+
+# update the line to Dockerfile
+# RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
+
+# start it 
+docker compose up -d
+
+docker compose logs
+
+
+```
 
 
 https://follow-e-lo.com/2024/01/04/docker-compose/
