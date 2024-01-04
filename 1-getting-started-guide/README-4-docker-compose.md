@@ -58,11 +58,13 @@ Dockerfile
 https://hub.docker.com/_/rabbitmq
 
 ```bash
+# every time you update the Dockerfile, you must rm the docker images
 
 FROM rabbitmq:3.12-management
 COPY rabbitmq.conf /etc/rabbitmq
 RUN cat /etc/rabbitmq/rabbitmq.conf
-RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
+RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline  rabbitmq_shovel_management
+RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
 
 ```
 Compose file
@@ -132,6 +134,18 @@ But not showing in management, had to update Dockerfile with:
 cd rmq
 
 docker compose down
+#  Container rmq-rmq-app-1    Removed                                                                                                      
+#  Network rmq_net_messaging  Removed
+
+# remove container if needed
+docker ps -a
+
+# remove image
+docker rmi -f rmq-rmq-app
+
+# remove volume
+docker volume ls
+docker volume rm -f 
 
 # update the line to Dockerfile
 # RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
@@ -141,9 +155,36 @@ docker compose up -d
 
 docker compose logs
 
+# success with bot plugins
+
+
+docker compose down
+#  Container rmq-rmq-app-1    Removed                                                                                                      
+#  Network rmq_net_messaging  Removed
+
+# update the line to Dockerfile
+# RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
+
+
+# every time you update the Dockerfile, you must rm the docker images
+docker images
+docker rmi -f rmq-rmq-app
+
+# start it
+docker compose up -d
 
 ```
+Logs
+```logs
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_prometheus
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_shovel_management
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_mqtt
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_shovel
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_management
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_management_agent
+rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_web_dispatch
 
+```
 
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
