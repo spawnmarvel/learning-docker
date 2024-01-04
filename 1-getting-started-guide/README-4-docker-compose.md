@@ -21,3 +21,28 @@ docker compose down
 
 ## RabbitMQ
 
+Run
+
+```bash
+# create the volume
+docker volume create rabbitmq_data
+
+# create the container
+docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
+```
+
+Compose
+
+```bash
+
+```
+
+Dockerfile
+
+```bash
+```
+Compose file
+
+```yml
+```
+
