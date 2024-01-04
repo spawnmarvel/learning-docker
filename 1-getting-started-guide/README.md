@@ -750,6 +750,130 @@ Docker Compose is a tool that helps you define and share multi-container applica
 
 With Compose, you can create a YAML file to define the services and with a single command, you can spin everything up or tear it all down.
 
+The big advantage of using Compose is you can define your application stack in a file, keep it at the root of your project repository (it's now version controlled), and easily enable someone else to contribute to your project. 
+
+Someone would only need to clone your repository and start the app using Compose. In fact, you might see quite a few projects on GitHub/GitLab doing exactly this now.
+
+```bash
+
+# Create the Compose file
+# In the getting-started-app directory, create a file named compose.yaml.
+touch compose.yml
+```
+Define the app service
+
+```bash
+docker run -dp 127.0.0.1:3000:3000 \
+  -w /app -v "$(pwd):/app" \
+  --network todo-app \
+  -e MYSQL_HOST=mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=secret \
+  -e MYSQL_DB=todos \
+  node:18-alpine \
+  sh -c "yarn install && yarn run dev"
+
+```
+You'll now define this service in the compose.yaml file.
+
+```yml
+services:
+  app:
+    image: node:18-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+```
+Define the MySQL service
+
+```bash
+# Now, it's time to define the MySQL service. The command that you used for that container was the following:
+
+docker run -d \
+  --network todo-app --network-alias mysql \
+  -v todo-mysql-data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=secret \
+  -e MYSQL_DATABASE=todos \
+  mysql:8.0
+
+```
+
+```yml
+services:
+  app:
+    # The app service definition
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+
+```
+At this point, your complete compose.yaml should look like this:
+
+```yml
+services:
+  app:
+    image: node:18-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+```
+
+Run the application stack
+```bash
+# remove all copies of running containers
+docker ps
+docker rm f id
+
+# start it
+cd getting-started-app
+docker compose up -d
+
+# Look at the logs using the docker compose logs -f command. You'll see the logs from each of the services interleaved into a single stream.
+docker compose logs -f
+
+# Tear it all down
+docker compose down
+
+# If you want to remove the volumes, you need to add the --volumes flag.
+```
+
+Note:
+
+By default, named volumes in your compose file are not removed when you run docker compose down. If you want to remove the volumes, you need to add the --volumes flag.
 
 https://docs.docker.com/get-started/08_using_compose/
 
