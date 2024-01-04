@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+ rmq-app:
+  build:
+   context: .
+   dockerfile: dockerfile
+  ports:
+   - 5672:5672
+   - 15672:15672
+  networks:
+   - net_messaging
+  volumes:
+   - vol_rabbitmq_data:/var/lib/rabbitmq
+
+
+networks:
+ net_messaging:
+  driver: bridge
+
+volumes:
+ vol_rabbitmq_data:
