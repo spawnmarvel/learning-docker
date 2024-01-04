@@ -229,7 +229,8 @@ docker rmi -f id_name
 
 # remove containers
 docker ps -a
-dokcer rm -f id_name
+docker rm -f id_name
+docker rm $(docker ps -aq)
 
 # remove volumes
 docker volume ls
