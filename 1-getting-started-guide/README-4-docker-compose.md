@@ -77,6 +77,7 @@ services:
   build:
    context: .
    dockerfile: Dockerfile
+  hostname: rmq1.cloud
   ports:
    - 5672:5672
    - 15672:15672
@@ -115,7 +116,7 @@ docker compose up -d
 
 docker compose logs -f
 
-docker compose down¨
+docker compose down
 
 
 ```
@@ -124,12 +125,8 @@ visit http://public-ip:15672
 
 Shovel is listed
 
-But not showing in management, had to update Dockerfile with:
 
 ```bash
-
-# run compose again, since we already had installed a container with no rabbitmq_shovel_management in Dockerfile
-cd rmq
 
 docker compose down
 #  Container rmq-rmq-app-1    Removed                                                                                                      
@@ -172,17 +169,9 @@ docker rmi -f rmq-rmq-app
 docker compose up -d
 
 ```
-Logs
-```logs
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_prometheus
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_shovel_management
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_mqtt
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_shovel
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_management
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_management_agent
-rmq-rmq-app-1  | 2024-01-04 14:10:38.513106+00:00 [info] <0.604.0>  * rabbitmq_web_dispatch
 
-```
+
+
 
 Persistent data
 

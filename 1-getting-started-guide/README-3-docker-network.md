@@ -10,10 +10,10 @@ That is, unless the container uses the none network driver.
 
 Drivers
 
-* bridge	The default network driver.
-* host	Remove network isolation between the container and the Docker host.
-* none	Completely isolate a container from the host and other containers.
-* overlay	Overlay networks connect multiple Docker daemons together.
+* bridge The default network driver.
+* host Remove network isolation between the container and the Docker host.
+* none Completely isolate a container from the host and other containers.
+* overlay Overlay networks connect multiple Docker daemons together.
 * ipvlan and macvlan
 
 https://docs.docker.com/network/

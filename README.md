@@ -226,6 +226,7 @@ docker system prune -a
 # remove images
 docker images -a
 docker rmi -f id_name
+docker rmi -f $(docker images -aq)
 
 # remove containers
 docker ps -a
@@ -290,6 +291,15 @@ docker volume create rabbitmq_data
 # create the container
 docker run -d --hostname rmq2 --name rabbitmq2 -p 15672:15672 -p 5672:5672 --mount type=volume,src=rabbitmq_data,target=/var/lib/rabbitmq rabbitmq:3.12-management
 
+
+# veiw
+docker volume ls
+
+# remove not associated or used
+docker volume prune
+
+# In Docker, a "dangling" volume refers to a volume that is no longer associated with a container.
+docker volume rm $(docker volume ls -qf dangling=true)
 ```
 https://follow-e-lo.com/2023/12/30/docker-volume-data-move/
 
