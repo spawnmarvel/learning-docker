@@ -5,7 +5,7 @@ services:
   build:
    context: .
    dockerfile: dockerfile
-  hostname: rmq1.cloud
+  hostname: rmq3.cloud
   ports:
    - 5672:5672
    - 15672:15672
