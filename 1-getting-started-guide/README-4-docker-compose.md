@@ -200,7 +200,7 @@ Data is presistent since we used hostname
 
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
-## RabittMQ 2
+## RabittMQ 2 (just a test for config)
 
 Tested with advanced.config and shovel, it works.
 
