@@ -1,7 +1,5 @@
 FROM rabbitmq:3.12-management
 COPY rabbitmq.conf /etc/rabbitmq
-# COPY generate-certificate.sh /tmp/generate-certificate.sh
-# CMD ["/tmp/generate-certificate.sh"]
 COPY server_cert.pem /etc/rabbitmq
 COPY server_key.pem /etc/rabbitmq
 COPY server_ca.bundle /etc/rabbitmq
