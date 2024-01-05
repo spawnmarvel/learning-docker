@@ -114,6 +114,21 @@ docker compose up -d
 # ✔ Volume "rmq_vol_rabbitmq_data"  Created                                                                                                  
 # ✔ Container rmq-rmq-app-1         Started 
 
+
+# volume
+/datadrive/volumes/rmq_vol_rabbitmq_data/_data/mnesia
+
+# volume on external drive
+ls
+rabbit@rmq3  rabbit@rmq3-feature_flags  rabbit@rmq3-plugins-expand
+
+# config inside container
+docker exec -it 6c4eee3c74ab bash
+root@rmq3:/# cd /etc/rabbitmq/
+root@rmq3:/etc/rabbitmq# ls
+conf.d  enabled_plugins  rabbitmq.conf
+# exit 13
+
 docker compose logs -f
 
 # to stop all
@@ -128,44 +143,22 @@ Shovel is listed and hostname is set.
 
 ![Shovel ](https://github.com/spawnmarvel/learning-docker/blob/main/images/shovel2.jpg)
 
+Update Dockerfile ?
+
 ```bash
+cd rmq
 
 docker compose down
 #  Container rmq-rmq-app-1    Removed                                                                                                      
 #  Network rmq_net_messaging  Removed
-
-# remove container if needed
-docker ps -a
-
-# remove image
-docker rmi -f rmq-rmq-app
-
-# remove volume
-docker volume ls
-docker volume rm -f 
 
 # update the line to Dockerfile
 # RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
-
-# start it 
-docker compose up -d
-
-docker compose logs
-
-# success with bot plugins
-
-
-docker compose down
-#  Container rmq-rmq-app-1    Removed                                                                                                      
-#  Network rmq_net_messaging  Removed
-
-# update the line to Dockerfile
-# RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
-
-
 # every time you update the Dockerfile, you must rm the docker images
 docker images
-docker rmi -f rmq-rmq-app
+docker rmi -f name
+
+# maybe also remove volume, depends.
 
 # start it
 docker compose up -d
@@ -178,32 +171,33 @@ docker compose up -d
 Persistent data
 
 ```bash
-# we created a volume in docker compose up -d above
+# we created a volume and ran docker compose up -d above
 
-# the container is running
+cd rmq
 
-# make a queue and add a message and restart the container
-docker restart containerid
+docker compose up -d
 
-# and queue01 is there with one message
+# Cluster rabbit@rmq3.cloud
+# Create a queue3, add some messages, 2
+# remember the volume
+# volume
+/datadrive/volumes/rmq_vol_rabbitmq_data/_data/mnesia
 
-# if we run 
-docker compose down
-docker compose up -d 
-# and up again, then we get a new container name
-# we also get a new node in the volume
-
-sudo su -
-cd datadrive/volumes/rml_vol_rabbitmq_data/_data/mnesia
+# volume on external drive
 ls
+rabbit@rmq3  rabbit@rmq3-feature_flags  rabbit@rmq3-plugins-expand
 
-rabbit@44416c44ecfd                 rabbit@56d19185c66d
-rabbit@44416c44ecfd-feature_flags   rabbit@56d19185c66d-feature_flags
-rabbit@44416c44ecfd-plugins-expand  rabbit@56d19185c66d-plugins-expand
-rabbit@44416c44ecfd.pid
+# stop it
+docker compose down
+
+docker compose up -d
 
 
 ```
+![RabbitMQ persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/rabbitmq_persistent.jpg)
+
+Data is presistent since we used hostname
+
 https://follow-e-lo.com/2024/01/04/docker-compose/
 
 ## RabittMQ 2
