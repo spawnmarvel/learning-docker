@@ -126,7 +126,7 @@ visit http://public-ip:15672
 
 Shovel is listed and hostname is set.
 
-![Shovel ](https://github.com/spawnmarvel/learning-docker/blob/main/images/shove2.jpg)
+![Shovel ](https://github.com/spawnmarvel/learning-docker/blob/main/images/shovel2.jpg)
 
 ```bash
 
