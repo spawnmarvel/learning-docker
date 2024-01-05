@@ -42,9 +42,21 @@ volumes:
 # https://public-ip:9443
 
 # Edit Docker file?
+
+# docker compose down
+
 # docker rmi -f $(docker images -aq)
 
 # Maybe you need to rm volumes also if container name is changed or hostname
+
 # docker volume rm $(docker volume ls -qf dangling=true)
+
+# docker exec -it 4e7bc61a8410 bash
+
+# cd /etc/rabbitmq
+
+# ls
+
+# conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
 
 # https://follow-e-lo.com/2024/01/05/docker-compose-ssl/

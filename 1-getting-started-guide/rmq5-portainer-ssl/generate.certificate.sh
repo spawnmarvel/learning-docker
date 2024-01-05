@@ -1,11 +1,11 @@
 #!/bin/bash
 
-openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-openssl rsa -passin pass:x -in server.pass.key -out server.key
-rm server.pass.key
-openssl req -new -key server.key -out server.csr \
-    -subj "/C=UK/ST=RMQ/L=Learn/O=OrgName/OU=IT Department/CN=rmq5.cloud"
-openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+# non-interactive and 10 years expiration
+openssl req -x509 -newkey rsa:4096 -keyout server_key.pem -out server_cert.pem -sha256 -days 3650 -nodes \
+ -subj "/C=XX/ST=NOR/L=BERG/O=CompanyName/OU=CLOUD/CN=rmq5.cloud"
+
+# make the bundle
+cp server_cert.pem server_ca.bundle
 
 # https://stackoverflow.com/questions/44047315/generate-a-self-signed-certificate-in-docker
 
