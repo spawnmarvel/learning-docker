@@ -116,6 +116,7 @@ docker compose up -d
 
 docker compose logs -f
 
+# to stop all
 docker compose down
 
 
@@ -123,8 +124,9 @@ docker compose down
 
 visit http://public-ip:15672
 
-Shovel is listed
+Shovel is listed and hostname is set.
 
+![Shovel ](https://github.com/spawnmarvel/learning-docker/blob/main/images/shovel.jpg)
 
 ```bash
 
