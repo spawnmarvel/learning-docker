@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  rmq-app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    hostname: rmq4.cloud
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - net_messaging
+    volumes:
+      - vol_rabbitmq_data:/var/lib/rabbitmq
+
+  portainer:
+    image: portainer/portainer-ce
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports:
+      - 9443:9443
+      - 8000:8000
+    networks:
+      - net_messaging
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - vol_portainer_data:/data
+
+networks:
+  net_messaging:
+    driver: bridge
+
+volumes:
+  vol_rabbitmq_data:
+  vol_portainer_data:

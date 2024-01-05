@@ -886,7 +886,6 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 Using the docker image history command, you can see the command that was used to create each layer within an image.
 
 
-
 https://docs.docker.com/get-started/09_image_best/
 
 ## Part 10 What next
