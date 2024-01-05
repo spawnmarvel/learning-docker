@@ -1,10 +1,11 @@
 version: '3'
 
 services:
+# rabbitmq with a static host name
   rmq-app:
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     hostname: rmq4.cloud
     ports:
       - 5672:5672
@@ -13,10 +14,10 @@ services:
       - net_messaging
     volumes:
       - vol_rabbitmq_data:/var/lib/rabbitmq
-
+# portainer for view containers
   portainer:
     image: portainer/portainer-ce
-    command: -H unix:///var/run/docker.sock
+    # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
     restart: always
     ports:
       - 9443:9443
@@ -34,3 +35,14 @@ networks:
 volumes:
   vol_rabbitmq_data:
   vol_portainer_data:
+
+# cd dir
+# docker compose up -d
+# http://public-ip:15672
+# https://public-ip:9443
+
+# Edit Docker file?
+# docker rmi -f $(docker images -aq)
+
+# Maybe you need to rm volumes also if container name is changed or hostname
+# docker volume rm $(docker volume ls -qf dangling=true)

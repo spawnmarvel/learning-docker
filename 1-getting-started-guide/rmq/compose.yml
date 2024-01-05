@@ -4,7 +4,7 @@ services:
  rmq-app:
   build:
    context: .
-   dockerfile: dockerfile
+   dockerfile: Dockerfile
   hostname: rmq3.cloud
   ports:
    - 5672:5672
