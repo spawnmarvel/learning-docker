@@ -194,7 +194,7 @@ docker compose up -d
 
 
 ```
-![RabbitMQ persisten ](https://github.com/spawnmarvel/learning-docker/blob/main/images/rabbitmq_persistent.jpg)
+![RabbitMQ persistent ](https://github.com/spawnmarvel/learning-docker/blob/main/images/rabbitmq_persistent2.jpg)
 
 Data is presistent since we used hostname
 
