@@ -12,7 +12,7 @@ cd myfolder
 # compose.yml, definitions.json, Dockerfile, generate.sertificate.sh, rabbitmq.config
 
 # run generate sertificate
-bash generate.sertificate.sh
+bash generate.sertificate_keyusage.sh
 
 # start
 docker compose up -d
