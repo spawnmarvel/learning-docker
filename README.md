@@ -204,6 +204,25 @@ docker run hello-world
 
 ```
 
+## Docker clean up docker clutter
+
+Use the docker prune’ command to clean up various Docker objects, freeing up system resources and making your Docker environment more efficient. 
+
+```bash
+# To remove all stopped containers
+docker container prune
+
+# To remove all unused networks
+docker network prune
+
+# To remove all dangling images
+docker image prune
+
+# To remove all unused volumes
+docker volume prune
+
+```
+
 ## Docker basic commands (Done)
 
 ```bash

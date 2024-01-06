@@ -36,12 +36,12 @@ Then you have the following
 * Rabbitmq https 15671 and 5671 (5672)
 * Rabbitmq user, and one queue, shovel enabled
 * Certificate is enabled with -addext "extendedKeyUsage = serverAuth, clientAuth" (for shovel)
-* Volume for both that is persistent
+* A volume for both that is persistent
 
 Tested:
 
-* Testet compose up/down
 * Tested docker restart
+* Testet compose down up
 * Tested restart VM
 
 
