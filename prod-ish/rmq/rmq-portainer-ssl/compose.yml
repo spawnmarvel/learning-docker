@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     hostname: rmq1.cloud
     ports:
-      - 5672:5672
+      - 5672:5672<
       - 5671:5671
       - 15671:15671
     networks:

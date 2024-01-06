@@ -35,6 +35,7 @@ Then you have the following
 * Rabbitmq instance named rmq1.cloud
 * Rabbitmq https 15671 and 5671 (5672)
 * Rabbitmq user, and one queue, shovel enabled
+* Certificate is enabled with -addext "extendedKeyUsage = serverAuth, clientAuth" (for shovel)
 * Volume for both that is persistent
 
 Tested:
