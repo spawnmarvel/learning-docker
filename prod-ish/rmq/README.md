@@ -3,6 +3,8 @@
 ## rmq-portainer-ssl
 
 ```bash
+
+# Docker and Docker compose is installed on machine
 mkdir myfolder
 
 cd myfolder
