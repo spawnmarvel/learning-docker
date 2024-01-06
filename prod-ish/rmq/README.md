@@ -33,8 +33,17 @@ Then you have the following
 * Rabbitmq instance named rmq1.cloud
 * Rabbitmq https 15671 and 5671 (5672)
 * Rabbitmq user, and one queue, shovel enabled
-* Volume for both
+* Volume for both that is persistent
+
+Tested:
+
+* Testet compose up/down
+* Tested docker restart
+* Tested restart VM
+
 
 View it:
+
+https://follow-e-lo.com/2024/01/06/docker-rabbitmq/
 
 
