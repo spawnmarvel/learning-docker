@@ -1,12 +1,18 @@
 version: '3'
 
 services:
-# rabbitmq with a static host name
+  # rabbitmq with a static host name
   rmq-app:
     build:
       context: .
       dockerfile: Dockerfile
     hostname: rmq1.cloud
+    container_name: rmq1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1.1GB
     restart: always
     ports:
       - 5672:5672
@@ -16,9 +22,15 @@ services:
       - net_messaging
     volumes:
       - vol_rabbitmq_data:/var/lib/rabbitmq
-# portainer for view containers
+  # portainer for view containers
   portainer:
     image: portainer/portainer-ce
+    container_name: portainer1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500m
     # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
     restart: always
     ports:
@@ -38,27 +50,27 @@ volumes:
   vol_rabbitmq_data:
   vol_portainer_data:
 
-# cd dir
-# docker compose up -d
-# http://public-ip:15672
-# https://public-ip:9443
+    # cd dir
+    # docker compose up -d
+    # http://public-ip:15672
+    # https://public-ip:9443
 
-# Edit Docker file?
+    # Edit Docker file?
 
-# docker compose down
+    # docker compose down
 
-# docker rmi -f $(docker images -aq)
+    # docker rmi -f $(docker images -aq)
 
-# Maybe you need to rm volumes also if container name is changed or hostname
+    # Maybe you need to rm volumes also if container name is changed or hostname
 
-# docker volume rm $(docker volume ls -qf dangling=true)
+    # docker volume rm $(docker volume ls -qf dangling=true)
 
-# docker exec -it 4e7bc61a8410 bash
+    # docker exec -it 4e7bc61a8410 bash
 
-# cd /etc/rabbitmq
+    # cd /etc/rabbitmq
 
-# ls
+    # ls
 
-# conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
+    # conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
 
-# https://follow-e-lo.com/2024/01/05/docker-compose-ssl/
+    # https://follow-e-lo.com/2024/01/05/docker-compose-ssl/
