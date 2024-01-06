@@ -40,10 +40,9 @@ Then you have the following
 
 Tested:
 
-* Tested docker restart
-* Testet compose down up
-* Tested restart VM
-
+* Tested docker restart, success
+* Testet compose down/up, success
+* Tested restart VM when docker is running, success
 
 View it:
 
