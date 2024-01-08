@@ -47,7 +47,8 @@ python3 app.py
 
 
 ```
-08.01.2024..... continue
+08.01.2024..... continue, you are here.
+
 Add a library to requirements and pip install it
 
 Test the app
