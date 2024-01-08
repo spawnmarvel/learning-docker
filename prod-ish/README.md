@@ -52,3 +52,7 @@ https://follow-e-lo.com/2024/01/06/docker-rabbitmq/
 ## apache-portainer-ssl
 
 TODO
+
+## zabbix-portainer-ssl
+
+TODO
