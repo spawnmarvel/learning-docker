@@ -27,30 +27,27 @@ Note.
 Portainer Community Edition (CE) is a lightweight platform that effortlessly delivers containerized applications.
 
 ```bash
-portainer/portainer-ce:latest
+cd appdir
 
-# copy python-boilerplate project to folder appdir
-mkdir appdir
-
-cp python-bolierplate
-
-python-bolierplate$ cp Dockerfile app.py app_logger.py logging_config.ini worker.py ../appdir/
+ls
+Dockerfile  app.py  app_logs  compose.yml  config.json  worker.py
 
 ```
-Edit code
+Run it
 
 ```py
 
-# add a while loop to app.py
- while work:
-             wo.do_work()
-# edit worker.py
-    def do_work(self):
-        time.sleep(2)
-        logger.info("Sleeping....")
+# run it
+python3 app.py
+2024-01-08 20:55:45,873 - 139707627712960 - 5561 - app.py - 13 -             <module>() root - INFO - Version 0.1
+2024-01-08 20:55:45,873 - 139707627712960 - 5561 - app.py - 35 -             <module>() root - INFO - In main
+2024-01-08 20:55:45,873 - 139707627712960 - 5561 - app.py - 41 -             <module>() root - INFO - Main Pid: 5561
+2024-01-08 20:55:47,875 - 139707627712960 - 5561 - worker.py - 23 -              do_work() root - INFO - Sleeping....
+2024-01-08 20:55:47,876 - 139707627712960 - 5561 - worker.py - 17 -            read_conf() root - INFO - [{'name': 'testconfig', 'id': 1}]
 
 
 ```
+08.01.2024..... continue
 Add a library to requirements and pip install it
 
 Test the app
