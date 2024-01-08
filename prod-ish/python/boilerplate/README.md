@@ -47,7 +47,7 @@ python3 app.py
 
 
 ```
-08.01.2024..... continue, you are here.
+08.01.2024..... continue, you are here. Below does not work I think...
 
 Add a library to requirements and pip install it
 
