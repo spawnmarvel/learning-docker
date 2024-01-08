@@ -73,20 +73,11 @@ sudo nano requirements.txt
 
 Flask==3.0.0
 
-# files
-appdir$ ls
-Dockerfile  __pycache__  app.py  app_logger.py  logging_config.ini  logs_app.txt  requirements.txt  worker.py
-
 ```
-Update the Docker file
-```bash
-# was
-FROM python:3.10-slim-buster
-WORKDIR /usr/src/app
-COPY . .
-CMD [ "python", "./app.py" ]
+Make the Docker file ???
 
-# new
+```bash
+
 FROM python:3.10-slim-buster
 WORKDIR /usr/src/app
 COPY . .
