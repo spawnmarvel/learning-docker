@@ -95,7 +95,9 @@ View it:
 
 https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
+## apache-portainer
 
+Go to folder and just copy and run docker compose up -d
 
 ## apache-portainer-ssl
 
