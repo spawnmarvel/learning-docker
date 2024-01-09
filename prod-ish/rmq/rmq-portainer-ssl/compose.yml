@@ -51,6 +51,7 @@ volumes:
   vol_portainer_data:
 
     # open inbound NSG
+    # no http management, , refresh and clear cache
     # cd dir
     # docker compose up -d
     # http://public-ip:15672
