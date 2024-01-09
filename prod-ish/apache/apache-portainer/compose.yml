@@ -1,0 +1,46 @@
+version: '3'
+services:
+  web:
+    image: httpd
+    build: ./webapp
+    container_name: httpd_web
+    restart: always
+    ports:
+      - 8080:80
+    networks:
+      - net_http
+  # portainer for view containers
+  portainer:
+    image: portainer/portainer-ce
+    # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
+    restart: always
+    ports:
+      - 9443:9443
+      - 8000:8000
+    networks:
+      - net_http
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - vol_portainer_data:/data
+
+
+networks:
+  net_http:
+    driver: bridge
+
+volumes:
+  vol_portainer_data:
+
+
+# open inbound NSG
+# no http management, , refresh and clear cache
+# cd dir
+# docker compose up -d
+# http://public-ip:8080
+# It works!
+
+# Edit Docker file?
+# docker rmi -f $(docker images -aq)
+
+# Maybe you need to rm volumes also if container name is changed or hostname
+# docker volume rm $(docker volume ls -qf dangling=true)
