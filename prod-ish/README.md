@@ -97,12 +97,24 @@ https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
 ## apache-portainer
 
-Go to folder and just copy and run docker compose up -d
+Go to folder and just copy all files to a dir and run docker compose up -d
 
 ## apache-portainer-ssl
 
 TODO
 
 ## zabbix-portainer-ssl
+
+TODO
+
+## wordpress
+
+TODO
+
+## wordpress ssl
+
+TODO
+
+## python with build image/push and pull to docker hub
 
 TODO
