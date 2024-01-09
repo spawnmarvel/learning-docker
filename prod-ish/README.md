@@ -97,7 +97,16 @@ https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
 ## apache-portainer
 
-Go to folder and just copy all files to a dir and run docker compose up -d
+```bash
+# Go to folder and just copy all files to a dir and run 
+
+docker compose up -d
+
+# Network apache-portainer_net_http             Created                                                       
+# Volume "apache-portainer_vol_portainer_data"  Created                                                          
+# Container apache-portainer-portainer-1        Started                                                          
+# Container httpd_web                           Started
+```
 
 ## apache-portainer-ssl
 
