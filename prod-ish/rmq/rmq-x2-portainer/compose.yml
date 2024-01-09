@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  # rabbitmq with a static host name
+  # rabbitmq client with a static host name
   rmq-app:
     build:
       context: .
-      dockerfile: Dockerfile
-    hostname: rmq1.cloud
-    container_name: rmq1
+      dockerfile: Dockerfile_client
+    hostname: rmq_client.cloud
+    container_name: rmq_client
     deploy:
       resources:
         limits:
@@ -16,12 +16,31 @@ services:
     restart: always
     ports:
       - 5672:5672
-      - 5671:5671
-      - 15671:15671
+      - 15672:15672
     networks:
       - net_messaging
     volumes:
-      - vol_rabbitmq_data:/var/lib/rabbitmq
+      - vol_rabbitmq_data_rmq_client:/var/lib/rabbitmq
+  # rabbitmq server with a static host name
+  rmq-app-server:
+    build:
+      context: .
+      dockerfile: Dockerfile_server
+    hostname: rmq_server.cloud
+    container_name: rmq_server
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1.1GB
+    restart: always
+    ports:
+      - 5673:5673
+      - 15673:15673
+    networks:
+      - net_messaging
+    volumes:
+      - vol_rabbitmq_data_rmq_server:/var/lib/rabbitmq
   # portainer for view containers
   portainer:
     image: portainer/portainer-ce
@@ -47,13 +66,14 @@ networks:
     driver: bridge
 
 volumes:
-  vol_rabbitmq_data:
+  vol_rabbitmq_data_rmq_client:
+  vol_rabbitmq_data_rmq_server:
   vol_portainer_data:
 
     # open inbound NSG
     # cd dir
     # docker compose up -d
-    # http://public-ip:15672
+    # http://public-ip:15672 / 3
     # https://public-ip:9443
 
     # Edit Docker file?
