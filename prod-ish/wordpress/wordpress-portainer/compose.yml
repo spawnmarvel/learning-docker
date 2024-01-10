@@ -54,3 +54,23 @@ volumes:
   vol_wp_data:
   vol_portainer_data:
 
+# add phpmyadmin
+
+
+# open inbound NSG
+    # no http management, , refresh and clear cache
+    # cd dir
+    # docker compose up -d
+    # http://public-ip:80
+
+    # Edit Docker file?
+
+    # docker compose down
+
+    # docker rmi -f $(docker images -aq)
+
+    # Maybe you need to rm volumes also if container name is changed or hostname
+
+    # docker volume rm $(docker volume ls -qf dangling=true)
+
+    # docker exec -it 4e7bc61a8410 bash
