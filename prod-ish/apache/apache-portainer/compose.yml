@@ -1,3 +1,7 @@
+# https://hub.docker.com/_/httpd
+# To customize the configuration of the httpd server, first obtain the upstream default configuration from the container:
+# docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
+
 version: '3'
 services:
   web:
