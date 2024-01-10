@@ -6,7 +6,7 @@ https://github.com/docker/awesome-compose/tree/master/official-documentation-sam
 
 ```bash
 mkdir my_wordpress
-cp compose.yml
+cdm my_wordpress
 
 docker compose up -d
 
