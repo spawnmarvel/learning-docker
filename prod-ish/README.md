@@ -95,7 +95,7 @@ View it:
 
 https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
-## wordpress (portainer)
+## wordpress-portainer
 
 ```bash
 # Go to folder and just copy all files to a dir and run 
@@ -114,7 +114,7 @@ docker compose up -d
                          
 ```
 
-## wordpress (portainer) ssl
+## wordpress-portainer ssl
 
 TODO
 

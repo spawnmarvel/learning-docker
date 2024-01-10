@@ -24,7 +24,7 @@ After making a user
 Test stop it
 ```bash
 
-cdm my_wordpress
+cd my_wordpress
 
 docker compose down
 
