@@ -40,6 +40,9 @@ portainer
 
 https://public-ip:9443
 
+* admin
+* wordpresstest789-
+
 ![Portainer ](https://github.com/spawnmarvel/learning-docker/blob/main/images/wordpress_portainer.jpg)
 
 Test stop it

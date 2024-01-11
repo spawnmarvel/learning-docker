@@ -97,7 +97,7 @@ https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
 ## wordpress-phpmyadmin-portainer
 
-Go to readme
+Go to readme for more details.
 
 ```bash
 # Go to folder and just copy all files to a dir and run 
