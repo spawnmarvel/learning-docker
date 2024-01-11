@@ -95,7 +95,9 @@ View it:
 
 https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
-## wordpress-phpmyadmin--portainer
+## wordpress-phpmyadmin-portainer
+
+Go to readme
 
 ```bash
 # Go to folder and just copy all files to a dir and run 
@@ -104,14 +106,14 @@ cd my_wordpress
 
 docker compose up -d
 
-# Network my_wordpress_net_shared           Created                                                              
-# Volume "my_wordpress_vol_wp_data"         Created                                                              
-# Volume "my_wordpress_vol_portainer_data"  Created                                                               
-# Volume "my_wordpress_vol_db_data"         Created                                                              
+# Network my_wordpress_net_shared           Created                                                             
+# Volume "my_wordpress_vol_portainer_data"  Created                                                              
+# Volume "my_wordpress_vol_db_data"         Created                                                               
+# Volume "my_wordpress_vol_wp_data"         Created                                                               
+# Container my_wordpress-db-1               Started                                                               
+# Container my_wordpress-portainer-1        Started                                                               
 # Container my_wordpress-wordpress-1        Started                                                               
-# Container my_wordpress-db-1               Started                                                              
-# Container my_wordpress-portainer-1        Started
-                         
+# Container my_wordpress-phpmyadmin-1       Started
 ```
 
 ## wordpress-portainer ssl
