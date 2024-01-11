@@ -19,7 +19,8 @@ services:
     networks:
         - net_shared
   wordpress:
-    image: wordpress:latest
+    image: wordpress:6.4-php8.1-apache
+    # image: wordpress:latest
     volumes:
       - vol_wp_data:/var/www/html
     ports:
