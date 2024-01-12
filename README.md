@@ -22,6 +22,12 @@ https://follow-e-lo.com/2023/12/20/docker/
 
 ## 1 Getting started guide CLI
 
+* docker run
+* docker volume
+* docker newtwork
+* docker compose
+* docker build
+
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README.md
 
 ## 1.1 What are containers and docker

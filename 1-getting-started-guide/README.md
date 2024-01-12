@@ -893,7 +893,7 @@ https://docs.docker.com/get-started/09_image_best/
 
 ## Extra 5 get to know docker build with Python
 
-https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-4-docker-compose.md
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build.md
 
 ## Part 10 What next
 
