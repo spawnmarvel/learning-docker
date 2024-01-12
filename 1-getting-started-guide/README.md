@@ -891,6 +891,10 @@ Using the docker image history command, you can see the command that was used to
 
 https://docs.docker.com/get-started/09_image_best/
 
+## Extra 5 get to know docker build with Python
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-4-docker-compose.md
+
 ## Part 10 What next
 
 https://docs.docker.com/guides/get-started/
