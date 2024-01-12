@@ -328,6 +328,28 @@ Dockerfile
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-dockerfile-reference
 
+Layers
+
+When you run a build, the builder attempts to reuse layers from earlier builds. 
+
+If a layer of an image is unchanged, then the builder picks it up from the build cache. 
+
+If a layer has changed since the last build, that layer, and all layers that follow, must be rebuilt.
+
+```bash
+
+FROM
+WORKDIR
+COPY
+RUN download
+COPY . .
+RUN
+RUN
+ENTRYPOINT ["PATH OR FILE", ARGS]
+```
+
+https://docs.docker.com/build/guide/layers/#:~:text=The%20order%20of%20Dockerfile%20instructions,layers%20in%20a%20container%20image
+
 ## Install Docker Compose Ubuntu (Done)
 
 It seems that it is already apart of the docker install from apt (install docker)
