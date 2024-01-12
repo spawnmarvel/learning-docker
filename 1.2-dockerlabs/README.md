@@ -6,6 +6,25 @@ https://github.com/collabnix/dockerlabs?tab=readme-ov-file
 
 Docker Image, Container, Dockerfile, Volumes, Networking
 
+
+When you run a build, the builder attempts to reuse layers from earlier builds. 
+
+If a layer of an image is unchanged, then the builder picks it up from the build cache. 
+
+If a layer has changed since the last build, that layer, and all layers that follow, must be rebuilt.
+
+```bash
+
+FROM
+WORKDIR
+COPY
+RUN download
+COPY . .
+RUN use the download
+RUN
+ENTRYPOINT ["PATH OR FILE", ARGS]
+```
+
 Dockerfile
 
 * COPY index.html /usr/share/nginx/html/
