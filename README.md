@@ -20,11 +20,11 @@ Azure resources
 
 https://follow-e-lo.com/2023/12/20/docker/
 
-## 1 Getting started guide CLI TODO
+## 1 Getting started guide CLI
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README.md
 
-## 1.1 What ARE Containers? (and Docker ...) TODO
+## 1.1 What are containers and docker
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1.1-what-are-containers-john-s/Examples.sh
 
@@ -66,9 +66,10 @@ docker run --name ubuntu -dit --memory=256m --cpus="2" ubuntu bash
 * 
 
 
-## 1.2 Tutorialspoint TODO
+## 1.2 dockerlabs TODO
 
-https://github.com/spawnmarvel/learning-docker/blob/main/1.2-tutorialspoint/README.md
+For notes view readme
+
 
 ## Docker docs
 
@@ -322,7 +323,7 @@ docker volume rm $(docker volume ls -qf dangling=true)
 ```
 https://follow-e-lo.com/2023/12/30/docker-volume-data-move/
 
-## Docker file
+## Dockerfile
 
 Dockerfile
 
