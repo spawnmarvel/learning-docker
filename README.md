@@ -70,6 +70,8 @@ docker run --name ubuntu -dit --memory=256m --cpus="2" ubuntu bash
 
 For notes view readme
 
+https://github.com/spawnmarvel/learning-docker/tree/main/1.2-dockerlabs
+
 
 ## Docker docs
 
