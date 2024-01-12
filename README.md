@@ -343,7 +343,7 @@ WORKDIR
 COPY
 RUN download
 COPY . .
-RUN
+RUN use the download
 RUN
 ENTRYPOINT ["PATH OR FILE", ARGS]
 ```
