@@ -56,20 +56,12 @@ docker rmi -f $(docker images -aq)
 docker network ls
 docker network prune
 
-
-
 # when we installed docker we get some cool stuff
 ip address show
 1: [..., inet 127.0.0.1/8]
 2: etho0 [...., 192.xxx.x.x/24] # private
 3: docker0 [..., 172.17.0.1/16] # 
 
-docker network ps
-# default
-NETWORK ID     NAME      DRIVER    SCOPE
-21b05ed49511   bridge    bridge    local
-16e4c0c05bc5   host      host      local
-0d5aff734251   none      null      local
 ```
 
 Bridge, default in docker, docker0
@@ -78,6 +70,34 @@ Bridge, default in docker, docker0
 graph TD;
     hostvm-private-ip-->docker-private-ip;
     
+```
+
+```bash
+docker network ps
+# default
+NETWORK ID     NAME      DRIVER    SCOPE
+21b05ed49511   bridge    bridge    local
+16e4c0c05bc5   host      host      local
+0d5aff734251   none      null      local
+
+# network type = driver
+
+# run some containers
+
+# itd, interactive --rm clean up after stop
+docker run -itd --rm --name thor busybox
+
+docker run -itd --rm --name mjolnir busybox
+
+docker run -itd --rm --name stormbreaker nginx
+
+docker ps
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS     NAMES
+f1619c7d14e9   nginx     "/docker-entrypoint.…"   10 seconds ago       Up 9 seconds        80/tcp    stormbreaker
+80758d19600c   busybox   "sh"                     31 seconds ago       Up 30 seconds                 mjolnir
+6cde086a0e73   busybox   "sh"                     About a minute ago   Up About a minute             thor
+
 ```
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
