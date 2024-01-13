@@ -330,7 +330,7 @@ newasgard
 
 # -o, tie macvlan to a your physical nic
 
-# we we do docker run, w ehave to assign ip address ourselfs
+# we we do docker run, we have to assign ip address ourselfs
 
 ```
 macvlan
