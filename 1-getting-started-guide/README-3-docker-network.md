@@ -338,6 +338,11 @@ docker run -itd --rm --network newasgard --ip yoursubnet-ip-select --name this b
 # you
 # have to enable promisc mode
 # pain....the next network is better
+# has all the benefits of bridge network, except it is connect to your home network
+# dns, not expose ports, networkc chuck fav, prefferd
+# down side
+# macaddress and promisc mode, maybe you have no controll over this
+# no DHCP, not specify ip, docker will just assign and can be conflict
 
 ```
 macvlan
