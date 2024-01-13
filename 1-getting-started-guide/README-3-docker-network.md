@@ -314,7 +314,7 @@ graph TD;
     
 ```
 
-![Volume restart ](https://github.com/spawnmarvel/learning-docker/blob/main/images/network_user_defined.jpg)
+![User defined network ](https://github.com/spawnmarvel/learning-docker/blob/main/images/network_user_defined.jpg)
 ref https://medium.com/@sydasif78/docker-networking-basics-user-defined-bridge-6eea891ee339
 ## NetworkChuck the 4 network mac-vlan
 
