@@ -277,7 +277,7 @@ user-defined bridge for production with DNS
 
 ```mermaid
 graph TD;
-    docker0-->container;
+    docker0-->containers-3;
     asgard-->odin;
     asgard-->loki;
     odin-->loki
