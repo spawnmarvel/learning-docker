@@ -23,7 +23,7 @@ https://docs.docker.com/network/
 
 ```bash
 
-docker network
+docker network ls
 
 docker network connect
 
@@ -40,3 +40,38 @@ docker network rm
 ```
 
 https://docs.docker.com/engine/reference/commandline/network/
+
+## NetworkChuck
+
+Lets use the rabbitmq x 2 with shovel containers
+
+```bash
+# 7 Networks in total
+
+# remove all and start fresh
+docker compose down
+docker ps -a
+docker rmi -f $(docker images -aq)
+# maybe you need to rm volumes also if container name is changed or hostname
+# docker volume rm $(docker volume ls -qf dangling=true)
+docker network ls
+docker network prune
+
+docker network ps
+# default
+NETWORK ID     NAME      DRIVER    SCOPE
+21b05ed49511   bridge    bridge    local
+16e4c0c05bc5   host      host      local
+0d5aff734251   none      null      local
+
+# when we installed docker we get
+
+```
+
+```mermaid
+graph TD;
+    hostvm-->docker;
+    hostvm-->docker;
+    
+```
+https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
