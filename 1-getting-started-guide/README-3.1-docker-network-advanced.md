@@ -7,6 +7,10 @@ If you create a docker-compose service but do not specify a network, docker will
 1. it will assign a name, normally default_service1, where 'service1' is the name of the first service in the stack
 2. it will assign an IP subnet
 
+# Networking in Compose
+
+https://docs.docker.com/compose/networking/
+
 ## Creating network in compose
 
 ```bash
@@ -150,6 +154,71 @@ ping rmq6-portainer-portainer-1
 PING rmq6-portainer-portainer-1 (172.50.0.2) 56(84) bytes of data.
 64 bytes from rmq6-portainer-portainer-1.net_messaging (172.50.0.2): icmp_seq=1 ttl=64 time=0.064 ms
 64 bytes from rmq6-portainer-portainer-1.net_messaging (172.50.0.2): icmp_seq=2 ttl=64 time=0.078 ms
+
+```
+
+Lets see the link and create a container without network (use default bridge)
+
+```bash
+
+# 
+cd rmq6-portainer
+
+docker compose down
+
+# ip address
+ip address show
+4: docker0:
+
+# bridge
+bridge link
+# null
+
+docker compose up -d
+
+# ip address
+ip address shwo
+4: docker0:
+9: br-8922d7a09a26:
+11: veth4e32edb@if10:
+13: veth287c510@if12:
+
+# bridge
+bridge link
+
+11: veth4e32edb@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-8922d7a09a26 state forwarding priority 32 cost 2
+13: veth287c510@if12: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-8922d7a09a26 state forwarding priority 32 cost 2
+
+cd ..
+docker run -itd --rm -p 80:80 --name stormbreaker nginx
+
+# ip address
+ip address shwo
+4: docker0:
+9: br-8922d7a09a26:
+11: veth4e32edb@if10:
+13: veth287c510@if12:
+15: vethf6a8bef@if14:
+
+# default bridge net
+docker inspect bridge
+"Containers": {
+   "Name": "stormbreaker",
+    "IPv4Address": "172.17.0.2/16",
+
+# net_messaging
+docker inspect net_messaging 
+docker inspect net_messaging
+"Containers": {
+     "Name": "rmq6-portainer-rmq-app-1",
+      "IPv4Address": "172.50.0.3/24",
+       "Name": "rmq6-portainer-portainer-1",
+       "IPv4Address": "172.50.0.2/24",
+
+# stop
+docker stop stormbreaker
+cd rmq6-portainer
+docker compose down
 
 ```
 
