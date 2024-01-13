@@ -327,6 +327,8 @@ macvlan
 
 ```mermaid
 graph TD;
+    switch-->hostvm;
+    switch-->stormbreaker;
     hostvm-->docker0;
     stormbreaker-->our-application
     
