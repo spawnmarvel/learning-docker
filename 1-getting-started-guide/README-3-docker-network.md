@@ -117,6 +117,16 @@ bridge link
 9: veth4506cea@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
 
 ```
+
+Bridge 3 containers connect to docker0
+
+```mermaid
+graph TD;
+    docker0-->thor;
+    docker0-->mjolnir;
+    docker0-->stormbreaker;
+    
+```
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
 Lets use the rabbitmq x 2 with shovel containers
