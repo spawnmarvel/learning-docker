@@ -323,7 +323,14 @@ graph TD;
 # own ip address and mac, they are acting like virtual machines.
 
 ```
+macvlan
 
+```mermaid
+graph TD;
+    hostvm-->docker0;
+    stormbreaker-->our-application
+    
+```
 ## NetworkChuck the 5 network
 
 ```bash
