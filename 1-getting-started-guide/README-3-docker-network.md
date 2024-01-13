@@ -218,7 +218,7 @@ accdf38f2842   nginx     "/docker-entrypoint.…"   About a minute ago   Up Abou
 sudo docker network create asgard
 # or in compose
 
-# get the new bridge
+# get the new bridge, 172.18, not 17
 ip address show
 12: [..., 172.18.0.1/16]
 
@@ -231,6 +231,31 @@ NETWORK ID     NAME      DRIVER    SCOPE
 16e4c0c05bc5   host      host      local
 0d5aff734251   none      null      local
 
+# add containers
+docker run -itd --rm --network asgard --name loki busybox
+docker run -itd --rm --network asgard --name odin busybox
+
+ip address show
+
+bridge link
+
+5: veth15ddf8d@if4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+7: veth33f8184@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+11: vethc54447c@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+14: veth7ca5272@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-81f4cb96a0be state forwarding priority 32 cost 2
+16: veth508b690@if15: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-81f4cb96a0be state forwarding priority 32 cost 2
+
+# inspect it
+docker inspect asgard
+
+ "Containers": {
+      "Name": "odin",
+       "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+      "Name": "loki",
+       "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+    
 
 ```
 
