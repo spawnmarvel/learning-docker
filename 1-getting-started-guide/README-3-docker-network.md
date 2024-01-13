@@ -322,6 +322,16 @@ graph TD;
 # it would be like conecting thor and mjolnir to the switch
 # own ip address and mac, they are acting like virtual machines.
 
+docker network create -d macvlan \
+--subnet yoursubnet \ 
+--gateway yourgateway \
+-o parent=enp0s3 \
+newasgard
+
+# -o, tie macvlan to a your physical nic
+
+# we we do docker run, w ehave to assign ip address ourselfs
+
 ```
 macvlan
 
