@@ -273,6 +273,18 @@ PING odin (172.18.0.3): 56 data bytes
 
 ```
 
+user-defined bridge for production with DNS
+
+```mermaid
+graph TD;
+    docker0-->asgard;
+    asgard-->odin;
+    asgard-->loki;
+    odin-->loki
+    loki-->odin
+    
+```
+
 ## NetworkChuck the 3 network
 
 ## NetworkChuck the 4 network
