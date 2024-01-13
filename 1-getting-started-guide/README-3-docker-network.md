@@ -43,7 +43,6 @@ https://docs.docker.com/engine/reference/commandline/network/
 
 ## NetworkChuck
 
-Lets use the rabbitmq x 2 with shovel containers
 
 ```bash
 # 7 Networks in total
@@ -57,21 +56,29 @@ docker rmi -f $(docker images -aq)
 docker network ls
 docker network prune
 
+
+
+# when we installed docker we get some cool stuff
+ip address show
+1: [..., inet 127.0.0.1/8]
+2: etho0 [...., 192.xxx.x.x/24] # private
+3: docker0 [..., 172.17.0.1/16] # 
+
 docker network ps
 # default
 NETWORK ID     NAME      DRIVER    SCOPE
 21b05ed49511   bridge    bridge    local
 16e4c0c05bc5   host      host      local
 0d5aff734251   none      null      local
-
-# when we installed docker we get
-
 ```
+
+Bridge, default in docker, docker0
 
 ```mermaid
 graph TD;
-    hostvm-->docker;
-    hostvm-->docker;
+    hostvm private-->docker private;
     
 ```
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
+
+Lets use the rabbitmq x 2 with shovel containers
