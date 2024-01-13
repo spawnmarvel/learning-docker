@@ -41,7 +41,7 @@ docker network rm
 
 https://docs.docker.com/engine/reference/commandline/network/
 
-## NetworkChuck
+## NetworkChuck the first network, default bridge
 
 
 ```bash
@@ -127,6 +127,79 @@ graph TD;
     docker0-->stormbreaker;
     
 ```
+
+```bash
+# the bridge also gave us ip addresses, it does DHCP, lets inspect the network
+docker inspect bridge
+
+[...]
+ "Containers": {
+     "Name": "thor",
+     "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+     "Name": "mjolnir",
+     "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+     "Name": "stormbreaker",
+     "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+
+# it copies the /etc/resolv.con from the host to the container.
+# so they are using the same DNS.
+# since docker atc as a switch they can all talk.
+
+docker exce -it thor sh
+
+# show ip
+ip add
+172.17.0.2/16
+
+# ping mjolnir
+ping 172.17.0.3
+PING 172.17.0.3 (172.17.0.3): 56 data bytes
+64 bytes from 172.17.0.3: seq=0 ttl=64 time=0.199 ms
+64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.153 ms
+
+# inet  works also
+ping www.ba.no
+PING www.ba.no (104.18.20.60): 56 data bytes
+64 bytes from 104.18.20.60: seq=0 ttl=54 time=3.164 ms
+
+# this works since it used docker0
+ip route
+# docker0
+default via 172.17.0.1 dev eth0
+
+# Masquerade (hide) NAT
+# Masquerade (hide) network address translation (NAT) enables you the actual address of a personal computer private. 
+# NAT routes traffic from your personal computer to your system, which essentially makes the system the gateway for your personal computer.
+
+# now the webserver, nginx use port 80
+80/tcp    stormbreaker
+
+# can we reach it on the host vm from remote ip?
+# of course we have to have an inbound FW in for example Azure, but say we have that and all is in place.
+
+http://public-ip
+
+# no, we can not and that is one of the annoying things about the bridge network.
+# you have to expose it in run or compose
+
+sudo docker stop stormbreaker
+
+# add port
+docker run -itd --rm -p 80:80 --name stormbreaker nginx
+
+http://public-ip
+
+Welcome to nginx!
+
+
+```
+
+
+## NetworkChuck the second network, user-defined bridge
+
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
 Lets use the rabbitmq x 2 with shovel containers
