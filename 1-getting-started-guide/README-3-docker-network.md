@@ -203,10 +203,36 @@ f1619c7d14e9   nginx     "/docker-entrypoint.…"   10 seconds ago       Up 9 se
 CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                               NAMES
 accdf38f2842   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, :::80->80/tcp   stormbreaker
 
+
+# annoying on home lab, but it is good for is:
+# isolation
 ```
 
 
 ## NetworkChuck the second network, user-defined bridge
+
+```bash
+# speaking of isolation
+# bridge is cool, but use this instead, docker wants that.
+
+sudo docker network create asgard
+# or in compose
+
+# get the new bridge
+ip address show
+12: [..., 172.18.0.1/16]
+
+# view it
+docker network ls
+
+NETWORK ID     NAME      DRIVER    SCOPE
+81f4cb96a0be   asgard    bridge    local
+21b05ed49511   bridge    bridge    local
+16e4c0c05bc5   host      host      local
+0d5aff734251   none      null      local
+
+
+```
 
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
