@@ -285,16 +285,54 @@ graph TD;
     
 ```
 
-## NetworkChuck the 3 network
+## NetworkChuck the 3 network host
+
+```bash
+# is was the default network
+# redeploy the webserver
+docker stop stormbreaker
+
+# leave out ports but specify host network
+
+docker run -itd --rm --network host --name stormbreaker nginx
+
+# stormbreaker is moved to host, he has nothing, he shares it with the host
+http://public-ip
+
+Welcome to nginx!
+
+
+
+```
+host
+
+```mermaid
+graph TD;
+    hostvm-->docker0;
+    stormbreaker-->side-by-side-to-the-hostvm
+    
+```
 
 ## NetworkChuck the 4 network
 
+```bash
+```
+
 ## NetworkChuck the 5 network
+
+```bash
+```
 
 ## NetworkChuck the 6 network
 
+```bash
+```
+
 ## NetworkChuck the 7 network
-'
+
+```bash
+```
+
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
 Lets use the rabbitmq x 2 with shovel containers
