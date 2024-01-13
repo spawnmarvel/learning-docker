@@ -98,6 +98,24 @@ f1619c7d14e9   nginx     "/docker-entrypoint.…"   10 seconds ago       Up 9 se
 80758d19600c   busybox   "sh"                     31 seconds ago       Up 30 seconds                 mjolnir
 6cde086a0e73   busybox   "sh"                     About a minute ago   Up About a minute             thor
 
+# we did not mention network, so it used the default bridge and created 3 new interfaces  and linked it to the bridge, like a switch.
+
+ip address show
+
+1,2,3
+5: veth15ddf8d@if4
+7: veth33f8184@if6
+9: veth4506cea@if8
+
+# show link
+bridge link
+
+# and we see that they are connected to docker0
+
+5: veth15ddf8d@if4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+7: veth33f8184@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+9: veth4506cea@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
+
 ```
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
