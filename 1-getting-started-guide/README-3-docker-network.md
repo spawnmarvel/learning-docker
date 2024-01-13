@@ -301,6 +301,7 @@ http://public-ip
 
 Welcome to nginx!
 
+# it runs as an application, but no isolation.
 
 
 ```
@@ -309,13 +310,18 @@ host
 ```mermaid
 graph TD;
     hostvm-->docker0;
-    stormbreaker-->side-by-side-to-the-hostvm
+    hostvm-->stormbreaker
     
 ```
 
-## NetworkChuck the 4 network
+## NetworkChuck the 4 network mac-vlan
 
 ```bash
+# macvlan
+# remove all and connect containers to the physicall network
+# it would be like conecting thor and mjolnir to the switch
+# own ip address and mac, they are acting like virtual machines.
+
 ```
 
 ## NetworkChuck the 5 network
