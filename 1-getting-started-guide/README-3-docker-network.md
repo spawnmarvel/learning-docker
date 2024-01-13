@@ -382,4 +382,14 @@ graph TD;
 
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
-Lets use the rabbitmq x 2 with shovel containers
+## Docker compose
+
+```yml
+networks:
+      - net_messaging
+
+networks:
+  net_messaging:
+    driver: bridge
+    
+```
