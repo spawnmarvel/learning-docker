@@ -331,6 +331,11 @@ newasgard
 # -o, tie macvlan to a your physical nic
 
 # we we do docker run, we have to assign ip address ourselfs
+docker run -itd --rm --network newasgard --ip yoursubnet-ip-select --name this busybox
+
+# This is amazing but, we also get a mac address for each container.
+# Issue with ping for example
+# your network may not be able to have multiple mac addresse on one switch ports
 
 ```
 macvlan
