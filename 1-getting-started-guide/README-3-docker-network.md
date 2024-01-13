@@ -335,7 +335,9 @@ docker run -itd --rm --network newasgard --ip yoursubnet-ip-select --name this b
 
 # This is amazing but, we also get a mac address for each container.
 # Issue with ping for example
-# your network may not be able to have multiple mac addresse on one switch ports
+# you
+# have to enable promisc mode
+# pain....the next network is better
 
 ```
 macvlan
