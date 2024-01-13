@@ -41,7 +41,7 @@ docker network rm
 
 https://docs.docker.com/engine/reference/commandline/network/
 
-## NetworkChuck the first network, default bridge
+## NetworkChuck the 1 network, default bridge
 
 
 ```bash
@@ -209,7 +209,7 @@ accdf38f2842   nginx     "/docker-entrypoint.…"   About a minute ago   Up Abou
 ```
 
 
-## NetworkChuck the second network, user-defined bridge
+## NetworkChuck the 2 network, user-defined bridge for production
 
 ```bash
 # speaking of isolation
@@ -257,8 +257,32 @@ docker inspect asgard
                 "IPv6Address": ""
     
 
+# why do this, isolation
+# odin, loki cannot talk to thor.....
+
+# you also get some cool DNS with this, enter loki
+docker exec -it loki sh
+
+# ping odin
+ping odin
+PING odin (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.143 ms
+
+# how about that, since ip addresses can change, you can use DNS
+
+
 ```
 
+## NetworkChuck the 3 network
+
+## NetworkChuck the 4 network
+
+## NetworkChuck the 5 network
+
+## NetworkChuck the 6 network
+
+## NetworkChuck the 7 network
+'
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
 
 Lets use the rabbitmq x 2 with shovel containers
