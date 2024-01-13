@@ -342,7 +342,15 @@ docker run -itd --rm --network newasgard --ip yoursubnet-ip-select --name this b
 # dns, not expose ports, networkc chuck fav, prefferd
 # down side
 # macaddress and promisc mode, maybe you have no controll over this
-# no DHCP, not specify ip, docker will just assign and can be conflict
+# no DHCP, not specify ip, docker will just assign and can be conflict, with 2 DHCP in your network
+
+
+# but is has two modes
+# now we are looking it bridge mode
+# another mode, with joy 802.1q mode
+# can also specify sub interfaces
+
+min 25 
 
 ```
 macvlan
