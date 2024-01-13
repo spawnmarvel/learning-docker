@@ -194,6 +194,14 @@ http://public-ip
 
 Welcome to nginx!
 
+# view the difference
+# prevoius
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS     NAMES
+f1619c7d14e9   nginx     "/docker-entrypoint.…"   10 seconds ago       Up 9 seconds        80/tcp    stormbreaker
+
+# current
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                               NAMES
+accdf38f2842   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, :::80->80/tcp   stormbreaker
 
 ```
 
