@@ -76,7 +76,7 @@ Bridge, default in docker, docker0
 
 ```mermaid
 graph TD;
-    hostvm private-->docker private;
+    hostvm-private-ip-->docker-private-ip;
     
 ```
 https://www.youtube.com/watch?v=bKFMS5C4CG0&t=844s
