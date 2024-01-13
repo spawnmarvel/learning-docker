@@ -221,4 +221,6 @@ cd rmq6-portainer
 docker compose down
 
 ```
-
+1. We have the default network bridge.
+2. We make a network for all containers to share in a compose file.
+3. You can make more net's in the same docker, ie. app can talk to frontend and db. But db can only talk to app.
