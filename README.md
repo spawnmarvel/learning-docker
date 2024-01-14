@@ -11,14 +11,14 @@ What do we get extra here:
 * Azure VM with Docker, mount data drive, NSG
 * Azure Container with Docker
 
-Docker: be efficient
-
-https://follow-e-lo.com/2024/01/14/docker-be-efficient/
-
-
 Azure resources
 
 ![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
+
+
+## Docker: be efficient
+
+https://follow-e-lo.com/2024/01/14/docker-be-efficient/
 
 ## Visuals
 
