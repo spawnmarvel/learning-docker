@@ -7,6 +7,11 @@ services:
       context: .
       dockerfile: Dockerfile
     hostname: rmq4.cloud
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500m
     ports:
       - 5672:5672
       - 15672:15672
@@ -27,10 +32,9 @@ volumes:
 # cd dir
 # docker compose up -d
 # http://public-ip:15672
-# https://public-ip:9443
 
-# Edit Docker file?
+# remove all images
 # docker rmi -f $(docker images -aq)
 
-# Maybe you need to rm volumes also if container name is changed or hostname
+# remove all volumes
 # docker volume rm $(docker volume ls -qf dangling=true)
