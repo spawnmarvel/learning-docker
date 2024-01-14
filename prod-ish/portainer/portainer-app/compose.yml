@@ -7,7 +7,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 500m
+          memory: 600M
     # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
     restart: always
     ports:

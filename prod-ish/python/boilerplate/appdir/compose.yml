@@ -6,19 +6,15 @@ services:
             - log:/user/src/appdir
         networks:
             - app_network
-    portainer:
-        image: portainer/portainer-ce
-        command: -H unix:///var/run/docker.sock
-        restart: always
-        ports:
-            - 9443:9443
-            - 8000:8000
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-            - portainer_data:/data
 
 networks:
     app_network:
 volumes:
-    portainer_data:
     log:
+
+
+# remove all images
+# docker rmi -f $(docker images -aq)
+
+# remove all volumes
+# docker volume rm $(docker volume ls -qf dangling=true)
