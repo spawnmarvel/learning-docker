@@ -16,7 +16,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/portainer/READ
 mkdir myfolder
 
 cd myfolder
-# copy all files in rmq-portainer-ssl
+# copy all files in rmq-ssl
 # compose.yml, definitions.json, Dockerfile, generate.sertificate.sh, rabbitmq.config
 
 # run generate sertificate
