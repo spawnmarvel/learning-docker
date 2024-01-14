@@ -14,27 +14,12 @@ services:
       - net_messaging
     volumes:
       - vol_rabbitmq_data:/var/lib/rabbitmq
-# portainer for view containers
-  portainer:
-    image: portainer/portainer-ce
-    # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
-    restart: always
-    ports:
-      - 9443:9443
-      - 8000:8000
-    networks:
-      - net_messaging
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - vol_portainer_data:/data
-
 networks:
   net_messaging:
     driver: bridge
 
 volumes:
   vol_rabbitmq_data:
-  vol_portainer_data:
 
 
 # open inbound NSG
