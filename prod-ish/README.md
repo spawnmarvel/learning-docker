@@ -56,7 +56,7 @@ View it:
 
 https://follow-e-lo.com/2024/01/06/docker-rabbitmq/
 
-## rmq-x2-portainer
+## rmq-x2
 
 ```bash
 
@@ -64,7 +64,7 @@ https://follow-e-lo.com/2024/01/06/docker-rabbitmq/
 mkdir myfolder
 
 cd myfolder
-# copy all files in rmq-x2-portainer
+# copy all files in rmq-x2
 # Dockerfile_client  Dockerfile_server  client  compose.yml  server
 
 # start
@@ -103,7 +103,7 @@ View it:
 
 https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
 
-## wordpress-phpmyadmin-portainer
+## wordpress-phpmyadmin
 
 Go to readme for more details.
 
@@ -124,15 +124,15 @@ docker compose up -d
 # Container my_wordpress-phpmyadmin-1       Started
 ```
 
-## wordpress-portainer ssl
+## wordpress-ssl
 
 TODO
 
-## zabbix-portainer
+## zabbix-
 
 TODO
 
-## zabbix-portainer-ssl
+## zabbix-ssl
 
 
 TODO
