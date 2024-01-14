@@ -7,7 +7,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 750m
+          memory: 500m
     # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
     restart: always
     ports:
@@ -29,5 +29,5 @@ volumes:
 # remove all images
 # docker rmi -f $(docker images -aq)
 
-# Maybe you need to rm volumes also if container name is changed or hostname
+# remove all volumes
 # docker volume rm $(docker volume ls -qf dangling=true)
