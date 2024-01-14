@@ -20,13 +20,13 @@ services:
 volumes:
   vol_portainer_data:
 
-  # open inbound NSG
+# open inbound NSG
 # no http management, , refresh and clear cache
 # cd dir
 # docker compose up -d
 # https://public-ip:9443
 
-# Edit Docker file?
+# remove all images
 # docker rmi -f $(docker images -aq)
 
 # Maybe you need to rm volumes also if container name is changed or hostname
