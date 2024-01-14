@@ -2,10 +2,12 @@
 
 
 ## portainer
-````bash
+
+one-click deploy
+
 https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/portainer/README.md
 
-```
+
 ## rmq-ssl
 
 ```bash
