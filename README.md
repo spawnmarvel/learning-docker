@@ -22,7 +22,7 @@ Azure resources
 
 ## Visuals
 
-https://follow-e-lo.com/2023/12/20/docker/
+https://follow-e-lo.com/category/docker/
 
 ## 1 Getting started guide CLI
 
