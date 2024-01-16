@@ -22,7 +22,6 @@ services:
       
 networks:
   net_messaging:
-    driver: bridge
 
 volumes:
   vol_rabbitmq_data:
@@ -33,6 +32,11 @@ volumes:
 # cd dir
 # docker compose up -d
 # http://public-ip:15672
+
+# Edit Docker file?
+# docker compose up -d --build
+# or
+# docker compose
 
 # remove all images
 # docker rmi -f $(docker images -aq)

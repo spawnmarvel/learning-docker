@@ -50,29 +50,28 @@ volumes:
   vol_rabbitmq_data:
   vol_portainer_data:
 
-    # open inbound NSG
-    # no http management, , refresh and clear cache
-    # cd dir
-    # docker compose up -d
-    # http://public-ip:15672
-    # https://public-ip:9443
+# open inbound NSG
+# no http management, , refresh and clear cache
+# cd dir
+# docker compose up -d
+# http://public-ip:15672
+# https://public-ip:9443
 
-    # Edit Docker file?
+# Edit Docker file?
 
-    # docker compose down
+# docker compose down
 
-    # docker rmi -f $(docker images -aq)
+# docker rmi -f $(docker images -aq)
 
-    # Maybe you need to rm volumes also if container name is changed or hostname
+# Maybe you need to rm volumes also if container name is changed or hostname
 
-    # docker volume rm $(docker volume ls -qf dangling=true)
+# docker volume rm $(docker volume ls -qf dangling=true)
 
-    # docker exec -it 4e7bc61a8410 bash
+# docker exec -it 4e7bc61a8410 bash
 
-    # cd /etc/rabbitmq
+# cd /etc/rabbitmq
+# ls
 
-    # ls
+# conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
 
-    # conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
-
-    # https://follow-e-lo.com/2024/01/05/docker-compose-ssl/
+# https://follow-e-lo.com/2024/01/05/docker-compose-ssl/
