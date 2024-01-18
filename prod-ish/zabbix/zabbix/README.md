@@ -37,3 +37,5 @@ The Zabbix server and agent services are using the latest Zabbix 6.0 images. The
 The Zabbix server and agent services are configured using environment variables. The MySQL service is also configured using environment variables, and its data is stored in a Docker volume.
 
 Please adjust the MySQL root password and other environment variables as per your needs.
+
+## Lets spin up compose 2
