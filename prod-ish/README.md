@@ -17,7 +17,7 @@ mkdir myfolder
 
 cd myfolder
 # copy all files in rmq-ssl
-# compose.yml, definitions.json, Dockerfile, generate.sertificate.sh, rabbitmq.config
+# compose.yml, definitions.json, Dockerfile, generate.sertificate.sh, generate.sertificate_keyusage.sh, rabbitmq.config
 
 # run generate sertificate
 bash generate.sertificate_keyusage.sh
