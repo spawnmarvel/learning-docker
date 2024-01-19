@@ -887,6 +887,8 @@ Using the docker image history command, you can see the command that was used to
 
 ```bash
 
+TODO
+
 ```
 
 https://docs.docker.com/get-started/09_image_best/
