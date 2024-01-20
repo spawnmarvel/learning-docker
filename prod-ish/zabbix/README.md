@@ -68,13 +68,10 @@ cp compose.yml
 Clone the official Zabbix Docker GitHub repository
 
 ```bash
-mkdir zabbix-repos
-cd zabbix-repos
 
 git clone https://github.com/zabbix/zabbix-docker.git
 
-ls
-zabbix-docker
+cd zabbix-docker
 
 ```
 
@@ -89,11 +86,55 @@ git fetch https://github.com/zabbix/zabbix-docker.git
 
 ```bash
 
-cd /home/imsdal/zabbix-repos/zabbix-docker
+/home/imsdal/zabbix-docker
 
-docker compose docker-compose_v3_ubuntu_mysql_local.yaml up -d
+docker -f compose /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml up -d
 
+
+[...]
+Unable to flush stdout: No space left on device
+
+# used space
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        29G  3.8G   26G  13% /
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           781M  1.1M  780M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sdb15      105M  6.1M   99M   6% /boot/efi
+/dev/sda1       4.0G  3.7G  332M  92% /datadrive
+/dev/sdc1       7.8G   28K  7.4G   1% /mnt
+tmpfs           391M  4.0K  391M   1% /run/user/1000
+
+# out of inodes?
+df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      3870720 122502 3748218    4% /
+tmpfs           499622      1  499621    1% /dev/shm
+tmpfs           819200    791  818409    1% /run
+tmpfs           499622      3  499619    1% /run/lock
+/dev/sdb15           0      0       0     - /boot/efi
+/dev/sda1       827528 147528  680000   18% /datadrive
+/dev/sdc1       524288     12  524276    1% /mnt
+tmpfs            99924     25   99899    1% /run/user/1000
+# nope, none is 100%
+
+
+
+# It is the datadrive
+/dev/sda1       4.0G  3.7G  332M  92% /datadrive
+
+docker system prune
+# Total reclaimed space: 436.2MB
+
+df -h
+/dev/sda1       4.0G  2.1G  2.0G  52% /datadrive
+
+# expand it to 8 GB since docker stores everything on /datadrive due to update docker config
 ```
+
+
+
 
 
 
