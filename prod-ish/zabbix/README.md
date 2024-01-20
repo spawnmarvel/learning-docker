@@ -226,41 +226,33 @@ tmpfs           391M  4.0K  391M   1% /run/user/1000
 
 ```
 
-Option 1: Partition a Disk Using parted Command
+Resize disk (it was 4gb) and resize it on the vm also
 
 ```bash
- 
-sudo parted -l
 
-Warning: Not all of the space available to /dev/sda appears to be used, you can
-fix the GPT to use all of the space (an extra 8388608 blocks) or continue with
-the current setting?
-Fix/Ignore?
+# GOTO and partition it from 4 to use all 8 gb avaliable
+# https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 
-fix
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        29G  4.2G   25G  15% /
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           781M  1.1M  780M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sda15      105M  6.1M   99M   6% /boot/efi
+/dev/sdc1       8.0G  3.5G  4.6G  43% /datadrive
+/dev/sdb1       7.8G   32K  7.4G   1% /mnt
+tmpfs           391M  4.0K  391M   1% /run/user/1000
 
-Model: Msft Virtual Disk (scsi)
-Disk /dev/sda: 8590MB
-Sector size (logical/physical): 512B/4096B
-Partition Table: gpt
-Disk Flags:
-
-Number  Start   End     Size    File system  Name     Flags
- 1      1049kB  4294MB  4293MB  xfs          xfspart
-
-# reboot sever and check?
-sudo shutodwn -r now
-# disk is stil
-/dev/sda1       4.0G  3.4G  628M  85% /datadrive
-# restart from azure
-
-sudo cfdisk
 
 
 ```
-https://askubuntu.com/questions/1384983/vmware-more-disk-space
 
+pause 20.01.2024
 
+```bash
+docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml down
+```
 
 
 

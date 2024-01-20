@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+  # rabbitmq client with a static host name
+  rmq-app:
+    build:
+      context: .
+      dockerfile: Dockerfile_client
+    depends_on:
+      - rmq-app-server
+    hostname: rmq_client.cloud
+    container_name: rmq_client
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1.1GB
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - net_messaging
+    volumes:
+      - vol_rabbitmq_data_rmq_client:/var/lib/rabbitmq
+  # rabbitmq server with a static host name
+  rmq-app-server:
+    build:
+      context: .
+      dockerfile: Dockerfile_server
+    hostname: rmq_server.cloud
+    container_name: rmq_server
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1.1GB
+    restart: always
+    ports:
+      - 5673:5673
+      - 15673:15673
+    networks:
+      - net_messaging
+    volumes:
+      - vol_rabbitmq_data_rmq_server:/var/lib/rabbitmq
+
+networks:
+  net_messaging:
+    driver: bridge
+
+volumes:
+  vol_rabbitmq_data_rmq_client:
+  vol_rabbitmq_data_rmq_server:
+
+# open inbound NSG
+# no http management, , refresh and clear cache
+# cd dir
+# docker compose up -d
+# http://public-ip:15672 / 3
+
+
+# Edit Docker file?
+# docker compose up -d --build
+# or
+# docker compose down
+
+# docker rmi -f $(docker images -aq)
+
+# Maybe you need to rm volumes also if container name is changed or hostname
+
+# docker volume rm $(docker volume ls -qf dangling=true)
+
+# docker exec -it 4e7bc61a8410 bash
+
+# cd /etc/rabbitmq
+
+# ls
+
+# conf.d  enabled_plugins  rabbitmq.conf  server_ca.bundle  server_cert.pem  server_key.pem
+
+# https://follow-e-lo.com/2024/01/05/docker-compose-ssl/

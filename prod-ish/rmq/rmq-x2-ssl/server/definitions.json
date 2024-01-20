@@ -1,0 +1,27 @@
+{
+    "users": [{
+      "name": "admin",
+      "password": "admin123SwapMe",
+      "tags": "administrator"
+    }, {
+      "name": "consumer",
+      "password": "qweqwe",
+      "tags": ""
+    }],
+    "vhosts": [{
+      "name": "/"
+    }],
+    "permissions": [{
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }, {
+      "user": "consumer",
+      "vhost": "/",
+      "configure": "",
+      "write": "",
+      "read": ".*"
+    }]
+  }
