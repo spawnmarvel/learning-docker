@@ -143,6 +143,11 @@ df -h
 docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml up -d
 
 
+# succcess
+# visit http://public-ip
+# it could take some time, and there could be a db configuration error
+# just give it time to finish.
+
 ```
 
 ### zbx_env directory
@@ -226,7 +231,7 @@ tmpfs           391M  4.0K  391M   1% /run/user/1000
 
 ```
 
-Resize disk (it was 4gb) and resize it on the vm also
+Resize disk (it was 4gb) and resize it on the vm also, but it was not partiotioned.
 
 ```bash
 
