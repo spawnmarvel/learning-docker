@@ -90,3 +90,57 @@ sudo mkdir test01
 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/attach-disk-portal?tabs=ubuntu
 
 https://github.com/spawnmarvel/azure-automation/blob/main/azure-extra-linux-vm/READMEQuickstartsLinuxMS.md
+
+
+## Resize disk and resize it on the vm also
+
+* 1.just log in your VM;
+* 2.use sudo cfdisk to enter the permission of cfdisk on your VM's terminal;
+* 3.choose Resize button, press enter, yes, enter
+* 4.accept the default, should be used + avaliable
+* 5.verify new GB
+* 6.choose write button to sync the new partion to disk
+* 6.choose quit
+* 7.use sudo resize2fs /dev/sda1
+
+```bash
+sudo resize2fs /dev/sda1
+# resize2fs 1.46.5 (30-Dec-2021)
+resize2fs: Bad magic number in super-block while trying to open /dev/sda1
+# Couldn't find valid filesystem superblock.
+
+# resize2fs is not the default file system on ubuntu
+
+df -t
+# Filesystem     Type  1K-blocks    Used Available Use% Mounted on
+# /dev/sda1      xfs     4182016 3539924    642092  85% /datadrive
+
+# xfs is
+# xfs file system support only extend not reduce. So if you want to resize the filesystem use xfs_growfs rather than resize2fs.
+
+sudo xfs_growfs /dev/sda1
+
+# [...]
+data blocks changed from 1048064 to 2096891
+
+```
+* 8.Restart or reboot your virtual machine
+
+```bash
+sudo shutdown now -r
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1       8.0G  3.5G  4.6G  43% /datadrive
+
+sudo su -
+
+cd /datadrive
+
+ls
+# all data is there
+buildkit    engine-id  network   plugins   swarm  volumes
+containers  image      overlay2  runtimes  tmp
+```
+
+https://askubuntu.com/questions/1384983/vmware-more-disk-space
