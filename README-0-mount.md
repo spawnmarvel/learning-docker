@@ -144,3 +144,5 @@ containers  image      overlay2  runtimes  tmp
 ```
 
 https://askubuntu.com/questions/1384983/vmware-more-disk-space
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/resize_datadisk.jpg)
