@@ -92,8 +92,22 @@ https://learn.microsoft.com/en-us/azure/virtual-machines/linux/attach-disk-porta
 https://github.com/spawnmarvel/azure-automation/blob/main/azure-extra-linux-vm/READMEQuickstartsLinuxMS.md
 
 
-## Resize disk and resize it on the vm also
+## Resize disk (it was 4gb) and resize it on the vm also
 
+```bash
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        29G  4.2G   25G  15% /
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           781M  1.1M  780M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sdb15      105M  6.1M   99M   6% /boot/efi
+/dev/sda1       4.0G  3.4G  628M  85% /datadrive
+/dev/sdc1       7.8G   28K  7.4G   1% /mnt
+tmpfs           391M  4.0K  391M   1% /run/user/1000
+
+```
 * 1.just log in your VM;
 * 2.use sudo cfdisk to enter the permission of cfdisk on your VM's terminal;
 * 3.choose Resize button, press enter, yes, enter
@@ -104,6 +118,7 @@ https://github.com/spawnmarvel/azure-automation/blob/main/azure-extra-linux-vm/R
 * 7.use sudo resize2fs /dev/sda1
 
 ```bash
+
 sudo resize2fs /dev/sda1
 # resize2fs 1.46.5 (30-Dec-2021)
 resize2fs: Bad magic number in super-block while trying to open /dev/sda1
