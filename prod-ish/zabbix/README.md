@@ -62,6 +62,13 @@ cp compose.yml
 
 # HOW-TO: Install Zabbix with MySQL as containers using docker-compose
 
+
+## Visual on e-lo
+
+https://follow-e-lo.com/2024/01/20/docker-zabbix/
+
+## Install Zabbix with MySQL as containers using docker-compose
+
 * VM
 * Docker and docker compose
 
@@ -131,6 +138,11 @@ df -h
 /dev/sda1       4.0G  2.1G  2.0G  52% /datadrive
 
 # expand it to 8 GB since docker stores everything on /datadrive due to update docker config
+
+
+docker -f compose /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml up -d
+
+
 ```
 
 
