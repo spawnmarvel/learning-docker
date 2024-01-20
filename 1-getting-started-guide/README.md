@@ -830,7 +830,7 @@ services:
     image: node:18-alpine
     command: sh -c "yarn install && yarn run dev"
     ports:
-      - 3000:3000
+      - 127.0.0.1:3000:3000
     working_dir: /app
     volumes:
       - ./:/app
@@ -864,6 +864,23 @@ docker compose up -d
 
 # Look at the logs using the docker compose logs -f command. You'll see the logs from each of the services interleaved into a single stream.
 docker compose logs -f
+
+# app logs in portainer
+# yarn install v1.22.19
+# [1/4] Resolving packages...
+#success Already up-to-date.
+# Done in 0.50s.
+# yarn run v1.22.19
+# $ nodemon -L src/index.js
+# [nodemon] 2.0.20
+# [nodemon] to restart at any time, enter `rs`
+# [nodemon] watching path(s): *.*
+# [nodemon] watching extensions: js,mjs,json
+# [nodemon] starting `node src/index.js`
+# Waiting for mysql:3306.
+# Connected!
+# Connected to mysql db at host mysql
+# Listening on port 3000
 
 # Tear it all down
 docker compose down
