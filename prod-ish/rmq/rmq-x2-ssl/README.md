@@ -2,8 +2,9 @@
 
 ```bash
 
-# test the no ssl rmq x 2 compose
+# test the no ssl rmq x 2 compose to see that all is success
 mkdir rmq-2-ssl
+
 cp * 
 
 docker compose up -d
