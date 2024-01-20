@@ -3,8 +3,8 @@
 ```bash
 
 # test the no ssl rmq x 2 compose
-mkdir rmqx2-ssl
-cp *
+mkdir rmq-2-ssl
+cp * 
 
 docker compose up -d
 
