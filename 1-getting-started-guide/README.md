@@ -906,6 +906,10 @@ All notes here
 
 https://docs.docker.com/get-started/09_image_best/
 
+When time do all this for Python, I do not know node apps.
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build-python.md
+
 ## Extra 5 get to know docker build with Python
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build.md
