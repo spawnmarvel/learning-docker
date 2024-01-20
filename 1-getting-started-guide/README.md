@@ -914,7 +914,56 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build-python.md
 
-## Part 10 What next
+## Part 10 What next after getting started
+
+
+### Container orchestration
+
+Running containers in production is tough. You don't want to log into a machine and simply run a docker run or docker compose up. 
+
+* Why not? 
+* Well, what happens if the containers die? 
+* How do you scale across several machines? 
+
+Container orchestration solves this problem. 
+
+Tools like Kubernetes, Swarm, Nomad, and ECS all help solve this problem, all in slightly different ways.
+
+The general idea is that you have managers who receive the expected state. 
+
+This state might be "I want to run two instances of my web app and expose port 80." 
+
+The managers then look at all of the machines in the cluster and delegate work to worker nodes.
+
+### Cloud Native Computing Foundation projects
+
+The CNCF is a vendor-neutral home for various open-source projects, including 
+
+* Kubernetes
+* Prometheus
+* Envoy
+* Linkerd
+* NATS and more. 
+
+You can view the graduated and incubated projects here 
+
+https://www.cncf.io/projects/
+
+and the entire CNCF Landscape here. 
+
+https://landscape.cncf.io/
+
+There are a lot of projects to help solve problems around monitoring, logging, security, image registries, messaging, and more.
+
+### Getting started video workshop
+
+Docker recommends watching the video workshop from DockerCon 2022. Watch the entire video or use the following links to open the video at a particular section.
+
+Videos and part 10
+
+https://docs.docker.com/get-started/11_what_next/
+
+
 
 https://docs.docker.com/guides/get-started/
 
