@@ -15,3 +15,9 @@ cp *
 docker compose up -d
 
 ```
+
+## Rmq x 2 ssl
+
+* test with rabbitmq.config for auth backend, internal backend
+* make cert that last for 10 years
+* have fun
