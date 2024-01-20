@@ -919,7 +919,7 @@ https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide
 
 ### Container orchestration
 
-Running containers in production is tough. You don't want to log into a machine and simply run a docker run or docker compose up. 
+Running containers in production is tough. **You don't want to log into a machine and simply run a docker run or docker compose up.**
 
 * Why not? 
 * Well, what happens if the containers die? 
