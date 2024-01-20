@@ -910,9 +910,9 @@ When time do all this for Python, I do not know node apps.
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build-python.md
 
-## Extra 5 get to know docker build with Python
+## Extra 5 get to know docker build with Python TODO
 
-https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build.md
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-5-docker-build-python.md
 
 ## Part 10 What next
 
