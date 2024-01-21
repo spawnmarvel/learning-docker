@@ -170,7 +170,7 @@ docker compose up -d
 * update shovel
 * make bundle
 * update Dockerfile to cp correct certificates
-* enable rabbitmq_auth_mechanism_ssl
+* enable rabbitmq_auth_mechanism_ssl for server only
 * update rabbitmq.config at server (dont use advanced.config for this, that is only for the shovel in the client)
 
 
