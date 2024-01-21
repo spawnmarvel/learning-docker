@@ -20,13 +20,13 @@ docker compose up -d
 
 ## cert store
 
-From this
+From this build (it is for winows)
 
 https://github.com/spawnmarvel/quickguides/blob/main/securityPKI-CA/README.md
 
-
-(https://www.rabbitmq.com/ssl.html#manual-certificate-generation)
-(https://pki-tutorial.readthedocs.io/en/latest/simple/root-ca.conf.html)
+With reference to:
+* https://www.rabbitmq.com/ssl.html#manual-certificate-generation
+* https://pki-tutorial.readthedocs.io/en/latest/simple/root-ca.conf.html
 
 visual
 
