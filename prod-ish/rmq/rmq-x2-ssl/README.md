@@ -18,6 +18,16 @@ docker compose up -d
 * have fun
 
 
+## cert store
+
+From this
+
+https://github.com/spawnmarvel/quickguides/blob/main/securityPKI-CA/README.md
+
+
+(https://www.rabbitmq.com/ssl.html#manual-certificate-generation)
+(https://pki-tutorial.readthedocs.io/en/latest/simple/root-ca.conf.html)
+
 visual
 
 https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
