@@ -164,5 +164,14 @@ docker compose up -d
 
 ```
 
-## Update Dockerfile
+## Update Dockerfile and configuration
+
+* add CN user to definitions
+* update shovel
+* make bundle
+* update Dockerfile to cp correct certificates
+* enable rabbitmq_auth_mechanism_ssl
+* update rabbitmq.config at server (dont use advanced.config for this, that is only for the shovel in the client)
+
+
 
