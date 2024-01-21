@@ -36,7 +36,7 @@ OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
 mkdir certs private
 chmod 700 private # remove all permission
 echo 01 > serial # should have content 01
-touche index.txt
+touch index.txt
 
 ls
 certs  index.txt  openssl.cnf  private  serial
@@ -65,6 +65,7 @@ ca_certificate.cer  ca_certificate.pem  certs  index.txt  openssl.cnf  private  
 
 # view the CN
 openssl x509 -noout -subject -in ca_certificate.pem
+
 subject=CN = SocratesIncCa
 
 # This is all that is needed to generate a test Certificate Authority. The root certificate is in ca_certificate.pem and is also in ca_certificate.cer. 
@@ -72,7 +73,73 @@ subject=CN = SocratesIncCa
 # Most software uses the former but some tools require the latter.
 ```
 
-## Certificates for server
+## Certificates for server (client)
+
+In the compose we have two services for rmq with name
+
+*  hostname: rmq_client.cloud
+*  hostname: rmq_server.cloud
+
+We need to generate CN with that name and also add rmq_client.cloud as a user on rmq_server.cloud.
+
+Since we will be using CN for login.
+
+rmq_client.cloud
+
+```bash
+cd cert-store
+mkdir client
+
+# Generating RSA private key
+openssl genrsa -out ./client/private_key.pem 2048
+
+# Generating request
+openssl req -new -key ./client/private_key.pem -out ./client/req.pem -outform PEM -subj /CN=rmq_client.cloud -nodes
+
+# Server and client extension
+openssl ca -config openssl.cnf -in ./client/req.pem -out ./client/client_certificate.pem -notext -batch -extensions usr_cert
+
+# Using configuration from openssl.cnf
+# Check that the request matches the signature
+# Signature ok
+# The Subject's Distinguished Name is as follows
+# commonName            :ASN.1 12:'rmq_client.cloud'
+# Certificate is to be certified until Jan 20 12:50:28 2034 GMT (3652 days)
+# Write out database with 1 new entries
+# Data Base Updated
+
+
+# view cn
+openssl x509 -noout -subject -in ./client/client_certificate.pem
+
+subject=CN = rmq_client.cloud
+
+# view extensions
+openssl x509 -noout -ext keyUsage < ./client/client_certificate.pem
+# X509v3 Key Usage:
+#    Digital Signature, Non Repudiation, Key Encipherment
+
+openssl x509 -noout -ext extendedKeyUsage < ./client/client_certificate.pem
+# X509v3 Extended Key Usage:
+#    TLS Web Server Authentication, TLS Web Client Authentication, Code Signing, E-mail Protection
+
+# all files
+/rmq-x2-ssl/cert-store ls
+ca_certificate.cer  certs   index.txt       index.txt.old  private  serial.old
+ca_certificate.pem  client  index.txt.attr  openssl.cnf    serial
+
+# server (client)
+cd client
+ls
+client_certificate.pem  private_key.pem  req.pem
+cd ..
+cd certs
+ls
+01.pem
+
+```
+
+## Certificates for server (server)
 
 ## Test no SSL
 
