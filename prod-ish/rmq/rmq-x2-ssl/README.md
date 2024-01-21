@@ -73,8 +73,6 @@ subject=CN = SocratesIncCa
 # Most software uses the former but some tools require the latter.
 ```
 
-## Certificates for server (client)
-
 In the compose we have two services for rmq with name
 
 *  hostname: rmq_client.cloud
@@ -83,6 +81,8 @@ In the compose we have two services for rmq with name
 We need to generate CN with that name and also add rmq_client.cloud as a user on rmq_server.cloud.
 
 Since we will be using CN for login.
+
+## Certificates for server (client) rmq_client.cloud
 
 rmq_client.cloud
 
@@ -144,7 +144,12 @@ ls
 
 ```
 
-## Certificates for server (server)
+## Certificates for server (server) rmq_server.cloud
+
+rmq_server.cloud
+
+```bash
+```
 
 ## Test no SSL
 
