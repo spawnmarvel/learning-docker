@@ -1,15 +1,9 @@
 # Rmq x 2 ssl
 
-```bash
+## visual
 
-# test the no ssl rmq x 2 compose to see that all is success
-mkdir rmq-2-ssl
+https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
-cp * 
-
-docker compose up -d
-
-```
 
 ## Rmq x 2 ssl
 
@@ -30,9 +24,6 @@ With reference to:
 * https://www.rabbitmq.com/ssl.html#manual-certificate-generation
 * https://pki-tutorial.readthedocs.io/en/latest/simple/root-ca.conf.html
 
-visual
-
-https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ```bash
 
@@ -81,6 +72,19 @@ subject=CN = SocratesIncCa
 ```
 
 ## Certificates for server
+
+## Test no SSL
+
+```bash
+
+# test the no ssl rmq x 2 compose to see that all is success
+mkdir rmq-2-ssl
+
+cp * 
+
+docker compose up -d
+
+```
 
 ## Update Dockerfile
 
