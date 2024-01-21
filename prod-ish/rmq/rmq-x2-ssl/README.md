@@ -123,6 +123,11 @@ openssl x509 -noout -ext extendedKeyUsage < ./client/client_certificate.pem
 # X509v3 Extended Key Usage:
 #    TLS Web Server Authentication, TLS Web Client Authentication, Code Signing, E-mail Protection
 
+# cp to windows import in certificate
+cat ./client/client_certificate.pem
+# import in windows as client_certificate.crt
+# Intended purposes = all
+
 # all files
 /rmq-x2-ssl/cert-store ls
 ca_certificate.cer  certs   index.txt       index.txt.old  private  serial.old
