@@ -14,8 +14,6 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ## Certificate store CA
 
-* openssl.cnf for config
-* 
 From this build (it is for windows )
 
 https://github.com/spawnmarvel/quickguides/blob/main/securityPKI-CA/README.md
@@ -23,6 +21,9 @@ https://github.com/spawnmarvel/quickguides/blob/main/securityPKI-CA/README.md
 With reference to:
 * https://www.rabbitmq.com/ssl.html#manual-certificate-generation
 * https://pki-tutorial.readthedocs.io/en/latest/simple/root-ca.conf.html
+
+
+The openssl.cnf for used here was translated to Linux.
 
 
 ```bash
