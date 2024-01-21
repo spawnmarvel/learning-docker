@@ -20,7 +20,9 @@ docker compose up -d
 
 ## cert store
 
-From this build (it is for winows)
+* openssl.cnf for config
+* 
+From this build (it is for windows )
 
 https://github.com/spawnmarvel/quickguides/blob/main/securityPKI-CA/README.md
 
