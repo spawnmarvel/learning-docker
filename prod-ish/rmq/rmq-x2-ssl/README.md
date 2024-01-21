@@ -49,7 +49,9 @@ touche index.txt
 ls
 certs  index.txt  openssl.cnf  private  serial
 
-# Next we need to generate the key and certificates that our test Certificate Authority will use.
+# Next we need to generate the key and certificates that our test Certificate Authority will use. Since we are uing a custom openssl.cnf we have already added where the key should be stored.
+# You could generate your own key with a password protection
+# https://www.ibm.com/docs/en/license-metric-tool?topic=certificate-step-1-creating-private-keys-certificates
 
 # 1 Generate the key and cert
 /rmq-x2-ssl/cert-store
