@@ -3,11 +3,11 @@ default_ca = testca
 
 [ testca ]
 dir = .
-certificate = "$dir/ca_certificate.pem"
-database = "$dir/index.txt"
-new_certs_dir = "$dir/certs"
-private_key = "$dir/private/ca_private_key.pem"
-serial = "$dir/serial"
+certificate = $dir/ca_certificate.pem
+database = $dir/index.txt
+new_certs_dir = $dir/certs
+private_key = $dir/private/ca_private_key.pem
+serial = $dir/serial
 
 default_crl_days = 7
 default_days = 3652
@@ -30,7 +30,7 @@ basicConstraints = CA:false
 
 [ req ]
 default_bits = 2048
-default_keyfile = "$dir/private/ca_private_key.pem"
+default_keyfile = ./private/ca_private_key.pem
 default_md = sha256
 prompt = yes
 distinguished_name = root_ca_distinguished_name
