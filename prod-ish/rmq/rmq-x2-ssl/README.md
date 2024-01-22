@@ -162,13 +162,13 @@ cp *
 
 docker compose up -d
 
-⠹ Network rmq-x2-ssl_net_messaging                  Created                                                       1.2s
- ⠙ Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_client"  Created                                                       1.1s
- ⠙ Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_server"  Created                                                       1.1s
- ✔ Container rmq_server                              Started                                                       0.4s
- ✔ Container rmq_client                              Started
+Network rmq-x2-ssl_net_messaging                  Created                                                      
+Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_client"  Created                                                     
+Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_server"  Created                                                     
+Container rmq_server                              Started                                                      
+Container rmq_client                              Started
 
- 
+
 
 ```
 
