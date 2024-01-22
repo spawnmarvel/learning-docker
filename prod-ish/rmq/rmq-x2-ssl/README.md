@@ -168,6 +168,10 @@ Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_server"  Created
 Container rmq_server                              Started                                                      
 Container rmq_client                              Started
 
+docker compose down
+
+# after edit
+docker compose up -d --build
 
 
 ```
