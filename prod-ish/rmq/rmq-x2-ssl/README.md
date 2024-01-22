@@ -162,6 +162,14 @@ cp *
 
 docker compose up -d
 
+⠹ Network rmq-x2-ssl_net_messaging                  Created                                                       1.2s
+ ⠙ Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_client"  Created                                                       1.1s
+ ⠙ Volume "rmq-x2-ssl_vol_rabbitmq_data_rmq_server"  Created                                                       1.1s
+ ✔ Container rmq_server                              Started                                                       0.4s
+ ✔ Container rmq_client                              Started
+
+ 
+
 ```
 
 ## Update Dockerfile and configuration
@@ -174,4 +182,16 @@ docker compose up -d
 * update rabbitmq.config at server (dont use advanced.config for this, that is only for the shovel in the client)
 
 
+## Notes on start
 
+Seems like there could be one error related to docker, just one time.
+
+```log
+2024-01-16 21:37:11.386120+00:00 [error] <0.826.0>                          {header,<<"authorization">>},
+2024-01-16 21:37:11.386120+00:00 [error] <0.826.0>                          'Malformed header. Please consult the relevant specification.'},
+
+```
+
+https://github.com/docker-library/rabbitmq/issues/433
+
+You are right. It is really the permission problem caused by the setting of the hostname property.
