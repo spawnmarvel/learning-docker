@@ -67,6 +67,15 @@ cp compose.yml
 
 https://follow-e-lo.com/2024/01/20/docker-zabbix/
 
+## Official Zabbix Dockerfiles
+
+### Docker Compose
+There is provided Docker Compose files for each set of base Operating System and Database engine.
+
+Templates support several Compose profiles. Minimal set of services is brought up by default, to start additional components e.g. Zabbix Agent use profile 'full' or 'all'. Additionally, it is possible to start only required components.
+
+https://github.com/zabbix/zabbix-docker
+
 ## Install Zabbix with MySQL as containers using docker-compose
 
 * VM
