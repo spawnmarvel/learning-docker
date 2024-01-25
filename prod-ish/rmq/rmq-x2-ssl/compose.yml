@@ -53,7 +53,7 @@ volumes:
   vol_rabbitmq_data_rmq_server:
 
 # open inbound NSG
-# no http management, , refresh and clear cache
+# no http management, refresh and clear cache
 # cd dir
 # docker compose up -d
 # http://public-ip:15672 / 3
