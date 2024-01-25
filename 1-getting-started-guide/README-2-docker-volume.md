@@ -56,7 +56,6 @@ services:
       - net_messaging
     volumes:
       - vol_rabbitmq_data:/var/lib/rabbitmq
-      
 networks:
   net_messaging:
 
