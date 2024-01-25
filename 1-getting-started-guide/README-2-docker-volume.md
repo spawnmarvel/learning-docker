@@ -24,7 +24,6 @@ https://docs.docker.com/storage/volumes/
 docker run -v /home/mount/data:/var/lib/mysql
 
 # Anonymous volumes, docker fixes it
-
 docker run -v /var/lib/mysql
 
 # Named volumes, use in production
