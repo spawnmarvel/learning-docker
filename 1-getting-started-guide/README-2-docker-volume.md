@@ -21,12 +21,15 @@ https://docs.docker.com/storage/volumes/
 ```bash
 
 # Host volumes
+# host:container
 docker run -v /home/mount/data:/var/lib/mysql
 
 # Anonymous volumes, docker fixes it
+# anoymous container
 docker run -v /var/lib/mysql
 
 # Named volumes, use in production
+# /var/lib/docker/volumes/hash/_data/name:container
 docker run -v name:/var/lib/mysql
 ```
 
