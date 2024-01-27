@@ -331,6 +331,19 @@ rabbitmq.conf
 * update to ssl section
 * update ports in compose
 
+```bash
+docker compose down
+# move files
+docker compose up -d --build
+
+2024-01-27 12:49:36.908157+00:00 [info] <0.568.0> Management plugin: HTTPS listener started on port 15671
+# [..]
+2024-01-27 12:49:36.919293+00:00 [info] <0.680.0> started TCP listener on [::]:5672
+
+2024-01-27 12:49:36.921088+00:00 [info] <0.712.0> started TLS (SSL) listener on [::]:5671
+
+ completed with 6 plugins.
+```
 
 
 rmq_client.server
