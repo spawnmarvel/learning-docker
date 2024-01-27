@@ -90,6 +90,8 @@ rmq_client.cloud
 cd cert-store
 mkdir client
 
+cd
+
 # Generating RSA private key
 openssl genrsa -out ./client/private_key.pem 2048
 
@@ -149,8 +151,71 @@ ls
 rmq_server.cloud
 
 ```bash
-```
+cd cert-store
+mkdir server
 
+cd
+
+# Generating RSA private key
+openssl genrsa -out ./server/private_key.pem 2048
+
+# Generating request
+openssl req -new -key ./server/private_key.pem -out ./server/req.pem -outform PEM -subj /CN=rmq_server.cloud -nodes
+
+# Server and client extension
+openssl ca -config openssl.cnf -in ./server/req.pem -out ./server/server_certificate.pem -notext -batch -extensions usr_cert
+
+# Using configuration from openssl.cnf
+# Check that the request matches the signature
+# Signature ok
+# The Subject's Distinguished Name is as follows
+# commonName            :ASN.1 12:'rmq_server.cloud'
+# Certificate is to be certified until Jan 26 11:05:01 2034 GMT (3652 days)
+# Write out database with 1 new entries
+# Data Base Updated
+
+# view cn
+openssl x509 -noout -subject -in ./server/server_certificate.pem
+
+subject=CN = rmq_server.cloud
+
+# view extensions
+openssl x509 -noout -ext keyUsage < ./server/server_certificate.pem
+# X509v3 Key Usage:
+#    Digital Signature, Non Repudiation, Key Encipherment
+
+openssl x509 -noout -ext extendedKeyUsage < ./server/server_certificate.pem
+# X509v3 Extended Key Usage:
+#    TLS Web Server Authentication, TLS Web Client Authentication, Code Signing, E-mail Protection
+
+# server (server)
+cd client
+ls
+private_key.pem  req.pem  server_certificate.pem
+cd ..
+cd certs
+ls
+01.pem  02.pem
+```
+## Make bundle and copy all certificates
+
+```bash
+# make the bundle
+pwd
+rmq-x2-ssl/
+
+cp cert-store/ca_certificate.pem ./client/ca.bundle
+cp cert-store/ca_certificate.pem ./server/ca.bundle
+
+# copy client cert and key
+cp cert-store/client/client_certificate.pem ./client/client_certificate.pem
+cp cert-store/client/private_key.pem ./client/private_key.pem
+
+# copy server cert and key
+cp cert-store/server/server_certificate.pem ./server/server_certificate.pem
+cp cert-store/server/private_key.pem ./server/private_key.pem
+
+```
 ## Test no SSL
 
 ```bash
@@ -178,12 +243,65 @@ docker compose up -d --build
 
 ## Update Dockerfile and configuration
 
-* add CN user to definitions
+* add CN user to definitions for both
 * update shovel
 * make bundle
 * update Dockerfile to cp correct certificates
 * enable rabbitmq_auth_mechanism_ssl for server only
 * update rabbitmq.config at server (dont use advanced.config for this, that is only for the shovel in the client)
+
+
+rmq_client.cloud
+
+definitions
+
+```json
+ }, {
+      "name": "rmq_server.cloud",
+      "password": "rmq_server.cloud-pass",
+      "tags": ""
+    }],
+```
+
+```bash
+# Dockerfile_client
+COPY /client/ca.bundle /etc/rabbitmq
+COPY /client/client_certificate.pem /etc/rabbitmq
+COPY /client/private_key.pem /etc/rabbitmq
+RUN chmod 664 /etc/rabbitmq/ca.bundle
+RUN chmod 664 /etc/rabbitmq/client_certificate.pem
+RUN chmod 664 /etc/rabbitmq/private_key.pem
+
+```
+
+rmq_server.cloud
+
+definitions
+
+```json
+ }, {
+      "name": "rmq_server.cloud",
+      "password": "rmq_server.cloud-pass",
+      "tags": ""
+    }],
+```
+
+```bash
+# Dockerfile_server
+COPY /server/ca.bundle /etc/rabbitmq
+COPY /server/server_certificate.pem /etc/rabbitmq
+COPY /server/private_key.pem /etc/rabbitmq
+RUN chmod 664 /etc/rabbitmq/ca.bundle
+RUN chmod 664 /etc/rabbitmq/server_certificate.pem
+RUN chmod 664 /etc/rabbitmq/private_key.pem
+
+```
+Lets make sure it starts and all files are copied
+
+```bash
+```
+
+## Configure SSL
 
 
 ## Notes on start

@@ -4,8 +4,8 @@
       "password": "admin123SwapMe",
       "tags": "administrator"
     }, {
-      "name": "consumer",
-      "password": "qweqwe",
+      "name": "rmq_server.cloud",
+      "password": "rmq_server.cloud-pass",
       "tags": ""
     }],
     "vhosts": [{

@@ -1,5 +1,11 @@
 FROM rabbitmq:3.12-management
 COPY /server/rabbitmq.conf /etc/rabbitmq
 COPY /server/definitions.json /etc/rabbitmq
+COPY /server/ca.bundle /etc/rabbitmq
+COPY /server/server_certificate.pem /etc/rabbitmq
+COPY /server/private_key.pem /etc/rabbitmq
+RUN chmod 664 /etc/rabbitmq/ca.bundle
+RUN chmod 664 /etc/rabbitmq/server_certificate.pem
+RUN chmod 664 /etc/rabbitmq/private_key.pem
 RUN rabbitmq-plugins enable --offline rabbitmq_auth_mechanism_ssl
 
