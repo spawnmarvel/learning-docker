@@ -245,7 +245,6 @@ docker compose up -d --build
 
 * add CN user to definitions for both
 * update shovel
-* make bundle
 * update Dockerfile to cp correct certificates
 * enable rabbitmq_auth_mechanism_ssl for server only
 * update rabbitmq.config at server (dont use advanced.config for this, that is only for the shovel in the client)
@@ -259,7 +258,7 @@ definitions
  }, {
       "name": "rmq_server.cloud",
       "password": "rmq_server.cloud-pass",
-      "tags": ""
+      "tags": "administrator"
     }],
 ```
 
@@ -282,7 +281,7 @@ definitions
  }, {
       "name": "rmq_server.cloud",
       "password": "rmq_server.cloud-pass",
-      "tags": ""
+      "tags": "administrator"
     }],
 ```
 
@@ -296,13 +295,48 @@ RUN chmod 664 /etc/rabbitmq/server_certificate.pem
 RUN chmod 664 /etc/rabbitmq/private_key.pem
 
 ```
+
+advanced.config
+
+```bash
+
+ {uris, ["amqp://rmq_server.cloud:rmq_server.cloud-pass@rmq_server.cloud:5673"]},
+
+```
 Lets make sure it starts and all files are copied
 
 ```bash
+docker compose up -d --build
+#success
+
+# enter rmq_server
+/etc/rabbitmq
+ls
+ca.bundle  conf.d  definitions.json  enabled_plugins  private_key.pem  rabbitmq.conf  server_certificate.pem
+
+# enter rmq_client
+/etc/rabbitmq
+ls
+advanced.config  ca.bundle  client_certificate.pem  conf.d  definitions.json  enabled_plugins  private_key.pem  rabbitmq.conf
 ```
 
 ## Configure SSL
 
+* configure ssl in rabbitmq.conf for both
+* update advanced config to use an SSL port
+
+rmq_client.cloud
+
+rabbitmq.conf
+* update to ssl section
+* update ports in compose
+
+
+
+rmq_client.server
+
+rabbitmq.conf
+* TBD
 
 ## Notes on start
 

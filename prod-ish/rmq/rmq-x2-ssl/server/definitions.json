@@ -6,7 +6,7 @@
     }, {
       "name": "rmq_server.cloud",
       "password": "rmq_server.cloud-pass",
-      "tags": ""
+      "tags": "administrator"
     }],
     "vhosts": [{
       "name": "/"
@@ -18,10 +18,10 @@
       "write": ".*",
       "read": ".*"
     }, {
-      "user": "consumer",
+      "user": "rmq_server.cloud",
       "vhost": "/",
-      "configure": "",
-      "write": "",
+      "configure": ".*",
+      "write": ".*",
       "read": ".*"
     }]
   }

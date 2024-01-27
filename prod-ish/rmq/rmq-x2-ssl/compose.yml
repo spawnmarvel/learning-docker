@@ -18,7 +18,8 @@ services:
     restart: always
     ports:
       - 5672:5672
-      - 15672:15672
+      - 5671:5671
+      - 15671:15671
     networks:
       - net_messaging
     volumes:
