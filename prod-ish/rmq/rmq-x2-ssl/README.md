@@ -233,6 +233,8 @@ Container rmq_client                              Started
 
 docker compose down
 
+# remove volumes, remove images
+
 # after edit
 docker compose up -d --build
 
@@ -245,14 +247,38 @@ Changed to advanced.config for server also.
 
 Hm, this just works, that means if we use the shovel with ssl we have to use advanced.config on both.
 
-Or I am missing something from the advanced.config translate to rabbitmq.conf (?!), for future me to test.
+Or I am missing something from the advanced.config translate to rabbitmq.conf (?!).
+
+For future me to test.
 
 ```bash
 
 # If needed
 &versions=tlsv1.2
 
-# works since it uses the CN from the client_certificte.pem
+
+# does not work
+# 2024-01-28 16:40:30.733577+00:00 [notice] <0.1009.0> TLS client: In state connection received SERVER ALERT: Fatal - Certificate required
+# 2024-01-28 16:39:30.629916+00:00 [notice] <0.766.0> TLS server: In state wait_cert at tls_handshake_1_3.erl:1484 generated SERVER ALERT: Fatal - Certificate required
+{uris, ["amqps://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674"]},
+
+
+# Works using user, pass and cert and no external login
+# 2024-01-28 16:46:44.424664+00:00 [info] <0.769.0> connection <0.769.0> (192.168.176.3:43750 -> 192.168.176.2:5674 - Shovel shovel_send1): 
+# user 'rmq_client.cloud' authenticated and granted access to vhost '/'
+{uris, ["amqps://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674?
+cacertfile=/etc/rabbitmq/ca.bundle&
+certfile=/etc/rabbitmq/client_certificate.pem&
+keyfile=/etc/rabbitmq/private_key.pem&
+verify=verify_peer&
+fail_if_no_peer_cert=true&
+server_name_indication=rmq_server.cloud&
+heartbeat=15"]},
+
+# works since it uses the CN from the client_certificate.pem and external login from CN
+# connect to server-name, with SSL and EXTERNAL authentication
+# 2024-01-28 16:49:29.838741+00:00 [info] <0.769.0> connection <0.769.0> (192.168.192.3:39936 -> 192.168.192.2:5674 - Shovel shovel_send1): 
+# user 'rmq_client.cloud' authenticated and granted access to vhost '/'
 {uris, ["amqps://@rmq_server.cloud:5674?
 cacertfile=/etc/rabbitmq/ca.bundle&
 certfile=/etc/rabbitmq/client_certificate.pem&
@@ -263,7 +289,8 @@ server_name_indication=rmq_server.cloud
 &auth_mechanism=external&
 heartbeat=15"]},
 
-# works also, since it uses the CN from the client_certificte.pem and not a configured username
+# works also, since it uses the CN from the client_certificate.pem and external login from CN and bypass or username in that case.
+# connect to server-name, with SSL and EXTERNAL authentication
 {uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?
 cacertfile=/etc/rabbitmq/ca.bundle&
 certfile=/etc/rabbitmq/client_certificate.pem&
