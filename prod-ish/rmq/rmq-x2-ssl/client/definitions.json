@@ -34,7 +34,7 @@
       }
     }],
     "bindings": [{
-      "source": "amq.direct",
+      "source": "amq.topic",
       "vhost": "/",
       "destination": "az-queue",
       "destination_type": "queue",

@@ -8,7 +8,6 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 ## Rmq x 2 ssl
 
 * Test with rabbitmq.config for auth backend, internal backend
-* Update 28.01.2024: Did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate, added advanced.config to server also
 * Make cert that last for 10 years
 * Have fun
 
@@ -249,7 +248,7 @@ Hm, this just works, that means if we use the shovel with ssl we have to use adv
 
 Or I am missing something from the advanced.config translate to rabbitmq.conf (?!).
 
-For future me to test.
+For future me to test, yes you are missing something, look below. It works.
 
 ```bash
 
