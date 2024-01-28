@@ -342,6 +342,15 @@ ssl_cert_login_from = common_name
 
 auth_backends.1   = rabbit_auth_backend_internal
 
+
+```
+
+success
+
+```log
+2024-01-28 20:22:59.664880+00:00 [info] <0.769.0> connection <0.769.0> (172.26.0.3:51818 -> 172.26.0.2:5674) has a client-provided name: Shovel shovel_send3
+
+2024-01-28 20:22:59.666713+00:00 [info] <0.769.0> connection <0.769.0> (172.26.0.3:51818 -> 172.26.0.2:5674 - Shovel shovel_send3): user 'rmq_client.cloud' authenticated and granted access to vhost '/'
 ```
 
 The error was from:
