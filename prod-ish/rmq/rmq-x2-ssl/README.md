@@ -7,7 +7,8 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ## Rmq x 2 ssl
 
-* Test with rabbitmq.config for auth backend, internal backend, did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+* Test with rabbitmq.config for auth backend, internal backend
+* Update 28.01.2024: Did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate, added advanced.config to server also
 * Make cert that last for 10 years
 * Have fun
 
