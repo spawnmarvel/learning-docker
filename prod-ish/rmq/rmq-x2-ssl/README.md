@@ -7,7 +7,7 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ## Rmq x 2 ssl
 
-* Test with rabbitmq.config for auth backend, internal backend
+* Test with rabbitmq.config for auth backend, internal backend for migrating from advanced.config for server side.
 * Make cert that last for 10 years
 * Have fun
 
