@@ -7,9 +7,9 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ## Rmq x 2 ssl
 
-* test with rabbitmq.config for auth backend, internal backend, did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
-* make cert that last for 10 years
-* have fun
+* Test with rabbitmq.config for auth backend, internal backend, did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+* Make cert that last for 10 years
+* Have fun
 
 
 ## Certificate store CA
@@ -217,7 +217,7 @@ bash copy_certificates.sh
 
 ```bash
 
-# test the no ssl rmq x 2 compose to see that all is success
+# Test ssl rmq x 2 compose to see that all is success
 mkdir rmq-2-ssl
 
 cp * 
@@ -236,6 +236,42 @@ docker compose down
 docker compose up -d --build
 
 
+```
+
+## Update server with advanced.config
+
+Changed to advanced.config for server also.
+
+Hm, this just works, that means if we use the shovel with ssl we have to use advanced.config on both.
+
+Or I am missing something from the advanced.config translate to rabbitmq.conf (?!), for future me to test.
+
+```bash
+
+# If needed
+&versions=tlsv1.2
+
+# works since it uses the CN from the client_certificte.pem
+{uris, ["amqps://@rmq_server.cloud:5674?
+cacertfile=/etc/rabbitmq/ca.bundle&
+certfile=/etc/rabbitmq/client_certificate.pem&
+keyfile=/etc/rabbitmq/private_key.pem&
+verify=verify_peer&
+fail_if_no_peer_cert=true&
+server_name_indication=rmq_server.cloud
+&auth_mechanism=external&
+heartbeat=15"]},
+
+# works also, since it uses the CN from the client_certificte.pem and not a configured username
+{uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?
+cacertfile=/etc/rabbitmq/ca.bundle&
+certfile=/etc/rabbitmq/client_certificate.pem&
+keyfile=/etc/rabbitmq/private_key.pem&
+verify=verify_peer&
+fail_if_no_peer_cert=true&
+server_name_indication=rmq_server.cloud&
+auth_mechanism=external&
+heartbeat=15"]},
 ```
 
 ## 2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused using only rabbitmq.conf for server
@@ -268,14 +304,10 @@ rmq_server  | 2024-01-28 15:10:53.524846+00:00 [info] <0.769.0> connection <0.76
 
 Good, this works, wtf is up with the cert for the shovel?
 
+Added advanced.config to server and success, hm..
+
 
 ```
-
-Changed to advanced.config for server also, test it.
-
-Hm, this just works, that means if we use the shovel with ssl we have to use advanced.config on both or I am missing something from the advanced.config translate to rabbitmq.conf (?!, good to know)
-
-
 
 ## (FIXED) X509 Error 32 - Key usage does not include certificate signing	The certificate of the CA currently being examined in the signing chain was rejected because its Key Usage: extension does not permit certificate signing.
 
