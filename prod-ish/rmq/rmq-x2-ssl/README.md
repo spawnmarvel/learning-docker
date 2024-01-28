@@ -307,6 +307,56 @@ auth_mechanism=external&
 heartbeat=15"]},
 ```
 
+
+## Update server with advanced.config to rabbitmq.conf translation success
+
+This must be possible, update on server
+
+```bash
+rmq-x2-ssl/server
+
+cp advanced.config advanced.config_
+sudo nano advanced.config_
+# [].
+cp advanced.config advanced.config_bck
+cp advanced.config_ advanced.config
+cp rabbitmq.conf rabbitmq.conf_bck
+
+```
+
+Edit rabbitmq.conf
+
+```bash
+
+[...]
+
+ssl_options.verify     = verify_peer
+ssl_options.fail_if_no_peer_cert = true
+
+ssl_options.depth  = 2
+
+auth_mechanisms.1 = PLAIN
+auth_mechanisms.1 = AMQPLAIN
+auth_mechanisms.1 = EXTERNAL
+
+ssl_cert_login_from = common_name
+
+auth_backends.1   = rabbit_auth_backend_internal
+
+```
+
+The error was from:
+
+2024-01-28 19:54:26.579934+00:00 [error] <0.852.0> Error on AMQP connection <0.852.0> (172.21.0.3:34270 -> 172.21.0.2:5674, state: starting):
+2024-01-28 19:54:26.579934+00:00 [error] <0.852.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+
+ssl_options.verify     = verify_none / set peer
+ssl_options.fail_if_no_peer_cert = false / set true
+
+x509 (TLS/SSL) certificate Authentication Mechanism for RabbitMQ
+
+https://github.com/rabbitmq/rabbitmq-server/tree/main/deps/rabbitmq_auth_mechanism_ssl
+
 ## 2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused using only rabbitmq.conf for server
 
 Continue here with this error

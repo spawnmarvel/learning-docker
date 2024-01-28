@@ -1,0 +1,16 @@
+[{rabbit, [
+{tcp_listeners, [{"0.0.0.0",5672}]},
+{ssl_listeners, [5674]},
+{ssl_options, [{cacertfile,"/etc/rabbitmq/ca.bundle"},
+		{certfile,"/etc/rabbitmq/server_certificate.pem"},
+                {keyfile,"/etc/rabbitmq/private_key.pem"},
+		{verify,verify_peer},
+                {fail_if_no_peer_cert, true}]},
+{ssl_handshake_timeout, 15000},
+{auth_mechanisms, ['PLAIN', 'AMQPLAIN', 'EXTERNAL']},
+{auth_backends, [rabbit_auth_backend_internal]},
+{ssl_cert_login_from, common_name}
+
+     
+]}
+].

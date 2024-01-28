@@ -20,20 +20,8 @@ listeners.ssl.default = 5674
 ssl_options.cacertfile = /etc/rabbitmq/ca.bundle
 ssl_options.certfile   = /etc/rabbitmq/server_certificate.pem
 ssl_options.keyfile    = /etc/rabbitmq/private_key.pem
-ssl_options.verify     = verify_peer
-ssl_options.fail_if_no_peer_cert = true
-
-ssl_options.depth  = 2
-
-ssl_handshake_timeout = 15000
-
-auth_mechanisms.1 = PLAIN
-auth_mechanisms.1 = AMQPLAIN
-auth_mechanisms.1 = EXTERNAL
-
-ssl_cert_login_from = common_name
-
-auth_backends.1   = rabbit_auth_backend_internal
+ssl_options.verify     = verify_none
+ssl_options.fail_if_no_peer_cert = false
 
 # ssl http
 # management.tcp.port = 15672
