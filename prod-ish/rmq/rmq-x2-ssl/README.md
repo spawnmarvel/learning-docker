@@ -7,7 +7,7 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 ## Rmq x 2 ssl
 
-* test with rabbitmq.config for auth backend, internal backend
+* test with rabbitmq.config for auth backend, internal backend, did not get it to work, always: EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
 * make cert that last for 10 years
 * have fun
 
@@ -106,14 +106,14 @@ openssl genrsa -out ./client/private_key.pem 2048
 openssl req -new -key ./client/private_key.pem -out ./client/req.pem -outform PEM -subj /CN=rmq_client.cloud -nodes
 
 # Server and client extension
-openssl ca -config openssl_req.cnf -in ./client/req.pem -out ./client/client_certificate.pem -notext -batch -extensions usr_cert
+openssl ca -config openssl.cnf -in ./client/req.pem -out ./client/client_certificate.pem -notext -batch -extensions client_server_extension
 
 # Using configuration from openssl.cnf
 # Check that the request matches the signature
 # Signature ok
 # The Subject's Distinguished Name is as follows
 # commonName            :ASN.1 12:'rmq_client.cloud'
-# Certificate is to be certified until Jan 27 12:20:19 2034 GMT (3652 days)
+# Certificate is to be certified until Jan 27 14:58:35 2034 GMT (3652 days)
 # Write out database with 1 new entries
 # Data Base Updated
 
@@ -168,14 +168,14 @@ openssl genrsa -out ./server/private_key.pem 2048
 openssl req -new -key ./server/private_key.pem -out ./server/req.pem -outform PEM -subj /CN=rmq_server.cloud -nodes
 
 # Server and client extension
-openssl ca -config openssl_req.cnf -in ./server/req.pem -out ./server/server_certificate.pem -notext -batch -extensions usr_cert
+openssl ca -config openssl.cnf -in ./server/req.pem -out ./server/server_certificate.pem -notext -batch  -extensions client_server_extension
 
 # Using configuration from openssl.cnf
 # Check that the request matches the signature
 # Signature ok
 # The Subject's Distinguished Name is as follows
 # commonName            :ASN.1 12:'rmq_server.cloud'
-# Certificate is to be certified until Jan 27 12:22:32 2034 GMT (3652 days)
+# Certificate is to be certified until Jan 27 15:03:23 2034 GMT (3652 days)
 # Write out database with 1 new entries
 # Data Base Updated
 
@@ -238,32 +238,43 @@ docker compose up -d --build
 
 ```
 
-## # 2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+## 2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused using only rabbitmq.conf for server
 
 Continue here with this error
 
 ```log
 
-Make error in shovel, wrong file, cacertfile=/etc/rabbitmq/caca.bundle
+This should work out of the box:
+
+{uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?cacertfile=/etc/rabbitmq/ca.bundle&certfile=/etc/rabbitmq/client_certificate.pem&keyfile=/etc/rabbitmq/private_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rmq_server.cloud&auth_mechanism=external&heartbeat=15"]},
+
+2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+
+Same error with append tlsv1.2:
+
+{uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?cacertfile=/etc/rabbitmq/ca.bundle&certfile=/etc/rabbitmq/client_certificate.pem&keyfile=/etc/rabbitmq/private_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rmq_server.cloud&auth_mechanism=external&versions=tlsv1.2&heartbeat=15"]},
+
+Make error in shovel, wrong file, cacertfile=/etc/rabbitmq/caca.bundle:
 
 2024-01-28 12:50:56.825375+00:00 [error] <0.859.0> Shovel 'shovel_put' failed to connect (URI: amqps://rmq_server.cloud:5674): {options,{cacertfile,"/etc/rabbitmq/caca.bundle",{error,enoent}}}
 
-is correct, set shovel back.
+is correct behaviour, the file caca.bundle does not exists.
 
-Client
-2024-01-28 12:57:09.845343+00:00 [error] <0.623.0>                                     ["amqps://rmq_client.cloud@rmq_server.cloud:5674?cacertfile=/etc/rabbitmq/ca.bundle&certfile=/etc/rabbitmq/client_certificate.pem&keyfile=/etc/rabbitmq/private_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rmq_server.cloud&auth_mechanism=external&heartbeat=15"]},
-[...]
-2024-01-28 12:57:09.844905+00:00 [error] <0.961.0> Shovel 'shovel_put' failed to connect (URI: amqps://rmq_server.cloud:5674): ACCESS_REFUSED - Login was refused using authentication mechanism EXTERNAL. For details see the broker logfile.
+Step back and test URI amqps:
 
-Server
-2024-01-28 12:56:54.831673+00:00 [error] <0.730.0> Error on AMQP connection <0.730.0> (172.28.0.3:54986 -> 172.28.0.2:5674, state: starting):
+{uris, ["amqps://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674"]},
 
-2024-01-28 12:56:54.831673+00:00 [error] <0.730.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+rmq_server  | 2024-01-28 15:10:53.524846+00:00 [info] <0.769.0> connection <0.769.0> (192.168.16.3:39366 -> 192.168.16.2:5674 - Shovel shovel_put): user 'rmq_client.cloud' authenticated and granted access to vhost '/'
 
-Test URI
-{uris, ["amqp://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674"]},
+Good, this works, wtf is up with the cert for the shovel?
+
 
 ```
+
+Changed to advanced.config for server also, test it.
+
+Hm, this just works, that means if we use the shovel with ssl we have to use advanced.config on both or I am missing something from the advanced.config translate to rabbitmq.conf (?!, good to know)
+
 
 
 ## (FIXED) X509 Error 32 - Key usage does not include certificate signing	The certificate of the CA currently being examined in the signing chain was rejected because its Key Usage: extension does not permit certificate signing.
@@ -283,11 +294,14 @@ docker compose up -d --build
 # ran 
 cd /etc/rabbitmq
 cp ca.bundle ca_certificate.pem
-openssl s_server -accept 8443 -cert server_certificate.pem -key private_key.pem -CAfile ca_certificate.pem
+openssl s_server -accept 8443 -cert server_certificate.pem -key private_key.pem -CAfile ca_certificate.pem -tls1_2
+#
 
 cd /etc/rabbitmq
 cp ca.bundle ca_certificate.pem
-openssl s_client -connect rmq_server.cloud:8443 -cert client_certificate.pem -key private_key.pem -CAfile ca_certificate.pem
+openssl s_client -connect rmq_server.cloud:8443 -cert client_certificate.pem -key private_key.pem -CAfile ca_certificate.pem -tls1_2
+# Secure Renegotiation IS supported
+
 ```
 
 ```log
@@ -317,6 +331,15 @@ SSL/TLS error messages
 
 https://help.fortinet.com/fweb/551/log/Content/FortiWeb/fortiweb-log/SSL_TLS_error_messages.htm
 
+
+```bash
+# fixed using openssl.cfg
+# view extensions, KeyUsage must be Certificate Signing, Off-line CRL Signing, CRL Signing (06) or at least keyCertSign, cRLSign
+openssl x509 -noout -ext keyUsage < ca_certificate.pem
+# X509v3 Key Usage:
+#    Certificate Sign, CRL Sign
+
+```
 
 
 ## Notes on start

@@ -1,6 +1,7 @@
 FROM rabbitmq:3.12-management
 COPY /server/rabbitmq.conf /etc/rabbitmq
 COPY /server/definitions.json /etc/rabbitmq
+COPY /server/advanced.config /etc/rabbitmq
 COPY /server/ca.bundle /etc/rabbitmq
 COPY /server/server_certificate.pem /etc/rabbitmq
 COPY /server/private_key.pem /etc/rabbitmq
