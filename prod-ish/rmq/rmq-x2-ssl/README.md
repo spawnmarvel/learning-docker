@@ -179,7 +179,7 @@ openssl x509 -noout -subject -in ./server/server_certificate.pem
 
 subject=CN = rmq_server.cloud
 
-# view extensions
+# view extensions, KeyUsage must be Certificate Signing, Off-line CRL Signing, CRL Signing (06)
 openssl x509 -noout -ext keyUsage < ./server/server_certificate.pem
 # X509v3 Key Usage:
 #    Digital Signature, Non Repudiation, Key Encipherment
@@ -254,8 +254,8 @@ definitions
 
 ```json
  }, {
-      "name": "rmq_server.cloud",
-      "password": "rmq_server.cloud-pass",
+      "name": "rmq_client.cloud",
+      "password": "rmq_client.cloud-pass",
       "tags": "administrator"
     }],
 ```
@@ -277,8 +277,8 @@ definitions
 
 ```json
  }, {
-      "name": "rmq_server.cloud",
-      "password": "rmq_server.cloud-pass",
+      "name": "rmq_client.cloud",
+      "password": "rmq_client.cloud-pass",
       "tags": "administrator"
     }],
 ```
@@ -298,7 +298,7 @@ advanced.config
 
 ```bash
 
- {uris, ["amqp://rmq_server.cloud:rmq_server.cloud-pass@rmq_server.cloud:5673"]},
+ {uris, ["amqp://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5673"]},
 
 ```
 Lets make sure it starts and all files are copied
@@ -322,32 +322,58 @@ advanced.config  ca.bundle  client_certificate.pem  conf.d  definitions.json  en
 
 * configure ssl in rabbitmq.conf for both
 * update advanced config to use an SSL port
-
-rmq_client.cloud
-
-rabbitmq.conf
-* update to ssl section
 * update ports in compose
+* update rabbitmq.conf for server to make use of rabbitmq_auth_mechanism_ssl
+* update shovel to use certificate
+
 
 ```bash
 docker compose down
 # move files
 docker compose up -d --build
 
-2024-01-27 12:49:36.908157+00:00 [info] <0.568.0> Management plugin: HTTPS listener started on port 15671
-# [..]
-2024-01-27 12:49:36.919293+00:00 [info] <0.680.0> started TCP listener on [::]:5672
 
-2024-01-27 12:49:36.921088+00:00 [info] <0.712.0> started TLS (SSL) listener on [::]:5671
+```
+{uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?cacertfile=/etc/rabbitmq/ca.bundle&certfile=/etc/rabbitmq/client_certificate.pem&keyfile=/etc/rabbitmq/private_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rmq_server.cloud&auth_mechanism=external&heartbeat=15"]},
 
- completed with 6 plugins.
+```bash
+# 2024-01-28 11:04:34.720799+00:00 [error] <0.897.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
+
+# ran 
+openssl s_server -accept 8443 [....]
+
+openssl s_client -connect rmq_server.cloud:8443
+
 ```
 
+```log
 
-rmq_client.server
+depth=1 CN = SocratesIncCa
+verify error:num=79:invalid CA certificate
+verify return:1
+depth=1 CN = SocratesIncCa
+verify error:num=26:unsuitable certificate purpose
+verify return:1
+depth=1 CN = SocratesIncCa
+verify return:1
+depth=1 CN = SocratesIncCa
+verify error:num=32:key usage does not include certificate signing
+verify return:1
+depth=0 CN = rmq_server.cloud
+verify return:1
+[...]
+No client certificate CA names sent
+[..]
+Verify return code: 32 (key usage does not include certificate signing)
 
-rabbitmq.conf
-* TBD
+```
+SSL/TLS error messages
+
+* X509 Error 32 - Key usage does not include certificate signing	The certificate of the CA currently being examined in the signing chain was rejected because its Key Usage: extension does not permit certificate signing.
+
+https://help.fortinet.com/fweb/551/log/Content/FortiWeb/fortiweb-log/SSL_TLS_error_messages.htm
+
+
 
 ## Notes on start
 
