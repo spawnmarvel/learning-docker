@@ -11,6 +11,12 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 * Make cert that last for 10 years
 * Have fun
 
+## Steps
+
+* Make all certificates
+* Copy all repos files
+* docker compose up -d
+
 
 ## Certificate store CA
 
