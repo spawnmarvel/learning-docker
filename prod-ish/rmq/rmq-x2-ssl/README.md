@@ -344,13 +344,7 @@ Added advanced.config to server and success, hm..
 
 ## (FIXED) X509 Error 32 - Key usage does not include certificate signing	The certificate of the CA currently being examined in the signing chain was rejected because its Key Usage: extension does not permit certificate signing.
 
-```bash
-docker compose down
-# move files
-docker compose up -d --build
 
-
-```
 {uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?cacertfile=/etc/rabbitmq/ca.bundle&certfile=/etc/rabbitmq/client_certificate.pem&keyfile=/etc/rabbitmq/private_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rmq_server.cloud&auth_mechanism=external&heartbeat=15"]},
 
 ```bash
@@ -407,7 +401,7 @@ openssl x509 -noout -ext keyUsage < ca_certificate.pem
 ```
 
 
-## Notes on start
+## Notes on start (just one time)
 
 Seems like there could be one error related to docker, just one time.
 
