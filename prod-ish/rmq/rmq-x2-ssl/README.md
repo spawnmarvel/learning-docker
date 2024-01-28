@@ -345,7 +345,7 @@ auth_backends.1   = rabbit_auth_backend_internal
 
 ```
 
-success
+Success
 
 ```log
 2024-01-28 20:22:59.664880+00:00 [info] <0.769.0> connection <0.769.0> (172.26.0.3:51818 -> 172.26.0.2:5674) has a client-provided name: Shovel shovel_send3
