@@ -258,7 +258,8 @@ For future me to test.
 
 
 # does not work
-# 2024-01-28 16:40:30.733577+00:00 [notice] <0.1009.0> TLS client: In state connection received SERVER ALERT: Fatal - Certificate required
+# 2024-01-28 16:40:30.733577+00:00 [notice] <0.1009.0> TLS client: In state connection received SERVER ALERT: 
+# Fatal - Certificate required
 # 2024-01-28 16:39:30.629916+00:00 [notice] <0.766.0> TLS server: 
 # In state wait_cert at tls_handshake_1_3.erl:1484 generated SERVER ALERT: Fatal - Certificate required
 {uris, ["amqps://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674"]},
@@ -292,7 +293,8 @@ server_name_indication=rmq_server.cloud
 &auth_mechanism=external&
 heartbeat=15"]},
 
-# works also, since it uses the CN from the client_certificate.pem and external login from CN and bypass or username in that case.
+# works also, since it uses the CN from the client_certificate.pem and external login from 
+# CN and bypass or username in that case.
 # connect to server-name, with SSL and EXTERNAL authentication
 {uris, ["amqps://rmq_client.cloud@rmq_server.cloud:5674?
 cacertfile=/etc/rabbitmq/ca.bundle&
