@@ -241,7 +241,7 @@ docker compose up -d --build
 
 ```
 
-## Update server with advanced.config
+## Update server with advanced.config (and URI's)
 
 Changed to advanced.config for server also.
 
