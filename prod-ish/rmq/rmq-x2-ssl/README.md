@@ -355,11 +355,13 @@ success
 
 The error was from:
 
+* ssl_options.verify     = verify_none / set peer
+* ssl_options.fail_if_no_peer_cert = false / set true
+
+```log
 2024-01-28 19:54:26.579934+00:00 [error] <0.852.0> Error on AMQP connection <0.852.0> (172.21.0.3:34270 -> 172.21.0.2:5674, state: starting):
 2024-01-28 19:54:26.579934+00:00 [error] <0.852.0> EXTERNAL login refused: connection peer presented no TLS (x.509) certificate
-
-ssl_options.verify     = verify_none / set peer
-ssl_options.fail_if_no_peer_cert = false / set true
+```
 
 x509 (TLS/SSL) certificate Authentication Mechanism for RabbitMQ
 
