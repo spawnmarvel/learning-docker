@@ -28,7 +28,12 @@ The openssl.cnf for used here was translated to Linux.
 
 ```bash
 
-cd rmq-x2-ssl/cert-store
+cd rmq-x2-ssl
+mkdir cert-store
+cd cert-store
+mkdir certs
+ls
+openssl.cnf
 
 openssl version
 OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
@@ -68,6 +73,11 @@ openssl x509 -noout -subject -in ca_certificate.pem
 
 subject=CN = SocratesIncCa
 
+# view extensions, KeyUsage must be Certificate Signing, Off-line CRL Signing, CRL Signing (06) or at least keyCertSign, cRLSign
+openssl x509 -noout -ext keyUsage < ca_certificate.pem
+# X509v3 Key Usage:
+#    Certificate Sign, CRL Sign
+
 # This is all that is needed to generate a test Certificate Authority. The root certificate is in ca_certificate.pem and is also in ca_certificate.cer. 
 # These two files contain the same information, but in different formats, PEM and DER. 
 # Most software uses the former but some tools require the latter.
@@ -89,8 +99,6 @@ rmq_client.cloud
 ```bash
 cd cert-store
 mkdir client
-
-cd
 
 # Generating RSA private key
 openssl genrsa -out ./client/private_key.pem 2048
@@ -179,7 +187,7 @@ openssl x509 -noout -subject -in ./server/server_certificate.pem
 
 subject=CN = rmq_server.cloud
 
-# view extensions, KeyUsage must be Certificate Signing, Off-line CRL Signing, CRL Signing (06) or at least keyCertSign, cRLSign
+# view extensions 
 openssl x509 -noout -ext keyUsage < ./server/server_certificate.pem
 # X509v3 Key Usage:
 #    Digital Signature, Non Repudiation, Key Encipherment

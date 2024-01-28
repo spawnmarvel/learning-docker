@@ -34,40 +34,11 @@ default_keyfile = ./private/ca_private_key.pem
 default_md = sha256
 prompt = yes
 distinguished_name = root_ca_distinguished_name
-# x509_extensions = root_ca_extensions
-# https://access.redhat.com/solutions/28965
-x509_extensions = v3_ca # The extentions to add to the self signed cert
-req_extensions = v3_req
-x509_extensions = usr_cert
-
-[ usr_cert ]
-basicConstraints = CA:false
-nsCertType = client, server, email
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage = serverAuth, clientAuth, codeSigning, emailProtection
-nsComment = "OpenSSL Generated Certificate"
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer
-
-[ v3_req ]
-extendedKeyUsage = serverAuth, clientAuth, codeSigning, emailProtection
-basicConstraints = CA:FALSE
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment
-
+x509_extensions = root_ca_extensions
 
 [ root_ca_distinguished_name ]
-commonName = Root Cloud Private CA
+commonName = vmdocker01
 
 [ root_ca_extensions ]
 basicConstraints = CA:true
 keyUsage = keyCertSign, cRLSign
-
-[ client_ca_extensions ]
-basicConstraints = CA:false
-keyUsage = digitalSignature,keyEncipherment
-extendedKeyUsage = 1.3.6.1.5.5.7.3.2
-
-[ server_ca_extensions ]
-basicConstraints = CA:false
-keyUsage = digitalSignature,keyEncipherment
-extendedKeyUsage = 1.3.6.1.5.5.7.3.1
