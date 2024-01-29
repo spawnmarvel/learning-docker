@@ -431,6 +431,10 @@ https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
 
+## Tutorial: Create a container image for deployment to Azure Container Instances
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-app
+
 ## Run Docker containers with Azure Container Instances
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
