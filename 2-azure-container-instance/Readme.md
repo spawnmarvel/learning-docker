@@ -1,5 +1,10 @@
 # Azure
 
+
+## Visuals
+
+https://follow-e-lo.com/2024/01/29/azure-aci-docker/
+
 ## Quickstart: Deploy a container instance in Azure using the Azure CLI
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
