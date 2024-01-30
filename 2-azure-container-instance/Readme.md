@@ -35,3 +35,7 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 ## Run Docker containers with Azure Container Instances
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
+
+
+## RabbitMQ ACI
+
