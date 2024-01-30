@@ -5,10 +5,9 @@
 
 https://follow-e-lo.com/2024/01/29/azure-aci-docker/
 
-## Quickstart: Deploy a container instance in Azure using the Azure CLI
+## Azure Container Instances documentation
 
-https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
-
+https://learn.microsoft.com/en-us/azure/container-instances/
 
 ## Azure Container Registry service tiers
 
@@ -20,6 +19,10 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 
 https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus
 
+## Quickstart: Deploy a container instance in Azure using the Azure CLI
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
+
 ## Tutorial: Create a container image for deployment to Azure Container Instances
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-app
@@ -27,7 +30,3 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 ## Run Docker containers with Azure Container Instances
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
-
-## Azure Container Instances documentation
-
-https://learn.microsoft.com/en-us/azure/container-instances/
