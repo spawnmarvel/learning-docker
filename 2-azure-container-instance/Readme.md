@@ -15,6 +15,8 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 | Tier | Description
 | ---  | -----
 | Basic | Basic	A cost-optimized entry point for developers learning about Azure Container Registry. Basic registries have the same programmatic capabilities as Standard and Premium (such as Microsoft Entra authentication integration, image deletion, and webhooks). However, the included storage and image throughput are most appropriate for lower usage scenarios.
+| Standard |
+| Premium  |
 
 https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus
 
