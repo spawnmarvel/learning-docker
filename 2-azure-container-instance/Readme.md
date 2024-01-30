@@ -21,6 +21,11 @@ https://learn.microsoft.com/en-us/azure/container-registry/container-registry-sk
 
 ## Quickstart: Deploy a container instance in Azure using the Azure CLI
 
+
+```bash
+TBD
+```
+
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
 
 ## Tutorial: Create a container image for deployment to Azure Container Instances
