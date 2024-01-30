@@ -262,10 +262,36 @@ tmpfs           391M  4.0K  391M   1% /run/user/1000
 
 ```
 
-pause 20.01.2024
+Test it again with hopefully enough space and profile as mentined in the official github docs.
 
 ```bash
+
 docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml down
+
+# run it
+docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml --profile=all up -d
+# validating /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml: services.zabbix-proxy-mysql.ulimits.nproc must be a integer
+docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml up -d
+# validating /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml: services.zabbix-proxy-mysql.ulimits.nproc must be a integer
+
+# If you already have a copy of the repository and want to make sure that you have the latest code, then use the git fetch command.
+# git fetch
+git fetch https://github.com/zabbix/zabbix-docker.git
+
+# remove the repos at local host
+git clone https://github.com/zabbix/zabbix-docker.git
+
+pwd
+/home/imsdal
+
+# try latest
+docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_latest.yaml --profile=all up -d
+# validating /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml: services.zabbix-proxy-mysql.ulimits.nproc must be a integer
+docker compose -f /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_latest.yaml up -d
+# 
+# validating /home/imsdal/zabbix-docker/docker-compose_v3_ubuntu_mysql_local.yaml: services.zabbix-proxy-mysql.ulimits.nproc must be a integer
+
+# hm...
 ```
 
 
