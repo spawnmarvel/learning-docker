@@ -36,7 +36,9 @@ Logs
 
 ### Initialize Docker assets
 
-Now that we have the application we can use docker init.
+Now that we have the application we need to a Dockerfile and compose.yml.
+
+We will wait a bit with compose and take it further down.
 
 Login to a server with docker.
 
