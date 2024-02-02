@@ -1,0 +1,9 @@
+services:
+    python-test:
+        build: .
+        volumes:
+            - .:/code
+        networks:
+            - app_network
+networks:
+    app_network:
