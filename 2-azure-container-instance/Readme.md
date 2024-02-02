@@ -24,6 +24,7 @@ https://learn.microsoft.com/en-us/azure/container-registry/container-registry-sk
 
 ```bash
 TBD
+
 ```
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
