@@ -76,25 +76,24 @@ CMD [ "python", "./app.py" ]
 
 ## Now make the docker container with image build
 
-
 ```bash
 
 # build 
 cd python-boilerplate
 
-docker image build -t python-boil .
+docker image build -t python-boiler .
 
 # good for debugging to see that it works
-# Run it, --rm removed on stop or ctrl c, -t tag
-docker run --name python-test --rm -t python-boil
+# Run it, --rm removed on stop or ctrl c, -tag tag
+docker run --name python-test --rm -t python-boiler
 
 # good when you are done with debugging
 # Run it, --d detached in background for ever instead of opening a new terminal
-docker run --name python-test -d -t python-boil
+docker run --name python-test -d -t python-boiler
 
 docker ps
 
-docker exec -it python-test bash
+docker exec -it python-boiler bash
 
 ```
 
@@ -119,15 +118,15 @@ docker images
 docker rmi 5c8089f9ef31 --force
 
 # re build it
-docker image build -t python-boil .
+docker image build -t python-boiler .
 
 # good for debugging to see that it works
-# Run it, --rm removed on stop or ctrl c, -t tag
-docker run --name python-test --rm -t python-boil
+# Run it, --rm removed on stop or ctrl c, -tag tag
+docker run --name python-test --rm -t python-boiler
 
 # good when you are done with debugging
 # Run it, --d detached in background for ever instead of opening a new terminal
-docker run --name python-test -d -t python-boil
+docker run --name python-test -d -t python-boiler
 
 docker ps
 
@@ -136,13 +135,138 @@ docker exec -it python-test bash
 ```
 https://docs.docker.com/get-started/03_updating_app/
 
-## Share the application
+## Share the application create a repository and push
 
 
+1. Sign up or Sign in to Docker Hub.
+
+https://hub.docker.com/
+
+2. Select the Create Repository button.
+
+3. For the repository name, use python-boiler. Make sure the Visibility is Public.
+
+Select Create.
+
+```bash
+# docker repos
+YOUR-USER-NAME/python-boiler
+
+```
+
+
+Sign in to private docker to get your repository.
+
+
+```bash
+
+cd python-boiler
+
+# if we are good, then build it
+docker image build -t python-boiler .
+
+# good for debugging to see that it works
+# Run it, --rm removed on stop or ctrl c, -tag tag
+docker run --name python-test --rm -t python-boiler
+
+# your username
+docker login -u espenkle
+
+# Use the docker tag command to give the python-boiler image a new name. Replace YOUR-USER-NAME with your Docker ID.
+docker tag python-boiler espenkle/python-boiler
+
+# push the images
+docker push espenkle/python-boiler
+
+```
 https://docs.docker.com/get-started/04_sharing_app/
+
+## Pull and run a container image from Docker Hub
+
+
+```bash
+# In your terminal, run docker pull espenkle/python-boiler to pull the image from Docker Hub. 
+# You should see output similar to:
+docker pull espenkle/python-boiler
+
+# Using default tag: latest
+# latest: Pulling from espenkle/python-boiler
+# Digest: sha256:715d5fd5a6b6a096cff0ac5db2ec10dae4993ddc58b8c3bac73fd5b3afec3ec1
+# Status: Image is up to date for espenkle/python-boiler:latest
+# docker.io/espenkle/python-boiler:latest
+
+docker image ls
+
+#  docker image ls
+# REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+# espenkle/python-boiler   latest    5917cf27bc1d   14 hours ago   130MB
+# python-boiler            latest    5917cf27bc1d   14 hours ago   130MB
+
+# run it
+docker run espenkle/python-boiler
+```
+
+## Update the image on docker hub
+
+```bash
+# view it
+docker images
+
+# edit worker.py
+# logger.info("Sleeping long tomorrow....")
+# logger.info("Sleeping long tomorrow also....")
+
+# test it
+python3 app.py
+
+# remove the old image
+dokcker image ls
+
+docker rmi '<ID>' --force
+
+# re build it
+docker image build -t python-boiler .
+
+# good for debugging to see that it works
+# Run it, --rm removed on stop or ctrl c, -tag tag
+docker run --name python-test --rm -t python-boiler
+
+# Use the docker tag command to give the python-boiler image a new name. Replace YOUR-USER-NAME with your Docker ID.
+docker tag python-boiler espenkle/python-boiler
+
+# push the images
+docker push espenkle/python-boiler
+
+# pull it
+docker pull espenkle/python-boiler
+
+# run it
+docker run espenkle/python-boiler
+
+
+```
+logs
+
+```logs
+2024-02-03 10:38:41,203 - 140357808113472 - 1 - app.py - 12 -             <module>() root - INFO - Version 0.1
+2024-02-03 10:38:41,203 - 140357808113472 - 1 - app.py - 35 -             <module>() root - INFO - In main
+2024-02-03 10:38:41,203 - 140357808113472 - 1 - app.py - 41 -             <module>() root - INFO - Main Pid: 1
+2024-02-03 10:38:43,205 - 140357808113472 - 1 - worker.py - 15 -              do_work() root - INFO - Sleeping long tomorrow also....
+
+```
+https://docs.docker.com/docker-hub/quickstart/
 
 
 ## Use Docker Compose
+
+```bash
+
+docker rmi -f espenkle/python-boiler
+docker rmi -f python-boiler
+# not the latest it only at docker hub
+
+#TBD
+```
 
 
 https://docs.docker.com/get-started/08_using_compose/
