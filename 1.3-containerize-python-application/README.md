@@ -257,7 +257,7 @@ logs
 https://docs.docker.com/docker-hub/quickstart/
 
 
-## Use Docker Compose
+## Use Docker Compose from code
 
 ```bash
 
@@ -265,9 +265,46 @@ docker rmi -f espenkle/python-boiler
 docker rmi -f python-boiler
 # not the latest it only at docker hub
 
-#TBD
+touch compose.yml
+```
+compose.yml
+
+```yml
+services:
+    python-boiler-test:
+        build: .
+        volumes:
+            - .:/code
+        networks:
+            - app_network
+networks:
+    app_network:
 ```
 
+run it
+
+```bash
+# run it
+docker compose up
+
+```
+
+## Use Docker Compose from image
+
+compose.yml ????? Not done this yet
+
+
+```yml
+services:
+    python-boiler-test:
+        image: espenkle/python-boiler
+        volumes:
+            - .:/code
+        networks:
+            - app_network
+networks:
+    app_networks
+```
 
 https://docs.docker.com/get-started/08_using_compose/
 
