@@ -75,6 +75,66 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 | Never          | Containers in the container group are never restarted. The containers run one time only.
 | OnFailure      | Containers in the container group are restarted only when the process executed in the container fails (when it terminates with a nonzero exit code). The containers are run at least once. This policy works well for containers that run short-lived tasks.
 
+
+Resource group and login
+
+```bash
+# rg
+Rg-uk-learn-aci-001
+
+# localhost, check that you have az cli, else install it
+# open powershell
+
+PowerShell 7.3.9
+az version
+# PS C:\Users\username> az version
+{
+  "azure-cli": "2.50.0",
+  "azure-cli-core": "2.50.0",
+  "azure-cli-telemetry": "1.0.8",
+  "extensions": {
+    "ssh": "2.0.0"
+  }
+}
+
+# good
+# now login to azure
+az login --tenant TENANT-ID
+
+```
+Run a container to completion
+
+1. Run this az container create command to start the container:
+```bash
+az container create --resource-group Rg-uk-learn-aci-001 --name mycontainer-restart-demo --image mcr.microsoft.com/azuredocs/aci-wordcount:latest --restart-policy OnFailure --location uksouth
+
+```
+Azure Container Instances starts the container and then stops it when its process (a script, in this case) exits. When Azure Container Instances stops a container whose restart policy is Never or OnFailure, the container's status is set to Terminated.
+
+2. Run az container show to check your container's status:
+```bash
+az container show --resource-group Rg-uk-learn-aci-001 --name mycontainer-restart-demo --query "containers[0].instanceView.currentState.state"
+# "Terminated"
+```
+
+3. Run az container logs to view the container's logs to examine the output:
+```bash
+az container logs --resource-group Rg-uk-learn-aci-001 --name mycontainer-restart-demo
+```
+
+3. Output
+```log
+[('the', 990),
+ ('and', 702),
+ ('of', 628),
+ ('to', 610),
+ ('I', 544),
+ ('you', 495),
+ ('a', 453),
+ ('my', 441),
+ ('in', 399),
+ ('HAMLET', 386)]
+```
 ### Exercise - Set environment variables
 
 ### Exercise - Use data volumes
@@ -87,11 +147,6 @@ https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-contain
 
 ## Quickstart: Deploy a container instance in Azure using the Azure CLI
 
-
-```bash
-TBD
-
-```
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart
 
