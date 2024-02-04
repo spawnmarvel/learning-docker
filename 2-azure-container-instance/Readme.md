@@ -63,7 +63,7 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 * Persistent storage: Mount Azure Files shares directly to a container to retrieve and persist state.
 * Linux and Windows: Schedule both Windows and Linux containers using the same API.
 
-A container isa process.
+**A container is a process.**
 
 ### Exercise - Run Azure Container Instances
 
