@@ -20,6 +20,32 @@ https://learn.microsoft.com/en-us/azure/container-instances/
 https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus
 
 
+## Best practices and considerations for Azure Container Instances
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-best-practices-and-considerations
+
+## Security considerations for Azure Container Instances
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-image-security
+
+
+## How to use managed identities with Azure Container Instances
+
+* Enable a user-assigned or system-assigned identity in a container group
+* Grant the identity access to an Azure key vault
+* Use the managed identity to access a key vault from a running container
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity
+
+
+## Enable a TLS endpoint in a sidecar container
+
+This article shows how to create a container group with an application container and a sidecar container running a TLS/SSL provider. 
+
+By setting up a container group with a separate TLS endpoint, you enable TLS connections for your application without changing your application code.
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-container-group-ssl
+
 ## Run Docker containers with Azure Container Instances
 
 * Run containers in Azure Container Instances
