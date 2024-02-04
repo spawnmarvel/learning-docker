@@ -56,6 +56,15 @@ https://learn.microsoft.com/en-us/azure/container-instances/container-instances-
 
 ### Introduction to Azure Container Instances
 
+* Fast startup: Launch containers in seconds.
+* Per second billing: Incur costs only while the container is running.
+* Hypervisor-level security: Isolate your application as completely as it would be in a VM.
+* Custom sizes: Specify exact values for CPU cores and memory.
+* Persistent storage: Mount Azure Files shares directly to a container to retrieve and persist state.
+* Linux and Windows: Schedule both Windows and Linux containers using the same API.
+
+A container isa process.
+
 ### Exercise - Run Azure Container Instances
 
 ### Exercise - Control restart behavior
