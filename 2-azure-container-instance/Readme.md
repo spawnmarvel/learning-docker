@@ -82,12 +82,9 @@ Resource group and login
 # rg
 Rg-uk-learn-aci-001
 
-# localhost, check that you have az cli, else install it
-# open powershell
+# use git bash or login to a linux vm
 
-PowerShell 7.3.9
 az version
-# PS C:\Users\username> az version
 {
   "azure-cli": "2.50.0",
   "azure-cli-core": "2.50.0",
@@ -137,11 +134,154 @@ az container logs --resource-group Rg-uk-learn-aci-001 --name mycontainer-restar
 ```
 ### Exercise - Set environment variables
 
-### Exercise - Use data volumes
+Secured environment variables prevent sensitive information from displaying in the container's output.
 
-### Exercise - Troubleshoot Azure Container Instances
+Create an Azure Cosmos DB instance and use environment variables to pass the connection information to an Azure container instance. An application in the container uses the variables to write and read data from Azure Cosmos DB. 
 
-### Knowledge check
+Create both an 
+* environment variable and a 
+* secured environment variable so that you can see the difference between them.
+
+Deploy Azure Cosmos DB
+
+1. When you deploy Azure Cosmos DB, you provide a unique database name.
+```bash
+
+COSMOS_DB_NAME=aci-cosmos-db-$RANDOM
+echo $COSMOS_DB_NAME
+# aci-cosmos-db-3767
+
+
+
+```
+
+2. Run this az cosmosdb create command to create your Azure Cosmos DB instance:
+```bash
+COSMOS_DB_ENDPOINT=$(az cosmosdb create --resource-group Rg-uk-learn-aci-001 --name $COSMOS_DB_NAME --query documentEndpoint --output tsv)
+```
+
+3. Run az cosmosdb keys list to get the Azure Cosmos DB connection key and store it in a Bash variable named COSMOS_DB_MASTERKEY:
+```bash
+COSMOS_DB_MASTERKEY=$(az cosmosdb keys list \
+  --resource-group Rg-uk-learn-aci-001 \
+  --name $COSMOS_DB_NAME \
+  --query primaryMasterKey \
+  --output tsv)
+
+ echo $COSMOS_DB_MASTERKEY
+
+```
+
+Deploy a container that works with your database
+
+Create an Azure container instance that can read from and write records to your Azure Cosmos DB instance.
+
+The two environment variables you created in the last part, 
+* COSMOS_DB_ENDPOINT and 
+* COSMOS_DB_MASTERKEY, hold the values you need to connect to the Azure Cosmos DB instance.
+
+1. 
+```bash
+az container create \
+  --resource-group Rg-uk-learn-aci-001 \
+  --name aci-demo \
+  --image mcr.microsoft.com/azuredocs/azure-vote-front:cosmosdb \
+  --ip-address Public \
+  --location eastus \
+  --environment-variables \
+    COSMOS_DB_ENDPOINT=$COSMOS_DB_ENDPOINT \
+    COSMOS_DB_MASTERKEY=$COSMOS_DB_MASTERKEY
+```
+
+2. Run the az container show command to get your container's public IP address:
+```bash
+az container show \
+  --resource-group Rg-uk-learn-aci-001 \
+  --name aci-demo \
+  --query ipAddress.ip \
+  --output tsv
+```
+
+3. 
+```bash
+```
+
+Use secured environment variables to hide connection information
+
+In the previous section, you used two environment variables to create your container. By default, these environment variables are accessible through the Azure portal and command-line tools in plain text.
+
+1.  Let's start by seeing the current behavior in action. Run the following az container show command to display your container's environment variables:
+
+```bash
+az container show \
+  --resource-group Rg-uk-learn-aci-001 \
+  --name aci-demo \
+  --query containers[0].environmentVariables
+```
+
+You get output with both values in plain text. Here's an example:
+
+```json
+[
+  {
+    "name": "COSMOS_DB_ENDPOINT",
+    "secureValue": null,
+    "value": "https://aci-cosmos.documents.azure.com:443/"
+  },
+  {
+    "name": "COSMOS_DB_MASTERKEY",
+    "secureValue": null,
+    "value": "Xm5BwdLlCllBvrR26V00000000S2uOusuglhzwkE7dOPMBQ3oA30n3rKd8PKA13700000000095ynys863Ghgw=="
+  }
+]
+
+```
+Although these values don't appear to your users through the voting application, it's a good security practice to ensure that sensitive information (such as connection keys) isn't stored in plain text.
+
+Secure environment variables prevent clear text output. To use secure environment variables, use the 
+* --secure-environment-variables argument instead of the 
+* --environment-variables argument.
+
+2. Run the following command to create a second container named aci-demo-secure that makes use of secured environment variables:
+
+```bash
+az container create \
+  --resource-group Rg-uk-learn-aci-001 \
+  --name aci-demo-secure \
+  --image mcr.microsoft.com/azuredocs/azure-vote-front:cosmosdb \
+  --ip-address Public \
+  --location eastus \
+  --secure-environment-variables \
+    COSMOS_DB_ENDPOINT=$COSMOS_DB_ENDPOINT \
+    COSMOS_DB_MASTERKEY=$COSMOS_DB_MASTERKEY
+```
+
+3. Run the following az container show command to display your container's environment variables:
+```bash
+az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-secure --query containers[0].environmentVariables
+```
+
+4. This time, you can see that your environment variables don't appear in plain text:
+```json
+[
+  {
+    "name": "COSMOS_DB_ENDPOINT",
+    "secureValue": null,
+    "value": null
+  },
+  {
+    "name": "COSMOS_DB_MASTERKEY",
+    "secureValue": null,
+    "value": null
+  }
+]
+```
+
+### Exercise - Use data volumes TODO
+
+### Exercise - Troubleshoot Azure Container Instances TODO
+
+### Knowledge check TODO
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
 
