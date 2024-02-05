@@ -20,6 +20,10 @@ https://learn.microsoft.com/en-us/azure/container-instances/
 https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus
 
 
+## 
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/deploy_types.jpg)
+
 ## Best practices and considerations for Azure Container Instances
 
 https://learn.microsoft.com/en-us/azure/container-instances/container-instances-best-practices-and-considerations
@@ -284,6 +288,7 @@ az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-secure --
 ### Knowledge check TODO
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
+
 
 ## Quickstart: Deploy a container instance in Azure using the Azure CLI
 
