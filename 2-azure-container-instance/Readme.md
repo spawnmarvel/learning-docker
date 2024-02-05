@@ -22,7 +22,17 @@ https://learn.microsoft.com/en-us/azure/container-registry/container-registry-sk
 
 ## Image source
 
+Quickstart
+
+Azure Container Registry
+
+Other registry
+
 ![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/deploy_types.jpg)
+
+Public docker
+
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/deploy_public.jpg)
 
 ## Best practices and considerations for Azure Container Instances
 
