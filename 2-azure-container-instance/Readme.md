@@ -20,7 +20,7 @@ https://learn.microsoft.com/en-us/azure/container-instances/
 https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus
 
 
-## 
+## Image source
 
 ![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/deploy_types.jpg)
 
