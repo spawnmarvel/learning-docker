@@ -7,13 +7,10 @@ https://follow-e-lo.com/2024/01/29/azure-aci-docker/
 
 ## Azure Container Instances documentation
 
-ACI
+ACI and ACI Group
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/container.jpg)
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/aci.jpg)
 
-ACI Group
-
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/container_group.jpg)
 
 https://learn.microsoft.com/en-us/azure/container-instances/
 
