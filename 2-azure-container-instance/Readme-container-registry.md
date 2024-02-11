@@ -38,6 +38,35 @@ Azure Container Registry is a managed Docker registry service based on the open-
 
 You can use Azure Container Registry Tasks to store and build container images in Azure. Tasks use a standard Dockerfile to create and store the container images in Azure Container Registry ***without the need for local Docker tooling.***
 
+## Exercise - Deploy an Azure container registry
+
+Create an Azure container registry
+
+1. 
+```bash
+az login --tenant THE-ID
+
+az group create --name Rg-uks-cr-001 --location uksouth
+```
+
+2. Define an environment variable, ACR_NAME, to hold your container registry name using the following command. The name must be unique within Azure and contain 5-50 alphanumeric characters
+
+https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
+
+
+```bash
+ACR_NAME=your-unique-acr-name
+
+```
+
+3. Create an Azure container registry using the az acr create command.
+
+```bash
+az acr create --resource-group Rg-uks-cr-001 --name $ACR_NAME --sku Basic
+
+```
+
+
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
 ## RabbitMQ ACI
