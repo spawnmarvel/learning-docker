@@ -62,6 +62,7 @@ ACR_NAME=your-unique-acr-name
 3. Create an Azure container registry using the az acr create command.
 
 ```bash
+# Basic, Standard and Premium
 az acr create --resource-group Rg-uks-cr-001 --name $ACR_NAME --sku Basic
 
 ```
