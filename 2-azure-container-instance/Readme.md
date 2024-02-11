@@ -296,7 +296,70 @@ az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-secure --
 ]
 ```
 
-### Exercise - Use data volumes TODO
+### Exercise - Use data volumes
+
+By default, Azure Container Instances are stateless. If the container crashes or stops, all of its state is lost. To persist state beyond the lifetime of the container, you must mount a volume from an external store.
+
+Mount an Azure file share to an Azure container instance so that you can store data and access it later.
+
+Create an Azure file share
+
+1. Your storage account requires a unique name
+```bash
+# Rg-uk-learn-aci-001
+
+STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+
+```
+
+2. Run the following az storage account create command to create your storage account:
+```bash
+az storage account create --resource-group Rg-uk-learn-aci-001 --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --location eastus
+```
+
+3. Run the following command to place the storage account connection string into an environment variable named AZURE_STORAGE_CONNECTION_STRING:
+```bash
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string --resource-group Rg-uk-learn-aci-001 --name $STORAGE_ACCOUNT_NAME --output tsv)
+```
+
+4. Run this command to create a file share named aci-share-demo in the storage account:
+```bash
+az storage share create --name aci-share-demo
+```
+
+Get storage credentials
+
+To mount an Azure file share as a volume in Azure Container Instances, you need these three values:
+
+Storage account name
+Share name
+Storage account access key
+
+You already have the first two values. The storage account name is stored in the STORAGE_ACCOUNT_NAME Bash variable. You specified aci-share-demo as the share name in the previous step. Here, you get the remaining value: the storage account access key.
+
+1. Run the following command to get the storage account key:
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group Rg-uk-learn-aci-001 --account-name $STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
+
+#
+echo $STORAGE_KEY
+
+```
+
+Deploy a container and mount the file share
+
+1. Run this az container create command to create a container that mounts /aci/logs/ to your file share:
+```bash
+
+STORAGE_ACCOUNT_NAME=mystorageaccount3078
+STORAGE_KEY=$(az storage account keys list --resource-group Rg-uk-learn-aci-001 --account-name $STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
+
+az container create --resource-group Rg-uk-learn-aci-001 --name aci-demo-files --image mcr.microsoft.com/azuredocs/aci-hellofiles --location uksouth --ports 80 --ip-address Public --azure-file-volume-account-name $STORAGE_ACCOUNT_NAME --azure-file-volume-account-key $STORAGE_KEY --azure-file-volume-share-name aci-share-demo --azure-file-volume-mount-path /aci/logs/
+```
+2. Run az container show to get your container's public IP address:
+```bash
+az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-files --query ipAddress.ip --output tsv
+```
 
 ### Exercise - Troubleshoot Azure Container Instances TODO
 
