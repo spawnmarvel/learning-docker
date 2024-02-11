@@ -361,9 +361,57 @@ az container create --resource-group Rg-uk-learn-aci-001 --name aci-demo-files -
 az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-files --query ipAddress.ip --output tsv
 ```
 
-### Exercise - Troubleshoot Azure Container Instances TODO
+### Exercise - Troubleshoot Azure Container Instances
 
-### Knowledge check TODO
+Get the logs form the prior deployed container
+```bash
+az container logs --resource-group Rg-uk-learn-aci-001 --name aci-demo-files
+```
+
+The tutorial uses the voting app, we have removed that. Not it is the save text app.
+
+```log
+listening on port undefined
+{ name: 'Data to storage account' }
+Wrote to file
+
+```
+
+Get container events
+
+```bash
+az container attach --resource-group Rg-uk-learn-aci-001 --name aci-demo-files
+```
+
+Execute a command in your container
+
+```bash
+az container exec --resource-group Rg-uk-learn-aci-001 --name aci-demo-files --exec-command /bin/sh
+
+pwd
+/usr/src/app
+
+```
+
+Monitor CPU and memory usage on your container
+
+1. Run the following az container show command to get the ID of your Azure container instance and store the ID in a Bash variable:
+```bash
+CONTAINER_ID=$(az container show --resource-group Rg-uk-learn-aci-001 --name aci-demo-files --query id --output tsv)
+```
+
+2. Run the az monitor metrics list command to retrieve CPU usage information:
+
+```bash
+az monitor metrics list --resource $CONTAINER_ID --metrics CPUUsage --output table
+```
+
+3. Run this az monitor metrics list command to retrieve memory usage information:
+```bash
+az monitor metrics list --resource $CONTAINER_ID --metrics MemoryUsage --output table
+```
+
+### Knowledge check
 
 https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/
 
