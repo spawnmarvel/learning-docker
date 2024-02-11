@@ -30,6 +30,13 @@ Azure Container Registry is a managed Docker registry service based on the open-
 * Build a container image using Azure Container Registry Tasks and deploy it to an Azure container instance.
 * Replicate the container image to multiple Azure regions.
 
+### Introduction to Azure Container Registry
+
+* Azure Container Registry is a managed Docker registry service based on the open-source Docker Registry 2.0. Container Registry is private, hosted in Azure, and allows you to build, store, and manage images for container deployments.
+* You can push and pull container images with Azure Container Registry using the Docker CLI or the Azure CLI. Azure portal integration allows you to visually inspect the container images in your container registry.
+* In distributed environments, you can use the container registry geo-replication feature to distribute container images to multiple Azure data centers for localized distribution.
+
+You can use Azure Container Registry Tasks to store and build container images in Azure. Tasks use a standard Dockerfile to create and store the container images in Azure Container Registry ***without the need for local Docker tooling.***
 
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
