@@ -42,7 +42,7 @@ You can use Azure Container Registry Tasks to store and build container images i
 
 Create an Azure container registry
 
-1. Sign in and create an rg
+1. Sign in and create an rg.
 ```bash
 az login --tenant THE-ID
 
