@@ -150,4 +150,12 @@ Visit it http://public-ip:15672 success
 
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
-## RabbitMQ ACI
+## RabbitMQ ACI 101 Done
+
+## RabbitMQ ACI 102
+
+Update the ACI
+
+* SSL
+* RabbitMQ config
+* etc
