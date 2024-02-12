@@ -71,6 +71,8 @@ az acr create --resource-group Rg-uks-cr-001 --name $ACR_NAME --sku Basic
 
 ```
 
+Exercise - Build container images using Azure Container Registry Tasks
+
 
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
