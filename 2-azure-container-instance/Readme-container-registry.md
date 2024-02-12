@@ -5,6 +5,10 @@
 
 https://follow-e-lo.com/2024/02/11/azure-aci-docker-registry-102/
 
+## What is Azure Container Registry - How to create Azure Container Registry Tutorial | Whizlabs
+
+https://www.youtube.com/watch?v=_ZzjkglIS0s
+
 ## Introduction to Container registries in Azure
 
 Azure Container Registry is a managed registry service based on the open-source Docker Registry 2.0. Create and maintain Azure container registries to store and manage your container images and related artifacts.
