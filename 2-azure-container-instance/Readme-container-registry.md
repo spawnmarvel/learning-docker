@@ -71,6 +71,8 @@ az acr create --resource-group Rg-uks-cr-001 --name $ACR_NAME --sku Basic
 
 ```
 
+Or use the portal.
+
 Exercise - Build container images using Azure Container Registry Tasks
 
 
