@@ -100,9 +100,8 @@ az acr repository list --name $ACR_NAME --output table
 # --------
 # rmq
 ```
-https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
-## az acr build
+## (az acr build)
 
 ```bash
 az acr build --registry
@@ -125,5 +124,17 @@ az acr build --registry
 ```
 
 https://learn.microsoft.com/en-us/cli/azure/acr?view=azure-cli-latest#az-acr-build
+
+## Exercise - Deploy images from Azure Container Registry
+
+You can pull container images from Azure Container Registry using various container management platforms, such as Azure Container Instances, Azure Kubernetes Service, or Docker for Windows or Mac
+
+In this module, you deploy the image to an Azure Container Instance.
+
+Registry authentication
+* 
+* 
+
+https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
 ## RabbitMQ ACI
