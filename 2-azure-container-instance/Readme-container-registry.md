@@ -75,7 +75,55 @@ Or use the portal.
 
 Exercise - Build container images using Azure Container Registry Tasks
 
+1. We added the Dockerfile to a storage account and download it
 
+```bash
+ACR_NAME=marvel0001
+
+wget https://staccountmarvel0001.blob.core.windows.net/rabbitmq/Dockerfile
+
+az acr build --registry $ACR_NAME --image rmq:v1 .
+
+```
+2. Build the container image from the Dockerfile using the az acr build command.
+
+```bash
+# Make sure you add the period (.) to the end of the command. It represents the source directory containing the Dockerfile. 
+# Because we didn't specify the name of the file using the --file parameter, the command looks for a file called Dockerfile in our current directory.
+az acr build --registry $ACR_NAME --image rmq:v1 .
+```
+3. Verify that the image has been created and stored in the registry using the az acr repository list command.
+
+```bash
+az acr repository list --name $ACR_NAME --output table
+# Result
+# --------
+# rmq
+```
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
+
+## az acr build
+
+```bash
+az acr build --registry
+             [--agent-pool]
+             [--auth-mode {Default, None}]
+             [--build-arg]
+             [--file]
+             [--image]
+             [--log-template]
+             [--no-format]
+             [--no-logs]
+             [--no-push]
+             [--no-wait]
+             [--platform]
+             [--resource-group]
+             [--secret-build-arg]
+             [--target]
+             [--timeout]
+             [<SOURCE_LOCATION>]
+```
+
+https://learn.microsoft.com/en-us/cli/azure/acr?view=azure-cli-latest#az-acr-build
 
 ## RabbitMQ ACI
