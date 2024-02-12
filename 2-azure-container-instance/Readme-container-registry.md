@@ -67,7 +67,7 @@ ACR_NAME=your-unique-acr-name
 
 ```bash
 # Basic, Standard and Premium
-az acr create --resource-group Rg-uks-cr-001 --name $ACR_NAME --sku Basic
+az acr create --resource-group Rg-uks-aci-registry-0001 --name $ACR_NAME --sku Basic
 
 ```
 
@@ -81,8 +81,6 @@ Or use the portal.
 ACR_NAME=marvel0001
 
 wget https://staccountmarvel0001.blob.core.windows.net/rabbitmq/Dockerfile
-
-az acr build --registry $ACR_NAME --image rmq:v1 .
 
 ```
 2. Build the container image from the Dockerfile using the az acr build command.
@@ -100,31 +98,6 @@ az acr repository list --name $ACR_NAME --output table
 # --------
 # rmq
 ```
-
-## (az acr build)
-
-```bash
-az acr build --registry
-             [--agent-pool]
-             [--auth-mode {Default, None}]
-             [--build-arg]
-             [--file]
-             [--image]
-             [--log-template]
-             [--no-format]
-             [--no-logs]
-             [--no-push]
-             [--no-wait]
-             [--platform]
-             [--resource-group]
-             [--secret-build-arg]
-             [--target]
-             [--timeout]
-             [<SOURCE_LOCATION>]
-```
-
-https://learn.microsoft.com/en-us/cli/azure/acr?view=azure-cli-latest#az-acr-build
-
 ## Exercise - Deploy images from Azure Container Registry
 
 You can pull container images from Azure Container Registry using various container management platforms, such as Azure Container Instances, Azure Kubernetes Service, or Docker for Windows or Mac
@@ -148,7 +121,32 @@ Enable the registry admin account
 
 1. Enable the admin account on your registry using the az acr update command.
 ```bash
+az acr update -n $ACR_NAME --admin-enabled true
 ```
+
+2. Retrieve the username and password for the admin account using the az acr credential show command.
+
+```bash
+az acr credential show --name $ACR_NAME
+```
+
+Deploy a container with Azure CLI
+
+1. Deploy a container instance using the az container create command. Make sure you replace <admin-username> and <admin-password> with your admin username and password from the previous command.
+
+```bash
+admin_username=
+admin_password=
+az container create --resource-group Rg-uks-aci-registry-0001 --name rmq01 --image $ACR_NAME.azurecr.io/rmq:v1 --registry-login-server $ACR_NAME.azurecr.io --ip-address Public --location uksouth --registry-username $admin_username --registry-password $admin_password --ports 15672
+```
+2. Get the IP address of the Azure container instance using the az container show command.
+
+```bash
+az container show --resource-group Rg-uks-aci-registry-0001 --name rmq01 --query ipAddress.ip --output table
+```
+
+Visit it http://public-ip:15672 success
+
 
 https://learn.microsoft.com/en-us/training/modules/build-and-store-container-images/
 
