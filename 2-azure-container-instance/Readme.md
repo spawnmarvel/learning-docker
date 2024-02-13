@@ -221,10 +221,6 @@ az container show \
   --output tsv
 ```
 
-3. 
-```bash
-```
-
 Use secured environment variables to hide connection information
 
 In the previous section, you used two environment variables to create your container. By default, these environment variables are accessible through the Azure portal and command-line tools in plain text.

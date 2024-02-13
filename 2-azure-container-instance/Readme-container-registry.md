@@ -158,4 +158,6 @@ Update the ACI
 
 * SSL
 * RabbitMQ config
+* Restart policy
+* Mount to storage
 * etc
