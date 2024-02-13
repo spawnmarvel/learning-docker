@@ -78,7 +78,6 @@ Or use the portal.
 1. We added the Dockerfile to a storage account and download it
 
 ```bash
-ACR_NAME=marvel0001
 
 wget https://staccountmarvel0001.blob.core.windows.net/rabbitmq/Dockerfile
 
