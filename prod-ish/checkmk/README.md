@@ -8,12 +8,31 @@ Setting up Checkmk
 
 The CRE Checkmk Raw Edition is free, 100 % Open Source and incorporates Nagios as its core. You can use it to comprehensively monitor complex environments. Support is available in our Forum from the Checkmk community.
 
+https://docs.checkmk.com/latest/en/cse.html?lquery=raw
+
 https://docs.checkmk.com/latest/en/
 
 
 ## Visuals
 
 https://follow-e-lo.com/2024/02/16/checkmk-one-line/
+
+
+## Topology and Monitoring agents
+
+* Port 6556
+* The agents are passive in pull mode and listen on TCP port 6556. Only on receiving a Checkmk server query will these agents be activated and respond with the required data.
+* In push mode, on the other hand, the Checkmk agent periodically sends the monitoring data to the Checkmk server on its own.
+* * The push mode is always required if the Checkmk server cannot access the network in which the host to be monitored and its agent are located, for example, in a cloud-based configuration. For this reason, the push mode only exists in the CSE Checkmk Cloud Edition.
+
+https://docs.checkmk.com/latest/en/wato_monitoringagents.html
+
+
+## Custom agent
+
+https://docs.checkmk.com/latest/en/devel_check_plugins.html
+
+https://www.reddit.com/r/nagios/comments/aq1zg5/how_to_create_a_customized_check_in_check_mk/
 
 ## Backend
 
@@ -37,6 +56,11 @@ https://docs.checkmk.com/latest/en/introduction_docker.html
 ## Monitoring agents
 
 https://docs.checkmk.com/latest/en/wato_monitoringagents.html
+
+
+## Rules In Checkmk you configure parameters for hosts and services by using rules.
+
+https://docs.checkmk.com/latest/en/wato_rules.html
 
 ## How To Monitor Server Health with Checkmk 2.0 on Ubuntu 20.04
 
