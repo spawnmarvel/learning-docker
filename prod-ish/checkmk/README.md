@@ -34,6 +34,12 @@ https://docs.checkmk.com/latest/en/devel_check_plugins.html
 
 https://www.reddit.com/r/nagios/comments/aq1zg5/how_to_create_a_customized_check_in_check_mk/
 
+## Writing agent-based check plug-ins
+
+
+
+https://docs.checkmk.com/latest/en/devel_check_plugins.html?lquery=custom%20check
+
 ## Backend
 
 There is no database involved in a check_mk monitoring site.
