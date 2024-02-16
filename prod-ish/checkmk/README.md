@@ -32,13 +32,16 @@ https://docs.checkmk.com/latest/en/wato_monitoringagents.html
 
 https://docs.checkmk.com/latest/en/devel_check_plugins.html
 
+Writing agent-based check plug-ins
+
 https://www.reddit.com/r/nagios/comments/aq1zg5/how_to_create_a_customized_check_in_check_mk/
 
 ## Writing agent-based check plug-ins
 
-
-
 https://docs.checkmk.com/latest/en/devel_check_plugins.html?lquery=custom%20check
+
+
+https://docs.checkmk.com/latest/en/devel_check_plugins.html?lquery=custom%20check#write_check_plugin
 
 ## Backend
 
