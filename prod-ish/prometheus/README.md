@@ -18,6 +18,90 @@ https://prometheus.io/docs/introduction/overview/
 
 ## Docker
 
+A sample Prometheus and Grafana stack.
+
+https://docs.docker.com/samples/prometheus/
+
+
+```bash
+cd prometheus-grafana
+
+docker compose up -d
+
+# Network prometheus-grafana_default     Created                                                               
+# Volume "prometheus-grafana_prom_data"  Created                                                                  
+# Container grafana                      Started                                                                 
+# Container prometheus                   Started
+
+```
+
+Navigate to http://localhost:3000 in your web browser and use the login credentials specified in the compose file to access Grafana. It is already configured with prometheus as the default datasource.
+
+admin / grafana
+
+
+Navigate to http://localhost:9090 in your web browser to access directly the web interface of prometheus.
+
+
+
+## Python send data
+
+```bash
+pip install prometheus_client
+
+```
+```py
+from prometheus_client import start_http_server, Summary
+
+import random
+
+import time
+
+
+
+# Create a metric to track time spent and requests made.
+
+REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
+
+
+
+# Decorate function with metric.
+
+@REQUEST_TIME.time()
+
+def process_request(t):
+
+    """A dummy function that takes some time."""
+
+    time.sleep(t)
+
+
+if __name__ == '__main__':
+    # Start up the server to expose the metrics.
+    start_http_server(8888)
+    # Generate some requests.
+    while True:
+
+        process_request(random.random())
+
+```
+
+Three: Visit http://localhost:8000/ to view the metrics.
+
+From one easy to use decorator you get:
+
+request_processing_seconds_count: Number of times this function was called.
+
+request_processing_seconds_sum: Total amount of time spent in this function.
+
+Prometheus’s rate function allows calculation of both requests per second, and latency over time from this data.
+
+
+In addition if you’re on Linux the process metrics expose CPU, memory and other information about the process for free!
+
+https://prometheus.github.io/client_python/getting-started/three-step-demo/
+
+
 ## TUTORIALS
 
 ### Getting Started with Prometheus
