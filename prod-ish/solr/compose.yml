@@ -1,0 +1,12 @@
+services:
+  solr:
+    image: solr
+    ports:
+     - "8983:8983"
+    volumes:
+      - vol_data:/var/solr
+    command:
+      - solr-precreate
+      - gettingstarted
+volumes:
+  vol_data:
