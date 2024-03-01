@@ -157,6 +157,8 @@ get_all()
 
 ```
 
+Example
+
 ![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor.jpg)
 
 https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
