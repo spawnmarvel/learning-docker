@@ -12,6 +12,10 @@ https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html#g
 
 https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html
 
+## Python get data
+
+
+
 
 
 
