@@ -1,6 +1,6 @@
 # solr
 
-## hob docker
+## hub docker
 
 https://hub.docker.com/_/solr
 
