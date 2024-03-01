@@ -44,12 +44,15 @@ import json
 
 
 def get_all():
-    r = requests.get("http://xx.xxx.xxx.xxx:8983/solr/gettingstarted/select?q=*:*")
-    print("Solr status " + str(r.status_code))
-    js = r.json()
-    li = js["response"]
-    print(li["numFound"])
-    return li
+    try:
+        r = requests.get("http://xx.xxx.xxx.xxx:8983/solr/gettingstarted/select?q=*:*")
+        print("Solr status " + str(r.status_code))
+        js = r.json()
+        li = js["response"]
+        print(li["numFound"])
+        return li
+    except Exception as ex:
+        print(ex)
 
 
 get_all()
@@ -77,6 +80,85 @@ response
 
 ```
 
+
+## pip install offline
+
+https://stackoverflow.com/questions/11091623/how-to-install-packages-offline
+
+pip install py-zabbix
+
+```cmd
+# On a computer connected to the internet, create a folder.
+
+cd c:\tenp
+
+# open up a command prompt or shell and execute the following command
+
+pip download py-zabbix
+Collecting py-zabbix
+  Downloading py_zabbix-1.1.7-py3-none-any.whl (19 kB)
+Saved c:\users\jekl\py_zabbix-1.1.7-py3-none-any.whl
+Successfully downloaded py-zabbix
+
+dir
+
+py_zabbix-1.1.7-py3-none-any.whl
+
+# Now, on the target computer, copy the packages folder and apply the following command
+
+c:\temp>pip install py_zabbix-1.1.7-py3-none-any.whl --no-index --find-links '.'
+Looking in links: '.'
+Processing .\py_zabbix-1.1.7-py3-none-any.whl
+Installing collected packages: py-zabbix
+Successfully installed py-zabbix-1.1.7
+
+pip freeze
+
+py-zabbix @ file:///C:/temp/py_zabbix-1.1.7-py3-none-any.whl#sha256=f921abc88298c56f5aab9054815122ca959f8612df88fdc3a240ad2d95e4c282
+
+
+
+```
+
+## Send to zabbix
+
+```py
+import requests
+import json
+
+from pyzabbix import ZabbixMetric, ZabbixSender
+
+def get_all():
+    try:
+        r = requests.get("http://xx.xxx.xxx.xxx:8983/solr/gettingstarted/select?q=*:*")
+        print("Solr status " + str(r.status_code))
+        js = r.json()
+        li = js["response"]
+        print(li["numFound"])
+        metrix = li["numFound"]
+        send_to_zabbix(metrix)
+        return li
+    except Exception as ex:
+        print(ex)
+    
+def send_to_zabbix(metrix):
+    try:
+        metrics = []
+        m = ZabbixMetric('VMSOLR', 'docs', metrix)
+        metrics.append(m)
+        zbx = ZabbixSender('xx.xx.xx.xx')
+        zbx.send(metrics)
+        print("sent to zabbix " + str(metrix))
+    except Exception as ex:
+        print(ex)
+
+
+get_all()
+
+```
+
+
+https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
 
 
 
