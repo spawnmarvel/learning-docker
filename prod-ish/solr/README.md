@@ -33,7 +33,7 @@ docker exec -it a4e5c250dac0  post -c gettingstarted example/exampledocs/manufac
 ```
 
 
-```json
+```log
 response
 {'numFound': 11, 'start': 0, 'numFoundExact': True, 'docs': 
 [{'id': 'adata', 'compName_s': 'A-Data Technology', 'address_s': '46221 Landing Parkway Fremont, CA 94538', '_version_': 1792350484097400832},
