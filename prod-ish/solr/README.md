@@ -56,7 +56,9 @@ get_all()
 
 ```
 Result:
+
 Solr status 200
+
 11
 
 ```log
