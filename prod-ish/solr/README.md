@@ -29,7 +29,7 @@ Load it with date:
 
 
 ```bash
-docker exec -it a4e5c250dac0  post -c gettingstarted example/exampledocs/manufacturers.xml
+docker exec -it 7f186c0a9aa7  post -c gettingstarted example/exampledocs/manufacturers.xml
 ```
 
 ## Solr in Docker
@@ -162,6 +162,10 @@ Example
 ![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor.jpg)
 
 https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
+
+
+# NSSM
+
 
 
 
