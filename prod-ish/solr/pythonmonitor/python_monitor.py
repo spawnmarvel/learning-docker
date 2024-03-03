@@ -11,8 +11,6 @@ from app_logs.app_logger import Logger
 
 logger = Logger().get()
 
-
-
 class PythonMonitor():
 
     def __init__(self):
@@ -36,7 +34,6 @@ class PythonMonitor():
             logger.error(ex)
 
 
-        
     def get_num_docs(self):
         try:
             temp_url = ('http://' + str(self.solr_host) +  ':8983/solr/gettingstarted/select?q=*:*')
@@ -67,7 +64,6 @@ class PythonMonitor():
         except Exception as ex:
             logger.error(ex)
 
-
     def start_monitor(self):
         try:
             self.read_conf()
@@ -78,7 +74,6 @@ class PythonMonitor():
         except Exception as ex:
             logger.error(ex)
     
-
 def main():
     while True:
         logger.info("Monitor started")
