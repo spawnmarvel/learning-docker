@@ -164,9 +164,23 @@ Example
 https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
 
 
+# View folder python monitor
+
+Example of config
+
+```json
+{
+    "configuration": {
+        "solr_host": "99.999.999.999",
+        "solr_aliaszabbix": "VMSOLR",
+        "solr_node": "gettingstarted",
+		"zabbix_host": "11.111.11.111",
+        "send_interval":60
+    }
+}
+```
+
 # NSSM
-
-
 
 
 
