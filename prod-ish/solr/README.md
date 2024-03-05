@@ -161,10 +161,7 @@ Example
 
 ![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor.jpg)
 
-https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
-
-
-# View folder python monitor
+Example 2 with dynmaic properties from config
 
 Example of config
 
@@ -185,6 +182,14 @@ Example of config
     }
 }
 ```
+
+![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor2.jpg)
+
+https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
+
+
+# View folder python monitor
+
 
 # NSSM
 

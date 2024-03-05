@@ -61,7 +61,7 @@ class PythonMonitor():
                 # Read the response content as a string (assuming it's text)
                 response_text = response_bytes.decode("utf-8")
                 logger.info("Lenght of response " + str(len(response_text)))
-                logger.debug(response_text)
+                # logger.debug(response_text)
                 json_data = json.loads(response_text)
 
 
