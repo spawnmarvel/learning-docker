@@ -172,8 +172,14 @@ Example of config
 {
     "configuration": {
         "solr_host": "99.999.999.999",
+        "solr_port": 8983,
         "solr_aliaszabbix": "VMSOLR",
         "solr_node": "gettingstarted",
+        "solr_node": "gettingstarted",
+        "metrics": [
+            "numFound",
+            "numFoundExact"
+        ],
 		"zabbix_host": "11.111.11.111",
         "send_interval":60
     }
