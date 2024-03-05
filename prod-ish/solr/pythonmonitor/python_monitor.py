@@ -1,10 +1,9 @@
-import requests
+import http.client, urllib.parse
 import json
 import time
 import signal
 import os
 import sys
-
 from pyzabbix import ZabbixMetric, ZabbixSender
 
 from app_logs.app_logger import Logger
@@ -14,38 +13,68 @@ logger = Logger().get()
 class PythonMonitor():
 
     def __init__(self):
-        self.solr_host = None
-        self.solr_node = None
-        self.zabbix_host = None
-        self.heartbeat_sec = None
+          self.solr_host = None
+          self.solr_port = None
+          self.solr_node = None
+          self.solr_alias_zabbix = None
+          self.metrics = None
+          self.zabbix_host = None
+          self.send_interval = None
+          self.read_conf()
     
     def read_conf(self):
         try:
             with open("config.json") as json_file:
                 data = json.load(json_file)
                 self.solr_host = data["configuration"]["solr_host"]
+                self.solr_port = data["configuration"]["solr_port"]
                 self.solr_node = data["configuration"]["solr_node"]
                 self.solr_alias_zabbix = data["configuration"]["solr_aliaszabbix"]
+                self.metrics = data["configuration"]["metrics"] 
                 self.zabbix_host = data["configuration"]["zabbix_host"]
                 self.send_interval = data["configuration"]["send_interval"]
-                logger.info("Node: " + str(self.solr_node))
-                logger.debug(data)
+                logger.info(data)
         except Exception as ex:
             logger.error(ex)
 
 
-    def get_num_docs(self):
+    def get_solr_information(self):
+        dict_data = {}
         try:
-            temp_url = ('http://' + str(self.solr_host) +  ':8983/solr/gettingstarted/select?q=*:*')
-            r = requests.get(temp_url)
-            logger.info("Solr status code: " + str(r.status_code))
-            js = r.json()
-            temp_li = js["response"]
-            print(temp_li["numFound"])
-            metrix_value = temp_li["numFound"]
-            metrix_key = "docs"
-            dict = {metrix_key: metrix_value}
-            return dict
+    
+            temp_url_query = ('http://'+str(self.solr_host)+':8983/solr/'+str(self.solr_node)+'/select?q=*:*')
+            logger.info(temp_url_query)
+            # create connectio to server
+            conn = http.client.HTTPConnection(self.solr_host, self.solr_port)
+            # conn = http.client.HTTPConnection(self.solr_host,self.solr_port) # accepts a hostname, not url
+            conn.request("GET",temp_url_query)
+
+            response = conn.getresponse()
+            logger.info(response)
+            logger.info("Http status " + str(response.status))
+            logger.info("Http reason " + str(response.reason))
+            if response.status == 200:
+                content_type = response.getheader("Content-Type")
+                logger.info("Content type " + str(content_type))
+                # Read the response content as bytes
+                response_bytes = response.read()
+                # Read the response content as a string (assuming it's text)
+                response_text = response_bytes.decode("utf-8")
+                logger.info("Lenght of response " + str(len(response_text)))
+                logger.debug(response_text)
+                json_data = json.loads(response_text)
+
+
+                temp_li = json_data["response"]
+                for m in self.metrics:
+                    logger.info(m)
+                    metric_value = temp_li[m]
+                    metric_key = m.lower()
+                    dict_data[metric_key] = metric_value
+            else:
+                logger.info("Http status " + str(response.status))
+
+            return dict_data
         except Exception as ex:
             logger.error(ex)
     
@@ -66,8 +95,7 @@ class PythonMonitor():
 
     def start_monitor(self):
         try:
-            self.read_conf()
-            dict_num = self.get_num_docs()
+            dict_num = self.get_solr_information()
             logger.info(dict_num)
             for k, v in dict_num.items():
                 self.send_to_zabbix(k, v)
