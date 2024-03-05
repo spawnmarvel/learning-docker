@@ -1,4 +1,4 @@
-import http.client, urllib.parse
+import http.client
 import json
 import time
 import signal

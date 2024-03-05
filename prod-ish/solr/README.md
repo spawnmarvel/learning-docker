@@ -39,23 +39,7 @@ https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html
 ## Python monitor (on windows)
 
 ```py
-import requests
-import json
-
-
-def get_all():
-    try:
-        r = requests.get("http://xx.xxx.xxx.xxx:8983/solr/gettingstarted/select?q=*:*")
-        print("Solr status " + str(r.status_code))
-        js = r.json()
-        li = js["response"]
-        print(li["numFound"])
-        return li
-    except Exception as ex:
-        print(ex)
-
-
-get_all()
+import http.client
 
 ```
 Result:
@@ -123,45 +107,13 @@ py-zabbix @ file:///C:/temp/py_zabbix-1.1.7-py3-none-any.whl#sha256=f921abc88298
 ## Send to zabbix
 
 ```py
-import requests
-import json
+
 
 from pyzabbix import ZabbixMetric, ZabbixSender
 
-def get_all():
-    try:
-        r = requests.get("http://xx.xxx.xxx.xxx:8983/solr/gettingstarted/select?q=*:*")
-        print("Solr status " + str(r.status_code))
-        js = r.json()
-        li = js["response"]
-        print(li["numFound"])
-        metrix = li["numFound"]
-        send_to_zabbix(metrix)
-        return li
-    except Exception as ex:
-        print(ex)
-    
-def send_to_zabbix(metrix):
-    try:
-        metrics = []
-        m = ZabbixMetric('VMSOLR', 'docs', metrix)
-        metrics.append(m)
-        zbx = ZabbixSender('xx.xx.xx.xx')
-        zbx.send(metrics)
-        print("sent to zabbix " + str(metrix))
-    except Exception as ex:
-        print(ex)
-
-
-get_all()
-
 ```
 
-Example
-
-![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor.jpg)
-
-Example 2 with dynmaic properties from config
+Example  with dynmaic properties from config
 
 Example of config
 
