@@ -4,7 +4,7 @@
 
 https://hub.docker.com/_/solr
 
-## Getting started with the Docker image
+## Getting started with the Docker image latest, 9.5.0
 
 https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html#getting-started-with-the-docker-image
 
@@ -138,6 +138,49 @@ Example of config
 ![Solr monitor](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor2.jpg)
 
 https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
+
+# Test same code with solr 8.2.0
+
+```yml
+services:
+  solr:
+    image: solr:8.2.0
+    ports:
+     - "8983:8983"
+    volumes:
+      - vol_data:/var/solr
+    command:
+      - solr-precreate
+      - gettingstarted
+volumes:
+  vol_data:
+```
+
+Add data and check image, version
+
+```bash
+docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS                                                                                            NAMES
+3c5f7deb3df3   solr:8.2.0                      "docker-entrypoint.s…"   14 seconds ago   Up 13 seconds   0.0.0.0:8983->8983/tcp, :::8983->8983/tcp                                                        solrdev-solr-1
+
+# add data
+docker exec -it 3c5f7deb3df3  post -c gettingstarted example/exampledocs/manufacturers.xml
+/usr/local/openjdk-11/bin/java -classpath /opt/solr/dist/solr-core-8.2.0.jar -Dauto=yes -Dc=gettingstarted -Ddata=files org.apache.solr.util.SimplePostTool example/exampledocs/manufacturers.xml
+SimplePostTool version 5.0.0
+Posting files to [base] url http://localhost:8983/solr/gettingstarted/update...
+Entering auto mode. File endings considered are xml,json,jsonl,csv,pdf,doc,docx,ppt,pptx,xls,xlsx,odt,odp,ods,ott,otp,ots,rtf,htm,html,txt,log
+POSTing file manufacturers.xml (application/xml) to [base]
+1 files indexed.
+COMMITting Solr index changes to http://localhost:8983/solr/gettingstarted/update...
+Time spent: 0:00:00.396
+
+
+
+```
+
+Result is the same, it works
+
+![Solr monitor 8.2.0](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor3.jpg)
 
 
 # View folder python monitor
