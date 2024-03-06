@@ -139,7 +139,7 @@ Example of config
 
 https://py-zabbix.readthedocs.io/en/latest/quickstart_guide.html
 
-# Test same code with solr 8.2.0
+## Test same code with solr 8.2.0
 
 ```yml
 services:
@@ -183,10 +183,10 @@ Result is the same, it works
 ![Solr monitor 8.2.0](https://github.com/spawnmarvel/learning-docker/blob/main/images/solr_monitor3.jpg)
 
 
-# View folder python monitor
+## View folder python monitor
 
 
-# NSSM
+## NSSM
 
 
 
