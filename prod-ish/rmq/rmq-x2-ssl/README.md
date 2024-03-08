@@ -272,7 +272,7 @@ For future me to test, yes you are missing something, look below. It works.
 
 # Works using user, pass and cert and no external login
 # 2024-01-28 16:46:44.424664+00:00 [info] <0.769.0> connection <0.769.0> 
-# (192.168.176.3:43750 -> 192.168.176.2:5674 - Shovel shovel_send1): 
+# (111.111.111.1:43750 -> 111.111.11.2:5674 - Shovel shovel_send1): 
 # user 'rmq_client.cloud' authenticated and granted access to vhost '/'
 {uris, ["amqps://rmq_client.cloud:rmq_client.cloud-pass@rmq_server.cloud:5674?
 cacertfile=/etc/rabbitmq/ca.bundle&
