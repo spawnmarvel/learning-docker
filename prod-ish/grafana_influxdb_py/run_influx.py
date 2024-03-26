@@ -24,5 +24,5 @@ p = influxdb_client.Point("my_measurement").tag("location", "Prague").field("tem
 write_api.write(bucket=bucket, org=org, record=p)
 time.sleep(5)
 p = influxdb_client.Point("my_measurement").tag("location", "Prague").field("temperature", 40.3)
-rv = write_api.write(bucket=bucket, org=org, record=p
+rv = write_api.write(bucket=bucket, org=org, record=p)
 print(str(rv))
