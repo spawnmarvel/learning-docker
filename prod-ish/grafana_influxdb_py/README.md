@@ -39,15 +39,13 @@ https://www.mongodb.com/docs/manual/reference/connection-string/
 ```bash
 pip install pymongo
 # Successfully installed dnspython-2.6.1 pymongo-4.6.2
+```
+We create a usedefined network in docker, so the ip does not change.
 
-# ping the docker host, get ir from docker
-ping 172.27.0.2
-PING 172.27.0.2 (172.27.0.2) 56(84) bytes of data.
-64 bytes from 172.27.0.2: icmp_seq=1 ttl=64 time=0.056 ms
-64 bytes from 172.27.0.2: icmp_seq=2 ttl=64 time=0.061 ms
-64 bytes from 172.27.0.2: icmp_seq=3 ttl=64 time=0.058 ms
-64 bytes from 172.27.0.2: icmp_seq=4 ttl=64 time=0.056 ms
-
+```yml
+networks:
+      static_network:
+        ipv4_address: 172.27.0.2
 ```
 
 ```py
@@ -78,6 +76,16 @@ Insert
 InsertOneResult(ObjectId('6602b8a9d30bebbfeb2c5772'), acknowledged=True)
 InsertOneResult(ObjectId('6602b8a9d30bebbfeb2c5773'), acknowledged=True)
 ```
+## Grafana get data
+
+Enterprise License Error
+The Enterprise data source grafana-mongodb-datasource is not available with your current subscription. To activate this data source, please upgrade your plan by visiting https://grafana.com/pricing
+license token file not found: /var/lib/grafana/license.jwt
+
+## InfluxDB
+
+
+
 
 
 

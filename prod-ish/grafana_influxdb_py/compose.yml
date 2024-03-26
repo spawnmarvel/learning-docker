@@ -17,18 +17,35 @@ services:
       - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
     ports:
       - '3000:3000'
+    networks:
+      - static_network
     volumes:
       - vol_grafana:/var/lib/grafana
   mongo:
     image: mongo
+    # dns
+    hostname: mongodb-docker.cloud
+    container_name: mongodb-docker
     restart: unless-stopped
     ports:
     - 27017:27017
+    networks:
+      static_network:
+        ipv4_address: 172.27.0.2
     volumes:
     - vol_mongodata:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+
+
+networks:
+  static_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.27.0.0/28
+          gateway: 172.27.0.1
 
 volumes:
   vol_grafana:
