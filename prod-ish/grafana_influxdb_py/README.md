@@ -20,15 +20,6 @@ Grafana ships with built-in support for InfluxDB releases >0.9.x.
 
 https://grafana.com/grafana/plugins/influxdb/
 
-MongoDB data source for Grafana
-
-![Mongodb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_mongo_py/images/mongdb.jpg)
-
-
-Now connect with grafana
-
-https://www.mongodb.com/docs/manual/reference/connection-string/
-
 ## influxdb
 
 ```bash
@@ -54,6 +45,10 @@ license token file not found: /var/lib/grafana/license.jwt
 pip install influxdb
 
 
+
+Now connect with grafana
+
+https://www.mongodb.com/docs/manual/reference/connection-string/
 
 
 
