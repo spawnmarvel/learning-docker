@@ -1,35 +1,28 @@
-from influxdb import InfluxDBClient
-user = "adminuser"
-cred = "adminpassword"
-client = InfluxDBClient(host="172.27.0.2", port=8086, username=user, password=cred)
-print(client)
-client.create_database("pyexample")
+import influxdb_client
+from influxdb_client.client.write_api import SYNCHRONOUS
+import time
 
-json_body = [
-    {
-        "measurement": "brushEvents",
-        "tags": {
-            "user": "Carol",
-            "brushId": "6c89f539-71c6-490d-a28d-6c5d84c0ee2f"
-        },
-        "time": "2024-03-26T8:01:00Z",
-        "fields": {
-            "duration": 127
-        }
-    },
-    {
-        "measurement": "brushEvents",
-        "tags": {
-            "user": "Carol",
-            "brushId": "6c89f539-71c6-490d-a28d-6c5d84c0ee2f"
-        },
-        "time": "2024-03-26T8:04:00Z",
-        "fields": {
-            "duration": 132
-        }
-    }
+bucket = "myBucket"
+org = "myOrg"
+token = "randomTokenValue"
+# Store the URL of your InfluxDB instance
+url="http://172.27.0.2:8086"
 
-]
+client = influxdb_client.InfluxDBClient(
+    url=url,
+    token=token,
+    org=org
+)
 
-rv = client.write_points(json_body)
+# Write script
+write_api = client.write_api(write_options=SYNCHRONOUS)
+
+p = influxdb_client.Point("my_measurement").tag("location", "Prague").field("temperature", 25.3)
+write_api.write(bucket=bucket, org=org, record=p)
+time.sleep(5)
+p = influxdb_client.Point("my_measurement").tag("location", "Prague").field("temperature", 30.3)
+write_api.write(bucket=bucket, org=org, record=p)
+time.sleep(5)
+p = influxdb_client.Point("my_measurement").tag("location", "Prague").field("temperature", 40.3)
+rv = write_api.write(bucket=bucket, org=org, record=p
 print(str(rv))

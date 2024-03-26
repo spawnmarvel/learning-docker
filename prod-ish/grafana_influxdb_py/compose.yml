@@ -22,7 +22,7 @@ services:
     volumes:
       - vol_grafana:/var/lib/grafana
   influxdb:
-    image: influxdb
+    image: influxdb:1.8
     container_name: influxdb
     restart: always
     environment:

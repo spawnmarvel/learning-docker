@@ -39,20 +39,45 @@ docker compose up -d
 Ensure that InfluxDB is running. If running InfluxDB locally, visit http://localhost:8086
 
 
-![Influxdb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb.jpg)
+![Influxdb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb.
+jpg)
 
-## influxdb InfluxDB (so many versions and clints, 1.8, 2>, 3>)
+sign in with
+* - DOCKER_INFLUXDB_INIT_USERNAME=adminuser
+* - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword
+
+## influxdb InfluxDB (so many versions and clients, 1.8, 2>, 3>)
 
 ```bash
 pip install influxdb-client
 
 python3 run_influx.py
 
+Failed to establish a new connection: [Errno 111] Connection refused
+
+telnet 172.27.0.2 8086
+Trying 172.27.0.2...
+Connected to 172.27.0.2.
+
+# updated URL to use
+url="http://172.27.0.2:8086"
+
 
 ```
 
+All good
+
 https://docs.influxdata.com/influxdb/cloud/api-guide/client-libraries/python/
 
+## Insert data
+
+```bash
+python3 run_influx.py
+
+```
+
+![Influxdb insert](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb.
+jpg)
 
 
 
