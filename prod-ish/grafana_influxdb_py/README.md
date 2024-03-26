@@ -108,6 +108,18 @@ Check it out.
 
 ![Influxdb features](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb_features.jpg)
 
+## Load data
+
+## Data explorer
+
+## Notebooks
+
+## Task
+
+## Alerts
+
+## Settings
+
 
 
 
