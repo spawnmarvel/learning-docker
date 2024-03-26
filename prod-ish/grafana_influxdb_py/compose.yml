@@ -14,29 +14,31 @@ services:
       - GF_SECURITY_ADMIN_USER=linuxuser
       - GF_SECURITY_ADMIN_PASSWORD=Minime789gotooslo
       # https://grafana.com/api/plugins
-      - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
+      # - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
     ports:
       - '3000:3000'
     networks:
       - static_network
     volumes:
       - vol_grafana:/var/lib/grafana
-  mongo:
-    image: mongo
-    # dns
-    hostname: mongodb-docker.cloud
-    container_name: mongodb-docker
-    restart: unless-stopped
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: always
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=adminuser
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword
+      - DOCKER_INFLUXDB_INIT_ORG=myOrg
+      - DOCKER_INFLUXDB_INIT_BUCKET=myBucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=randomTokenValue
     ports:
-    - 27017:27017
+      - 8086:8086
     networks:
       static_network:
         ipv4_address: 172.27.0.2
     volumes:
-    - vol_mongodata:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      - vol_influxdb:/var/lib/influxd
 
 
 networks:
@@ -49,4 +51,4 @@ networks:
 
 volumes:
   vol_grafana:
-  vol_mongodata:
+  vol_influxdb:

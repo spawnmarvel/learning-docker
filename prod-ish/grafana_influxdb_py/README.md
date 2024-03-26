@@ -10,20 +10,15 @@ https://stackoverflow.com/questions/74194700/azure-table-storage-data-source-for
 
 Please add as answer if you find any workarounds like piping from Table Store to an intermediatory low priced store which is supported by Grafana
 
-## Middle store
+## Middle store influxdb
 
 ```bash
 docker compose up -d
-
-# compose.yml
-# - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
-
-# enter container
-/var/lib/grafana/plugins
-ls
-grafana-mongodb-datasource
-
 ```
+
+Grafana ships with built-in support for InfluxDB releases >0.9.x.
+
+https://grafana.com/grafana/plugins/influxdb/
 
 MongoDB data source for Grafana
 
@@ -34,11 +29,11 @@ Now connect with grafana
 
 https://www.mongodb.com/docs/manual/reference/connection-string/
 
-## Pymongo
+## influxdb
 
 ```bash
-pip install pymongo
-# Successfully installed dnspython-2.6.1 pymongo-4.6.2
+pip install influxdb
+
 ```
 We create a usedefined network in docker, so the ip does not change.
 
@@ -48,41 +43,17 @@ networks:
         ipv4_address: 172.27.0.2
 ```
 
-```py
-import pymongo
-from pymongo import MongoClient
-client = MongoClient("172.27.0.2", 27017)
-print(str(client))
-
-```
-
-Run it, using private ip from container
-
-```bash
-python3 run.py
-MongoClient(host=['172.27.0.2:27017'], document_class=dict, tz_aware=False, connect=True)
-
-```
-
-https://pymongo.readthedocs.io/en/stable/tutorial.html
-
-```log
-MongoClient(host=['172.27.0.2:27017'], document_class=dict, tz_aware=False, connect=True)
-Database(MongoClient(host=['172.27.0.2:27017'], document_class=dict, tz_aware=False, connect=True), 'test-database')
-Collection(Database(MongoClient(host=['172.27.0.2:27017'], document_class=dict, tz_aware=False, connect=True), 'test-database'), 'test-collection')
-{'name': 'tag1', 'date': datetime.datetime(2024, 3, 26, 11, 59, 37, 514865, tzinfo=datetime.timezone.utc), 'value': 78}
-{'name': 'tag1', 'date': datetime.datetime(2024, 3, 26, 11, 59, 37, 514904, tzinfo=datetime.timezone.utc), 'value': 78}
-Insert
-InsertOneResult(ObjectId('6602b8a9d30bebbfeb2c5772'), acknowledged=True)
-InsertOneResult(ObjectId('6602b8a9d30bebbfeb2c5773'), acknowledged=True)
-```
-## Grafana get data
+## Grafana get data oink (tested first with mongodb)
 
 Enterprise License Error
 The Enterprise data source grafana-mongodb-datasource is not available with your current subscription. To activate this data source, please upgrade your plan by visiting https://grafana.com/pricing
 license token file not found: /var/lib/grafana/license.jwt
 
 ## InfluxDB
+
+pip install influxdb
+
+
 
 
 
