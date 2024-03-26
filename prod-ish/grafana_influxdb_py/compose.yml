@@ -22,7 +22,7 @@ services:
     volumes:
       - vol_grafana:/var/lib/grafana
   influxdb:
-    image: influxdb:1.8
+    image: influxdb:2.7
     container_name: influxdb
     restart: always
     environment:
@@ -38,7 +38,7 @@ services:
       static_network:
         ipv4_address: 172.27.0.2
     volumes:
-      - vol_influxdb:/var/lib/influxd
+      - vol_influxdb:/var/lib/influxdb2
 
 
 networks:

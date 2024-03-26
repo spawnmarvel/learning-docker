@@ -79,6 +79,28 @@ python3 run_influx.py
 
 
 
+## Docker down
+
+```bash
+docker compose down
+
+docker compose u -d
+
+#no data
+
+# https://community.influxdata.com/t/influxdb-image-do-not-persist-data-in-docker-volume-docker-compose-stack/31193
+# If you’re running an InfluxDB version that’s 2.x or newer, the data is stored in /var/lib/influxdb2. If you’re using this version, modify your volume mapping like this: - vol_influxdb:/var/lib/influxdb2
+
+# Test again after rm image / volume and insert data
+
+docker compose down
+
+python3 run.py
+
+docker compose u -d
+```
+
+
 
 
 
