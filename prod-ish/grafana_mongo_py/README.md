@@ -58,7 +58,7 @@ print(str(client))
 
 ```
 
-run it, get private ip from container
+Run it, using private ip from container
 
 ```bash
 python3 run.py
