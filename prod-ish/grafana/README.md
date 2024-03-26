@@ -8,4 +8,7 @@ https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
 
 https://stackoverflow.com/questions/74194700/azure-table-storage-data-source-for-grafana
 
+Please add as answer if you find any workarounds like piping from Table Store to an intermediatory low priced store which is supported by Grafana
+
+## Middle store
 
