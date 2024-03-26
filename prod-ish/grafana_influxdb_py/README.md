@@ -10,22 +10,20 @@ https://stackoverflow.com/questions/74194700/azure-table-storage-data-source-for
 
 Please add as answer if you find any workarounds like piping from Table Store to an intermediatory low priced store which is supported by Grafana
 
-## Middle store influxdb
+## Grafana get data oink (tested first with mongodb)
 
-```bash
-docker compose up -d
-```
+Enterprise License Error
+The Enterprise data source grafana-mongodb-datasource is not available with your current subscription. To activate this data source, please upgrade your plan by visiting https://grafana.com/pricing
+license token file not found: /var/lib/grafana/license.jwt
+
+## Middle store influxdb
 
 Grafana ships with built-in support for InfluxDB releases >0.9.x.
 
 https://grafana.com/grafana/plugins/influxdb/
 
-## influxdb
+# Docker
 
-```bash
-pip install influxdb
-
-```
 We create a usedefined network in docker, so the ip does not change.
 
 ```yml
@@ -34,24 +32,27 @@ networks:
         ipv4_address: 172.27.0.2
 ```
 
-## Grafana get data oink (tested first with mongodb)
+```bash
+docker compose up -d
+```
 
-Enterprise License Error
-The Enterprise data source grafana-mongodb-datasource is not available with your current subscription. To activate this data source, please upgrade your plan by visiting https://grafana.com/pricing
-license token file not found: /var/lib/grafana/license.jwt
+Ensure that InfluxDB is running. If running InfluxDB locally, visit http://localhost:8086
 
-## InfluxDB
 
-pip install influxdb
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
 
-```py
+## influxdb InfluxDB (so many versions and clints, 1.8, 2>, 3>)
+
+```bash
+pip install influxdb-client
+
 python3 run_influx.py
+
 
 ```
 
-Now connect with grafana
+https://docs.influxdata.com/influxdb/cloud/api-guide/client-libraries/python/
 
-https://www.mongodb.com/docs/manual/reference/connection-string/
 
 
 
