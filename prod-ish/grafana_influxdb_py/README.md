@@ -39,7 +39,7 @@ docker compose up -d
 Ensure that InfluxDB is running. If running InfluxDB locally, visit http://localhost:8086
 
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
+![Influxdb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb.jpg)
 
 ## influxdb InfluxDB (so many versions and clints, 1.8, 2>, 3>)
 
