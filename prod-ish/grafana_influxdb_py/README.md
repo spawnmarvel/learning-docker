@@ -44,7 +44,10 @@ license token file not found: /var/lib/grafana/license.jwt
 
 pip install influxdb
 
+```py
+python3 run_influx.py
 
+```
 
 Now connect with grafana
 
