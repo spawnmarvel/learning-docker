@@ -3,6 +3,9 @@ services:
   grafana:
     # https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
     image: grafana/grafana-oss
+    # build:
+    #  context: .
+    #  dockerfile: Dockerfile.grafana
     container_name: grafana
     restart: unless-stopped
     environment:
@@ -10,9 +13,23 @@ services:
       - GF_LOG_LEVEL=debug
       - GF_SECURITY_ADMIN_USER=linuxuser
       - GF_SECURITY_ADMIN_PASSWORD=Minime789gotooslo
+      # https://grafana.com/api/plugins
+      - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
     ports:
       - '3000:3000'
     volumes:
       - vol_grafana:/var/lib/grafana
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    ports:
+    - 27017:27017
+    volumes:
+    - vol_mongodata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
 volumes:
   vol_grafana:
+  vol_mongodata:

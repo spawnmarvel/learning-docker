@@ -12,3 +12,21 @@ Please add as answer if you find any workarounds like piping from Table Store to
 
 ## Middle store
 
+```bash
+docker compose up -d
+
+# compose.yml
+# - GF_INSTALL_PLUGINS=grafana-mongodb-datasource
+
+# enter container
+/var/lib/grafana/plugins
+ls
+grafana-mongodb-datasource
+
+```
+
+MongoDB data source for Grafana
+
+![Mongodb](https://github.com/spawnmarvel/learning-docker/blob/main/images/prod-ish/images/mongodb.jpg)
+
+
