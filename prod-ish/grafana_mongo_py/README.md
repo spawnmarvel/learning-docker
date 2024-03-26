@@ -27,6 +27,6 @@ grafana-mongodb-datasource
 
 MongoDB data source for Grafana
 
-![Mongodb](https://github.com/spawnmarvel/learning-docker/blob/main/images/prod-ish/images/mongodb.jpg)
+![Mongodb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_mongo_py/images/mongdb.jpg)
 
 
