@@ -18,7 +18,8 @@ services:
     ports:
       - '3000:3000'
     networks:
-      - static_network
+      static_network:
+        ipv4_address: 172.27.0.3
     volumes:
       - vol_grafana:/var/lib/grafana
   influxdb:

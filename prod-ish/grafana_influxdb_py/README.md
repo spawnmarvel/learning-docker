@@ -1,4 +1,4 @@
-# Grafana
+# Grafana (not sure if we need it influxdb has cool features now)
 
 ## Docs
 
@@ -61,10 +61,10 @@ Connected to 172.27.0.2.
 # updated URL to use
 url="http://172.27.0.2:8086"
 
-
+# All good
 ```
 
-All good
+Python example
 
 https://docs.influxdata.com/influxdb/cloud/api-guide/client-libraries/python/
 
@@ -100,6 +100,13 @@ python3 run.py
 docker compose u -d
 ```
 
+And yea, data and dashboard is there.
+
+## influxdb has cool features now
+
+Check it out.
+
+![Influxdb features](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb_features.jpg)
 
 
 
