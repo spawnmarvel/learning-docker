@@ -40,8 +40,8 @@ https://www.mongodb.com/docs/manual/reference/connection-string/
 pip install pymongo
 # Successfully installed dnspython-2.6.1 pymongo-4.6.2
 
-# ping the docker host
- ping 172.27.0.2
+# ping the docker host, get ir from docker
+ping 172.27.0.2
 PING 172.27.0.2 (172.27.0.2) 56(84) bytes of data.
 64 bytes from 172.27.0.2: icmp_seq=1 ttl=64 time=0.056 ms
 64 bytes from 172.27.0.2: icmp_seq=2 ttl=64 time=0.061 ms
