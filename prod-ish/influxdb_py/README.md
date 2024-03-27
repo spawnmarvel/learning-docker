@@ -118,7 +118,15 @@ docker compose u -d
 
 ## Load data
 
+Sources
+* So many, files, line protocol, influx cli, client libs, .net, dart, ryby, pyyhon, java.....
+* Buckets, A bucket is a named location where time series data is stored. All buckets have a Retention Policy, a duration of time that each data point persists.
+* Telegraf is an agent written in Go for collecting metrics and writing them into InfluxDB or other possible outputs.
+* Scrapers
+
 ## Data explorer
+
+* 
 
 ## Notebooks
 
@@ -127,6 +135,50 @@ docker compose u -d
 ## Alerts
 
 ## Settings
+
+## Influxdb in a nutshell
+
+InfluxDB 2.x Open Source Time Series Database
+InfluxDB is an open source time series database. It has everything you need from a time series platform in a single binary – a multi-tenanted time series database, UI and dashboarding tools, background processing and monitoring agent. All this makes deployment and setup a breeze and easier to secure.
+
+The InfluxDB Platform also includes APIs, tools, and an ecosystem that includes 10 client and server libraries, Telegraf plugins, visualization integrations with Grafana, Google Data Studio, and data sources integrations with Google Bigtable, BigQuery, and more.
+
+https://www.influxdata.com/downloads/
+
+## Key concepts before you get started
+
+InfluxDB Cloud is the platform purpose-built to collect, store, process and visualize time series data. Time series data is a sequence of data points indexed in time order. Data points typically consist of successive measurements made from the same source and are used to track changes over time. Examples of time series data include:
+
+* Industrial sensor data
+* Server performance metrics
+* Heartbeats per minute
+* Electrical activity in the brain
+* Rainfall measurements
+* Stock prices
+
+```py
+b = influxdb_client.Point("my_measurement").tag("location", "Bergen").field("temperature", ran1)
+write_api.write(bucket=bucket, org=org, record=b)
+o = influxdb_client.Point("my_measurement").tag("location", "Oslo").field("temperature", (ran1+5))
+write_api.write(bucket=bucket, org=org, record=o)
+```
+
+* The InfluxDB data model organizes time series data into buckets and measurements. A bucket can contain multiple measurements. Measurements contain multiple tags and fields.
+
+* Bucket: Named location where time series data is stored. A bucket can contain multiple measurements
+* * Measurement: Logical grouping for time series data. All points in a given measurement should have the same tags. A measurement contains multiple tags and fields.
+* * * Tags: Key-value pairs with values that differ, but do not change often. Tags are meant for storing metadata for each point–for example, something to identify the source of the data like host, location, station, etc.
+* * * Fields: Key-value pairs with values that change over time–for example: temperature, pressure, stock price, etc.
+* * * Timestamp: Timestamp associated with the data. When stored on disk and queried, all data is ordered by time.
+
+
+![Influxdb data](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influxdb_data.jpg)
+
+https://docs.influxdata.com/influxdb/cloud/get-started/
+
+
+
+
 
 
 
