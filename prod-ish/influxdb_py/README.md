@@ -102,6 +102,26 @@ docker compose u -d
 
 And yea, data and dashboard is there.
 
+## ACI Registry
+
+Ref https://github.com/spawnmarvel/learning-docker/blob/main/2-azure-container-instance/Readme-container-registry.md
+
+Here we deployed RMQ with just a Dockerfile, lets use the
+
+```bash
+az containerapp compose create --environment
+                               --resource-group
+                               [--compose-file-path]
+                               [--location]
+                               [--registry-password]
+                               [--registry-server]
+                               [--registry-username]
+                               [--tags]
+                               [--transport]
+                               [--transport-mapping]
+```
+to deploy a influxdb with a compose file.
+
 ## influxdb has cool features now
 
 Check it out.
