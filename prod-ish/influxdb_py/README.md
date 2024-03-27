@@ -39,7 +39,7 @@ docker compose up -d
 Ensure that InfluxDB is running. If running InfluxDB locally, visit http://localhost:8086
 
 
-![Influxdb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb.jpg)
+![Influxdb](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influxdb.jpg)
 
 sign in with
 * - DOCKER_INFLUXDB_INIT_USERNAME=adminuser
@@ -75,7 +75,7 @@ python3 run_influx.py
 
 ```
 
-![Influxdb insert](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb_insert.jpg)
+![Influxdb insert](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influxdb_insert.jpg)
 
 
 
@@ -126,7 +126,7 @@ to deploy a influxdb with a compose file.
 
 Check it out.
 
-![Influxdb features](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb_features.jpg)
+![Influxdb features](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influxdb_features.jpg)
 
 ```bash
 docker compose u -d
