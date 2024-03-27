@@ -1,0 +1,32 @@
+# version: '3.8', not needed version
+services:
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    restart: always
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=adminuser
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword
+      - DOCKER_INFLUXDB_INIT_ORG=myOrg
+      - DOCKER_INFLUXDB_INIT_BUCKET=myBucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=randomTokenValue
+    ports:
+      - 8086:8086
+    networks:
+      static_network:
+        ipv4_address: 172.27.0.2
+    volumes:
+      - vol_influxdb:/var/lib/influxdb2
+
+
+networks:
+  static_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.27.0.0/28
+          gateway: 172.27.0.1
+
+volumes:
+  vol_influxdb:

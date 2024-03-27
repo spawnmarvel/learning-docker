@@ -108,6 +108,11 @@ Check it out.
 
 ![Influxdb features](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/grafana_influxdb_py/images/influxdb_features.jpg)
 
+```bash
+docker compose u -d
+
+```
+
 ## Load data
 
 ## Data explorer
