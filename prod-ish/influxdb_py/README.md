@@ -172,6 +172,11 @@ write_api.write(bucket=bucket, org=org, record=o)
 * * * Timestamp: Timestamp associated with the data. When stored on disk and queried, all data is ordered by time.
 
 
+***Point: Single data record identified by its measurement, tag keys, tag values, field key, and timestamp.***
+
+***Series: A group of points with the same measurement, tag keys and values, and field key.***
+
+
 ![Influxdb data](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influxdb_data.jpg)
 
 https://docs.influxdata.com/influxdb/cloud/get-started/
