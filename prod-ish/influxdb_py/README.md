@@ -135,6 +135,14 @@ az containerapp compose create --environment
 ```
 to deploy a influxdb with a compose file.
 
+Lets just verify influxdb
+
+![Influxdb verify](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/influx_verify.jpg)
+
+https://learn.microsoft.com/en-us/cli/azure/containerapp/compose?view=azure-cli-latest
+
+
+
 ## influxdb has cool features now
 
 Check it out.
