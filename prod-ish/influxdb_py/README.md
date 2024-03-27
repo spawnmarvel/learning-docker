@@ -143,9 +143,49 @@ Lets just verify influxdb
 
 
 
-https://learn.microsoft.com/en-us/cli/azure/containerapp/compose?view=azure-cli-latest
+```bash
+
+# Rg-ukdocker-aci-0005
+az group create --location uksouth --resource-group Rg-ukdocker-aci-0005
+
+# upload the compose to https://testazcloudshell01.blob.core.windows.net/influxdb/compose.yml
+
+touch compose.yml
+sudo nano compose.yml
+
+# paste the content
+
+# Create an environment with an auto-generated Log Analytics workspace.
+az containerapp env create -n MyContainerappEnvironment -g Rg-ukdocker-aci-0005 --location uksouth
+
+# Create a container app by explicitly passing in a Compose configuration file.
+ls
+az  clouddrive  compose.yml
+
+az containerapp compose create -g Rg-ukdocker-aci-0005 --environment MyContainerappEnvironment --compose-file-path "compose.yml"
+
+These container and host configuration elements from the docker-compose file are not supported in Azure Container Apps. For more information about supported configuration, please see https://aka.ms/containerapp/compose/configuration
+     services/influxdb/restart
+These volume mount elements from the docker-compose file are not supported in Azure Container Apps. For more information about supported storage configuration, please see https://aka.ms/containerapp/compose/volumes
+     services/influxdb/volumes
+These network configuration settings from the docker-compose file are not supported in Azure Container Apps. For more information about supported networking configuration, please see https://aka.ms/containerapp/compose/networking
+     services/influxdb/networks
+
+Container app created. Access your app at https://influxdb.nicesmoke-450faf32.uksouth.azurecontainerapps.io/
+
+```
+So the ACI succeded and ww can login, but azure does not like the raw compose.yml
+
+* az containerapp env create 
+
+https://learn.microsoft.com/en-us/cli/azure/containerapp/env?view=azure-cli-latest#az-containerapp-env-create
+
+* az containerapp compose create
+
+https://learn.microsoft.com/en-us/cli/azure/containerapp/compose?view=azure-cli-latest#az-containerapp-compose-create
 
 
+![CI](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/aci.jpg)
 
 ## influxdb has cool features now
 
