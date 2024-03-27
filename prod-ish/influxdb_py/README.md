@@ -139,6 +139,10 @@ Lets just verify influxdb
 
 ![Influxdb verify](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/influxdb_py/images/verify_influx.jpg)
 
+### Get started with ACI and compose
+
+
+
 https://learn.microsoft.com/en-us/cli/azure/containerapp/compose?view=azure-cli-latest
 
 
