@@ -106,7 +106,20 @@ And yea, data and dashboard is there.
 
 Ref https://github.com/spawnmarvel/learning-docker/blob/main/2-azure-container-instance/Readme-container-registry.md
 
-Here we deployed RMQ with just a Dockerfile, lets use the
+Here we deployed RMQ with just a Dockerfile and
+
+```bash
+az container create --resource-group
+                    [--acr-identity]
+                    [--add-capabilities]
+                    [--allow-escalation]
+                    [--assign-identity]
+                    [--azure-file-volume-account-key]
+                    [...]
+
+
+```
+ lets use the containerapp
 
 ```bash
 az containerapp compose create --environment
