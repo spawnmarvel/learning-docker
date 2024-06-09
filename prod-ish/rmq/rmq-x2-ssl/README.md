@@ -10,6 +10,13 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 * Test with rabbitmq.config for auth backend, internal backend for migrating from advanced.config for server side.
 * Make cert that last for 10 years
 * Have fun
+* Version 3.12-management
+
+## Update version 09.06.2024
+
+Test new version update Dockerfile_client, server
+
+* Version 3.13-management
 
 ## Steps
 
