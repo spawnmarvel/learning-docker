@@ -58,7 +58,7 @@ volumes:
 # no http management, refresh and clear cache
 # cd dir
 # docker compose up -d
-# http://public-ip:15672 / 3
+# http://public-ip:15671 / 3
 
 
 # Edit Docker file?

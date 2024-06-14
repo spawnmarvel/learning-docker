@@ -26,7 +26,6 @@ docker volume rm $(docker volume ls -qf dangling=true)
 
 Then you have the following
 
-* Portainer https 9443
 * Rabbitmq instance named rmq_client
 * Rabbitmq rmq_client 15672 and 5672
 * Rabbitmq rmq_client user, and one queue, shovel enabled
@@ -44,3 +43,20 @@ Tested:
 View it:
 
 https://follow-e-lo.com/2024/01/09/docker-rabbtimq-x2/
+
+## Update version 14.06.2024
+
+Test new version update Dockerfile_client, server
+
+* FROM rabbitmq:3.12-management
+* Version 3.13-management
+
+```bash
+/home/imsdal/rmq-x2
+nano Dockerfile_client
+# FROM rabbitmq:3.13-management
+nano Dockerfile_server
+# FROM rabbitmq:3.13-management
+
+docker compose up -d
+```
