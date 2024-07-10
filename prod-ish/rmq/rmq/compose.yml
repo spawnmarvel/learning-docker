@@ -1,5 +1,5 @@
-version: '3'
-
+# version: '3'
+# `version` is obsolete
 services:
 # rabbitmq with a static host name
   rmq-app:
@@ -26,6 +26,8 @@ networks:
 volumes:
   vol_rabbitmq_data:
 
+
+# https://follow-e-lo.com/2024/07/10/docker-rabbitmq-2/
 
 # open inbound NSG
 # no http management, , refresh and clear cache
