@@ -134,6 +134,8 @@ Sources
 
 ## Alerts
 
+https://docs.influxdata.com/influxdb/cloud/monitor-alert/send-email/
+
 ## Settings
 
 ## Influxdb in a nutshell
