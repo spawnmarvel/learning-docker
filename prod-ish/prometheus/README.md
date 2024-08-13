@@ -120,10 +120,17 @@ https://prometheus.io/docs/tutorials/getting_started/
 
 ## ALERTING
 
+https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+
 ## BEST PRACTICES
 
 ## GUIDES
 
-## 
+## Extra
+
+How to Send Email Alerts using Prometheus AlertManager
+
+https://blog.devops.dev/send-email-alerts-using-prometheus-alert-manager-16df870144a4
+
 
 
