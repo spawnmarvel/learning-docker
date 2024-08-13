@@ -20,6 +20,12 @@ The InfluxDB Platform also includes APIs, tools, and an ecosystem that includes 
 
 https://www.influxdata.com/downloads/
 
+
+## Install Influxdb as a service with systemd
+
+https://docs.influxdata.com/influxdb/v2/install/?t=Linux#install-influxdb-as-a-service-with-systemd
+
+
 # Docker
 
 We create a usedefined network in docker, so the ip does not change.
