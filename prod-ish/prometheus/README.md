@@ -4,6 +4,23 @@
 * It is now a standalone open source project and maintained independently of any company. 
 
 
+
+## Power your metrics and alerting with the leading open-source monitoring solution
+
+* Data model, Prometheus fundamentally stores all data as time series
+* Querying Prometheus, PromQL
+* Grafana supports querying Prometheus and promethtus has built in expression browser
+* Efficent storage, memory and local disk
+* Simple operations, server is using local storage
+* Precise alerting, Promql and alertmanager
+* Many client libs
+* Many integrations, docker etc.
+
+
+https://prometheus.io/
+
+
+
 ## Features
 
 * a multi-dimensional data model with time series data identified by metric name and key/value pairs
