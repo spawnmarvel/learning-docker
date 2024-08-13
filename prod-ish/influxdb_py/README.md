@@ -21,10 +21,15 @@ The InfluxDB Platform also includes APIs, tools, and an ecosystem that includes 
 https://www.influxdata.com/downloads/
 
 
-## Install Influxdb as a service with systemd
+## Install Influxdb as a service with systemd todo
+
+* New vm in Azure
+* Visit web
+* Send some data
 
 https://docs.influxdata.com/influxdb/v2/install/?t=Linux#install-influxdb-as-a-service-with-systemd
 
+example:
 
 # Docker
 
