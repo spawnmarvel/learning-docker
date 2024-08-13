@@ -4,23 +4,21 @@
 
 https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/
 
-## Connect Azure Table Storage
-
-https://stackoverflow.com/questions/74194700/azure-table-storage-data-source-for-grafana
-
-Please add as answer if you find any workarounds like piping from Table Store to an intermediatory low priced store which is supported by Grafana
-
-## Grafana get data oink (tested first with mongodb)
-
-Enterprise License Error
-The Enterprise data source grafana-mongodb-datasource is not available with your current subscription. To activate this data source, please upgrade your plan by visiting https://grafana.com/pricing
-license token file not found: /var/lib/grafana/license.jwt
 
 ## Middle store influxdb
 
 Grafana ships with built-in support for InfluxDB releases >0.9.x.
 
 https://grafana.com/grafana/plugins/influxdb/
+
+## Influxdb in a nutshell
+
+InfluxDB 2.x Open Source Time Series Database
+InfluxDB is an open source time series database. It has everything you need from a time series platform in a single binary – a multi-tenanted time series database, UI and dashboarding tools, background processing and monitoring agent. All this makes deployment and setup a breeze and easier to secure.
+
+The InfluxDB Platform also includes APIs, tools, and an ecosystem that includes 10 client and server libraries, Telegraf plugins, visualization integrations with Grafana, Google Data Studio, and data sources integrations with Google Bigtable, BigQuery, and more.
+
+https://www.influxdata.com/downloads/
 
 # Docker
 
