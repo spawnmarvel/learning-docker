@@ -73,3 +73,6 @@ docker run -d -p 80:80 --name my-apache httpd:2.4
 ```
 
 
+## How to Use the Apache httpd Docker Official Image
+
+https://www.docker.com/blog/how-to-use-the-apache-httpd-docker-official-image/
