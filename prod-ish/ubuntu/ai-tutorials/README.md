@@ -103,3 +103,14 @@ docker attach my-ubuntu-compose
 * **Dockerfile (Building Custom Images):** If you need specific software installed in your Ubuntu container, you can create a Dockerfile to build a custom image.
 
 This tutorial provides a basic understanding of running Ubuntu in Docker. As you delve deeper, explore more advanced Docker features for building and managing containerized applications.
+
+### Additional Tips:
+
+- **Persistence:** By default, changes inside a Docker container are not persisted after the container is removed. If you need persistence, consider using volumes in your `docker-compose.yml` or with `docker run -v`.
+
+- **Networking:** If your application requires network capabilities or port mapping, you can define these in the Docker Compose file or use `-p` with `docker run`.
+
+- **Updating:** Remember to update your Docker image periodically by pulling the latest version or setting up automated builds if you're using Docker Hub or another registry.
+
+This tutorial should give you a solid foundation for running Ubuntu in Docker using both direct commands and Docker Compose. Each method has its use cases, with `docker run` being quick for testing and Docker Compose better for more complex or multi-container setups.
+
