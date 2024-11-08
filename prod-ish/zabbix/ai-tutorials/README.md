@@ -145,6 +145,8 @@ CONTAINER ID   IMAGE                                   COMMAND                  
 
 ```
 
+![Portainer all running ](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/zabbix/ai-tutorials/z_img_portainer_container.jpg)
+
 **Step 6: Complete the Zabbix Setup**
 
 Now, open a web browser and navigate to `http://localhost` (or the IP address of your Docker host). You'll be greeted by the Zabbix setup wizard. Follow the on-screen instructions, using the following details for the database connection:
