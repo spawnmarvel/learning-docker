@@ -63,3 +63,13 @@ docker exec -it my-apache sh
 * **Remove the container:** `docker rm my-apache` (This will delete the container. Make sure you don't need any data inside it before removing.)
 
 This provides a basic way to run an Apache web server in a Docker container. You can adapt the command and explore further options based on your specific requirements. Remember to check the official Docker Hub documentation for the `httpd` image for more detailed instructions and configuration options.
+
+## Apache 2.4
+
+Specific Apache Version: To use a specific version of Apache, replace latest with the desired tag. For example, to use Apache 2.4:
+
+```bash
+docker run -d -p 80:80 --name my-apache httpd:2.4
+```
+
+
