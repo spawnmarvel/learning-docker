@@ -154,6 +154,55 @@ All are running.
 
 Now, open a web browser and navigate to `http://localhost` (or the IP address of your Docker host). You'll be greeted by the Zabbix setup wizard. Follow the on-screen instructions, using the following details for the database connection:
 
+The default URL for Zabbix UI when using Apache web server is 
+
+* `http://host/zabbix`
+* AllowAnyHTTPInbound, 80
+* Remove the container and re create
+
+```bash
+docker run -d --name zabbix-web \
+  --network zabbix-net \
+  -p 80:80 \
+  -e ZBX_SERVER_HOST=zabbix-server \
+  -e DB_SERVER_HOST=zabbix-mysql \
+  zabbix/zabbix-web-apache-mysql:latest
+
+# me
+docker ps
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED          STATUS          PORTS                                                                                            NAMES
+b7a2ba39e674   zabbix/zabbix-web-apache-mysql:latest   "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    8080/tcp, 0.0.0.0:80->80/tcp, :::80->80/tcp, 8443/tcp                                            zabbix-web
+
+# network
+docker port zabbix-web 80
+0.0.0.0:80
+[::]:80
+
+# ufw is enabled, but 8080 is missing
+sudo ufw status
+# ok 80
+
+# Check Container Logs for Errors
+docker logs zabbix-web
+
+# Make sure the zabbix-net network you created is functioning correctly. You can inspect it with: 
+docker network inspect zabbix-net
+
+
+```
+
+Enter container
+
+```bash
+docker exec -it zabbix-web sh
+
+# or root
+docker exec -u root -it zabbix-web sh
+
+```
+
+
+
 * **Database type:** MySQL
 * **Database host:** zabbix-mysql (container name, thanks to the network)
 * **Database port:** 3306
