@@ -145,6 +145,9 @@ CONTAINER ID   IMAGE                                   COMMAND                  
 
 ```
 
+All are running.
+
+
 ![Portainer all running ](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/zabbix/ai-tutorials/z_img_portainer_container.jpg)
 
 **Step 6: Complete the Zabbix Setup**
