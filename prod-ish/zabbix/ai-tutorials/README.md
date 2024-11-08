@@ -113,6 +113,36 @@ docker run -d --name zabbix-agent \
   -p 10050:10050 \
   -e ZBX_SERVER_HOST=zabbix-server \
   zabbix/zabbix-agent2:latest
+
+# me, paste it in. It will pull what it needs
+docker image ls
+REPOSITORY                       TAG       IMAGE ID       CREATED         SIZE
+zabbix/zabbix-web-apache-mysql   latest    b5d1689a328b   2 weeks ago     247MB
+zabbix/zabbix-server-mysql       latest    1b3dce144ce3   2 weeks ago     138MB
+zabbix/zabbix-agent2             latest    5d1cbb47f172   2 weeks ago     97.8MB
+mysql                            8.0       9f4b39935f20   3 weeks ago     590MB
+
+docker: Error response from daemon: driver failed programming external connectivity on endpoint zabbix-agent (97f6c46d3f496abae197b77888d92796183dc3a4978b505ddd646f10ff6c56a6): failed to bind port 0.0.0.0:10050/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:10050: bind: address already in use.
+
+# AI, 
+sudo lsof -i :10050
+# Ah, I already had a zabbix_agent running on server
+imsdal@vmdocker01:~$ sudo service zabbix-agent stop
+imsdal@vmdocker01:~$ sudo service zabbix-agent status
+
+docker ps -a
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED          STATUS          PORTS                                                                                            NAMES
+a62622746e76   zabbix/zabbix-agent2:latest             "/usr/bin/docker-ent…"   10 minutes ago   Created                                                                                                          zabbix-agent
+
+# rm it
+docker rm a62622746e76
+
+# re create
+docker ps
+CONTAINER ID   IMAGE                                   COMMAND                  CREATED          STATUS          PORTS                                                                                            NAMES
+32f247360210   zabbix/zabbix-agent2:latest             "/usr/bin/docker-ent…"   9 seconds ago    Up 9 seconds    0.0.0.0:10050->10050/tcp, :::10050->10050/tcp, 31999/tcp                                         zabbix-agent
+
+
 ```
 
 **Step 6: Complete the Zabbix Setup**
