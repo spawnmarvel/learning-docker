@@ -1,4 +1,108 @@
-# How to run zabbix, zabbix agent, mysql and apache in docker make it as a tutorial, step by step
+# The first tutorial 1 is docker run, the second 2 is docker compose
+
+# 1 how to run zabbix, zabbix agent, mysql and apache in docker make it as a tutorial, step by step, not using compose but only docker run
+
+## Running Zabbix, Zabbix Agent, MySQL, and Apache in Docker using `docker run`
+
+This tutorial guides you through setting up a Zabbix monitoring environment with its agent, database (MySQL), and web server (Apache) using individual `docker run` commands instead of Docker Compose. This approach gives you more control over individual container configurations but requires more manual setup.
+
+**Prerequisites:**
+
+* Docker installed on your system.
+
+**Step 1: Create a Docker Network**
+
+This network will allow your containers to communicate with each other by name.
+
+```bash
+docker network create zabbix-net
+```
+
+**Step 2: Run the MySQL Container**
+
+```bash
+docker run -d --name zabbix-mysql \
+  --network zabbix-net \
+  -e MYSQL_ROOT_PASSWORD=your_password \
+  -e MYSQL_DATABASE=zabbix \
+  -v mysql-data:/var/lib/mysql \
+  mysql:8.0
+```
+
+**Important:** Replace `your_password` with a strong password.
+
+**Step 3: Run the Zabbix Server Container**
+
+```bash
+docker run -d --name zabbix-server \
+  --network zabbix-net \
+  -p 10051:10051 \
+  -e DB_SERVER_HOST=zabbix-mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=your_password \
+  -e MYSQL_DATABASE=zabbix \
+  -v /etc/localtime:/etc/localtime:ro \
+  zabbix/zabbix-server-mysql:latest
+```
+
+**Step 4: Run the Zabbix Web (Apache) Container**
+
+```bash
+docker run -d --name zabbix-web \
+  --network zabbix-net \
+  -p 80:80 \
+  -e ZBX_SERVER_HOST=zabbix-server \
+  -e DB_SERVER_HOST=zabbix-mysql \
+  zabbix/zabbix-web-apache-mysql:latest
+```
+
+**Step 5: Run the Zabbix Agent Container**
+
+```bash
+docker run -d --name zabbix-agent \
+  --network zabbix-net \
+  -p 10050:10050 \
+  -e ZBX_SERVER_HOST=zabbix-server \
+  zabbix/zabbix-agent2:latest
+```
+
+**Step 6: Complete the Zabbix Setup**
+
+Now, open a web browser and navigate to `http://localhost` (or the IP address of your Docker host). You'll be greeted by the Zabbix setup wizard. Follow the on-screen instructions, using the following details for the database connection:
+
+* **Database type:** MySQL
+* **Database host:** zabbix-mysql (container name, thanks to the network)
+* **Database port:** 3306
+* **Database name:** zabbix
+* **User:** root
+* **Password:** `your_password`
+
+For the Zabbix server details, use:
+
+* **Host:** zabbix-server (container name)
+* **Port:** 10051
+
+Complete the remaining steps of the wizard and login to Zabbix with the default credentials (Admin/zabbix).
+
+**Step 7: Verify Agent Connectivity**
+
+In the Zabbix web interface:
+
+* Go to **Configuration** > **Hosts**.
+* You should see the `zabbix-server` host.
+* Check its status. The Availability icon (ZBX) should be green, indicating the agent is connected.
+
+**Key Considerations:**
+
+* **Data Persistence:** The `-v mysql-data:/var/lib/mysql` in the MySQL command ensures data persists even if the container is removed. You can use named volumes for other containers as well.
+* **Manual Management:** You need to manually manage each container (start, stop, etc.).
+* **Networking:** The `zabbix-net` network allows containers to resolve each other by name, simplifying communication.
+* **Security:**  Consider using stronger passwords and limiting exposed ports for a production environment.
+
+**Using `docker run` commands offers flexibility but demands careful management. If you plan on running a more complex or production-ready setup, using Docker Compose is highly recommended as it simplifies the process of managing dependencies and configuration.**
+
+
+# 2 How to run zabbix, zabbix agent, mysql and apache in docker make it as a tutorial, step by step
 
 ## ## Running Zabbix, Zabbix Agent, MySQL, and Apache in Docker: A Step-by-Step Tutorial
 
