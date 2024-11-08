@@ -28,6 +28,16 @@ CONTAINER ID   IMAGE                           COMMAND              CREATED     
 f61087976986   httpd:latest                    "httpd-foreground"   7 seconds ago   Up 6 seconds       0.0.0.0:80->80/tcp, :::80->80/tcp                                                                my-apache
 ```
 
+
+![It works apache ](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/apache/apacher/z_img_apache_works.jpg)
+
+```bash
+
+# enter apache
+docker exec -it my-apache sh
+
+```
+
 **Customization:**
 
 * **Serving Custom Content:** By default, the container serves files from the `/usr/local/apache2/htdocs/` directory within the container. To serve your own content, you can mount a local directory as a volume:
