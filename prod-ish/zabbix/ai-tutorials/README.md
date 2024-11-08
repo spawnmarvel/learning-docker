@@ -64,6 +64,18 @@ docker run -d --name zabbix-server \
   -e MYSQL_DATABASE=zabbix \
   -v /etc/localtime:/etc/localtime:ro \
   zabbix/zabbix-server-mysql:latest
+
+# me, paste it in. It will pull what it needs
+ docker image ls
+REPOSITORY                   TAG       IMAGE ID       CREATED         SIZE
+zabbix/zabbix-server-mysql   latest    1b3dce144ce3   2 weeks ago     138MB
+mysql                        8.0       9f4b39935f20   3 weeks ago     590MB
+
+ docker ps
+CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS          PORTS                                                                                            NAMES
+d9534aba6745   zabbix/zabbix-server-mysql:latest   "/usr/bin/docker-ent…"   33 seconds ago   Up 33 seconds   0.0.0.0:10051->10051/tcp, :::10051->10051/tcp                                                    zabbix-server
+6687d08f355f   mysql:8.0                           "docker-entrypoint.s…"   2 minutes ago    Up 2 minutes    3306/tcp, 33060/tcp                                                                              zabbix-mysql
+
 ```
 
 **Step 4: Run the Zabbix Web (Apache) Container**
