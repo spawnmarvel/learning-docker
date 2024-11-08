@@ -16,6 +16,17 @@ This network will allow your containers to communicate with each other by name.
 
 ```bash
 docker network create zabbix-net
+
+# me, list networks
+
+docker network ls
+NETWORK ID     NAME                          DRIVER    SCOPE
+8e6e8e33bdba   bridge                        bridge    local
+16e4c0c05bc5   host                          host      local
+ca34d5e024b2   imsdal_default                bridge    local
+0d5aff734251   none                          null      local
+3e7a07ccf429   portainer-app_net_portainer   bridge    local
+286d4fe9a2f6   zabbix-net                    bridge    loca
 ```
 
 **Step 2: Run the MySQL Container**
@@ -27,6 +38,16 @@ docker run -d --name zabbix-mysql \
   -e MYSQL_DATABASE=zabbix \
   -v mysql-data:/var/lib/mysql \
   mysql:8.0
+
+# me, paste it in. It will pull what it needs
+docker image ls
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+mysql                    8.0       9f4b39935f20   3 weeks ago     590MB
+
+docker container ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS              PORTS                                                                                            NAMES
+6687d08f355f   mysql:8.0                       "docker-entrypoint.s…"   About a minute ago   Up About a minute   3306/tcp, 33060/tcp                                                                              zabbix-mysql
+
 ```
 
 **Important:** Replace `your_password` with a strong password.
