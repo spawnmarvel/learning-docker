@@ -29,7 +29,7 @@ f61087976986   httpd:latest                    "httpd-foreground"   7 seconds ag
 ```
 
 
-![It works apache ](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/apache/apacher/z_img_apache_works.jpg)
+![It works apache ](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish/apache/apache/z_img_apache_works.jpg)
 
 ```bash
 
