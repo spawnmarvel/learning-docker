@@ -76,3 +76,14 @@ docker run -d -p 80:80 --name my-apache httpd:2.4
 ## How to Use the Apache httpd Docker Official Image
 
 https://www.docker.com/blog/how-to-use-the-apache-httpd-docker-official-image/
+
+
+## 1,2,3 Dockerfile, compose.yaml, run docker-compose up -d
+
+
+```bash
+# 1 Define your app's environment with a Dockerfile so it can be reproduced anywhere.
+# 2 Define the services that make up your app in compose.yaml so they can be run together in an isolated environment.
+# 3 Lastly, run docker compose up and Compose will start and run your entire app.
+
+```
