@@ -341,6 +341,15 @@ Dockerfile
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-dockerfile-reference
 
+example
+
+```bash
+FROM rabbitmq:3.13-management
+COPY rabbitmq.conf /etc/rabbitmq
+RUN rabbitmq-plugins enable --offline rabbitmq_shovel && rabbitmq-plugins enable --offline rabbitmq_shovel_management
+
+```
+
 Layers
 
 When you run a build, the builder attempts to reuse layers from earlier builds. 
