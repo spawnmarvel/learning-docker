@@ -339,9 +339,15 @@ https://follow-e-lo.com/2023/12/30/docker-volume-data-move/
 
 Dockerfile
 
+Example
+
+* FROM	    Create a new build stage from a base image.
+* COPY	    Copy files and directories.
+* RUN	        Execute build commands.
+
 https://github.com/spawnmarvel/learning-docker/blob/main/README-1-dockerfile-reference
 
-example
+Example amqp
 
 ```bash
 FROM rabbitmq:3.13-management
