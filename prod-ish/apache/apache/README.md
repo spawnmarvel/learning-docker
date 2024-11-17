@@ -88,47 +88,37 @@ https://www.docker.com/blog/how-to-use-the-apache-httpd-docker-official-image/
 
 ```
 
-apache Dockerfile
+Dockerfile
 
 ```bash
+# Use the official Apache HTTP Server as the base image
 FROM httpd:2.4
-COPY ./public-html/ /usr/local/apache2/htdocs/
-# Optionally, you can copy a custom configuration file
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
-```
-make file
 
+# Copy the custom Apache configuration file to the proper location in the container
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+
+# Copy the website files for the virtual hosts into the web root inside the container
+COPY www/example /usr/local/apache2/htdocs/example
+```
+
+Files:
 
 ```log
 my-apache-project/
 │
+├── Dockerfile
 ├── docker-compose.yml
 ├── httpd.conf
 └── www/
     ├── example/
     │   └── index.html
-    └── anotherexample/
-        └── index.html
-
 ```
-
-```bash
-mkdir apache2test
-cd apache2test
-mkdir public-html
-sudo nano public-html\index-html
-```
-index-html
+.html
 
 ```html
-<!DOCTYPE html>
 <html>
-<head>
-    <title>My Apache Web Server</title>
-</head>
-<body>
-    <h1>Hello from Dockerized Apache example</h1>
-</body>
+  <head><title>Example Website</title></head>
+  <body><h1>Welcome to Example Website</h1></body>
 </html>
 ```
 
@@ -136,23 +126,45 @@ compose.yml
 
 ```yaml
 
-version: "3.9"
 services:
-  web:
-    image: httpd:2.4
+  apache:
+    build: .  # Build the Docker image using the Dockerfile in the current directory
+    container_name: my-apache
     ports:
       - "80:80"
-    volumes:
-      - ./public-html/:/usr/local/apache2/htdocs/
-
-    # Optionally, you can mount a custom configuration file
-    # volumes:
-    #   - ./html:/usr/local/apache2/htdocs/
-    #   - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
 
 ```
 
-* ./public-html/:/usr/local/apache2/htdocs/: This is the most important part for development. It creates a bind mount:
-* * ./public-html/ (on your host machine) is mounted to /usr/local/apache2/htdocs/ (inside the container).
+If you are using virtual hosts (ServerName directives), you need to add the following entries to your /etc/hosts file (on Linux or macOS) or C:\Windows\System32\drivers\etc\hosts file (on Windows) to resolve the domain names locally.
 
-This means any changes you make to files in your local public-html directory will be immediately reflected in the container's document root, allowing for live updates without rebuilding the image.
+Add the lines to your hosts file:
+
+```log
+127.0.0.1 www.example.com
+```
+
+else commecnt out in httpd.conf
+
+
+```log
+# ServerName www.example.com
+```
+
+
+
+Run it, ,Run the following command in the project directory (my-apache-project/)
+
+```bash
+
+# --build: Forces Docker Compose to build the image using the Dockerfile.
+docker compose up --build -d
+
+docker compose down
+
+# images
+docker images
+
+# force remove
+docker rmi -f  d7e7351f5e15
+
+```
