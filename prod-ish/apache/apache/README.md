@@ -87,3 +87,52 @@ https://www.docker.com/blog/how-to-use-the-apache-httpd-docker-official-image/
 # 3 Lastly, run docker compose up and Compose will start and run your entire app.
 
 ```
+
+apache Dockerfile
+
+```bash
+FROM httpd:2.4
+COPY ./public-html/ /usr/local/apache2/htdocs/
+
+```
+make file
+
+```bash
+mkdir apache2test
+cd apache2test
+mkdir public-html
+sudo nano public-html\index-html
+```
+index-html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Apache Web Server</title>
+</head>
+<body>
+    <h1>Hello from Dockerized Apache!</h1>
+</body>
+</html>
+```
+
+compose.yaml
+
+```yaml
+
+version: "3.9"
+services:
+  web:
+    image: httpd:2.4
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public-html/:/usr/local/apache2/htdocs/
+
+```
+
+* ./public-html/:/usr/local/apache2/htdocs/: This is the most important part for development. It creates a bind mount:
+* * ./public-html/ (on your host machine) is mounted to /usr/local/apache2/htdocs/ (inside the container).
+
+This means any changes you make to files in your local public-html directory will be immediately reflected in the container's document root, allowing for live updates without rebuilding the image.
