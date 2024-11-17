@@ -98,6 +98,8 @@ COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 make file
 
+
+```log
 my-apache-project/
 │
 ├── docker-compose.yml
@@ -107,6 +109,8 @@ my-apache-project/
     │   └── index.html
     └── anotherexample/
         └── index.html
+
+```
 
 ```bash
 mkdir apache2test
