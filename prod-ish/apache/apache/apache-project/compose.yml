@@ -1,0 +1,10 @@
+services:
+  apache:
+    image: httpd:2.4
+    container_name: my-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf:ro  # Mount the custom httpd.conf file
+      - ./www/example:/usr/local/apache2/htdocs/example      # Mount the example website
+      - ./www/anotherexample:/usr/local/apache2/htdocs/anotherexample  # Mount anotherexample website

@@ -93,9 +93,20 @@ apache Dockerfile
 ```bash
 FROM httpd:2.4
 COPY ./public-html/ /usr/local/apache2/htdocs/
-
+# Optionally, you can copy a custom configuration file
+COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 make file
+
+my-apache-project/
+│
+├── docker-compose.yml
+├── httpd.conf
+└── www/
+    ├── example/
+    │   └── index.html
+    └── anotherexample/
+        └── index.html
 
 ```bash
 mkdir apache2test
@@ -112,12 +123,12 @@ index-html
     <title>My Apache Web Server</title>
 </head>
 <body>
-    <h1>Hello from Dockerized Apache!</h1>
+    <h1>Hello from Dockerized Apache example</h1>
 </body>
 </html>
 ```
 
-compose.yaml
+compose.yml
 
 ```yaml
 
@@ -126,9 +137,14 @@ services:
   web:
     image: httpd:2.4
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./public-html/:/usr/local/apache2/htdocs/
+
+    # Optionally, you can mount a custom configuration file
+    # volumes:
+    #   - ./html:/usr/local/apache2/htdocs/
+    #   - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
 
 ```
 
