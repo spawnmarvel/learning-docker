@@ -1,4 +1,4 @@
-FROM rabbitmq:3.12-management
+From rabbitmq:4.1.0-management
 COPY /client/rabbitmq.conf /etc/rabbitmq
 COPY /client/definitions.json /etc/rabbitmq
 COPY /client/advanced.config /etc/rabbitmq

@@ -16,6 +16,7 @@ https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
 
 * Make all certificates
 * Copy all repos files
+* cd rmq-x2-ssl
 * docker compose up -d
 
 
@@ -481,3 +482,24 @@ Seems like there could be one error related to docker, just one time.
 https://github.com/docker-library/rabbitmq/issues/433
 
 You are right. It is really the permission problem caused by the setting of the hostname property.
+
+
+## Update and test 28.05.2025
+
+
+```bash
+imsdal@vmdocker01:~/rmq-x2-ssl$ docker compose up -d
+```
+
+https://follow-e-lo.com/2024/01/20/docker-rabbtimq-x2-ssl/
+
+Try to remove build and change versions now FROM rabbitmq:3.12-management.
+
+To FROM rabbitmq:4.1.0-management on both Dockerfile_client and _server
+
+```bash
+imsdal@vmdocker01:~/rmq-x2-ssl$ docker compose down
+
+```
+
+
