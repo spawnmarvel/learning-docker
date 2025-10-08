@@ -76,7 +76,7 @@ docker run --name ubuntu -dit --memory=256m --cpus="2" ubuntu bash
 * 
 
 
-## 1.2 dockerlabs
+## 1.2 Dockerlabs
 
 For notes view readme
 
