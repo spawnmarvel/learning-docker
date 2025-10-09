@@ -41,3 +41,54 @@ The successful completion of this re-scoped project means you can demonstrate:
  * A fully working YAML Azure Pipeline file.
  * A staged, repeatable process that takes source code, turns it into a versioned image in a private registry (\text{ACR}), and deploys it to a serverless platform (\text{App Service}) with a single button click.
 This proves your expertise in the core Continuous Delivery aspects of a DevOps role using only native Azure tools.
+
+### Microsoft Learn links in the logical order
+
+Here are the Microsoft Learn links in the logical order of your project flow:
+
+Project 1: Docker on Azure (Pure CI/CD Workflow) Links
+
+### Phase 1: Preparation (Manual Steps using \text{AZ-104} Skills)
+
+While you're not using IaC, you still need to create the targets manually. These links show the key commands needed for the prerequisites.
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 1. | Container Registry Creation | Quickstart: Create an Azure container registry using the Azure CLI | You must create the ACR instance where your pipeline will push the image. |
+| 2. | App Service Setup | Quickstart: Run a custom container on App Service | Follow the steps to manually create the App Service Plan and the initial Web App for Containers resource (using a placeholder image like Nginx). |
+
+### Phase 2: Continuous Integration (CI) Pipeline - Build & Push
+
+This is the first stage of your YAML pipeline, focusing on the Docker@2 task.
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 3. | Docker Build & Push YAML | Use Docker YAML to build and push images to Azure Container Registry | Focus on the Docker@2 task. Learn how to define the containerRegistry Service Connection, use the buildAndPush command, and dynamically tag the image with a unique ID. |
+
+### Phase 3: Continuous Delivery (CD) Pipeline - Deployment
+
+This is the second stage of your YAML pipeline, focusing on using the Azure CLI to update the App Service.
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 4. | App Service Container Update Command | az webapp config container set documentation | The most critical command for deployment. Learn the exact syntax for using az webapp config container set to change the image in your App Service to the newly pushed, tagged image in your ACR. |
+| 5. | App Service Authentication | Configure a custom container in Azure App Service | Pay attention to the section on pulling images from a private registry (like your ACR). The modern, secure approach is using Managed Identity to grant the App Service \text{AcrPull} role, eliminating the need to pass passwords in the CLI. |
+| 6. | Deployment Slots (Advanced CD) | Set up staging environments in Azure App Service | (Optional, but highly recommended) If you want your CD pipeline to enable zero-downtime updates, this explains the concept and the az webapp deployment slot swap command. |
+
+
+
+Links
+Absolutely. Here are the links, in the correct project order, with the corresponding information for your Docker on Azure (CI/CD focused) project.
+Project 1: Docker on Azure (Pure CI/CD Workflow) Links
+Phase 1: Preparation (Manual Steps using \text{AZ-104} Skills)
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 1. | Container Registry Creation (ACR) | Quickstart: Create a private container registry using the Azure CLI | Use az acr create to set up your image repository. This is where your pipeline will push images. |
+| 2. | App Service Setup (Linux) | Quickstart: Run a custom container on App Service | Follow the steps to create a Linux App Service Plan and the initial Web App for Containers resource via the Azure portal or CLI. |
+Phase 2: Continuous Integration (CI) Pipeline - Build & Push
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 3. | Docker Build & Push YAML | Use Azure Pipelines to build and push container images to registries | Core CI Step. Focus on the YAML example using the Docker@2 task with command: buildAndPush. This is how you generate a tagged image and store it securely in ACR. |
+Phase 3: Continuous Delivery (CD) Pipeline - Deployment
+| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
+|---|---|---|---|
+| 4. | Secure ACR Access (Managed Identity) | Configure a custom container in Azure App Service | Security Best Practice. Scroll to the section on Managed Identity. You should use \text{az webapp identity assign} and grant the App Service the \text{AcrPull} role to avoid using passwords in your pipeline. |
+| 5. | App Service Container Update Command | az webapp config container set documentation | Core CD Step. This is the command your pipeline's AzureCLI@2 task will run to deploy the new image tag: az webapp config container set .... |
+| 6. | Deployment Slots (Zero-Downtime) | Set up staging environments in Azure App Service | Advanced CD. Learn how to create slots and use the az webapp deployment slot swap command to enable zero-downtime blue/green deployments. |
