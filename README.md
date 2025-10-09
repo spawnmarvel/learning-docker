@@ -430,25 +430,13 @@ https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/2-azure-container-instance/Readme.md
 
-# 2 Azure
+# 2 Azure devops
 
-The best logical order for these four resources, moving from foundational knowledge to practical deployment, is as follows:
+Go to devops readme
 
-1.  **## When to use Docker containers**
-    * [https://learn.microsoft.com/en-us/training/modules/intro-to-docker-containers/](https://learn.microsoft.com/en-us/training/modules/intro-to-docker-containers/)
-    * **Why first?** This is the **introductory** module that covers the fundamental concepts of Docker containers and when to use them.
 
-2.  **## Tutorial: Create a container image for deployment to Azure Container Instances**
-    * [https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-app](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-app)
-    * **Why second?** Before running a container, you need to **create the container image**. This tutorial focuses on the development step required to produce the asset that will be deployed.
 
-3.  **## Run Docker containers with Azure Container Instances**
-    * [https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/](https://learn.microsoft.com/en-us/training/modules/run-docker-with-azure-container-instances/)
-    * **Why third?** This is the module that introduces the Azure service (**Azure Container Instances**) you'll use for hosting the container and provides the context for running it, which is the next step after creation.
 
-4.  **## Quickstart: Deploy a container instance in Azure using the Azure CLI**
-    * [https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-quickstart)
-    * **Why fourth?** This is the **final, practical quickstart** that executes the deployment using the Azure CLI, applying the knowledge gained from the previous conceptual and preparation steps.
 
 
 
