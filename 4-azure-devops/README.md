@@ -59,7 +59,7 @@ Phase 2: Continuous Integration (CI) Pipeline - Build & Push
 Phase 3: Continuous Delivery (CD) Pipeline - Deployment
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
 |---|---|---|---|
-| 4. | Secure ACR Access (Managed Identity) | Configure a custom container in Azure App Service | Security Best Practice. Scroll to the section on Managed Identity. You should use \text{az webapp identity assign} and grant the App Service the \text{AcrPull} role to avoid using passwords in your pipeline. |
+| 4. | Secure ACR Access (Managed Identity) | Configure a custom container in Azure App Service, https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container?tabs=debian&pivots=container-linux | Security Best Practice. Scroll to the section on Managed Identity. You should use \text{az webapp identity assign} and grant the App Service the \text{AcrPull} role to avoid using passwords in your pipeline. |
 | 5. | App Service Container Update Command | az webapp config container set documentation | Core CD Step. This is the command your pipeline's AzureCLI@2 task will run to deploy the new image tag: az webapp config container set .... |
 | 6. | Deployment Slots (Zero-Downtime) | Set up staging environments in Azure App Service | Advanced CD. Learn how to create slots and use the az webapp deployment slot swap command to enable zero-downtime blue/green deployments. |
 
