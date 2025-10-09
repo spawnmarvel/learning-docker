@@ -153,12 +153,3 @@ https://learn.microsoft.com/en-us/training/modules/build-and-store-container-ima
 
 https://follow-e-lo.com/2024/02/11/azure-aci-docker-registry-102/
 
-## RabbitMQ ACI 102
-
-Update the ACI
-
-* SSL
-* RabbitMQ config
-* Restart policy
-* Mount to storage
-* etc
