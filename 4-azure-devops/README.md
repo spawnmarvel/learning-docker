@@ -51,7 +51,7 @@ Phase 1: Preparation (Manual Steps using \text{AZ-104} Skills)
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
 |---|---|---|---|
 | 1. | Container Registry Creation (ACR) | Quickstart: Create a private container registry using the Azure CLI, https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli | Use az acr create to set up your image repository. This is where your pipeline will push images. |
-| 2. | App Service Setup (Linux) | Quickstart: Run a custom container on App Service | Follow the steps to create a Linux App Service Plan and the initial Web App for Containers resource via the Azure portal or CLI. |
+| 2. | App Service Setup (Linux) | Quickstart: Run a custom container on App Service, https://learn.microsoft.com/en-us/azure/app-service/quickstart-custom-container?tabs=dotnet&pivots=container-linux-vscode | Follow the steps to create a Linux App Service Plan and the initial Web App for Containers resource via the Azure portal or CLI. |
 Phase 2: Continuous Integration (CI) Pipeline - Build & Push
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
 |---|---|---|---|
