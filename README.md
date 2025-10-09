@@ -42,39 +42,6 @@ All examples bash
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-what-are-containers-john-s/Examples.sh
 
-Notes:
-
-**Controlling resources**
-
-* Linux control groups, cgroups (default to linux), how much cpu, memeory, blockio.
-* Everything on linux lives in cgroup.
-* Docker process within container running in own cgroup, meaning we an restrict all of this.
-* And thats is, the cgroup can controll, check and controll the container.
-
-```bash
-# region Cgroups
-# [...]
-
-#starting deteched -d but interactive -it so bash has a terminal to attach to and not exit straight away
-# Run new container with a name, detached/interactive, 
-# limit resources, use Ubuntu image and the container should run the bash process
-docker run --name ubuntu -dit --memory=256m --cpus="2" ubuntu bash
-```
-
-**Visibility (isoloation) Namespaces**
-
-* Linux default also, can use name space.
-
-```bash
-# region Namespaces
-
-
-```
-
-38.00
-
-* 
-
 
 ## 1.2 Dockerlabs
 
