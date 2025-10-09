@@ -55,7 +55,7 @@ Phase 1: Preparation (Manual Steps using \text{AZ-104} Skills)
 Phase 2: Continuous Integration (CI) Pipeline - Build & Push
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
 |---|---|---|---|
-| 3. | Docker Build & Push YAML | Use Azure Pipelines to build and push container images to registries | Core CI Step. Focus on the YAML example using the Docker@2 task with command: buildAndPush. This is how you generate a tagged image and store it securely in ACR. |
+| 3. | Docker Build & Push YAML | Use Azure Pipelines to build and push container images to registries, https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/containers/push-image?view=azure-devops&tabs=yaml&pivots=acr-registry | Core CI Step. Focus on the YAML example using the Docker@2 task with command: buildAndPush. This is how you generate a tagged image and store it securely in ACR. |
 Phase 3: Continuous Delivery (CD) Pipeline - Deployment
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
 |---|---|---|---|
