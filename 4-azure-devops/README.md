@@ -52,9 +52,9 @@ Project 1: Docker on Azure (Pure CI/CD Workflow) Links
 
 While you're not using IaC, you still need to create the targets manually. These links show the key commands needed for the prerequisites.
 | Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
-|---|---|---|---|---|
-| 1. | Container Registry Creation | Quickstart: Create an Azure container registry using the Azure CLI | You must create the ACR instance where your pipeline will push the image. | https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli
-| 2. | App Service Setup | Quickstart: Run a custom container on App Service | Follow the steps to manually create the App Service Plan and the initial Web App for Containers resource (using a placeholder image like Nginx). | |
+|---|---|---|---|
+| 1. | Container Registry Creation | Quickstart: Create an Azure container registry using the Azure CLI | You must create the ACR instance where your pipeline will push the image. | 
+| 2. | App Service Setup | Quickstart: Run a custom container on App Service | Follow the steps to manually create the App Service Plan and the initial Web App for Containers resource (using a placeholder image like Nginx). |
 
 ### Phase 2: Continuous Integration (CI) Pipeline - Build & Push
 
