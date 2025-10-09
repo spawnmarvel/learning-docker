@@ -1,4 +1,4 @@
-# 2 Azure
+# 2 Azure Devops
 
 You are at devops readme
 
