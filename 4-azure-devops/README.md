@@ -73,22 +73,3 @@ This is the second stage of your YAML pipeline, focusing on using the Azure CLI 
 | 6. | Deployment Slots (Advanced CD) | Set up staging environments in Azure App Service | (Optional, but highly recommended) If you want your CD pipeline to enable zero-downtime updates, this explains the concept and the az webapp deployment slot swap command. |
 
 
-
-Links
-Absolutely. Here are the links, in the correct project order, with the corresponding information for your Docker on Azure (CI/CD focused) project.
-Project 1: Docker on Azure (Pure CI/CD Workflow) Links
-Phase 1: Preparation (Manual Steps using \text{AZ-104} Skills)
-| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
-|---|---|---|---|
-| 1. | Container Registry Creation (ACR) | Quickstart: Create a private container registry using the Azure CLI | Use az acr create to set up your image repository. This is where your pipeline will push images. |
-| 2. | App Service Setup (Linux) | Quickstart: Run a custom container on App Service | Follow the steps to create a Linux App Service Plan and the initial Web App for Containers resource via the Azure portal or CLI. |
-Phase 2: Continuous Integration (CI) Pipeline - Build & Push
-| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
-|---|---|---|---|
-| 3. | Docker Build & Push YAML | Use Azure Pipelines to build and push container images to registries | Core CI Step. Focus on the YAML example using the Docker@2 task with command: buildAndPush. This is how you generate a tagged image and store it securely in ACR. |
-Phase 3: Continuous Delivery (CD) Pipeline - Deployment
-| Order | Component/Concept | Microsoft Learn Link | Key Takeaway for Project |
-|---|---|---|---|
-| 4. | Secure ACR Access (Managed Identity) | Configure a custom container in Azure App Service | Security Best Practice. Scroll to the section on Managed Identity. You should use \text{az webapp identity assign} and grant the App Service the \text{AcrPull} role to avoid using passwords in your pipeline. |
-| 5. | App Service Container Update Command | az webapp config container set documentation | Core CD Step. This is the command your pipeline's AzureCLI@2 task will run to deploy the new image tag: az webapp config container set .... |
-| 6. | Deployment Slots (Zero-Downtime) | Set up staging environments in Azure App Service | Advanced CD. Learn how to create slots and use the az webapp deployment slot swap command to enable zero-downtime blue/green deployments. |
