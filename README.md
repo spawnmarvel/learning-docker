@@ -436,6 +436,10 @@ https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/2-azure-container-instance/Readme.md
 
+## 1.4 Azure Container Registry
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1.4-azure-container-instance/Readme-container-registry.md
+
 # 2 Azure devops
 
 Go to devops readme after you are done with ## Phase 1: Master Docker Fundamentals
