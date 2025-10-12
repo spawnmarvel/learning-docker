@@ -6,8 +6,11 @@ You are at devops readme
 ## Learn manual
 
 That's a smart choice to focus and simplify your learning path! Since you already have the AZ-104 (Azure Administrator) and an introductory certification like LSF 101 (which provides valuable Linux experience for Docker), here is the focused path to master Docker and Azure DevOps for container deployment.
+
 Your Focused Learning Path: Docker and Azure DevOps
-Phase 1: Master Docker Fundamentals
+
+## Phase 1: Master Docker Fundamentals
+
 Your first step is to gain proficiency with Docker locally. The LSF 101 background will be a significant advantage here.
 | Step | Focus Area | Key Concepts to Master | Practical Hands-on |
 |---|---|---|---|
