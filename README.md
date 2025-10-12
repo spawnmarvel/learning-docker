@@ -24,6 +24,8 @@ https://follow-e-lo.com/2024/01/14/docker-be-efficient/
 
 https://follow-e-lo.com/category/docker/
 
+# Phase 1: Master Docker Fundamentals
+
 ## 1 Getting started guide CLI
 
 * docker run
@@ -436,7 +438,11 @@ https://github.com/spawnmarvel/learning-docker/blob/main/2-azure-container-insta
 
 # 2 Azure devops
 
-Go to devops readme
+Go to devops readme after you are done with ## Phase 1: Master Docker Fundamentals
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README-devops.md
+
+
 
 
 
