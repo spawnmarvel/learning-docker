@@ -64,7 +64,12 @@ https://docs.docker.com/engine/
 
 ## Installing Docker on a VM (Azure) (Done)
 
-Update vm vmdocker01
+Update vm tbd
+
+Get the latest install script
+
+https://docs.docker.com/engine/install/ubuntu/
+
 
 ```bash
 # update vm
@@ -144,6 +149,8 @@ sudo docker run hello-world
 
 docker --version
 # Docker version 24.0.7, build afdd53b
+
+docker compose --version
 ```
 
 https://docs.docker.com/engine/install/ubuntu/
@@ -177,7 +184,7 @@ id username
 
 # Add the connected user "$USER" to the docker group. Change the user name to match your preferred user if you do not want to use your current user:
 
-sudo gpasswd -a $USER docker
+sudo usermod -a -G $USER docker
 # Adding user username to group docker
 
 # Activate, either do a newgrp docker or log out/in to activate the changes to groups.
