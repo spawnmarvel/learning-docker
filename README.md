@@ -13,7 +13,7 @@ What do we get extra here:
 * Azure VM with Docker, NSG, (mount data drive, not not this time)
 * Azure Container with Docker
 * Azure Container registry with Docker
-* Github actions and runners
+* Github actions and runners in the DevOps part
 
 Azure resources
 
