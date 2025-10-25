@@ -41,5 +41,28 @@ This phase uses your existing AZ-104 knowledge and new Docker skills to deploy t
 | Azure Kubernetes Service (AKS) | While typically used with IaC, you can deploy your application using Kubernetes Manifests (.yaml files) and the Kubernetes task in Azure Pipelines. | The industry standard for complex, scalable, and highly-available container orchestration. |
 
 
-Recommended Next Certification:
+## Github Actions
+
+GitHub Actions refers to the overall automation platform and the individual automation units within it.
+
+* Platform: GitHub Actions is a service provided by GitHub that enables you to automate workflows directly within your repository. This includes tasks like continuous integration (CI), continuous delivery (CD), testing, and code reviews.
+
+* Workflow: A workflow is a configurable automated process defined in a YAML file within your repository. It consists of one or more jobs, and each job contains a series of steps.
+
+* Action: An "action" in this context is a specific, reusable task within a workflow. Actions can be pre-built by GitHub, created by the community, or custom-built for your specific needs. Examples include actions to check out code, set up a specific environment, or deploy an application.
+
+https://docs.github.com/en/actions
+
+## Self-hosted runners
+
+GitHub Runners are the virtual machines or physical machines that execute the jobs defined in your GitHub Actions workflows.
+
+* GitHub-hosted runners: Paid
+
+* Self-hosted runners: These are machines that you deploy and manage yourself, either on your own hardware, in your cloud environment, or on services like AWS EC2. Self-hosted runners offer greater control over the environment, customizability, and can be more cost-effective for specific use cases, but require you to handle maintenance and security.
+
+https://docs.github.com/en/actions/concepts/runners/self-hosted-runners
+
+
+### Recommended Next Certification:
  * Microsoft Certified: DevOps Engineer Expert (AZ-400): This is the official expert-level credential. It validates the end-to-end skills you are acquiring (version control, CI/CD, monitoring, and container deployment). You already have the AZ-104 prerequisite, making this your most direct certification goal.

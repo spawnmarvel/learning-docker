@@ -10,8 +10,10 @@ What do we get extra here:
 
 * Python for programming
 * Bash and linux, ssh, .sh scripts
-* Azure VM with Docker, mount data drive, NSG
+* Azure VM with Docker, NSG, (mount data drive, not not this time)
 * Azure Container with Docker
+* Azure Container registry with Docker
+* Github actions and runners
 
 Azure resources
 
