@@ -1,4 +1,4 @@
-# learning-docker
+# Learning-docker
 Testing and learning Docker with Azure
 
 ![docker](https://github.com/spawnmarvel/learning-docker/blob/main/images/docker.png)
