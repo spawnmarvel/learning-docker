@@ -394,6 +394,10 @@ docker compose version
 Docker Compose version v2.21.0
 ```
 
+## Modify your Compose file for production
+
+https://docs.docker.com/compose/how-tos/production/
+
 ## Docker compose commands
 
 ```bash
