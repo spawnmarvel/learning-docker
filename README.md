@@ -66,7 +66,7 @@ Docker Engine is an open source containerization technology for building and con
 
 https://docs.docker.com/engine/
 
-## Installing Docker on a VM (Azure) (Done)
+## Installing Docker on a VM (Azure) (Done 2)
 
 Update vm tbd
 
@@ -87,10 +87,14 @@ Create script
 ```bash
 
 # create script
-touch add_repository_to_apt.sh
+touch add_docker_repository_to_apt.sh
 
-nano add_repository_to_apt.sh
+nano add_docker_repository_to_apt.sh
 
+```
+add_docker_repository_to_apt.sh
+
+```bash
 #!/bin/bash
 # Add Docker's official GPG key:
 sudo apt update
@@ -109,7 +113,7 @@ sudo apt-get update
 ```
 Run it
 ```bash
-sudo bash add_repository_to_apt.sh
+sudo bash add_docker_repository_to_apt.sh
 
 ```
 
@@ -119,55 +123,34 @@ Install the Docker packages
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Verify Docker Engine
+Verify versions docker and compose
+
+```bash
+docker --version
+# Docker version 29.0.3, build 511dad6
+
+docker compose version
+# Docker Compose version v2.40.3
+```
+
+Run hello-world
+
 ```bash
 sudo docker run hello-world
-
-# Unable to find image 'hello-world:latest' locally
-# latest: Pulling from library/hello-world
-# xxxxxxxxxx: Pull complete
-# Digest: sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-# Status: Downloaded newer image for hello-world:latest
-
-# Hello from Docker!
-# This message shows that your installation appears to be working correctly.
-
-# To generate this message, Docker took the following steps:
-# 1. The Docker client contacted the Docker daemon.
-# 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-#    (amd64)
-# 3. The Docker daemon created a new container from that image which runs the
-#    executable that produces the output you are currently reading.
-# 4. The Docker daemon streamed that output to the Docker client, which sent it
-#    to your terminal.
-
-# To try something more ambitious, you can run an Ubuntu container with:
-# $ docker run -it ubuntu bash
-
-# Share images, automate workflows, and more with a free Docker ID:
-# https://hub.docker.com/
-
-# For more examples and ideas, visit:
-#  https://docs.docker.com/get-started/
-
-
-docker --version
-# Docker version 24.0.7, build afdd53b
-
-docker compose --version
+# docker: permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+# go to user setup section
 ```
 
 https://docs.docker.com/engine/install/ubuntu/
 
-
-## Mount disk on VM (Done)
+## Mount disk on VM (Done 2)
 
 * cd /datadrive/
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README-0-mount.md
 
 
-## Docker user setup (Done)
+## Docker user setup (Done 2)
 
 ```bash
 # login
@@ -179,17 +162,22 @@ docker run hello-world
 
 # Check if docker groups is present
 getent group
+# docker:x:988:
 
 getent group | grep docker
 # docker:x:999:
 
 # check if a user is in a group
-id username
+id the_username
+# we see groups
 
-# Add the connected user "$USER" to the docker group. Change the user name to match your preferred user if you do not want to use your current user:
+# Add the connected user the_username to the docker group. Change the user name to match your preferred user if you do not want to use your current user:
 
-sudo usermod -a -G $USER docker
+sudo usermod -aG docker the_username
 # Adding user username to group docker
+
+id the_username
+# we seee groups and now the 988(docker)
 
 # Activate, either do a newgrp docker or log out/in to activate the changes to groups.
 newgrp docker
@@ -200,6 +188,12 @@ docker run hello-world
 # This message shows that your installation appears to be working correctly.
 
 ```
+
+## Docker move /var/lib/docker
+
+The standard data location used for docker is /var/lib/docker. Because this directory contains all containers/images/volumes, it can be large.
+
+https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md#docker-volume-data-move
 
 ## Docker clean up docker clutter
 
