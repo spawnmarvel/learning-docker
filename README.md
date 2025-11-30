@@ -22,7 +22,7 @@ Azure resources
 
 Azure Resource visualizer
 
-![Azure resources visual](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_visual.jpg)
+![Azure resources visual](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_visual.png)
 
 
 ## Docker: be efficient
