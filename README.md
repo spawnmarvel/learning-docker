@@ -329,12 +329,13 @@ And view certifcate we made
 
 
 
+## Repeat the 1 Getting started guide
 
+You have done it before, but do the link all over again https://docs.docker.com/get-started/ and store it in:
 
+* 1-getting-started-guide-repeat, you dont need to write mych down, just repeat it and store sections for how far you are.
 
-
-
-
+##
 
 ## Docker clean up docker clutter
 
