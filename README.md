@@ -17,7 +17,12 @@ What do we get extra here:
 
 Azure resources
 
-![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources.jpg)
+![Azure resources](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_resources2.jpg)
+
+
+Azure Resource visualizer
+
+![Azure resources visual](https://github.com/spawnmarvel/learning-docker/blob/main/images/azure_visual.jpg)
 
 
 ## Docker: be efficient
