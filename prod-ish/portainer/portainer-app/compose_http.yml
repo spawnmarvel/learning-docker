@@ -1,0 +1,38 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer-app
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 600M
+    # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
+    restart: always
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - vol_portainer_data:/data
+    networks:
+      - net_portainer
+networks:
+  net_portainer:
+    # is default
+    # driver: bridge
+
+volumes:
+  vol_portainer_data:
+
+# open inbound NSG
+# no http management, , refresh and clear cache
+# cd dir
+# docker compose up -d
+# https://public-ip:9443
+
+# remove all images
+# docker rmi -f $(docker images -aq)
+
+# remove all volumes
+# docker volume rm $(docker volume ls -qf dangling=true)

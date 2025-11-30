@@ -189,11 +189,112 @@ docker run hello-world
 
 ```
 
-## Docker move /var/lib/docker
+## Docker move /var/lib/docker (Done 2)
 
 The standard data location used for docker is /var/lib/docker. Because this directory contains all containers/images/volumes, it can be large.
 
+So we mounted a data disk.
+
+
+```bash
+lsblk
+
+# [...]
+sdc       8:32   0    4G  0 disk
+└─sdc1    8:33   0    4G  0 part /datadrive
+
+sudo systemctl stop docker.socket
+sudo systemctl status docker.socket
+
+cd /etc/docker
+sudo nano daemon.json
+
+```
+
+daemon.json (set data drive path)
+
+```json
+{
+   "data-root": "/datadrive"
+}
+```
+
+Copy all files
+
+```bash
+sudo rsync -aP /var/lib/docker/ /datadrive
+
+sudo su
+cd /datadrive
+ls
+
+docker run hello-world
+
+# Hello from Docker!
+# This message shows that your installation appears to be working correctly.
+```
+
+
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md#docker-volume-data-move
+
+## Set up portainer https
+
+
+First UFW and also add NSG for http/https
+
+```bash
+sudo ufw show added
+Added user rules (see 'ufw status' for running firewall):
+ufw allow 22/tcp
+ufw allow 9000/tcp
+ufw allow 9443/tcp
+ufw allow 443
+
+sudo ufw enable
+
+```
+
+check status
+
+```bash
+sudo ufw status verbose
+```
+
+Log
+
+```log
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere
+443                        ALLOW IN    Anywhere
+9000                       ALLOW IN    Anywhere
+9443                       ALLOW IN    Anywhere
+22/tcp (v6)                ALLOW IN    Anywhere (v6)
+443 (v6)                   ALLOW IN    Anywhere (v6)
+9000 (v6)                  ALLOW IN    Anywhere (v6)
+9443 (v6)                  ALLOW IN    Anywhere (v6)
+
+```
+
+Visit the public ip
+
+http://xx.xxx.xxx.90:9000
+
+http://xx.xxx.xxx.90:9000/#!/init/admin
+
+Create a user
+
+Now lets do https for Portainer but first check the volume.
+
+
+
+
+
 
 ## Docker clean up docker clutter
 

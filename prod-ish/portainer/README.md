@@ -9,8 +9,8 @@ You can deploy portainer as its on container or with other containers in the com
 ## portainer-ce as one contaier.
 
 ```bash
-mkdir portainer-app
-cd portainer-app
+mkdir mkdir docker-portainer
+cd mkdir docker-portainer
 # copy compose.yml to that folder
 
 docker compose up -d
