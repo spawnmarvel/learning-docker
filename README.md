@@ -237,7 +237,7 @@ docker run hello-world
 
 https://github.com/spawnmarvel/learning-docker/blob/main/1-getting-started-guide/README-2-docker-volume.md#docker-volume-data-move
 
-## Set up portainer https
+## Set up portainer https (Done 2)
 
 
 First UFW and also add NSG for http/https
@@ -292,6 +292,39 @@ Create a user
 Now lets do https for Portainer but first check the volume.
 
 ![Volume portainer](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer_volume.jpg)
+
+
+```bash
+
+cd /etc/docker
+
+sudo mkdir ssl
+cd ssl
+sudo mkdir portainer
+cd portainer
+
+udo openssl req -x509 -newkey rsa:4096 -keyout portainer.key -out portainer.crt -days 730 -nodes
+
+sudo chmod 600 portainer.key
+```
+
+Update the docker-compose.yml or use the https compose.yml (rename it)
+
+Add NSG allow inbound for 9443.
+
+Vist
+
+https://xx.xxx.xxx.90:9443
+
+
+And view certifcate we made
+
+![portainer cert](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer_cert.png)
+
+
+
+
+
 
 
 
