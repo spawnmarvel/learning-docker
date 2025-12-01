@@ -19,7 +19,7 @@ http://51.107.221.90:3000/login
 
 And we are in after open UFW 3000 and NSG 3000.
 
-![grafana 101][https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/grafana_101.png]
+![grafana 101](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/grafana_101.png)
 
 ## Grafana docker compose https
 
