@@ -62,7 +62,9 @@ Now visit it
 
 https://xx.xxx.xxx.90/login
 
+Enter the console to verify certs moved
 
+![grafana 101 https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/grafana_101_https.png)
 
 ## Grafana docker compose https
 
