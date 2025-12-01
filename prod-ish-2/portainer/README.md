@@ -11,7 +11,8 @@ You can deploy portainer as its on container or with other containers in the com
 ```bash
 mkdir mkdir docker-portainer
 cd mkdir docker-portainer
-# copy compose.yml to that folder
+
+# copy compose_https.yml to that folder and rename to compose.yml
 
 docker compose up -d
 
