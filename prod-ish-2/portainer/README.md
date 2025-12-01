@@ -6,6 +6,10 @@ https://docs.portainer.io/start/install-ce/server/docker/linux
 
 You can deploy portainer as its on container or with other containers in the compose.yml.
 
+View frontpage or main readme section
+
+https://github.com/spawnmarvel/learning-docker/blob/main/README.md#set-up-portainer-https-done-2
+
 ## portainer-ce as one contaier.
 
 
