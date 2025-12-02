@@ -55,4 +55,4 @@ Check a container
 
 Check usages to compare with compose
 
-![compose portainer https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/images/check.png)
+![compose portainer https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/images/usage.png)
