@@ -291,7 +291,7 @@ Go to how to
 https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/README.md
 
 
-## Failed container? Well check logs
+## Failed container? Well check logs (Done 2)
 
 ```bash
 docker compose logs portainer
