@@ -298,6 +298,11 @@ docker compose logs portainer
 
 ```
 
+Container is build success, but restarting.
+
+![container restarting](https://github.com/spawnmarvel/learning-docker/blob/main/images/restarting.png)
+
+Build success
 ![container restarting](https://github.com/spawnmarvel/learning-docker/blob/main/images/container_restarting.png)
 
 
