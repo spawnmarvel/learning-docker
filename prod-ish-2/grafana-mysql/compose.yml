@@ -1,0 +1,28 @@
+services:
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile_grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      # Map host HTTPS port 443 to container Grafana port 3000
+      - '443:3000'
+    volumes:
+      # Persistent data volume
+      - vol_grafana_data:/var/lib/grafana
+    environment:
+      # --- NEW: Configure Grafana to use SSL ---
+      # Tells Grafana to use HTTPS
+      - GF_SERVER_PROTOCOL=https
+      # Points Grafana to the mounted certificate file
+      - GF_SERVER_CERT_FILE=/etc/grafana/ssl/grafana.crt
+      # Points Grafana to the mounted private key file
+      - GF_SERVER_CERT_KEY=/etc/grafana/ssl/grafana.key
+networks:
+  net_grafana_mysql:
+    # is default
+    # driver: bridge
+
+volumes:
+  vol_grafana_data:

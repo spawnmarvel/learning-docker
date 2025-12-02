@@ -1,0 +1,21 @@
+# Start from the official Grafana image
+FROM grafana/grafana
+
+# Switch to root to perform installation/directory creation
+USER root
+
+# Create a directory for the SSL files inside the image
+RUN mkdir -p /etc/grafana/ssl
+
+# Copy the certificate and key from your host (must be present in the build context)
+COPY ./certs/grafana.crt /etc/grafana/ssl/grafana.crt
+COPY ./certs/grafana.key /etc/grafana/ssl/grafana.key
+
+# Set correct permissions *inside* the container for the Grafana user (UID 472)
+# The key is private, the cert is public.
+RUN chown -R 472:472 /etc/grafana/ssl \ 
+    && chmod 644 /etc/grafana/ssl/grafana.crt \
+    && chmod 600 /etc/grafana/ssl/grafana.key 
+
+# Grafana default command is ENTRYPOINT /run.sh
+# CMD [ "grafana-server" ]

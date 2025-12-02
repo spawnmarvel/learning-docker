@@ -68,10 +68,49 @@ Enter the console to verify certs moved
 
 ## Grafana docker compose https
 
+On dmzdocker03
+
 ```bash
 mkdir docker-grafana-mysql
+cd docker-grafana-mysql
 
 ```
+Generate ssl certificate
+
+Create a directory to store your certificates within your project folder (next to your docker-compose.yml file
+
+```bash
+mkdir certs
+cd certs
+
+pwd
+# /home/imsdal/docker-grafana-mysql/certs
+
+# Provides the subject information (Common Name CN should match the hostname, e.g., localhost or your domain).
+sudo openssl req -x509 -newkey rsa:4096 -keyout grafana.key -out grafana.crt -days 730 -nodes -subj "/C=US/ST=State/L=City/O=OrgName/CN=grafanaserver"
+
+# Why 644? The COPY command needs to read the file, and 644 grants read permissions to everyone, ensuring the Docker builder can access it.
+
+sudo chmod 644 grafana.crt
+sudo chmod 644 grafana.key
+
+```
+Run compose up
+
+```bash
+
+# add the Dockerfile Dockerfile_grafana
+# add the compose.yml
+
+docker compose up -d --build
+
+
+```
+
+http://xx.xx.xxx.90:3000/login
+
+
+
 
 ## Mysql
 

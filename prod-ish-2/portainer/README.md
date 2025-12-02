@@ -30,7 +30,7 @@ Run portainer
 mkdir mkdir docker-portainer
 cd mkdir docker-portainer
 
-# copy compose_https.yml to that folder and rename to compose.yml
+# copy compose.yml to that folder and rename to compose.yml
 
 docker compose up -d
 
