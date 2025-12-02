@@ -1,7 +1,7 @@
 # Grafana and MySql
 
 
-## Grafana docker run (http, https)
+## Grafana docker run test (http, https)
 
 On dmzdocker03
 
@@ -99,7 +99,7 @@ Run compose up
 
 ```bash
 
-# add the Dockerfile Dockerfile_grafana
+# add the Dockerfile Dockerfile_grafana, here we specify version and move the certs to the container
 # add the compose.yml
 
 docker compose up -d --build
@@ -108,6 +108,8 @@ docker compose up -d --build
 ```
 
 http://xx.xx.xxx.90:3000/login
+
+![grafana compose https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/grafana_compose_https.png)
 
 
 
