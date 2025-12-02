@@ -298,6 +298,8 @@ docker compose logs portainer
 
 ```
 
+![container restarting](https://github.com/spawnmarvel/learning-docker/blob/main/images/container_restarting.png)
+
 
 
 
