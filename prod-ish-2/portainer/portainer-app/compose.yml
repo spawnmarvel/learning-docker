@@ -1,6 +1,8 @@
 services:
   portainer:
-    image: portainer/portainer-ce:latest
+    build:
+      context: .
+      dockerfile: Dockerfile_portainer
     container_name: portainer-app
     deploy:
       resources:
@@ -10,16 +12,15 @@ services:
     # command: https://gist.github.com/deviantony/62c009b41bde5e078b1a7de9f11f5e55
     restart: always
     ports:
+      # Map host 9443 to container 9443 for HTTPS UI
       - 9443:9443
+      # Keep 8000 for the agent/edge tunnel
       - 8000:8000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - vol_portainer_data:/data
-      # New: Mount the certificate and key files
-      - /etc/docker/ssl/portainer/portainer.crt:/certs/portainer.crt
-      - /etc/docker/ssl/portainer/portainer.key:/certs/portainer.key
-    # New: Command to launch Portainer with SSL enabled
-    command: -p 9000 --ssl --sslcert /certs/portainer.crt --sslkey /certs/portainer.key
+    # Command to launch Portainer with SSL enabled
+    command: -p 9443 --ssl --sslcert /certs/portainer.crt --sslkey /certs/portainer.key
     networks:
       - net_portainer
 networks:
@@ -29,15 +30,3 @@ networks:
 
 volumes:
   vol_portainer_data:
-
-# open inbound NSG
-# no http management, , refresh and clear cache
-# cd dir
-# docker compose up -d
-# https://public-ip:9443
-
-# remove all images
-# docker rmi -f $(docker images -aq)
-
-# remove all volumes
-# docker volume rm $(docker volume ls -qf dangling=true)

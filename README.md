@@ -286,45 +286,17 @@ To                         Action      From
 
 ```
 
-Visit the public ip
+Go to how to
 
-http://xx.xxx.xxx.90:9000
+https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/README.md
 
-http://xx.xxx.xxx.90:9000/#!/init/admin
 
-Create a user
-
-Now lets do https for Portainer but first check the volume.
-
-![Volume portainer](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer_volume.jpg)
-
+## Failed container? Well check logs
 
 ```bash
+docker compose logs portainer
 
-cd /etc/docker
-
-sudo mkdir ssl
-cd ssl
-sudo mkdir portainer
-cd portainer
-
-sudo openssl req -x509 -newkey rsa:4096 -keyout portainer.key -out portainer.crt -days 730 -nodes
-
-sudo chmod 600 portainer.key
 ```
-
-Update the docker-compose.yml or use the https compose.yml (rename it)
-
-Add NSG allow inbound for 9443.
-
-Vist
-
-https://xx.xxx.xxx.90:9443
-
-
-And view certifcate we made
-
-![portainer cert](https://github.com/spawnmarvel/learning-docker/blob/main/images/portainer_cert.png)
 
 
 

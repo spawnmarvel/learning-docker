@@ -1,0 +1,26 @@
+# Stage 1: Use a shell-enabled image (like Alpine) for setup tasks
+FROM alpine:latest AS builder
+# Set the user to root for file operations
+USER root
+
+# Create the directory
+RUN mkdir -p /certs
+
+# Copy the certificate and key from the build context into the builder stage
+COPY ./certs/portainer.crt /certs/portainer.crt
+COPY ./certs/portainer.key /certs/portainer.key
+
+# Set restrictive permissions using the shell
+RUN chmod 600 /certs/portainer.key
+RUN chmod 644 /certs/portainer.crt
+
+
+# Stage 2: The final, minimal Portainer image
+FROM portainer/portainer-ce:latest
+
+# Copy the prepared files from the builder stage into the final image
+COPY --from=builder /certs/portainer.crt /certs/portainer.crt
+COPY --from=builder /certs/portainer.key /certs/portainer.key
+
+# The image is built, the files are in place, and permissions are set.
+# The image ENTRYPOINT handles running Portainer as root.

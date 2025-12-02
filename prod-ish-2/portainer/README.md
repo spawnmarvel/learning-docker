@@ -10,28 +10,36 @@ View frontpage or main readme section
 
 https://github.com/spawnmarvel/learning-docker/blob/main/README.md#set-up-portainer-https-done-2
 
-## portainer-ce as one contaier.
+## portainer-ce as one contaier https
 
 
 Generate ssl certificate
 
 ```bash
-cd /etc/docker/
-cd ssl/
+mkdir mkdir docker-portainer
+cd mkdir docker-portainer
+mkdir certs
+cd certs
 
-sudo openssl req -x509 -newkey rsa:4096 -keyout portainer.key -out portainer.crt -days 730 -nodes
+# Ensure you are in the directory containing the 'certs' folder
+openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout portainer.key -out portainer.crt -subj "/C=US/ST=State/L=City/O=PortainerTest/CN=portainer.local"
 
-sudo chmod 600 portainer.key
+# Why 644? The COPY command needs to read the file, and 644 grants read permissions to everyone, ensuring the Docker builder can access it.
+
+sudo chmod 644 portainer.crt
+sudo chmod 644 portainer.key
+
 ```
 
 Run portainer
 
 ```bash
-mkdir mkdir docker-portainer
 cd mkdir docker-portainer
+ls
+Dockerfile_portainer  certs  compose.yml
 
-# copy compose.yml to that folder and rename to compose.yml
+# copy compose.yml and Dockerfile_portainer , here we specify version and move the certs to the container
 
-docker compose up -d
+docker compose up -d --build
 
 ```
