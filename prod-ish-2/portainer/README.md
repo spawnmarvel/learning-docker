@@ -45,3 +45,14 @@ docker compose up -d --build
 ```
 
 ![compose portainer https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/images/compose_portainer_https2.png)
+
+## Portainer monitor containers
+
+Check a container
+
+![compose portainer https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/images/check.png)
+
+
+Check usages to compare with compose
+
+![compose portainer https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/images/check.png)

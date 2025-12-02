@@ -4,6 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile_grafana
     container_name: grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 600M
     restart: unless-stopped
     ports:
       # Map host HTTPS port 443 to container Grafana port 3000
