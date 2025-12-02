@@ -99,8 +99,12 @@ Run compose up
 
 ```bash
 
+# folder /home/imsdal/docker-grafana-mysql
 # add the Dockerfile Dockerfile_grafana, here we specify version and move the certs to the container
 # add the compose.yml
+
+ls
+Dockerfile_grafana  certs  compose.yml
 
 docker compose up -d --build
 
