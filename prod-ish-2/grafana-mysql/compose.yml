@@ -9,7 +9,7 @@ services:
         limits:
           cpus: '0.5'
           memory: 600M
-    restart: unless-stopped
+    restart: always
     ports:
       # Map host HTTPS port 443 to container Grafana port 3000
       - '443:3000'
