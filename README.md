@@ -291,9 +291,10 @@ Go to how to
 https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/portainer/README.md
 
 
-## Failed container? Well check logs (Done 2)
+## Failed container with compose? Well check logs (Done 2)
 
 ```bash
+# docker compose logs
 docker compose logs portainer
 
 ```
@@ -407,6 +408,10 @@ docker logs -f rabbitmq
 
 # enter container, exit 13
 docker exec -it rabbitmq2 bash
+
+# docker compose logs
+docker compose logs portainer
+
 
 
 
