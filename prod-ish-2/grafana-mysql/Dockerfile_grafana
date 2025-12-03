@@ -19,3 +19,17 @@ RUN chown -R 472:472 /etc/grafana/ssl \
 
 # Grafana default command is ENTRYPOINT /run.sh
 # CMD [ "grafana-server" ]
+
+# Set correct ownership and restrictive permissions 
+# The Grafana user (UID 472) will own and be able to read the key and cert.
+RUN chown -R 472:472 /etc/grafana/ssl \
+    && chmod 644 /etc/grafana/ssl/grafana.crt \
+    && chmod 600 /etc/grafana/ssl/grafana.key
+
+# 💡 FINAL STEP: Switch back to the non-root Grafana user (UID 472).
+# This ensures that the Grafana server process runs with the least privileges.
+USER 472
+
+# Grafana default command is preserved.
+# ENTRYPOINT [ "/run.sh" ]
+# CMD [ "grafana-server" ]
