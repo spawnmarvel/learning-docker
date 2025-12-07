@@ -1,4 +1,31 @@
+version: '3.8'
+
 services:
+  # 1. MySQL Service
+  grafana_db:
+    image: mysql:8.0
+    container_name: grafana_db
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+    environment:
+      - MYSQL_DATABASE=grafana
+      - MYSQL_USER=grafana
+      # --- POINT MYSQL TO READ PASSWORD FROM THE MOUNTED SECRET FILE ---
+      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password_root # Using the same password for root for simplicity here
+    secrets: # <-- SERVICE USES THE SECRETS
+      - db_password
+      - db_password_root
+    volumes:
+      - vol_mysql_data:/var/lib/mysql
+    networks:
+      - net_grafana_mysql
+
+  # 2. Grafana Service
   grafana:
     build:
       context: .
@@ -11,23 +38,45 @@ services:
           memory: 600M
     restart: always
     ports:
-      # Map host HTTPS port 443 to container Grafana port 3000
       - '443:3000'
     volumes:
-      # Persistent data volume
       - vol_grafana_data:/var/lib/grafana
     environment:
-      # --- NEW: Configure Grafana to use SSL ---
-      # Tells Grafana to use HTTPS
+      # ... (Existing SSL configuration) ...
       - GF_SERVER_PROTOCOL=https
-      # Points Grafana to the mounted certificate file
       - GF_SERVER_CERT_FILE=/etc/grafana/ssl/grafana.crt
-      # Points Grafana to the mounted private key file
       - GF_SERVER_CERT_KEY=/etc/grafana/ssl/grafana.key
-networks:
-  net_grafana_mysql:
-    # is default
-    # driver: bridge
+      
+      # --- POINT GRAFANA TO READ DB CREDENTIALS FROM MOUNTED SECRET FILES ---
+      - GF_DATABASE_TYPE=mysql
+      - GF_DATABASE_HOST=grafana_db:3306
+      - GF_DATABASE_NAME=grafana
+      - GF_DATABASE_USER=grafana
+      - GF_DATABASE_PASSWORD_FILE=/run/secrets/db_password # Reads DB password from file
+      
+      # --- OPTIONAL: Set a secure Grafana Admin password using a secret file ---
+      - GF_SECURITY_ADMIN_PASSWORD_FILE=/run/secrets/grafana_admin_password
+      # If you set this, you should also set the user for security:
+      - GF_SECURITY_ADMIN_USER=admin
+      
+    secrets: # <-- SERVICE USES THE SECRETS
+      - db_password
+      - grafana_admin_password
+    networks:
+      - net_grafana_mysql
+
+# --- TOP-LEVEL SECRETS DEFINITION ---
+secrets:
+  db_password: # Secret for the regular Grafana DB user (used by both services)
+    file: ./db_password.txt
+  db_password_root: # Secret for the MySQL root password (only used by MySQL service)
+    file: ./db_password.txt # Using the same file for simplicity
+  grafana_admin_password: # Secret for the Grafana internal admin user
+    file: ./grafana_admin_password.txt
 
 volumes:
   vol_grafana_data:
+  vol_mysql_data:
+
+networks:
+  net_grafana_mysql:

@@ -118,7 +118,7 @@ http://xx.xx.xxx.90:3000/login
 
 
 
-## Mysql as backend
+## Mysql as backend using secret
 
 Read and list properties
 
@@ -128,6 +128,41 @@ https://hub.docker.com/_/mysql
 
 On dmzdocker03
 
+You absolutely can and should use Docker's built-in secrets mechanism to avoid storing passwords in plaintext environment variables within your docker-compose.yaml file.
+
+1. Create Secret Files on Host
+In your project directory (the same location as your docker-compose.yaml), create the following files with the actual secure passwords inside:
+
 ```bash
+cd docker-grafana-mysql
+
+# Create files and write your secure passwords to them
+echo "your_secure_db_password" > db_password.txt
+echo "your_secure_admin_password" > grafana_admin_password.txt
+
+# (Recommended: Restrict file permissions)
+chmod 600 *.txt
+
+docker compose up --build -d
+
+# Verify that services are running:
+
+docker compose ps
+
+# Verify Grafana Log (Database Connection)
+
+docker compose logs grafana
+
 
 ```
+
+Now visit grafana, https://localhost (or https://<Your Host IP>)
+
+### Check Secrets (Security Verification)
+
+To confirm that your passwords are not exposed as environment variables, inspect the running Grafana container's environment:
+
+```bash
+docker inspect grafana | grep -E 'GF_DATABASE_PASSWORD|GF_SECURITY_ADMIN_PASSWORD'
+```
+You should not see the actual password value; you should only see the _FILE environment variables:
