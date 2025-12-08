@@ -307,6 +307,11 @@ Build success
 ![container restarting](https://github.com/spawnmarvel/learning-docker/blob/main/images/container_restarting.png)
 
 
+## Manage secrets securely in Docker Compose (Done 2)
+
+Also have a look in grafana-mysql where it is used.
+
+https://docs.docker.com/compose/how-tos/use-secrets/
 
 
 ## Repeat the 1 Getting started guide

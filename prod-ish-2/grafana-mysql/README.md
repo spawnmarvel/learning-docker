@@ -126,6 +126,12 @@ Read and list properties
 https://hub.docker.com/_/mysql
 
 
+Secrets
+
+https://docs.docker.com/compose/how-tos/use-secrets/
+
+
+
 On dmzdocker03
 
 You absolutely can and should use Docker's built-in secrets mechanism to avoid storing passwords in plaintext environment variables within your docker-compose.yaml file.
