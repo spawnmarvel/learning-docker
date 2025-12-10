@@ -48,6 +48,9 @@ We can now choose it.
 
 ![use zabbix](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/use_zabbix.png)
 
+And view data on the fly and save dasboards.
+
+![use zabbix](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/use_zabbix.png)
 
 
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
