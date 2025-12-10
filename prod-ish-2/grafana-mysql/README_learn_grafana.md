@@ -39,6 +39,15 @@ URL
 * Basic auth, setup login for access to Zabbix API
 * grafana1, Echolima12Tango-
 
+Zabbix connection
+* grafana1, Echolima12Tango-
+
+![grafana data source](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/zabbix_data_source.png)
+
+We can now choose it.
+
+
+
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
 
 
