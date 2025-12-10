@@ -61,8 +61,6 @@ https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration
 
 
 
-## 
+## Plugin
 
-# Inputs
-
-## 
+## Plugin
