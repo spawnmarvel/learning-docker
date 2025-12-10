@@ -52,6 +52,10 @@ And view data on the fly and save dasboards.
 
 ![use zabbix data](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/zabbix_data_linux.png)
 
+dmzdocker03 dasboard
+
+![dmzdocker dashboard](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/dmzdocker03_dash.png)
+
 
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
 
