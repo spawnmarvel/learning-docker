@@ -50,7 +50,7 @@ We can now choose it.
 
 And view data on the fly and save dasboards.
 
-![use zabbix](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/use_zabbix.png)
+![use zabbix data](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/zabbix_data_linux.png)
 
 
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
