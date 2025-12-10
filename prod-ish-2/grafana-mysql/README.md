@@ -143,11 +143,21 @@ In your project directory (the same location as your docker-compose.yaml), creat
 cd docker-grafana-mysql
 
 # Create files and write your secure passwords to them
-echo "your_secure_db_password" > db_password.txt
-echo "your_secure_admin_password" > grafana_admin_password.txt
+sudo nano .env
+
+# .env file content
+DB_PASSWORD=YourFinalDBPassword123
+ADMIN_PASSWORD=YourFinalAdminPassword456 # we change the grafana password from admin
 
 # (Recommended: Restrict file permissions)
-chmod 600 *.txt
+sudo chmod 600 .env
+
+# We will use the chown command to change the owner (root) back to your user (imsdal).
+sudo chown imsdal:imsdal .env
+
+# files
+ls -a
+.env  Dockerfile_grafana  certs  compose.yml
 
 docker compose up --build -d
 
@@ -164,11 +174,29 @@ docker compose logs grafana
 
 Now visit grafana, https://localhost (or https://<Your Host IP>)
 
-### Check Secrets (Security Verification)
+1. Access Grafana (The Primary Interface)
+Grafana is the application you will interact with the most.
 
-To confirm that your passwords are not exposed as environment variables, inspect the running Grafana container's environment:
+URL: https://<Host_IP_or_Domain>
 
-```bash
-docker inspect grafana | grep -E 'GF_DATABASE_PASSWORD|GF_SECURITY_ADMIN_PASSWORD'
-```
-You should not see the actual password value; you should only see the _FILE environment variables:
+Since you mapped port 443 on your host to Grafana's internal port 3000, and configured Grafana for HTTPS, you must use https://.
+
+Login:
+
+Username: admin
+
+Password: The value of ${ADMIN_PASSWORD} from your secured .env file.
+
+## What did we build
+
+Current MySQL container (grafana_db) is reserved for Grafana's internal settings, you can install the MySQL data source in Grafana and connect it to any separate MySQL database that is storing time-series monitoring data.
+
+
+If your compose.yml only contained the grafana service and did not define the grafana_db (MySQL) service, Grafana would automatically fall back to its default built-in backend: SQLite.
+
+GO TO README_learn_grafana.md
+
+
+
+
+

@@ -4,6 +4,9 @@ FROM grafana/grafana
 # Switch to root to perform installation/directory creation
 USER root
 
+# The Grafana CLI tool is available in the image, use it to install the plugin.
+RUN grafana-cli plugins install alexanderzobnin-zabbix-app
+
 # Create a directory for the SSL files inside the image
 RUN mkdir -p /etc/grafana/ssl
 

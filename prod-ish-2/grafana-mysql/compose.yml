@@ -6,20 +6,16 @@ services:
     image: mysql:8.0
     container_name: grafana_db
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
+    # Reads environment variables from the .env file
+    env_file:
+      - ./.env 
     environment:
       - MYSQL_DATABASE=grafana
       - MYSQL_USER=grafana
-      # --- POINT MYSQL TO READ PASSWORD FROM THE MOUNTED SECRET FILE ---
-      - MYSQL_PASSWORD_FILE=/run/secrets/db_password
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password_root # Using the same password for root for simplicity here
-    secrets: # <-- SERVICE USES THE SECRETS
-      - db_password
-      - db_password_root
+      # Read password from .env
+      - MYSQL_PASSWORD=${DB_PASSWORD} 
+      # Read password from .env (for root)
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD} 
     volumes:
       - vol_mysql_data:/var/lib/mysql
     networks:
@@ -31,48 +27,33 @@ services:
       context: .
       dockerfile: Dockerfile_grafana
     container_name: grafana
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 600M
+    # Reads environment variables from the .env file
+    env_file:
+      - ./.env 
     restart: always
     ports:
       - '443:3000'
     volumes:
       - vol_grafana_data:/var/lib/grafana
     environment:
-      # ... (Existing SSL configuration) ...
+      # SSL Configuration
       - GF_SERVER_PROTOCOL=https
       - GF_SERVER_CERT_FILE=/etc/grafana/ssl/grafana.crt
       - GF_SERVER_CERT_KEY=/etc/grafana/ssl/grafana.key
-      
-      # --- POINT GRAFANA TO READ DB CREDENTIALS FROM MOUNTED SECRET FILES ---
+
+      # DB Connection (Reads from .env)
       - GF_DATABASE_TYPE=mysql
       - GF_DATABASE_HOST=grafana_db:3306
       - GF_DATABASE_NAME=grafana
       - GF_DATABASE_USER=grafana
-      - GF_DATABASE_PASSWORD_FILE=/run/secrets/db_password # Reads DB password from file
-      
-      # --- OPTIONAL: Set a secure Grafana Admin password using a secret file ---
-      - GF_SECURITY_ADMIN_PASSWORD_FILE=/run/secrets/grafana_admin_password
-      # If you set this, you should also set the user for security:
+      - GF_DATABASE_PASSWORD=${DB_PASSWORD} # <-- Reads password from .env
+
+      # Admin User Setup (Reads from .env)
       - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD} # <-- Reads password from .env
       
-    secrets: # <-- SERVICE USES THE SECRETS
-      - db_password
-      - grafana_admin_password
     networks:
       - net_grafana_mysql
-
-# --- TOP-LEVEL SECRETS DEFINITION ---
-secrets:
-  db_password: # Secret for the regular Grafana DB user (used by both services)
-    file: ./db_password.txt
-  db_password_root: # Secret for the MySQL root password (only used by MySQL service)
-    file: ./db_password.txt # Using the same file for simplicity
-  grafana_admin_password: # Secret for the Grafana internal admin user
-    file: ./grafana_admin_password.txt
 
 volumes:
   vol_grafana_data:
