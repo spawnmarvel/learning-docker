@@ -1,10 +1,13 @@
-version: '3.8'
-
 services:
   # 1. MySQL Service
   grafana_db:
     image: mysql:8.0
     container_name: grafana_db
+    deploy:
+      resources:
+        limits:
+          cpus: '0.6'
+          memory: 1GB
     restart: always
     # Reads environment variables from the .env file
     env_file:
@@ -27,6 +30,11 @@ services:
       context: .
       dockerfile: Dockerfile_grafana
     container_name: grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 800MB
     # Reads environment variables from the .env file
     env_file:
       - ./.env 
