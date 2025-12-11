@@ -1,6 +1,6 @@
 # Learn and test Grafana in Docker
 
-Grafana is just a toool for visualize stuff
+Grafana is just a tool for visualize stuff
 
 * Grafana
 * MySql backend for settings, config, users, etc
@@ -8,10 +8,15 @@ Grafana is just a toool for visualize stuff
 ## Key Functions of Grafana Beyond Visualization
 
 * Data Integration and Querying: Grafana does not store data itself but acts as a unified interface to query data from a vast range of sources, including Prometheus, InfluxDB, MySQL, PostgreSQL, Elasticsearch, and various cloud services like AWS CloudWatch and Azure Monitor.
+
 * Alerting and Notifications: Users can set up complex alert rules and thresholds based on specific metrics and conditions. When these rules are triggered, Grafana can send notifications through various channels like email, Slack, PagerDuty, and more, allowing teams to quickly detect and address issues.
+
 * Monitoring: Grafana is widely used for real-time monitoring of system and application performance, infrastructure health, logs, business metrics, and more. It allows teams to track performance bottlenecks, error rates, and resource usage to ensure system reliability.
+
 * Analysis and Correlation: It provides advanced features for data transformation, ad-hoc querying, and dynamic drill-downs, enabling users to analyze data and uncover the root causes of issues by switching between metrics, logs, and traces in a single interface.
+
 * Collaboration and Reporting: Grafana allows teams to create, explore, and share dynamic dashboards, fostering a data-driven culture.
+
 * Extensibility: Through a rich plugin ecosystem, users can extend Grafana's capabilities with additional data sources, new visualization types, and custom integrations, including AI-powered features for query assistan
 
 # Plugins
@@ -68,6 +73,17 @@ dmzdocker03 dasboard
 
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
 
+## Dashboards misc
+
+Set the hostname in the dashboard instead of the metric name or do both.
+
+
+```code
+$__zbx_host_name
+$__zbx_host_name, Memory
+```
+
+![alias](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/setalias.png)
 
 
 ## Plugin
