@@ -73,7 +73,7 @@ dmzdocker03 dasboard
 
 https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configuration/
 
-## Dashboards misc
+## Dashboards add hostname to metric
 
 Set the hostname in the dashboard instead of the metric name or do both.
 
@@ -86,6 +86,10 @@ $__zbx_host_name, Memory
 ![alias](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/setalias.png)
 
 
-## Plugin
+## Grafana data sources
 
-## Plugin
+Lets dive in
+
+https://grafana.com/docs/grafana/latest/datasources/
+
+
