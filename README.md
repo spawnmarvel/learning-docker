@@ -567,9 +567,9 @@ docker compose down --volumes
 
 ```
 
-## Docker Compose file version 3 reference
+## How Compose works
 
-https://docs.docker.com/compose/compose-file/compose-file-v3/
+https://docs.docker.com/compose/intro/compose-application-model/
 
 
 ## 1.3 Containerize a Python application

@@ -30,6 +30,9 @@ services:
       context: .
       dockerfile: Dockerfile_grafana
     container_name: grafana
+    depends_on:
+      grafana_db:
+        condition: service_started
     deploy:
       resources:
         limits:
