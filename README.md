@@ -309,7 +309,7 @@ Build success
 
 ## Manage secrets securely in Docker Compose (Done 2)
 
-Also have a look in grafana-mysql where it is used.
+Also have a look in grafana-mysql where it is used, secrets is more for swarm mode. We use a .env
 
 https://docs.docker.com/compose/how-tos/use-secrets/
 
