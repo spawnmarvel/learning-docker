@@ -1,7 +1,7 @@
 # Python as container
 
 
-## Visuals
+## Visuals add the visuals to this repos.
 
 https://follow-e-lo.com/2024/01/29/containerize-a-python-application-docker/
 
