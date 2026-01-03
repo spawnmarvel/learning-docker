@@ -289,7 +289,7 @@ docker compose up
 
 ```
 
-## Use Docker Compose from image
+## Use Docker Compose from image TBD
 
 compose.yml ????? Not done this yet
 
