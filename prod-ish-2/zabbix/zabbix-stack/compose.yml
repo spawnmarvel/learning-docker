@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # MySQL 8.4 Database
+  zabbix-db:
+    container_name: zabbix-db
+    image: mysql:8.4
+    restart: always
+    volumes:
+      - ${ZABBIX_DATA_PATH}/zabbix-db:/var/lib/mysql:rw
+    command: 
+      - --character-set-server=utf8mb4 
+      - --collation-server=utf8mb4_bin
+      - --log-bin-trust-function-creators=1
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    stop_grace_period: 1m
+
+  # Zabbix Server 7.0
+  zabbix-server:
+    container_name: zabbix-server
+    image: zabbix/zabbix-server-mysql:ubuntu-7.0-latest
+    restart: always
+    ports:
+      - "10051:10051"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${ZABBIX_DATA_PATH}/zabbix-server/alertscripts:/usr/lib/zabbix/alertscripts:ro
+      - ${ZABBIX_DATA_PATH}/zabbix-server/externalscripts:/usr/lib/zabbix/externalscripts:ro
+    environment:
+      - DB_SERVER_HOST=zabbix-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - ZBX_STARTPINGERS=${ZBX_STARTPINGERS}
+    depends_on:
+      - zabbix-db
+
+  # Zabbix Web Interface (Apache)
+  zabbix-web:
+    container_name: zabbix-web
+    image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
+    restart: always
+    ports:
+      - "80:8080"
+    environment:
+      - DB_SERVER_HOST=zabbix-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - ZBX_SERVER_HOST=zabbix-server
+      - ZBX_SERVER_NAME=${ZBX_SERVER_NAME}
+      - PHP_TZ=${PHP_TZ}
+    depends_on:
+      - zabbix-db
+      - zabbix-server
+
+  # Zabbix Agent 2
+  zabbix-agent:
+    container_name: zabbix-agent
+    image: zabbix/zabbix-agent2:ubuntu-7.0-latest
+    restart: always
+    privileged: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock # For monitoring Docker
+    environment:
+      - ZBX_HOSTNAME="Zabbix Docker Host"
+      - ZBX_SERVER_HOST=zabbix-server
+    depends_on:
+      - zabbix-server
