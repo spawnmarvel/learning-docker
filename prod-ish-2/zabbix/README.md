@@ -2,6 +2,13 @@
 
 ## docker compose
 
+Create a folder for your Zabbix stack and set up these two files:
+
+zabbix-stack/
+├── .env
+└── compose.yaml
+
+
 1. Launch the stack:
 
 ```bash
