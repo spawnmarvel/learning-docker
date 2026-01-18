@@ -8,7 +8,23 @@ zabbix-stack/
 * .env
 * compose.yaml
 
+.env
 
+```ini
+# General Paths
+ZABBIX_DATA_PATH=/datadrive/zabbix-data
+
+# Database Credentials
+MYSQL_DATABASE=zabbix
+MYSQL_USER=zabbix
+MYSQL_PASSWORD=trustcevita80
+MYSQL_ROOT_PASSWORD=trustlima81
+
+# Zabbix Config
+ZBX_SERVER_NAME=zabbixdocker
+PHP_TZ=Europe/Oslo
+ZBX_STARTPINGERS=3
+```
 
 This build assumes there in an external datadrive:
 
@@ -31,14 +47,40 @@ cat /etc/docker/daemon.json
 
 ```bash
 sudo nano compose.yml
-
+# add the compose from this repo
 docker compose up -d
 
-# if there are errors after breaking changes, i.e mysql v 8.4
-# then this removes volumes
+# The "Total Wipe" (Clean Slate) if you need to rebuild
+# 1. Stop and remove everything
 docker compose down -v
 
+# 2. Delete the data folders from BOTH possible locations
+sudo rm -rf ./zabbix-data
+sudo rm -rf /datadrive/zabbix-data
+
+# 3. Prune Docker to clear any stuck cache
+docker system prune -a --volumes -f
+
 ```
+
+1. Disk Space: Since /datadrive is now 8GB and XFS-formatted, MySQL 8.4 has enough room to expand its temporary "Undo Logs" during the import.
+
+2. Hostname Sync: By setting ZBX_HOSTNAME=ZabbixDocker in the .env, the agent will identify itself correctly the moment it heartbeats to the server.
+
+3. Pathing: Docker will automatically create /datadrive/zabbix-data with the correct permissions.
+
+This takes 3 to 5 minutes, take a break.
+
+![pull](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/pull.png)
+
+How to monitor the
+```bash
+
+# Watch the table count grow until it hits 186
+watch -n 5 'docker exec -it zabbix-db mysql -u zabbix -ptrustcevita80 -e "USE zabbix; SHOW TABLES;" | wc -l'
+
+```
+
 
 
 ```logs
@@ -81,6 +123,11 @@ docker logs -f zabbix-db
 docker logs -f zabbix-server
 docker logs -f zabbix-agent
 docker logs -f zabbix-web
+
+# Run this command to see exactly which disk is holding your database files:
+sudo df -h /datadrive/zabbix-data
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1       8.0G  932M  7.1G  12% /datadrive
 
 ```
 
