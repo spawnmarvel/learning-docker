@@ -1,7 +1,7 @@
 # Grafana and MySql
 
 
-## Grafana docker run test (http, https)
+## Grafana docker run (test)
 
 On dmzdocker03
 
@@ -66,7 +66,7 @@ Enter the console to verify certs moved
 
 ![grafana 101 https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/grafana-mysql/images/grafana_101_https.png)
 
-## Grafana docker compose https
+## Grafana docker compose https (information)
 
 On dmzdocker03
 
@@ -118,7 +118,7 @@ http://xx.xx.xxx.90:3000/login
 
 
 
-## Mysql as backend using secret
+## Grafana docker compose https Mysql as backend using .env (this is the build section)
 
 Read and list properties
 
