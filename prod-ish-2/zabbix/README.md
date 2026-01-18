@@ -21,7 +21,7 @@ MYSQL_PASSWORD=apasssword
 MYSQL_ROOT_PASSWORD=anewpassword
 
 # Zabbix Config
-ZBX_SERVER_NAME=zabbixdocker
+ZBX_SERVER_NAME=zabbix-server
 PHP_TZ=Europe/Oslo
 ZBX_STARTPINGERS=3
 ```
@@ -84,8 +84,7 @@ Sun Jan 18 20:44:24 2026
 208
 
 ```
-
-
+If you run a compose down, you will see.
 
 ```logs
 imsdal@dmzdocker03:~/docker-zabbix-stack$ docker compose up -d
@@ -161,19 +160,21 @@ zabbix-db
 ![stats db](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/stats_db.png)
 
 
-*  Enable Docker Monitoring:
+If you need to enter a container you can use
 
-* In the Zabbix UI, go to Data collection > Hosts.
 
-* Find the "Zabbix Docker Host" (or create it if it doesn't appear).
+portainer
 
-* Add the template: "Docker by Zabbix agent 2".
+![container](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/container.png)
 
-* Because you mapped /var/run/docker.sock, Zabbix will now automatically discover and monitor all other containers in this stack.
+or cli
 
-Key Improvements in this Setup
-* MySQL 8.4 Compatibility: Included --log-bin-trust-function-creators=1 which is mandatory for Zabbix to create its database schema on first run.
+```bash
+docker exec -it zabbix-agent bash
+zabbix@7b8d147eee27:~$ ls
+buffer  enc  enc_internal  user_scripts
+zabbix@7b8d147eee27:~$ cd /etc/zabbix/
+zabbix@7b8d147eee27:/etc/zabbix$ ls
+zabbix_agent2.conf  zabbix_agent2.d  zabbix_agentd.d
 
-* Apache vs Nginx: Switched to the apache-mysql image as requested.
-
-* Agent 2: By using Agent 2 instead of the classic Agent, you get native support for the Docker monitoring plugin without needing external scripts.
+```

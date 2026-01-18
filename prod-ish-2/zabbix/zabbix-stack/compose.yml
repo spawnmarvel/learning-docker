@@ -10,13 +10,18 @@ services:
       - --character-set-server=utf8mb4 
       - --collation-server=utf8mb4_bin
       - --log-bin-trust-function-creators=1
-      # Note: --default-authentication-plugin removed as it's unsupported in 8.4
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     stop_grace_period: 1m
+    deploy:
+      resources:
+        limits:
+          memory: 1024M  # Hard limit (container killed if exceeded)
+        reservations:
+          memory: 256M   # Soft limit (guaranteed RAM)
 
   # Zabbix Server 7.0
   zabbix-server:
@@ -38,6 +43,12 @@ services:
       - ZBX_STARTPINGERS=${ZBX_STARTPINGERS}
     depends_on:
       - zabbix-db
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 128M
 
   # Zabbix Web Interface (Apache)
   zabbix-web:
@@ -57,6 +68,12 @@ services:
     depends_on:
       - zabbix-db
       - zabbix-server
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 128M
 
   # Zabbix Agent 2
   zabbix-agent:
@@ -68,7 +85,13 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - ZBX_HOSTNAME="Zabbix Docker Host"
+      - ZBX_HOSTNAME=${ZBX_SERVER_NAME}
       - ZBX_SERVER_HOST=zabbix-server
     depends_on:
       - zabbix-server
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 32M
