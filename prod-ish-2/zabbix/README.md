@@ -95,6 +95,18 @@ Password: zabbix
 
 ![frontend](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/frontend.png)
 
+View usage in portainer for
+
+zabbix-server
+
+![stats server](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/stats_server.png)
+
+
+zabbix-db
+
+![stats db](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/stats_db.png)
+
+
 *  Enable Docker Monitoring:
 
 * In the Zabbix UI, go to Data collection > Hosts.
