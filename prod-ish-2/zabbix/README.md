@@ -202,3 +202,6 @@ zabbix@7b8d147eee27:/etc/zabbix$ ls
 zabbix_agent2.conf  zabbix_agent2.d  zabbix_agentd.d
 
 ```
+
+## 4 update zabbix config
+
