@@ -21,7 +21,7 @@ MYSQL_PASSWORD=apasssword
 MYSQL_ROOT_PASSWORD=anewpassword
 
 # Zabbix Config
-ZBX_SERVER_NAME=zabbix-server
+ZBX_SERVER_NAME=zabbixdocker
 PHP_TZ=Europe/Oslo
 ZBX_STARTPINGERS=3
 ```
