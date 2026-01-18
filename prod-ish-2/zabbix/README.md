@@ -76,8 +76,12 @@ This takes 3 to 5 minutes, take a break.
 How to monitor the
 ```bash
 
-# you can watch the table count grow until it hits 186
+# you can watch the table count grow until it hits 170 to 220, change the password
 watch -n 5 'docker exec -it zabbix-db mysql -u zabbix -apassword -e "USE zabbix; SHOW TABLES;" | wc -l'
+
+Sun Jan 18 20:44:24 2026
+
+208
 
 ```
 
