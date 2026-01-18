@@ -65,6 +65,7 @@ This warning (WARN[0000] No services to build) is completely normal.
 
 * Why you see it: Recent updates to Docker Compose added this log message to let users know it's skipping the "build" phase. Since your output shows [+] up 5/5 and all containers show ✔ Created, the command was 100% successful.
 
+
 ![run stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/run_stack2.png)
 
 Open ufw since it is enabled
