@@ -205,3 +205,94 @@ zabbix_agent2.conf  zabbix_agent2.d  zabbix_agentd.d
 
 ## 4 update zabbix config
 
+Since you are running Zabbix in Docker, you never edit the config files inside the container manually (like we did with cat earlier). If the container restarts, those changes disappear.
+
+Instead, you manage everything through the compose.yml and .env files.
+
+Actually, you don't even need to run docker compose down! Docker is smart enough to perform a "rolling update." When you run up -d after editing your files, Docker compares the new config to the running containers and only restarts the ones that changed.
+
+Here is exactly how to do it.
+
+1. Update your .env file
+Add the new variable for Trappers to your .env so you can keep your compose.yml clean.
+
+.env
+
+```ini
+# ... existing variables ...
+ZBX_STARTPINGERS=3
+ZBX_STARTTRAPPERS=5
+```
+2. Update the zabbix-server in compose.yml
+Add the mapping for the Trappers variable under the environment: section of the zabbix-server service.
+
+```yml
+# Zabbix Server 7.0
+  zabbix-server:
+    # ... other settings ...
+    environment:
+      - DB_SERVER_HOST=zabbix-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - ZBX_STARTPINGERS=${ZBX_STARTPINGERS}
+      - ZBX_STARTTRAPPERS=${ZBX_STARTTRAPPERS} # <--- Add this line
+    # ... rest of service ...
+
+```
+
+3. Apply the changes
+Just run this command. It will detect the change in the Server environment and restart only that container:
+
+```bash
+docker compose up -d
+```
+
+4. Verify the change is active
+You can verify that the Zabbix Server has actually started 5 trapper processes without even looking at the Web UI. Run this from your terminal:
+
+```bash
+docker exec -it zabbix-server ps aux | grep trapper
+```
+
+## 5 most critical environment variables to tune in your zabbix-server section
+
+Since you're planning to add more hosts, would you like me to give you a list of the 5 most important environment variables for performance tuning?
+
+1. ZBX_STARTPOLLERS
+What it does: Controls how many "Passive" workers are reaching out to agents to ask for data.
+
+When to increase: When the ZBX icon stays gray or logs show "intermittent" data.
+
+Recommended for growth: 10 to 20.
+
+2. ZBX_CACHESIZE
+What it does: The amount of RAM dedicated to storing host, item, and trigger data.
+
+When to increase: If you see the "Zabbix configuration cache, % free" trigger in your dashboard.
+
+Recommended for growth: 32M to 64M.
+
+3. ZBX_STARTPINGERS
+What it does: Dedicated workers for ICMP (Ping) checks.
+
+When to increase: If you are monitoring many network devices or using "ICMP Ping" templates and the response time looks delayed.
+
+Recommended for growth: 5 to 10.
+
+4. ZBX_HISTORYCACHESIZE
+What it does: The "waiting room" for data before it is written to the MySQL database.
+
+When to increase: If you have high-frequency items (checking every 1–5 seconds).
+
+Recommended for growth: 16M to 32M.
+
+5. ZBX_STARTDBSYNCERS
+What it does: These are the workers that take data from the cache and write it to the disk.
+
+When to increase: If your docker stats shows high CPU but the database is idle; it means data is stuck in the middle.
+
+Recommended for growth: 4 (Default is usually enough for up to 100 hosts).
+
+
