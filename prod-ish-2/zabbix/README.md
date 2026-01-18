@@ -17,8 +17,8 @@ ZABBIX_DATA_PATH=/datadrive/zabbix-data
 # Database Credentials
 MYSQL_DATABASE=zabbix
 MYSQL_USER=zabbix
-MYSQL_PASSWORD=trustcevita80
-MYSQL_ROOT_PASSWORD=trustlima81
+MYSQL_PASSWORD=apasssword
+MYSQL_ROOT_PASSWORD=anewpassword
 
 # Zabbix Config
 ZBX_SERVER_NAME=zabbixdocker
@@ -77,7 +77,7 @@ How to monitor the
 ```bash
 
 # Watch the table count grow until it hits 186
-watch -n 5 'docker exec -it zabbix-db mysql -u zabbix -ptrustcevita80 -e "USE zabbix; SHOW TABLES;" | wc -l'
+watch -n 5 'docker exec -it zabbix-db mysql -u zabbix -apassword -e "USE zabbix; SHOW TABLES;" | wc -l'
 
 ```
 
