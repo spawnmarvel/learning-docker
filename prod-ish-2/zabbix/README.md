@@ -8,6 +8,11 @@ zabbix-stack/
 * .env
 * compose.yaml
 
+Versions
+
+* image: mysql:8.4
+* image: zabbix/zabbix-server-mysql:ubuntu-7.0-latest
+
 .env
 
 ```ini
@@ -147,6 +152,25 @@ Username: Admin (Capital 'A' is mandatory)
 Password: zabbix
 
 ![run stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/run_stack3.png)
+
+After a short while you will get an alert for Zabbix server
+
+Zabbix server Linux: Zabbix agent is not available (for 3m)
+
+* Edit the hostname to match the .env 	zabbixdocker
+* DNS Name: Put zabbix-agent
+* Connect to: Click the DNS button (this is the most important part)
+* IP Address: Put 0.0.0.0 (or leave 127.0.0.1 there)
+* Port: 10050
+* Click Update
+
+After short time, we geth the green host.
+
+Why this works
+When "Connect to" is set to DNS, Zabbix ignores the IP field and asks the Docker internal DNS "Where is the container named zabbix-agent?" Docker then provides the correct internal IP (like 172.20.0.x) automatically.
+
+![zabbix_agent_green](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/zabbix_agent_green.png)
+
 
 View usage in portainer for
 
