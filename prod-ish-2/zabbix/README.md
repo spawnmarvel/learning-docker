@@ -27,7 +27,7 @@ cat /etc/docker/daemon.json
 }
 
 ```
-## 1. Build and launch the stack:
+## 1 Build and launch the stack
 
 ```bash
 sudo nano compose.yml
@@ -35,13 +35,8 @@ sudo nano compose.yml
 docker compose up -d
 
 # if there are errors after breaking changes, i.e mysql v 8.4
+# then this removes volumes
 docker compose down -v
-
-# check logs or use portainer
-docker logs -f zabbix-db
-docker logs -f zabbix-server
-docker logs -f zabbix-agent
-docker logs -f zabbix-web
 
 ```
 
@@ -75,15 +70,21 @@ sudo ufw status
 sudo ufw allow 8081
 
 ```
-Open NSG for the same port also.
+Open NSG for the same port 8081 also.
 
-## Verify the stack.
+## 2 Verify the stack or jump to 3.
 
 ```bash
 
+# check logs or use portainer
+docker logs -f zabbix-db
+docker logs -f zabbix-server
+docker logs -f zabbix-agent
+docker logs -f zabbix-web
+
 ```
 
-## 2. Access the Dashboard: Go to http://<your-server-ip>:8081
+## 3 Access the Dashboard: Go to http://<your-server-ip>:8081
 
 1. Initial Login
 URL: http://<your-server-ip>:8081
@@ -91,6 +92,8 @@ URL: http://<your-server-ip>:8081
 Username: Admin (Capital 'A' is mandatory)
 
 Password: zabbix
+
+![frontend](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/frontend.png)
 
 *  Enable Docker Monitoring:
 
