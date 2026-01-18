@@ -58,7 +58,14 @@ WARN[0000] No services to build
 
 ```
 
-![zabbix stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/run_stack.png)
+The "No services to build" Warning
+This warning (WARN[0000] No services to build) is completely normal.
+
+* What it means: It's just Docker telling you that there isn't a build: instruction in your YAML file (because we are using pre-made official images instead of building our own).
+
+* Why you see it: Recent updates to Docker Compose added this log message to let users know it's skipping the "build" phase. Since your output shows [+] up 5/5 and all containers show ✔ Created, the command was 100% successful.
+
+
 
 Open ufw since it is enabled
 
