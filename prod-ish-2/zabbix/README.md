@@ -9,12 +9,40 @@ zabbix-stack/
 * compose.yaml
 
 
+
+This build assumes there in an external datadrive:
+
+```bash
+df -h /datadrive
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdc1       8.0G  473M  7.5G   6% /datadrive
+```
+
+Docker is using it for volumes
+
+```bash
+cat /etc/docker/daemon.json
+{
+   "data-root": "/datadrive"
+}
+
+```
 ## 1. Build and launch the stack:
 
 ```bash
 sudo nano compose.yml
 
-compose up -d
+docker compose up -d
+
+# if there are errors after breaking changes, i.e mysql v 8.4
+docker compose down -v
+
+# check logs or use portainer
+docker logs -f zabbix-db
+docker logs -f zabbix-server
+docker logs -f zabbix-agent
+docker logs -f zabbix-web
+
 ```
 
 
@@ -46,6 +74,11 @@ sudo ufw allow 8081
 ```
 Open NSG for the same port also.
 
+## Verify the stack.
+
+```bash
+
+```
 
 ## 2. Access the Dashboard: Go to http://<your-server-ip>:8081
 

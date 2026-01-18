@@ -10,6 +10,7 @@ services:
       - --character-set-server=utf8mb4 
       - --collation-server=utf8mb4_bin
       - --log-bin-trust-function-creators=1
+      # Note: --default-authentication-plugin removed as it's unsupported in 8.4
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
@@ -44,7 +45,7 @@ services:
     image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
     restart: always
     ports:
-      - "8081:8080" # since we have someting running on 80 portainer
+      - "8081:8080"
     environment:
       - DB_SERVER_HOST=zabbix-db
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -65,7 +66,7 @@ services:
     privileged: true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock # For monitoring Docker
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ZBX_HOSTNAME="Zabbix Docker Host"
       - ZBX_SERVER_HOST=zabbix-server
