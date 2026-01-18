@@ -129,6 +129,11 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ```
 
+Or portainer
+
+![portainer](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/portainer.png)
+
+
 ## 3 Access the Dashboard: Go to http://<your-server-ip>:8081
 
 1. Initial Login
