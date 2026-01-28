@@ -369,7 +369,7 @@ And check container
 ![zabbix_stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/zabbix_stack.png)
 
 
-One last thing
+One last thing, To make your Zabbix setup "HTTPS-only," we simply need to remove the port 8081 mapping from your compose.yml. This closes the unencrypted "back door" and forces all traffic through the secure 8443 tunnel.
 
 ```bash
 # Remove the 8081 mapping
