@@ -458,4 +458,6 @@ When to increase: If your docker stats shows high CPU but the database is idle; 
 
 Recommended for growth: 4 (Default is usually enough for up to 100 hosts).
 
+## 6 Send push and pull / active and passive
 
+Now lets send some data to zabbix in docker
