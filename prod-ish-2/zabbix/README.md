@@ -362,7 +362,11 @@ Go to:
 
 https://<YOUR_VM_IP>:8443
 
+![https](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/https.png)
+
 And check container
+
+![zabbix_stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/zabbix_stack.png)
 
 
 
