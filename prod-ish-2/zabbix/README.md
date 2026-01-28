@@ -203,7 +203,170 @@ zabbix_agent2.conf  zabbix_agent2.d  zabbix_agentd.d
 
 ```
 
-## 4 update zabbix config
+## Add ssl to zabbix docker
+
+If you want to keep it simple and add the certificate directly to your zabbix-web container, we can do that by mounting the certificates and enabling the SSL port.
+
+
+```bash
+cd docker-zabbix-stack/
+
+docker compose down
+
+# we just need to edit ownership on the datadrive
+sudo systemctl stop docker
+sudo systemctl stop docker.socket
+
+# Kill any "Zombie" processes
+sudo fuser -mk /datadrive
+
+# Run the ownership fix now
+sudo chown -R $USER:$USER /datadrive
+sudo chmod -R 755 /datadrive
+
+ls -la /datadrive/zabbix-data
+total 4
+drwxr-xr-x  4 imsdal imsdal   44 Jan 18 20:54 .
+drwxr-xr-x 12 imsdal imsdal  191 Jan 28 14:51 ..
+drwxr-xr-x  8 imsdal imsdal 4096 Jan 28 15:03 zabbix-db
+drwxr-xr-x  4 imsdal imsdal   49 Jan 18 20:54 zabbix-server
+
+sudo systemctl start docker
+cd docker-zabbix-stack/
+docker compose up -d
+
+# ssl
+sudo mkdir -p /datadrive/zabbix-data/ssl
+
+sudo su
+
+cd /datadrive/zabbix-data/ssl
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+  -keyout zabbix.key \
+  -out zabbix.crt \
+  -subj "/C=NO/ST=Oslo/L=Oslo/O=Zabbix/CN=zabbixdocker"
+
+chmod 644 zabbix.crt
+chmod 600 zabbix.key
+
+cd docker-zabbix-stack/
+
+sudo nano compose.yml
+# paste yml
+
+docker compose up -d
+
+
+```
+
+log
+
+```
+WARN[0000] No services to build
+[+] up 4/4
+ ✔ Container zabbix-db     Running                                                                                 0.0s
+ ✔ Container zabbix-server Running                                                                                 0.0s
+ ✔ Container zabbix-agent  Running                                                                                 0.0s
+ ✔ Container zabbix-web    Recreated                                                                               1.4s
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint zabbix-web (2cad3ff64b4105c296b10a156bfea81925c8316f69fb3b060f5d0eb5d95b219d): Bind for 0.0.0.0:443 failed: port is already allocated
+
+```
+
+```bash
+docker ps
+CONTAINER ID   IMAGE                          COMMAND                  CREATED       STATUS          PORTS                                                                                                NAMES
+26a5cb204257   docker-portainer-portainer     "/portainer -p 9443 …"   10 days ago   Up 13 minutes   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp, 0.0.0.0:9443->9443/tcp, [::]:9443->9443/tcp, 9000/tcp   portainer-app
+217c3c9eba5b   docker-grafana-mysql-grafana   "/run.sh"                6 weeks ago   Up 13 minutes   0.0.0.0:443->3000/tcp, [::]:443->3000/tcp                                                            grafana
+628b027ee1cc   mysql:8.0                      "docker-entrypoint.s…"   6 weeks ago   Up 13 minutes   3306/tcp, 33060/tcp                                                                                  grafana_db
+
+
+```
+Mystery solved! Look at your grafana container:
+
+0.0.0.0:443->3000/tcp
+
+```bash
+
+# The Solution: Change the Zabbix SSL Port
+# Since Grafana is already using 443, let's move Zabbix to 8443. This is the standard "alternative" HTTPS port.
+
+# Open nsg 8443
+
+nano docker-compose.yml
+ports:
+  - "8081:8080"
+  - "8443:8443"  # Change the first number from 443 to 8443
+
+docker compose up -d
+
+```
+log
+
+```log
+WARN[0000] No services to build
+[+] up 5/5
+ ✔ Network docker-zabbix-stack_default Created                                                                     0.1s
+ ✔ Container zabbix-db                 Created                                                                     0.3s
+ ✔ Container zabbix-server             Created                                                                     0.2s
+ ✔ Container zabbix-agent              Created                                                                     0.4s
+ ✔ Container zabbix-web                Created                                                                     0.4s
+
+```
+
+Go to:
+
+https://<YOUR_VM_IP>:8443 did not work, check container
+
+
+
+log inside zabbix-web check portainer or 
+
+```bash
+docker logs zabbix-web
+
+```
+logs
+
+```log
+Wed Jan 28 15:26:52.370914 2026] [ssl:emerg] [pid 35:tid 125602953664384] (13)Permission denied: AH02574: Init: Can't open server private key file /etc/ssl/apache2/ssl.key
+
+[Wed Jan 28 15:26:52.370981 2026] [ssl:emerg] [pid 35:tid 125602953664384] AH02312: Fatal error initialising mod_ssl, exiting.
+
+[Wed Jan 28 15:26:52.370984 2026] [ssl:emerg] [pid 35:tid 125602953664384] AH02564: Failed to configure encrypted (?) private key zabbix:8443:0, check /etc/ssl/apache2/ssl.key
+
+AH00016: Configuration Failed
+```
+
+```bash
+
+# Set the group to 'docker' or just make it globally readable for this lab
+sudo chmod 644 /datadrive/zabbix-data/ssl/zabbix.key
+sudo chmod 644 /datadrive/zabbix-data/ssl/zabbix.crt
+
+sudo su
+ls -l /datadrive/zabbix-data/ssl/
+ ls -l /datadrive/zabbix-data/ssl/
+total 8
+-rw-r--r-- 1 root root 1285 Jan 28 15:14 zabbix.crt
+-rw-r--r-- 1 root root 1704 Jan 28 15:14 zabbix.key
+
+# run it
+docker compose down
+
+docker compose up -d
+
+```
+
+Go to:
+
+https://<YOUR_VM_IP>:8443
+
+And check container
+
+
+
+## 5 update zabbix config
 
 Since you are running Zabbix in Docker, you never edit the config files inside the container manually (like we did with cat earlier). If the container restarts, those changes disappear.
 

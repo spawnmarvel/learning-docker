@@ -19,9 +19,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1024M  # Hard limit (container killed if exceeded)
+          memory: 1024M
         reservations:
-          memory: 256M   # Soft limit (guaranteed RAM)
+          memory: 256M
 
   # Zabbix Server 7.0
   zabbix-server:
@@ -50,13 +50,18 @@ services:
         reservations:
           memory: 128M
 
-  # Zabbix Web Interface (Apache)
+  # Zabbix Web Interface (Apache) with SSL
   zabbix-web:
     container_name: zabbix-web
     image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
     restart: always
     ports:
       - "8081:8080"
+      - "8443:8443"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /datadrive/zabbix-data/ssl/zabbix.crt:/etc/ssl/apache2/ssl.crt:ro
+      - /datadrive/zabbix-data/ssl/zabbix.key:/etc/ssl/apache2/ssl.key:ro
     environment:
       - DB_SERVER_HOST=zabbix-db
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -65,6 +70,8 @@ services:
       - ZBX_SERVER_HOST=zabbix-server
       - ZBX_SERVER_NAME=${ZBX_SERVER_NAME}
       - PHP_TZ=${PHP_TZ}
+      - ZBX_SSLPEM_FILE=/etc/ssl/apache2/ssl.crt
+      - ZBX_SSLKEY_FILE=/etc/ssl/apache2/ssl.key
     depends_on:
       - zabbix-db
       - zabbix-server
