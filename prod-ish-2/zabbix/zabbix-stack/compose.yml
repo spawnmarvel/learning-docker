@@ -56,7 +56,7 @@ services:
     image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
     restart: always
     ports:
-      - "8081:8080"
+      # - "8081:8080" for http
       - "8443:8443"
     volumes:
       - /etc/localtime:/etc/localtime:ro

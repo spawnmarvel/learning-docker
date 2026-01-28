@@ -369,6 +369,26 @@ And check container
 ![zabbix_stack](https://github.com/spawnmarvel/learning-docker/blob/main/prod-ish-2/zabbix/zabbix-stack/images/zabbix_stack.png)
 
 
+One last thing
+
+```bash
+# Remove the 8081 mapping
+sudo nano compose.yml
+
+docker compose up -d
+
+```
+
+info
+
+```log
+WARN[0000] No services to build
+[+] up 4/4
+ ✔ Container zabbix-db     Running                                                                                 0.0s
+ ✔ Container zabbix-server Running                                                                                 0.0s
+ ✔ Container zabbix-agent  Running                                                                                 0.0s
+ ✔ Container zabbix-web    Recreated     
+```
 
 ## 5 update zabbix config
 
