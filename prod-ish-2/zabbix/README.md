@@ -2,11 +2,13 @@
 
 ## docker compose
 
-Create a folder for your Zabbix stack and set up these two files:
+Create a folder for your Zabbix stack and set up the files:
 
 zabbix-stack/
 * .env
 * compose.yaml
+
+Create the ssl certificate before you run the compose
 
 Versions
 
